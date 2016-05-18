@@ -46,7 +46,7 @@ const PATHS = {
     dest: path.join(DEST, 'app/models')
   },
   views: {
-    src: path.join(SRC, 'app/views/**/*.jade'),
+    src: path.join(SRC, 'app/views/**/*.ejs'),
     dest: path.join(DEST, 'app/views')
   },
   controllers: {

@@ -8,6 +8,8 @@ import express from 'express';
 import favicon from 'serve-favicon';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
+import passport from 'passport';
+import session from 'express-session';
 
 // BASIC CONFIG
 const config = {
@@ -24,10 +26,11 @@ const config = {
 // EXPRESS SET-UP
 // create app
 const app = express();
-// use jade and set views and static directories
-app.set('view engine', 'jade');
+// use ejs and set views and static directories
+app.set('view engine', 'ejs');
 app.set('views', path.join(config.root, 'app/views'));
 app.use(express.static(path.join(config.root, 'static')));
+
 //add middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -37,21 +40,39 @@ app.use(compress());
 app.use(cookieParser());
 app.use(favicon(path.join(config.root, 'static/img/favicon.png')));
 app.use(helmet());
+app.use(session({
+  secret: 'secret word',
+  resave: true,
+  saveUninitialized: true
+}));
+
 // load all models
 require(path.join(config.root, 'app/models'));
+
+// setup passport
+app.use(passport.initialize());
+app.use(passport.session());
+const User = require('./app/models/user');
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 // load all controllers
 app.use('/', require(path.join(config.root, 'app/controllers')));
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
+
 // general errors
 app.use((err, req, res, next) => {
   const sc = err.status || 500;
   res.status(sc);
   res.render('error', {
+    error: err,
     status: sc,
     message: err.message,
     stack: config.env === 'development' ? err.stack : ''

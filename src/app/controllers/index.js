@@ -6,25 +6,27 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 // load models
-const Movie = mongoose.model('Movie');
+const House = mongoose.model('House');
 
 // create router
 const router = express.Router();
 // load other controllers
 router.use('/extras', require('./extras'));
+router.use('/user', require('./user'));
 
 // set basic routes
 router.get('/', (req, res, next) => {
   res.render('index', {
-    title: 'ylrent'
+    title: '源涞国际',
+    user: req.user
   });
 });
-router.get('/movies', (req, res, next) => {
-  Movie.find((err, movies) => {
+router.get('/houses', (req, res, next) => {
+  House.find((err, houses) => {
     if (err) return next(err);
-    res.render('movies', {
-      title: 'Movies!',
-      movies
+    res.render('houses', {
+      title: 'Houses!',
+      houses
     });
   });
 });
