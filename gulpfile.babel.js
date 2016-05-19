@@ -52,6 +52,10 @@ const PATHS = {
   controllers: {
     src: path.join(SRC, 'app/controllers/**/*.js'),
     dest: path.join(DEST, 'app/controllers')
+  },
+  utils: {
+    src: path.join(SRC, 'app/utils/**/*.js'),
+    dest: path.join(DEST, 'app/utils')
   }
 };
 

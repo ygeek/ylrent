@@ -10,6 +10,7 @@ import helmet from 'helmet';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import session from 'express-session';
+import { setupAppLogger } from './app/utils/logger';
 
 // BASIC CONFIG
 const config = {
@@ -56,6 +57,9 @@ const User = require('./app/models/user');
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+// setup logger
+setupAppLogger(app);
 
 // load all controllers
 app.use('/', require(path.join(config.root, 'app/controllers')));

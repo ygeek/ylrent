@@ -14,4 +14,4 @@ const houseSchema = new mongoose.Schema({
 // virtual date attribute
 houseSchema.virtual('date').get(() => this._id.getTimestamp());
 
-mongoose.model('House', houseSchema);
+module.exports = mongoose.model('House', houseSchema);
