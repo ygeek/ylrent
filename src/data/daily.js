@@ -6,48 +6,46 @@
 
 const data = [
   {
-    "coName": "浦东新区",
-    "pinyin": "PDX"
+    "comunityName": "东方曼哈顿",
+    "name": "东方曼哈顿2房",
+    "capacityMin": 2,
+    "capacityMax": 3,
+    "price": 1199
   },
   {
-    "DistrictName": "徐汇区",
-    "pinyin": "XH"
+    "comunityName": "东方曼哈顿",
+    "name": "东方曼哈顿3房",
+    "capacityMin": 3,
+    "capacityMax": 6,
+    "price": 1399
   },
   {
-    "DistrictName": "长宁区",
-    "pinyin": "CN"
+    "comunityName": "陆家嘴中央公寓",
+    "name": "东方曼哈顿2房",
+    "capacityMin": 2,
+    "capacityMax": 3,
+    "price": 1199
   },
   {
-    "DistrictName": "杨浦区",
-    "pinyin": "YP"
+    "comunityName": "东方曼哈顿",
+    "name": "东方曼哈顿2房",
+    "capacityMin": 2,
+    "capacityMax": 3,
+    "price": 1199
   },
   {
-    "DistrictName": "卢湾区",
-    "pinyin": "LW"
+    "comunityName": "东方曼哈顿",
+    "name": "东方曼哈顿2房",
+    "capacityMin": 2,
+    "capacityMax": 3,
+    "price": 1199
   },
   {
-    "DistrictName": "静安区",
-    "pinyin": "JA"
-  },
-  {
-    "DistrictName": "青浦区",
-    "pinyin": "QP"
-  },
-  {
-    "DistrictName": "黄浦区",
-    "pinyin": "HP"
-  },
-  {
-    "DistrictName": "闵行区",
-    "pinyin": "MH"
-  },
-  {
-    "DistrictName": "嘉定区",
-    "pinyin": "JD"
-  },
-  {
-    "DistrictName": "闸北区",
-    "pinyin": "ZBQ"
+    "comunityName": "东方曼哈顿",
+    "name": "东方曼哈顿2房",
+    "capacityMin": 2,
+    "capacityMax": 3,
+    "price": 1199
   }
 ];
 

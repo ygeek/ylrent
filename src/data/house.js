@@ -468,7 +468,7 @@ const data = [
     "address": "浦东新区东绣路99弄13号402室"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "12-2502(6-25I)_",
     "contractno": 239,
     "structurearea": 138,
@@ -479,7 +479,7 @@ const data = [
     "address": "潍坊西路2弄12号2502室"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "7-28H(18-2802)",
     "contractno": 231,
     "structurearea": 131,
@@ -490,7 +490,7 @@ const data = [
     "address": "潍坊西路2弄18号2802室"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "8-16G(12-1601)",
     "contractno": 222,
     "structurearea": 163,
@@ -501,7 +501,7 @@ const data = [
     "address": "潍坊西路1弄12号1601室"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "3-39E(3-3901)",
     "contractno": 220,
     "structurearea": 243,
@@ -512,7 +512,7 @@ const data = [
     "address": "潍坊西路2弄3号3901室"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "8-29E(11-2901)",
     "contractno": 266,
     "structurearea": 237,
@@ -523,7 +523,7 @@ const data = [
     "address": "潍坊西路1弄11号2901室"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "2-37F(3-3702)",
     "contractno": 258,
     "structurearea": 281,
@@ -534,7 +534,7 @@ const data = [
     "address": "潍坊西路1弄3号3702室"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "2-42F(3-4202)",
     "contractno": 293,
     "structurearea": 281,
@@ -545,7 +545,7 @@ const data = [
     "address": "潍坊西路1弄3号4202室"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "2-7F(3-702)",
     "contractno": 137,
     "structurearea": 278,
@@ -556,7 +556,7 @@ const data = [
     "address": "浦东潍坊西路1弄3号7F"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "15-4102（7-41B)",
     "contractno": 378,
     "structurearea": 209,
@@ -567,7 +567,7 @@ const data = [
     "address": "潍坊西路2弄15号4102室"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "17-2701(7-27E)",
     "contractno": 420,
     "structurearea": 237,
@@ -578,7 +578,7 @@ const data = [
     "address": "潍坊西路2弄"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "12-1102(8-11H)",
     "contractno": 479,
     "structurearea": 132,
@@ -589,7 +589,7 @@ const data = [
     "address": "潍坊西路1弄"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "9-3801(6-38A)",
     "contractno": 480,
     "structurearea": 138,
@@ -600,7 +600,7 @@ const data = [
     "address": "潍坊西路2弄"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "12-801(8-8G)",
     "contractno": 490,
     "structurearea": 163,
@@ -611,7 +611,7 @@ const data = [
     "address": "潍坊西路1弄"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "15-201(7-2A）",
     "contractno": 502,
     "structurearea": 312,
@@ -622,7 +622,7 @@ const data = [
     "address": "潍坊西路2弄"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "17-3002（7-30F)",
     "contractno": 503,
     "structurearea": 277,
@@ -633,7 +633,7 @@ const data = [
     "address": "潍坊西路2弄"
   },
   {
-    "villageName": "世茂滨江店",
+    "villageName": "世茂滨江",
     "houseno": "6-501(1-5E)",
     "contractno": 516,
     "structurearea": 229,
@@ -644,7 +644,7 @@ const data = [
     "address": "潍坊西路1弄"
   },
   {
-    "villageName": "江临天下店",
+    "villageName": "江临天下",
     "houseno": "1-903",
     "contractno": 325,
     "structurearea": 210,
@@ -655,7 +655,7 @@ const data = [
     "address": "浦明路233弄"
   },
   {
-    "villageName": "江临天下店",
+    "villageName": "江临天下",
     "houseno": "1-2103",
     "contractno": 366,
     "structurearea": 210,
@@ -666,7 +666,7 @@ const data = [
     "address": "浦明路233弄1号2103室"
   },
   {
-    "villageName": "江临天下店",
+    "villageName": "江临天下",
     "houseno": "1-102",
     "contractno": 386,
     "structurearea": 161,
@@ -677,7 +677,7 @@ const data = [
     "address": "浦明路233弄1号102室"
   },
   {
-    "villageName": "仁恒滨江园店",
+    "villageName": "仁恒滨江园",
     "houseno": "2-6B",
     "contractno": 250,
     "structurearea": 113,
@@ -688,7 +688,7 @@ const data = [
     "address": "浦明路99弄2号6B室"
   },
   {
-    "villageName": "仁恒滨江园店",
+    "villageName": "仁恒滨江园",
     "houseno": "27-704",
     "contractno": 328,
     "structurearea": 103,
@@ -699,7 +699,7 @@ const data = [
     "address": "浦明路99弄27号704室"
   },
   {
-    "villageName": "仁恒滨江园店",
+    "villageName": "仁恒滨江园",
     "houseno": "16-1A",
     "contractno": 261,
     "structurearea": 144,
@@ -710,7 +710,7 @@ const data = [
     "address": "浦明路99弄16号1A室"
   },
   {
-    "villageName": "仁恒滨江园店",
+    "villageName": "仁恒滨江园",
     "houseno": "1-6A",
     "contractno": 368,
     "structurearea": 139,
@@ -721,7 +721,7 @@ const data = [
     "address": "浦明路99弄1号6A"
   },
   {
-    "villageName": "仁恒滨江园店",
+    "villageName": "仁恒滨江园",
     "houseno": "25-1004",
     "contractno": 369,
     "structurearea": 103,
@@ -732,7 +732,7 @@ const data = [
     "address": "浦明路99弄25号1004室"
   },
   {
-    "villageName": "仁恒滨江园店",
+    "villageName": "仁恒滨江园",
     "houseno": "3-901",
     "contractno": 375,
     "structurearea": 187,
@@ -743,7 +743,7 @@ const data = [
     "address": "浦城路99弄3号901室"
   },
   {
-    "villageName": "仁恒滨江园店",
+    "villageName": "仁恒滨江园",
     "houseno": "31-1003",
     "contractno": 394,
     "structurearea": 170,
@@ -754,7 +754,7 @@ const data = [
     "address": "浦明路99弄31号1003室"
   },
   {
-    "villageName": "仁恒滨江园店",
+    "villageName": "仁恒滨江园",
     "houseno": "33-902",
     "contractno": 414,
     "structurearea": 167,
@@ -765,7 +765,7 @@ const data = [
     "address": "浦明路99弄"
   },
   {
-    "villageName": "世纪花园店",
+    "villageName": "世纪花园",
     "houseno": "8-801",
     "contractno": 332,
     "structurearea": 106,
@@ -776,7 +776,7 @@ const data = [
     "address": "银霄路100弄"
   },
   {
-    "villageName": "世纪花园店",
+    "villageName": "世纪花园",
     "houseno": "13-302",
     "contractno": 318,
     "structurearea": 146,
@@ -787,7 +787,7 @@ const data = [
     "address": "银宵路100弄13号302室"
   },
   {
-    "villageName": "世纪花园店",
+    "villageName": "世纪花园",
     "houseno": "3-701",
     "contractno": 334,
     "structurearea": 147,
@@ -798,7 +798,7 @@ const data = [
     "address": "银宵路100弄3号701室"
   },
   {
-    "villageName": "世纪花园店",
+    "villageName": "世纪花园",
     "houseno": "2-502",
     "contractno": 135,
     "structurearea": 223,
@@ -809,7 +809,7 @@ const data = [
     "address": "浦东银宵路39弄2号502"
   },
   {
-    "villageName": "世纪花园店",
+    "villageName": "世纪花园",
     "houseno": "5-902",
     "contractno": 134,
     "structurearea": 229,
@@ -820,7 +820,7 @@ const data = [
     "address": "浦东银宵路39弄5号902"
   },
   {
-    "villageName": "世纪花园店",
+    "villageName": "世纪花园",
     "houseno": "6-1101",
     "contractno": 136,
     "structurearea": 224,
@@ -831,7 +831,7 @@ const data = [
     "address": "浦东银宵路39弄6号1101"
   },
   {
-    "villageName": "世纪花园店",
+    "villageName": "世纪花园",
     "houseno": "4-3001",
     "contractno": 359,
     "structurearea": 225,
@@ -842,7 +842,7 @@ const data = [
     "address": "银霄路39弄"
   },
   {
-    "villageName": "世纪花园店",
+    "villageName": "世纪花园",
     "houseno": "19-501",
     "contractno": 487,
     "structurearea": 173,
@@ -853,7 +853,7 @@ const data = [
     "address": "银霄路100弄"
   },
   {
-    "villageName": "上海滩花园店",
+    "villageName": "上海滩花园",
     "houseno": "46-301",
     "contractno": 301,
     "structurearea": 201,
@@ -864,7 +864,7 @@ const data = [
     "address": "乳山路506弄"
   },
   {
-    "villageName": "四季全景台店",
+    "villageName": "四季全景台",
     "houseno": "4-1001",
     "contractno": 168,
     "structurearea": 152,
@@ -875,7 +875,7 @@ const data = [
     "address": "花木路916弄4号1001"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "2-104",
     "contractno": 74,
     "structurearea": 134,
@@ -886,7 +886,7 @@ const data = [
     "address": "南丹东路223弄2号104"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "2-2103",
     "contractno": 90,
     "structurearea": 103,
@@ -897,7 +897,7 @@ const data = [
     "address": "南丹东路223弄2号2103"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "3-103一房",
     "contractno": 77,
     "structurearea": 68,
@@ -908,7 +908,7 @@ const data = [
     "address": "南丹东路223弄3号103"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "4-1003",
     "contractno": 87,
     "structurearea": 101,
@@ -919,7 +919,7 @@ const data = [
     "address": "南丹东路223弄4号1003"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "4-2303",
     "contractno": 88,
     "structurearea": 100,
@@ -930,7 +930,7 @@ const data = [
     "address": "南丹东路223弄4号2303"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "4-502",
     "contractno": 69,
     "structurearea": 101,
@@ -941,7 +941,7 @@ const data = [
     "address": "南丹东路223弄4号502"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "4-902",
     "contractno": 85,
     "structurearea": 101,
@@ -952,7 +952,7 @@ const data = [
     "address": "南丹东路223弄4号902"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "7-2202",
     "contractno": 81,
     "structurearea": 103,
@@ -963,7 +963,7 @@ const data = [
     "address": "南丹东路223弄7号2202"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "7-2902",
     "contractno": 89,
     "structurearea": 102,
@@ -974,7 +974,7 @@ const data = [
     "address": "南丹东路223弄7号2902"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "7-403",
     "contractno": 82,
     "structurearea": 102,
@@ -985,7 +985,7 @@ const data = [
     "address": "南丹东路223弄7号403"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "7-802",
     "contractno": 71,
     "structurearea": 102,
@@ -996,7 +996,7 @@ const data = [
     "address": "南丹东路223弄7号802"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "9-1202",
     "contractno": 79,
     "structurearea": 107,
@@ -1007,7 +1007,7 @@ const data = [
     "address": "南丹东路223弄9号1202"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "9-602",
     "contractno": 66,
     "structurearea": 106,
@@ -1018,7 +1018,7 @@ const data = [
     "address": "南丹东路223弄9号602"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "1-1104",
     "contractno": 86,
     "structurearea": 150,
@@ -1029,7 +1029,7 @@ const data = [
     "address": "南丹东路223弄1号1104"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "1-3101",
     "contractno": 84,
     "structurearea": 154,
@@ -1040,7 +1040,7 @@ const data = [
     "address": "南丹东路223弄1号3101"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "1-601",
     "contractno": 78,
     "structurearea": 150,
@@ -1051,7 +1051,7 @@ const data = [
     "address": "南丹东路223弄1号601"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "2-1201",
     "contractno": 83,
     "structurearea": 155,
@@ -1062,7 +1062,7 @@ const data = [
     "address": "南丹东路223弄2号1201"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "2-1304",
     "contractno": 93,
     "structurearea": 153,
@@ -1073,7 +1073,7 @@ const data = [
     "address": "南丹东路223弄2号1304"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "2-1404",
     "contractno": 80,
     "structurearea": 153,
@@ -1084,7 +1084,7 @@ const data = [
     "address": "南丹东路223弄2号1404"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "2-1804",
     "contractno": 217,
     "structurearea": 160,
@@ -1095,7 +1095,7 @@ const data = [
     "address": "南丹东路223弄2号1804室"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "2-401",
     "contractno": 206,
     "structurearea": 154,
@@ -1106,7 +1106,7 @@ const data = [
     "address": "南丹东路223弄2号401室"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "2-704",
     "contractno": 67,
     "structurearea": 152,
@@ -1117,7 +1117,7 @@ const data = [
     "address": "南丹东路223弄2号704"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "3-1901",
     "contractno": 95,
     "structurearea": 166,
@@ -1128,7 +1128,7 @@ const data = [
     "address": "南丹东路223弄3号1901"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "3-501",
     "contractno": 70,
     "structurearea": 162,
@@ -1139,7 +1139,7 @@ const data = [
     "address": "南丹东路223弄3号501"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "4-2204",
     "contractno": 197,
     "structurearea": 164,
@@ -1150,7 +1150,7 @@ const data = [
     "address": "南丹东路223弄4号2204室"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "4-701",
     "contractno": 94,
     "structurearea": 163,
@@ -1161,7 +1161,7 @@ const data = [
     "address": "南丹东路223弄4号701"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "6-1302",
     "contractno": 287,
     "structurearea": 134,
@@ -1172,7 +1172,7 @@ const data = [
     "address": "南丹东路223弄6号1302室"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "6-401",
     "contractno": 97,
     "structurearea": 158,
@@ -1183,7 +1183,7 @@ const data = [
     "address": "南丹东路223弄6号401"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "6-402房东违约",
     "contractno": 278,
     "structurearea": 133,
@@ -1194,7 +1194,7 @@ const data = [
     "address": "南丹东路223弄6号402室"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "7-1304",
     "contractno": 68,
     "structurearea": 159,
@@ -1205,7 +1205,7 @@ const data = [
     "address": "南丹东路223弄7号1304"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "7-1904",
     "contractno": 92,
     "structurearea": 154,
@@ -1216,7 +1216,7 @@ const data = [
     "address": "南丹东路223弄7号1904"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "7-2703",
     "contractno": 73,
     "structurearea": 146,
@@ -1227,7 +1227,7 @@ const data = [
     "address": "南丹东路223弄7号2703"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "8-803",
     "contractno": 96,
     "structurearea": 137,
@@ -1238,7 +1238,7 @@ const data = [
     "address": "南丹东路223弄8号803"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "9-801",
     "contractno": 300,
     "structurearea": 137,
@@ -1249,7 +1249,7 @@ const data = [
     "address": "南丹东路223弄9号801室"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "1-2003",
     "contractno": 75,
     "structurearea": 80,
@@ -1260,7 +1260,7 @@ const data = [
     "address": "南丹东路223弄1号2003"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "2-103",
     "contractno": 72,
     "structurearea": 70,
@@ -1271,7 +1271,7 @@ const data = [
     "address": "南丹东路223弄2号103"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "2-2002",
     "contractno": 370,
     "structurearea": 0,
@@ -1282,7 +1282,7 @@ const data = [
     "address": "南丹东路223弄2号2002室"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "6-203",
     "contractno": 429,
     "structurearea": 149,
@@ -1293,7 +1293,7 @@ const data = [
     "address": "南丹东路223弄"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "7-1503",
     "contractno": 468,
     "structurearea": 103,
@@ -1304,7 +1304,7 @@ const data = [
     "address": "南丹东路223弄"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "7-1502",
     "contractno": 504,
     "structurearea": 102,
@@ -1315,7 +1315,7 @@ const data = [
     "address": "南丹东路223弄"
   },
   {
-    "villageName": "莱诗邸店",
+    "villageName": "莱诗邸",
     "houseno": "4-1002",
     "contractno": 519,
     "structurearea": 101,
@@ -1326,7 +1326,7 @@ const data = [
     "address": "南丹东路223弄"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "A-5B",
     "contractno": 181,
     "structurearea": 127,
@@ -1337,7 +1337,7 @@ const data = [
     "address": "广元西路108号5B"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-13D",
     "contractno": 100,
     "structurearea": 129,
@@ -1348,7 +1348,7 @@ const data = [
     "address": "广元西路98弄帝庭阁13D"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-21E",
     "contractno": 108,
     "structurearea": 130,
@@ -1359,7 +1359,7 @@ const data = [
     "address": "广元西路98弄帝庭阁21E"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-25E",
     "contractno": 311,
     "structurearea": 130,
@@ -1370,7 +1370,7 @@ const data = [
     "address": "广元西路98号25E"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-28E",
     "contractno": 109,
     "structurearea": 130,
@@ -1381,7 +1381,7 @@ const data = [
     "address": "广元西路98弄帝庭阁28E"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-9E",
     "contractno": 106,
     "structurearea": 130,
@@ -1392,7 +1392,7 @@ const data = [
     "address": "广元西路98弄帝庭阁9E"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-13B",
     "contractno": 107,
     "structurearea": 79,
@@ -1403,7 +1403,7 @@ const data = [
     "address": "广元西路98弄帝庭阁13B"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-21A",
     "contractno": 99,
     "structurearea": 74,
@@ -1414,7 +1414,7 @@ const data = [
     "address": "广元西路98弄帝庭阁21A"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-23A",
     "contractno": 190,
     "structurearea": 74,
@@ -1425,7 +1425,7 @@ const data = [
     "address": "广元西路98号23A"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-23D",
     "contractno": 104,
     "structurearea": 129,
@@ -1436,7 +1436,7 @@ const data = [
     "address": "广元西路98弄帝庭阁23D"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-25A",
     "contractno": 102,
     "structurearea": 74,
@@ -1447,7 +1447,7 @@ const data = [
     "address": "广元西路98弄帝庭阁25A"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-26C",
     "contractno": 315,
     "structurearea": 74,
@@ -1458,7 +1458,7 @@ const data = [
     "address": "广元西路98号"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-27A",
     "contractno": 101,
     "structurearea": 74,
@@ -1469,7 +1469,7 @@ const data = [
     "address": "广元西路98弄帝庭阁27A"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-28C",
     "contractno": 232,
     "structurearea": 74,
@@ -1480,7 +1480,7 @@ const data = [
     "address": "广元西路98号28C"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-29A",
     "contractno": 103,
     "structurearea": 74,
@@ -1491,7 +1491,7 @@ const data = [
     "address": "广元西路98弄帝庭阁29A"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-30B",
     "contractno": 112,
     "structurearea": 80,
@@ -1502,7 +1502,7 @@ const data = [
     "address": "广元西路98弄帝庭阁30B"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-5C",
     "contractno": 105,
     "structurearea": 74,
@@ -1513,7 +1513,7 @@ const data = [
     "address": "广元西路98弄帝庭阁5C"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-7C",
     "contractno": 111,
     "structurearea": 74,
@@ -1524,7 +1524,7 @@ const data = [
     "address": "广元西路98弄帝庭阁7C"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-8C",
     "contractno": 110,
     "structurearea": 74,
@@ -1535,7 +1535,7 @@ const data = [
     "address": "广元西路98弄帝庭阁8C"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-11A",
     "contractno": 348,
     "structurearea": 74,
@@ -1546,7 +1546,7 @@ const data = [
     "address": "广元西路98号"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-20C",
     "contractno": 360,
     "structurearea": 74,
@@ -1557,7 +1557,7 @@ const data = [
     "address": "广元西路98号"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-2B",
     "contractno": 397,
     "structurearea": 79,
@@ -1568,7 +1568,7 @@ const data = [
     "address": "广元西路98号2B"
   },
   {
-    "villageName": "名仕苑店",
+    "villageName": "名仕苑",
     "houseno": "B-10E",
     "contractno": 465,
     "structurearea": 129,
@@ -1579,7 +1579,7 @@ const data = [
     "address": "广元西路98号"
   },
   {
-    "villageName": "兆丰帝景苑店",
+    "villageName": "兆丰帝景苑",
     "houseno": "18-301",
     "contractno": 330,
     "structurearea": 168,
@@ -1590,7 +1590,7 @@ const data = [
     "address": "肇家浜路999弄18号301室"
   },
   {
-    "villageName": "兆丰帝景苑店",
+    "villageName": "兆丰帝景苑",
     "houseno": "889-2704",
     "contractno": 341,
     "structurearea": 0,
@@ -1601,7 +1601,7 @@ const data = [
     "address": "肇嘉浜路889号2704室"
   },
   {
-    "villageName": "兆丰帝景苑店",
+    "villageName": "兆丰帝景苑",
     "houseno": "88-2105",
     "contractno": 241,
     "structurearea": 71,
@@ -1612,7 +1612,7 @@ const data = [
     "address": "肇嘉浜路999弄88号2105室"
   },
   {
-    "villageName": "兆丰帝景苑店",
+    "villageName": "兆丰帝景苑",
     "houseno": "889-703",
     "contractno": 353,
     "structurearea": 0,
@@ -1623,7 +1623,7 @@ const data = [
     "address": "肇嘉浜路889弄703室"
   },
   {
-    "villageName": "兆丰帝景苑店",
+    "villageName": "兆丰帝景苑",
     "houseno": "889-1403",
     "contractno": 402,
     "structurearea": 100,
@@ -1634,7 +1634,7 @@ const data = [
     "address": "肇嘉浜路889号1403室"
   },
   {
-    "villageName": "徐家汇花园店",
+    "villageName": "徐家汇花园",
     "houseno": "17-502",
     "contractno": 142,
     "structurearea": 110,
@@ -1645,7 +1645,7 @@ const data = [
     "address": "宛平南路255弄17号502"
   },
   {
-    "villageName": "徐家汇花园店",
+    "villageName": "徐家汇花园",
     "houseno": "17-601一卫",
     "contractno": 141,
     "structurearea": 114,
@@ -1656,7 +1656,7 @@ const data = [
     "address": "宛平南路255弄17号601"
   },
   {
-    "villageName": "徐家汇花园店",
+    "villageName": "徐家汇花园",
     "houseno": "17-602",
     "contractno": 143,
     "structurearea": 110,
@@ -1667,7 +1667,7 @@ const data = [
     "address": "宛平南路255弄17号602"
   },
   {
-    "villageName": "徐家汇花园店",
+    "villageName": "徐家汇花园",
     "houseno": "20-102",
     "contractno": 144,
     "structurearea": 100,
@@ -1678,7 +1678,7 @@ const data = [
     "address": "宛平南路255弄20号102"
   },
   {
-    "villageName": "徐家汇花园店",
+    "villageName": "徐家汇花园",
     "houseno": "10-403",
     "contractno": 185,
     "structurearea": 146,
@@ -1689,7 +1689,7 @@ const data = [
     "address": "宛平南路255弄10号403"
   },
   {
-    "villageName": "徐家汇花园店",
+    "villageName": "徐家汇花园",
     "houseno": "17-503",
     "contractno": 138,
     "structurearea": 134,
@@ -1700,7 +1700,7 @@ const data = [
     "address": "宛平南路255弄17号503"
   },
   {
-    "villageName": "徐家汇花园店",
+    "villageName": "徐家汇花园",
     "houseno": "34-1102",
     "contractno": 140,
     "structurearea": 59,
@@ -1711,7 +1711,7 @@ const data = [
     "address": "宛平南路255弄34号1102"
   },
   {
-    "villageName": "汇金广场店",
+    "villageName": "汇金广场",
     "houseno": "A-2008",
     "contractno": 270,
     "structurearea": 131,
@@ -1722,7 +1722,7 @@ const data = [
     "address": "肇家浜路988号2008室"
   },
   {
-    "villageName": "汇金广场店",
+    "villageName": "汇金广场",
     "houseno": "A-1901",
     "contractno": 280,
     "structurearea": 168,
@@ -1733,7 +1733,7 @@ const data = [
     "address": "肇嘉浜路988号"
   },
   {
-    "villageName": "亚都国际名园店",
+    "villageName": "亚都国际名园",
     "houseno": "6-1703",
     "contractno": 198,
     "structurearea": 122,
@@ -1744,7 +1744,7 @@ const data = [
     "address": "南丹东路300弄6号1703室"
   },
   {
-    "villageName": "福源汇居店",
+    "villageName": "福源汇居",
     "houseno": "7-1602",
     "contractno": 254,
     "structurearea": 100,
@@ -1755,7 +1755,7 @@ const data = [
     "address": "南丹东路168弄7号1602室"
   },
   {
-    "villageName": "福源汇居店",
+    "villageName": "福源汇居",
     "houseno": "1-801",
     "contractno": 145,
     "structurearea": 133,
@@ -1766,7 +1766,7 @@ const data = [
     "address": "南丹东路168弄1号801"
   },
   {
-    "villageName": "福源汇居店",
+    "villageName": "福源汇居",
     "houseno": "1-1301",
     "contractno": 288,
     "structurearea": 133,
@@ -1777,7 +1777,7 @@ const data = [
     "address": "南丹东路168弄"
   },
   {
-    "villageName": "福源汇居店",
+    "villageName": "福源汇居",
     "houseno": "5-901",
     "contractno": 147,
     "structurearea": 185,
@@ -1788,7 +1788,7 @@ const data = [
     "address": "南丹东路168弄5号901"
   },
   {
-    "villageName": "福源汇居店",
+    "villageName": "福源汇居",
     "houseno": "5-1003",
     "contractno": 354,
     "structurearea": 129,
@@ -1799,7 +1799,7 @@ const data = [
     "address": "南丹东路168弄"
   },
   {
-    "villageName": "福源汇居店",
+    "villageName": "福源汇居",
     "houseno": "7-1403",
     "contractno": 362,
     "structurearea": 122,
@@ -1810,7 +1810,7 @@ const data = [
     "address": "南丹东路168弄7号1403室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-101",
     "contractno": 53,
     "structurearea": 93,
@@ -1821,7 +1821,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "9-101",
     "contractno": 337,
     "structurearea": 93,
@@ -1832,7 +1832,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "10-1505",
     "contractno": 41,
     "structurearea": 100,
@@ -1843,7 +1843,7 @@ const data = [
     "address": "虹桥路168弄10号1505"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "10-1902",
     "contractno": 59,
     "structurearea": 100,
@@ -1854,7 +1854,7 @@ const data = [
     "address": "虹桥路168弄10号1902"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "10-2505",
     "contractno": 44,
     "structurearea": 0,
@@ -1865,7 +1865,7 @@ const data = [
     "address": "虹桥路168弄10号2505"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "1-1002",
     "contractno": 342,
     "structurearea": 0,
@@ -1876,7 +1876,7 @@ const data = [
     "address": "虹桥路168弄1号1002室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "11-1002留",
     "contractno": 215,
     "structurearea": 96,
@@ -1887,7 +1887,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "11-1102",
     "contractno": 48,
     "structurearea": 96,
@@ -1898,7 +1898,7 @@ const data = [
     "address": "虹桥路168弄11号1102"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "12-2002",
     "contractno": 64,
     "structurearea": 96,
@@ -1909,7 +1909,7 @@ const data = [
     "address": "虹桥路168弄12号2002"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "12-2102",
     "contractno": 25,
     "structurearea": 96,
@@ -1920,7 +1920,7 @@ const data = [
     "address": "虹桥路168弄12号2102"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "1-2502",
     "contractno": 230,
     "structurearea": 104,
@@ -1931,7 +1931,7 @@ const data = [
     "address": "虹桥路168弄1号2502室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "1-303一卫",
     "contractno": 262,
     "structurearea": 93,
@@ -1942,7 +1942,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "1-602",
     "contractno": 264,
     "structurearea": 104,
@@ -1953,7 +1953,7 @@ const data = [
     "address": "虹桥路168弄1号602室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "2-702",
     "contractno": 327,
     "structurearea": 104,
@@ -1964,7 +1964,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "4-2402",
     "contractno": 20,
     "structurearea": 94,
@@ -1975,7 +1975,7 @@ const data = [
     "address": "虹桥路168弄4号2402"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "5-1703一卫",
     "contractno": 22,
     "structurearea": 85,
@@ -1986,7 +1986,7 @@ const data = [
     "address": "虹桥路168弄5号1703"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "5-2002",
     "contractno": 50,
     "structurearea": 94,
@@ -1997,7 +1997,7 @@ const data = [
     "address": "虹桥路168弄5号2002"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "5-3102",
     "contractno": 30,
     "structurearea": 97,
@@ -2008,7 +2008,7 @@ const data = [
     "address": "虹桥路168弄5号3102"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "5-802",
     "contractno": 35,
     "structurearea": 94,
@@ -2019,7 +2019,7 @@ const data = [
     "address": "虹桥路168弄5号802"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "5-902",
     "contractno": 49,
     "structurearea": 94,
@@ -2030,7 +2030,7 @@ const data = [
     "address": "虹桥路168弄5号902"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "6-1802",
     "contractno": 52,
     "structurearea": 96,
@@ -2041,7 +2041,7 @@ const data = [
     "address": "虹桥路168弄6号1802"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "6-2102",
     "contractno": 26,
     "structurearea": 94,
@@ -2052,7 +2052,7 @@ const data = [
     "address": "虹桥路168弄6号2102"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "7-1105",
     "contractno": 54,
     "structurearea": 109,
@@ -2063,7 +2063,7 @@ const data = [
     "address": "虹桥路168弄7号1105"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "7-2006",
     "contractno": 199,
     "structurearea": 120,
@@ -2074,7 +2074,7 @@ const data = [
     "address": "虹桥路168弄7号2006室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "7-2205",
     "contractno": 65,
     "structurearea": 109,
@@ -2085,7 +2085,7 @@ const data = [
     "address": "虹桥路168弄7号2205"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-1501",
     "contractno": 36,
     "structurearea": 94,
@@ -2096,7 +2096,7 @@ const data = [
     "address": "虹桥路168弄8号1501"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-2401",
     "contractno": 17,
     "structurearea": 94,
@@ -2107,7 +2107,7 @@ const data = [
     "address": "虹桥路168弄8号2401"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-3002",
     "contractno": 29,
     "structurearea": 142,
@@ -2118,7 +2118,7 @@ const data = [
     "address": "虹桥路168弄8号3002"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-3101留",
     "contractno": 15,
     "structurearea": 99,
@@ -2129,7 +2129,7 @@ const data = [
     "address": "虹桥路168弄8号3101"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-3201",
     "contractno": 27,
     "structurearea": 99,
@@ -2140,7 +2140,7 @@ const data = [
     "address": "虹桥路168弄8号3201"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-3301",
     "contractno": 58,
     "structurearea": 99,
@@ -2151,7 +2151,7 @@ const data = [
     "address": "虹桥路168弄8号3301"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-401",
     "contractno": 214,
     "structurearea": 93,
@@ -2162,7 +2162,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "9-501",
     "contractno": 60,
     "structurearea": 93,
@@ -2173,7 +2173,7 @@ const data = [
     "address": "虹桥路168弄9号501"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "1-1903",
     "contractno": 322,
     "structurearea": 92,
@@ -2184,7 +2184,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "12-1703",
     "contractno": 274,
     "structurearea": 87,
@@ -2195,7 +2195,7 @@ const data = [
     "address": "虹桥路168弄12号1703室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "5-102",
     "contractno": 18,
     "structurearea": 92,
@@ -2206,7 +2206,7 @@ const data = [
     "address": "虹桥路168弄5号102"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "10-1201",
     "contractno": 47,
     "structurearea": 144,
@@ -2217,7 +2217,7 @@ const data = [
     "address": "虹桥路168弄10号1201"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "10-2001",
     "contractno": 309,
     "structurearea": 144,
@@ -2228,7 +2228,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "10-3106",
     "contractno": 31,
     "structurearea": 131,
@@ -2239,7 +2239,7 @@ const data = [
     "address": "虹桥路168弄10号3106"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "10-3206",
     "contractno": 21,
     "structurearea": 131,
@@ -2250,7 +2250,7 @@ const data = [
     "address": "虹桥路168弄10号3206"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "10-806",
     "contractno": 24,
     "structurearea": 128,
@@ -2261,7 +2261,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "11-2101",
     "contractno": 63,
     "structurearea": 143,
@@ -2272,7 +2272,7 @@ const data = [
     "address": "虹桥路168弄11号2101"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "11-704",
     "contractno": 55,
     "structurearea": 152,
@@ -2283,7 +2283,7 @@ const data = [
     "address": "虹桥路168弄11号704"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "11-804",
     "contractno": 180,
     "structurearea": 178,
@@ -2294,7 +2294,7 @@ const data = [
     "address": "虹桥路168弄11号804室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "1-2101",
     "contractno": 238,
     "structurearea": 170,
@@ -2305,7 +2305,7 @@ const data = [
     "address": "虹桥路168弄1号2101室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "12-1804",
     "contractno": 62,
     "structurearea": 155,
@@ -2316,7 +2316,7 @@ const data = [
     "address": "虹桥路168弄12号1804"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "12-2401留",
     "contractno": 191,
     "structurearea": 143,
@@ -2327,7 +2327,7 @@ const data = [
     "address": "虹桥路168弄12号2401室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "1-2501",
     "contractno": 221,
     "structurearea": 170,
@@ -2338,7 +2338,7 @@ const data = [
     "address": "虹桥路168弄1号2501室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "3-1904",
     "contractno": 208,
     "structurearea": 154,
@@ -2349,7 +2349,7 @@ const data = [
     "address": "虹桥路168弄3号1904室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "3-701",
     "contractno": 19,
     "structurearea": 130,
@@ -2360,7 +2360,7 @@ const data = [
     "address": "虹桥路168弄3号701"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "4-1601",
     "contractno": 61,
     "structurearea": 130,
@@ -2371,7 +2371,7 @@ const data = [
     "address": "虹桥路168弄4号1601"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "4-2404",
     "contractno": 23,
     "structurearea": 151,
@@ -2382,7 +2382,7 @@ const data = [
     "address": "虹桥路168弄4号2404"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "4-3001",
     "contractno": 57,
     "structurearea": 132,
@@ -2393,7 +2393,7 @@ const data = [
     "address": "虹桥路168弄4号3001"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "4-504",
     "contractno": 16,
     "structurearea": 151,
@@ -2404,7 +2404,7 @@ const data = [
     "address": "虹桥路168弄4号504"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "5-301",
     "contractno": 209,
     "structurearea": 130,
@@ -2415,7 +2415,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "6-1101留",
     "contractno": 39,
     "structurearea": 130,
@@ -2426,7 +2426,7 @@ const data = [
     "address": "虹桥路168弄6号1101"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "6-1901",
     "contractno": 51,
     "structurearea": 130,
@@ -2437,7 +2437,7 @@ const data = [
     "address": "虹桥路168弄6号1901"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "6-2501",
     "contractno": 32,
     "structurearea": 130,
@@ -2448,7 +2448,7 @@ const data = [
     "address": "虹桥路168弄6号2501"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "6-2604",
     "contractno": 195,
     "structurearea": 151,
@@ -2459,7 +2459,7 @@ const data = [
     "address": "虹桥路168弄6号2604室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "6-3304",
     "contractno": 323,
     "structurearea": 155,
@@ -2470,7 +2470,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "6-3401",
     "contractno": 38,
     "structurearea": 132,
@@ -2481,7 +2481,7 @@ const data = [
     "address": "虹桥路168弄6号3401"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "7-2201 样板房",
     "contractno": 243,
     "structurearea": 169,
@@ -2492,7 +2492,7 @@ const data = [
     "address": "虹桥路168弄7号2201室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "7-701",
     "contractno": 279,
     "structurearea": 169,
@@ -2503,7 +2503,7 @@ const data = [
     "address": "虹桥路168弄7号701室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-3302",
     "contractno": 34,
     "structurearea": 142,
@@ -2514,7 +2514,7 @@ const data = [
     "address": "虹桥路168弄8号3302"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "9-1502",
     "contractno": 28,
     "structurearea": 137,
@@ -2525,7 +2525,7 @@ const data = [
     "address": "虹桥路168弄9号1502"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "9-1504",
     "contractno": 33,
     "structurearea": 157,
@@ -2536,7 +2536,7 @@ const data = [
     "address": "虹桥路168弄9号1504"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "尚东区2-1601",
     "contractno": 43,
     "structurearea": 135,
@@ -2547,7 +2547,7 @@ const data = [
     "address": "虹桥路128弄2号1601"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "尚东区2-1701",
     "contractno": 42,
     "structurearea": 136,
@@ -2558,7 +2558,7 @@ const data = [
     "address": "虹桥路128弄2号1701"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "尚东区6-302",
     "contractno": 263,
     "structurearea": 182,
@@ -2569,7 +2569,7 @@ const data = [
     "address": "虹桥路128弄6号302室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "7-803",
     "contractno": 316,
     "structurearea": 210,
@@ -2580,7 +2580,7 @@ const data = [
     "address": "虹桥路168弄7号803室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-2904",
     "contractno": 227,
     "structurearea": 181,
@@ -2591,7 +2591,7 @@ const data = [
     "address": "虹桥路168弄8号2904室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "9-2904",
     "contractno": 226,
     "structurearea": 181,
@@ -2602,7 +2602,7 @@ const data = [
     "address": "虹桥路168弄9号2904室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-2203",
     "contractno": 46,
     "structurearea": 67,
@@ -2613,7 +2613,7 @@ const data = [
     "address": "虹桥路168弄8号2203"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "8-2403",
     "contractno": 40,
     "structurearea": 65,
@@ -2624,7 +2624,7 @@ const data = [
     "address": "虹桥路168弄8号2403"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "9-3303",
     "contractno": 45,
     "structurearea": 67,
@@ -2635,7 +2635,7 @@ const data = [
     "address": "虹桥路168弄9号3303"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "2-2602",
     "contractno": 344,
     "structurearea": 0,
@@ -2646,7 +2646,7 @@ const data = [
     "address": "虹桥路168弄2号2602室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "2-2502",
     "contractno": 349,
     "structurearea": 0,
@@ -2657,7 +2657,7 @@ const data = [
     "address": "虹桥路168弄2号2502室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "1-703",
     "contractno": 392,
     "structurearea": 93,
@@ -2668,7 +2668,7 @@ const data = [
     "address": "虹桥路168弄1号703室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "1-2902",
     "contractno": 384,
     "structurearea": 104,
@@ -2679,7 +2679,7 @@ const data = [
     "address": "虹桥路168弄1号2902室"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "7-302",
     "contractno": 409,
     "structurearea": 109,
@@ -2690,7 +2690,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "10-305",
     "contractno": 417,
     "structurearea": 100,
@@ -2701,7 +2701,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "12-1903",
     "contractno": 419,
     "structurearea": 87,
@@ -2712,7 +2712,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "2-403",
     "contractno": 421,
     "structurearea": 95,
@@ -2723,7 +2723,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "2-703",
     "contractno": 439,
     "structurearea": 95,
@@ -2734,7 +2734,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "1-1502",
     "contractno": 447,
     "structurearea": 104,
@@ -2745,7 +2745,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "5-2202",
     "contractno": 448,
     "structurearea": 94,
@@ -2756,7 +2756,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "11-1501",
     "contractno": 453,
     "structurearea": 143,
@@ -2767,7 +2767,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "4-3403",
     "contractno": 459,
     "structurearea": 85,
@@ -2778,7 +2778,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "尚东区1-901(两床)",
     "contractno": 460,
     "structurearea": 136,
@@ -2789,7 +2789,7 @@ const data = [
     "address": "虹桥路128弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "7-406",
     "contractno": 474,
     "structurearea": 169,
@@ -2800,7 +2800,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "7-1706",
     "contractno": 478,
     "structurearea": 151,
@@ -2811,7 +2811,7 @@ const data = [
     "address": "丁香路1399弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "6-2302",
     "contractno": 485,
     "structurearea": 94,
@@ -2822,7 +2822,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "6-3303留",
     "contractno": 500,
     "structurearea": 85,
@@ -2833,7 +2833,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "7-2404",
     "contractno": 520,
     "structurearea": 109,
@@ -2844,7 +2844,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "3-102",
     "contractno": 525,
     "structurearea": 95,
@@ -2855,7 +2855,7 @@ const data = [
     "address": "虹桥路168弄3号102"
   },
   {
-    "villageName": "东方曼哈顿店",
+    "villageName": "东方曼哈顿",
     "houseno": "11-1003",
     "contractno": 528,
     "structurearea": 95,
@@ -2866,7 +2866,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "12-101",
     "contractno": 313,
     "structurearea": 113,
@@ -2877,7 +2877,7 @@ const data = [
     "address": "丁香路1299弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "9-2202（一期）",
     "contractno": 324,
     "structurearea": 172,
@@ -2888,7 +2888,7 @@ const data = [
     "address": "丁香路1599弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "28-202（一期）",
     "contractno": 177,
     "structurearea": 219,
@@ -2899,7 +2899,7 @@ const data = [
     "address": "浦东新区丁香路1599弄28号202"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "3-1101（一期）",
     "contractno": 331,
     "structurearea": 233,
@@ -2910,7 +2910,7 @@ const data = [
     "address": "丁香路1599弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "23-101",
     "contractno": 418,
     "structurearea": 151,
@@ -2921,7 +2921,7 @@ const data = [
     "address": "丁香路1299弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "7-2301 样板房",
     "contractno": 430,
     "structurearea": 150,
@@ -2932,7 +2932,7 @@ const data = [
     "address": "丁香路1399弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "13-1001",
     "contractno": 431,
     "structurearea": 152,
@@ -2943,7 +2943,7 @@ const data = [
     "address": "丁香路1399弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "7-602",
     "contractno": 437,
     "structurearea": 151,
@@ -2954,7 +2954,7 @@ const data = [
     "address": "丁香路1399弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "12-801",
     "contractno": 477,
     "structurearea": 169,
@@ -2965,7 +2965,7 @@ const data = [
     "address": "虹桥路168弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "5-2002",
     "contractno": 492,
     "structurearea": 162,
@@ -2976,7 +2976,7 @@ const data = [
     "address": "丁香路1399弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "7-1401",
     "contractno": 494,
     "structurearea": 150,
@@ -2987,7 +2987,7 @@ const data = [
     "address": "丁香路1399弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "1-103",
     "contractno": 498,
     "structurearea": 88,
@@ -2998,7 +2998,7 @@ const data = [
     "address": "丁香路1599弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "1-2402",
     "contractno": 499,
     "structurearea": 89,
@@ -3009,7 +3009,7 @@ const data = [
     "address": "丁香路1599弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "1-1103",
     "contractno": 505,
     "structurearea": 88,
@@ -3020,7 +3020,7 @@ const data = [
     "address": "丁香路1599弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "25-902",
     "contractno": 506,
     "structurearea": 166,
@@ -3031,7 +3031,7 @@ const data = [
     "address": "丁香路1599弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "21-2702",
     "contractno": 508,
     "structurearea": 152,
@@ -3042,7 +3042,7 @@ const data = [
     "address": "丁香路1399弄"
   },
   {
-    "villageName": "仁恒河滨城店",
+    "villageName": "仁恒河滨城",
     "houseno": "9-2801",
     "contractno": 513,
     "structurearea": 137,
@@ -3053,7 +3053,7 @@ const data = [
     "address": "丁香路1299弄"
   },
   {
-    "villageName": "阿麦轮店",
+    "villageName": "阿麦轮",
     "houseno": "14-608",
     "contractno": 171,
     "structurearea": 132,
@@ -3064,7 +3064,7 @@ const data = [
     "address": "徐汇区高安路14号608室"
   },
   {
-    "villageName": "巴黎花园店",
+    "villageName": "巴黎花园",
     "houseno": "9-901",
     "contractno": 292,
     "structurearea": 113,
@@ -3075,7 +3075,7 @@ const data = [
     "address": "荣华东道119弄9号901室"
   },
   {
-    "villageName": "巴洛克宫廷店",
+    "villageName": "巴洛克宫廷",
     "houseno": "15C",
     "contractno": 169,
     "structurearea": 179,
@@ -3086,7 +3086,7 @@ const data = [
     "address": "徐汇建国西路585弄15C"
   },
   {
-    "villageName": "巴洛克宫廷店",
+    "villageName": "巴洛克宫廷",
     "houseno": "15D",
     "contractno": 163,
     "structurearea": 142,
@@ -3097,7 +3097,7 @@ const data = [
     "address": "徐汇建国西路585弄15D"
   },
   {
-    "villageName": "保利香槟园店",
+    "villageName": "保利香槟园",
     "houseno": "6-701",
     "contractno": 273,
     "structurearea": 120,
@@ -3108,7 +3108,7 @@ const data = [
     "address": "杨浦区怀德路366弄6号701室"
   },
   {
-    "villageName": "步高苑店",
+    "villageName": "步高苑",
     "houseno": "2-1202",
     "contractno": 326,
     "structurearea": 138,
@@ -3119,7 +3119,7 @@ const data = [
     "address": "陕西南路307弄2号1202室"
   },
   {
-    "villageName": "城市一品苑店",
+    "villageName": "城市一品苑",
     "houseno": "3-1201",
     "contractno": 319,
     "structurearea": 180,
@@ -3130,7 +3130,7 @@ const data = [
     "address": "陕西南路"
   },
   {
-    "villageName": "城市一品苑店",
+    "villageName": "城市一品苑",
     "houseno": "3-1701",
     "contractno": 320,
     "structurearea": 181,
@@ -3141,7 +3141,7 @@ const data = [
     "address": "陕西南路"
   },
   {
-    "villageName": "城市一品苑店",
+    "villageName": "城市一品苑",
     "houseno": "3-1901",
     "contractno": 321,
     "structurearea": 180,
@@ -3152,7 +3152,7 @@ const data = [
     "address": "黄浦区陕西南路3号1901室"
   },
   {
-    "villageName": "春天花园店",
+    "villageName": "春天花园",
     "houseno": "73-401",
     "contractno": 272,
     "structurearea": 129,
@@ -3163,7 +3163,7 @@ const data = [
     "address": "娄山关路999弄73号401室"
   },
   {
-    "villageName": "春天花园店",
+    "villageName": "春天花园",
     "houseno": "65-601",
     "contractno": 408,
     "structurearea": 142,
@@ -3185,7 +3185,7 @@ const data = [
     "address": "黄陂南路506弄"
   },
   {
-    "villageName": "电影华苑店",
+    "villageName": "电影华苑",
     "houseno": "4-1211",
     "contractno": 170,
     "structurearea": 81,
@@ -3196,7 +3196,7 @@ const data = [
     "address": "徐汇零陵路751弄4号1211"
   },
   {
-    "villageName": "东方剑桥店",
+    "villageName": "东方剑桥",
     "houseno": "C-102",
     "contractno": 252,
     "structurearea": 136,
@@ -3218,7 +3218,7 @@ const data = [
     "address": "富贵东路229弄"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "10-201（三期）",
     "contractno": 127,
     "structurearea": 156,
@@ -3229,7 +3229,7 @@ const data = [
     "address": "东绣路266弄10号201"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "13-3102（一期）",
     "contractno": 131,
     "structurearea": 113,
@@ -3240,7 +3240,7 @@ const data = [
     "address": "锦绣路1650弄13号3102"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "8-1001（一期）",
     "contractno": 124,
     "structurearea": 127,
@@ -3251,7 +3251,7 @@ const data = [
     "address": "锦绣路1650弄8号1001"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "王座2-2102（五期）",
     "contractno": 128,
     "structurearea": 119,
@@ -3262,7 +3262,7 @@ const data = [
     "address": "锦康路389弄2号2102"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "11-1701（一期）",
     "contractno": 236,
     "structurearea": 191,
@@ -3273,7 +3273,7 @@ const data = [
     "address": "锦绣路1650弄11号1701室"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "12-2603（一期）",
     "contractno": 122,
     "structurearea": 190,
@@ -3284,7 +3284,7 @@ const data = [
     "address": "锦绣路1650弄12号2603"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "12-3101（一期）",
     "contractno": 126,
     "structurearea": 190,
@@ -3295,7 +3295,7 @@ const data = [
     "address": "锦绣路1650弄12号3101"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "13-1903（一期）",
     "contractno": 130,
     "structurearea": 190,
@@ -3306,7 +3306,7 @@ const data = [
     "address": "锦绣路1650弄13号1903"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "14-1001（一期）",
     "contractno": 129,
     "structurearea": 191,
@@ -3317,7 +3317,7 @@ const data = [
     "address": "锦绣路1650弄14号1001"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "14-1203（一期）",
     "contractno": 133,
     "structurearea": 190,
@@ -3328,7 +3328,7 @@ const data = [
     "address": "锦绣路1650弄14号1203"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "14-3103（一期）",
     "contractno": 121,
     "structurearea": 190,
@@ -3339,7 +3339,7 @@ const data = [
     "address": "锦绣路1650弄14号3103"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "3-801（五期）",
     "contractno": 336,
     "structurearea": 107,
@@ -3350,7 +3350,7 @@ const data = [
     "address": "锦康路389弄3号801室"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "9-1201（三期）",
     "contractno": 132,
     "structurearea": 161,
@@ -3361,7 +3361,7 @@ const data = [
     "address": "东绣路266弄9号1201"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "16-2002（四期)",
     "contractno": 125,
     "structurearea": 184,
@@ -3372,7 +3372,7 @@ const data = [
     "address": "东绣路266弄16号2002"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "18-202(一期）",
     "contractno": 310,
     "structurearea": 189,
@@ -3383,7 +3383,7 @@ const data = [
     "address": "锦绣路1650弄18号202室"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "18-701(一期）",
     "contractno": 123,
     "structurearea": 188,
@@ -3394,7 +3394,7 @@ const data = [
     "address": "锦绣路1650弄18号701"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "11-2002(一期）",
     "contractno": 347,
     "structurearea": 113,
@@ -3405,7 +3405,7 @@ const data = [
     "address": "锦绣路1650弄"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "8-301(一期）",
     "contractno": 432,
     "structurearea": 127,
@@ -3416,7 +3416,7 @@ const data = [
     "address": "锦绣路1650弄"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "12-202（二期）",
     "contractno": 434,
     "structurearea": 130,
@@ -3427,7 +3427,7 @@ const data = [
     "address": "梅花路50弄"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "15-102（三期）",
     "contractno": 435,
     "structurearea": 183,
@@ -3438,7 +3438,7 @@ const data = [
     "address": "东绣路266弄"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "12-102（二期）",
     "contractno": 443,
     "structurearea": 108,
@@ -3449,7 +3449,7 @@ const data = [
     "address": "梅花路50弄"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "1-1701（五期）",
     "contractno": 444,
     "structurearea": 107,
@@ -3460,7 +3460,7 @@ const data = [
     "address": "锦康路389弄"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "10-1602（三期）",
     "contractno": 454,
     "structurearea": 188,
@@ -3471,7 +3471,7 @@ const data = [
     "address": "东绣路266弄"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "3-202（三期）",
     "contractno": 456,
     "structurearea": 160,
@@ -3482,7 +3482,7 @@ const data = [
     "address": "东绣路266弄"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "10-101（一期）",
     "contractno": 469,
     "structurearea": 122,
@@ -3493,7 +3493,7 @@ const data = [
     "address": "锦绣路1650弄"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "12-801（一期）",
     "contractno": 481,
     "structurearea": 190,
@@ -3504,7 +3504,7 @@ const data = [
     "address": "锦绣路1650弄"
   },
   {
-    "villageName": "香梅花园店",
+    "villageName": "香梅花园",
     "houseno": "1-1602（五期）",
     "contractno": 501,
     "structurearea": 82,
@@ -3515,7 +3515,7 @@ const data = [
     "address": "锦康路389弄"
   },
   {
-    "villageName": "虹桥豪苑店",
+    "villageName": "虹桥豪苑",
     "houseno": "3-1A",
     "contractno": 172,
     "structurearea": 135,
@@ -3526,7 +3526,7 @@ const data = [
     "address": "紫云西路118弄3号1A"
   },
   {
-    "villageName": "虹桥豪苑店",
+    "villageName": "虹桥豪苑",
     "houseno": "3-12C",
     "contractno": 329,
     "structurearea": 164,
@@ -3537,7 +3537,7 @@ const data = [
     "address": "紫云路118弄"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-1006",
     "contractno": 10,
     "structurearea": 98,
@@ -3548,7 +3548,7 @@ const data = [
     "address": "淮海西路183弄3号1006"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-1202",
     "contractno": 6,
     "structurearea": 100,
@@ -3559,7 +3559,7 @@ const data = [
     "address": "淮海西路183弄3号1202"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-1603",
     "contractno": 8,
     "structurearea": 100,
@@ -3570,7 +3570,7 @@ const data = [
     "address": "淮海西路183弄3号1603"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-1605",
     "contractno": 7,
     "structurearea": 100,
@@ -3581,7 +3581,7 @@ const data = [
     "address": "淮海西路183弄3号1605"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-1907一卫",
     "contractno": 11,
     "structurearea": 87,
@@ -3592,7 +3592,7 @@ const data = [
     "address": "淮海西路183弄3号1907"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-2006",
     "contractno": 1,
     "structurearea": 98,
@@ -3603,7 +3603,7 @@ const data = [
     "address": "淮海西路183弄3号2006"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-2306",
     "contractno": 12,
     "structurearea": 98,
@@ -3614,7 +3614,7 @@ const data = [
     "address": "淮海西路183弄3号2306"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-3201",
     "contractno": 183,
     "structurearea": 87,
@@ -3625,7 +3625,7 @@ const data = [
     "address": "淮海西路183弄3号3201室"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-505",
     "contractno": 14,
     "structurearea": 100,
@@ -3636,7 +3636,7 @@ const data = [
     "address": "淮海西路183弄3号505"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-506",
     "contractno": 13,
     "structurearea": 98,
@@ -3647,7 +3647,7 @@ const data = [
     "address": "淮海西路183弄3号506"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-905",
     "contractno": 9,
     "structurearea": 100,
@@ -3658,7 +3658,7 @@ const data = [
     "address": "淮海西路183弄3号905"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-1501",
     "contractno": 5,
     "structurearea": 87,
@@ -3669,7 +3669,7 @@ const data = [
     "address": "淮海西路183弄3号1501"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-1204",
     "contractno": 2,
     "structurearea": 145,
@@ -3680,7 +3680,7 @@ const data = [
     "address": "淮海西路183弄3号1204"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-1304",
     "contractno": 281,
     "structurearea": 146,
@@ -3691,7 +3691,7 @@ const data = [
     "address": "淮海西路183弄"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-1604",
     "contractno": 207,
     "structurearea": 146,
@@ -3702,7 +3702,7 @@ const data = [
     "address": "淮海西路183弄3号1604室"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-2504",
     "contractno": 3,
     "structurearea": 146,
@@ -3713,7 +3713,7 @@ const data = [
     "address": "淮海西路183弄3号2504"
   },
   {
-    "villageName": "汇宁花园店",
+    "villageName": "汇宁花园",
     "houseno": "3-2704",
     "contractno": 4,
     "structurearea": 146,
@@ -3735,7 +3735,7 @@ const data = [
     "address": "墨玉南路1011弄7号2801室"
   },
   {
-    "villageName": "经典茂名公寓店",
+    "villageName": "经典茂名公寓",
     "houseno": "1-1702",
     "contractno": 306,
     "structurearea": 128,
@@ -3746,7 +3746,7 @@ const data = [
     "address": "茂名北路318弄"
   },
   {
-    "villageName": "经典茂名公寓店",
+    "villageName": "经典茂名公寓",
     "houseno": "2-801",
     "contractno": 405,
     "structurearea": 134,
@@ -3757,7 +3757,7 @@ const data = [
     "address": "茂名北路318弄"
   },
   {
-    "villageName": "经典茂名公寓店",
+    "villageName": "经典茂名公寓",
     "houseno": "1-1602",
     "contractno": 442,
     "structurearea": 128,
@@ -3768,7 +3768,7 @@ const data = [
     "address": "茂名北路318弄"
   },
   {
-    "villageName": "静安枫景苑店",
+    "villageName": "静安枫景苑",
     "houseno": "2-33B长租",
     "contractno": 150,
     "structurearea": 106,
@@ -3779,7 +3779,7 @@ const data = [
     "address": "新闸路500弄2号33B"
   },
   {
-    "villageName": "静安枫景苑店",
+    "villageName": "静安枫景苑",
     "houseno": "4-2903",
     "contractno": 398,
     "structurearea": 106,
@@ -3790,7 +3790,7 @@ const data = [
     "address": "常德路500弄4号2903室"
   },
   {
-    "villageName": "静安枫景苑店",
+    "villageName": "静安枫景苑",
     "houseno": "5-2A",
     "contractno": 470,
     "structurearea": 154,
@@ -3801,7 +3801,7 @@ const data = [
     "address": "常德路500弄"
   },
   {
-    "villageName": "静安豪景店",
+    "villageName": "静安豪景",
     "houseno": "2-1802",
     "contractno": 151,
     "structurearea": 99,
@@ -3812,7 +3812,7 @@ const data = [
     "address": "西康路501弄2号1802"
   },
   {
-    "villageName": "静安豪景店",
+    "villageName": "静安豪景",
     "houseno": "3-2603",
     "contractno": 257,
     "structurearea": 141,
@@ -3823,7 +3823,7 @@ const data = [
     "address": "西康路501弄3号2603室"
   },
   {
-    "villageName": "静安豪景店",
+    "villageName": "静安豪景",
     "houseno": "4-604",
     "contractno": 268,
     "structurearea": 143,
@@ -3834,7 +3834,7 @@ const data = [
     "address": "西康路501弄4号604室"
   },
   {
-    "villageName": "静安豪景店",
+    "villageName": "静安豪景",
     "houseno": "1-1E",
     "contractno": 253,
     "structurearea": 72,
@@ -3845,7 +3845,7 @@ const data = [
     "address": "西康路501弄1号1E室"
   },
   {
-    "villageName": "静安豪景店",
+    "villageName": "静安豪景",
     "houseno": "4-2701",
     "contractno": 381,
     "structurearea": 144,
@@ -3856,7 +3856,7 @@ const data = [
     "address": "西康路501弄4号2701室"
   },
   {
-    "villageName": "静安豪景店",
+    "villageName": "静安豪景",
     "houseno": "1-8B",
     "contractno": 382,
     "structurearea": 72,
@@ -3867,7 +3867,7 @@ const data = [
     "address": "西康路501弄1号8B"
   },
   {
-    "villageName": "静安四季店",
+    "villageName": "静安四季",
     "houseno": "3-305",
     "contractno": 152,
     "structurearea": 147,
@@ -3878,7 +3878,7 @@ const data = [
     "address": "石门一路333弄3号305"
   },
   {
-    "villageName": "静安四季店",
+    "villageName": "静安四季",
     "houseno": "9-2702",
     "contractno": 240,
     "structurearea": 155,
@@ -3889,7 +3889,7 @@ const data = [
     "address": "石门一路333弄9号2702室"
   },
   {
-    "villageName": "静安四季店",
+    "villageName": "静安四季",
     "houseno": "9-902",
     "contractno": 251,
     "structurearea": 156,
@@ -3900,7 +3900,7 @@ const data = [
     "address": "石门一路333弄9号902室"
   },
   {
-    "villageName": "静安四季店",
+    "villageName": "静安四季",
     "houseno": "9-1505",
     "contractno": 295,
     "structurearea": 180,
@@ -3911,7 +3911,7 @@ const data = [
     "address": "石门一路333弄9号1505室"
   },
   {
-    "villageName": "静安四季店",
+    "villageName": "静安四季",
     "houseno": "9-2105",
     "contractno": 275,
     "structurearea": 179,
@@ -3922,7 +3922,7 @@ const data = [
     "address": "静安区石门一路333弄9号2105室"
   },
   {
-    "villageName": "静安四季店",
+    "villageName": "静安四季",
     "houseno": "3-805",
     "contractno": 399,
     "structurearea": 147,
@@ -3933,7 +3933,7 @@ const data = [
     "address": "石门一路333弄3号805室"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "3号2002",
     "contractno": 335,
     "structurearea": 0,
@@ -3944,7 +3944,7 @@ const data = [
     "address": "长宁区汇川路88弄3号2002室"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "1-502",
     "contractno": 379,
     "structurearea": 118,
@@ -3955,7 +3955,7 @@ const data = [
     "address": "汇川路88弄1号502室"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "12-303",
     "contractno": 396,
     "structurearea": 147,
@@ -3966,7 +3966,7 @@ const data = [
     "address": "汇川路88弄12号303室"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "7-2805",
     "contractno": 406,
     "structurearea": 98,
@@ -3977,7 +3977,7 @@ const data = [
     "address": "汇川路88弄7号2805室"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "1-503",
     "contractno": 458,
     "structurearea": 156,
@@ -3988,7 +3988,7 @@ const data = [
     "address": "汇川路88弄"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "5-3301",
     "contractno": 461,
     "structurearea": 109,
@@ -3999,7 +3999,7 @@ const data = [
     "address": "汇川路88弄"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "9-1003",
     "contractno": 467,
     "structurearea": 146,
@@ -4010,7 +4010,7 @@ const data = [
     "address": "汇川路88弄"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "12-503",
     "contractno": 473,
     "structurearea": 150,
@@ -4021,7 +4021,7 @@ const data = [
     "address": "长宁区汇川路88弄12号503室"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "2-603",
     "contractno": 472,
     "structurearea": 151,
@@ -4032,7 +4032,7 @@ const data = [
     "address": "汇川路88弄"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "3-3503",
     "contractno": 484,
     "structurearea": 154,
@@ -4043,7 +4043,7 @@ const data = [
     "address": "汇川路88弄"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "3-1903",
     "contractno": 486,
     "structurearea": 154,
@@ -4054,7 +4054,7 @@ const data = [
     "address": "汇川路88弄"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "3-502",
     "contractno": 512,
     "structurearea": 125,
@@ -4065,7 +4065,7 @@ const data = [
     "address": "汇川路88弄"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "4-1003",
     "contractno": 514,
     "structurearea": 118,
@@ -4076,7 +4076,7 @@ const data = [
     "address": "汇川路88弄"
   },
   {
-    "villageName": "凯欣豪园店",
+    "villageName": "凯欣豪园",
     "houseno": "10-202",
     "contractno": 521,
     "structurearea": 111,
@@ -4087,7 +4087,7 @@ const data = [
     "address": "汇川路88弄"
   },
   {
-    "villageName": "康虹佳苑店",
+    "villageName": "康虹佳苑",
     "houseno": "A",
     "contractno": "317-A",
     "structurearea": 0,
@@ -4098,7 +4098,7 @@ const data = [
     "address": 0
   },
   {
-    "villageName": "康虹佳苑店",
+    "villageName": "康虹佳苑",
     "houseno": "B",
     "contractno": "317-B",
     "structurearea": 0,
@@ -4109,7 +4109,7 @@ const data = [
     "address": 0
   },
   {
-    "villageName": "康虹佳苑店",
+    "villageName": "康虹佳苑",
     "houseno": "C",
     "contractno": "317C",
     "structurearea": 0,
@@ -4120,7 +4120,7 @@ const data = [
     "address": 0
   },
   {
-    "villageName": "康虹佳苑店",
+    "villageName": "康虹佳苑",
     "houseno": "D",
     "contractno": "317-D",
     "structurearea": 0,
@@ -4131,7 +4131,7 @@ const data = [
     "address": 0
   },
   {
-    "villageName": "康虹佳苑店",
+    "villageName": "康虹佳苑",
     "houseno": "E",
     "contractno": "317-E",
     "structurearea": 0,
@@ -4142,7 +4142,7 @@ const data = [
     "address": 0
   },
   {
-    "villageName": "康虹佳苑店",
+    "villageName": "康虹佳苑",
     "houseno": "F",
     "contractno": "317-F",
     "structurearea": 0,
@@ -4153,7 +4153,7 @@ const data = [
     "address": 0
   },
   {
-    "villageName": "老西门新苑店",
+    "villageName": "老西门新苑",
     "houseno": "3-3402",
     "contractno": 167,
     "structurearea": 119,
@@ -4164,7 +4164,7 @@ const data = [
     "address": "西藏南路688弄3号3402"
   },
   {
-    "villageName": "林荫湖畔店",
+    "villageName": "林荫湖畔",
     "houseno": "106-302",
     "contractno": 175,
     "structurearea": 143,
@@ -4175,7 +4175,7 @@ const data = [
     "address": "幸乐路500弄106号302"
   },
   {
-    "villageName": "林荫湖畔店",
+    "villageName": "林荫湖畔",
     "houseno": "11-402",
     "contractno": 244,
     "structurearea": 172,
@@ -4186,7 +4186,7 @@ const data = [
     "address": "金丰路55弄11号402室"
   },
   {
-    "villageName": "林荫湖畔店",
+    "villageName": "林荫湖畔",
     "houseno": "98号",
     "contractno": 202,
     "structurearea": 132,
@@ -4197,7 +4197,7 @@ const data = [
     "address": "幸乐路500弄98号"
   },
   {
-    "villageName": "路易凯旋宫店",
+    "villageName": "路易凯旋宫",
     "houseno": "25-2004",
     "contractno": 298,
     "structurearea": 118,
@@ -4208,7 +4208,7 @@ const data = [
     "address": "长宁区武夷路555弄25号2004室"
   },
   {
-    "villageName": "路易凯旋宫店",
+    "villageName": "路易凯旋宫",
     "houseno": "34-2303",
     "contractno": 403,
     "structurearea": 118,
@@ -4219,7 +4219,7 @@ const data = [
     "address": "武夷路555弄34号2303室"
   },
   {
-    "villageName": "路易凯旋宫店",
+    "villageName": "路易凯旋宫",
     "houseno": "34-203",
     "contractno": 428,
     "structurearea": 119,
@@ -4230,7 +4230,7 @@ const data = [
     "address": "武夷路555弄"
   },
   {
-    "villageName": "青之杰花园店",
+    "villageName": "青之杰花园",
     "houseno": "1-1203",
     "contractno": 179,
     "structurearea": 138,
@@ -4241,7 +4241,7 @@ const data = [
     "address": "虹桥路178弄1号1203"
   },
   {
-    "villageName": "仁恒河滨花园店",
+    "villageName": "仁恒河滨花园",
     "houseno": "15-801",
     "contractno": 304,
     "structurearea": 85,
@@ -4263,7 +4263,7 @@ const data = [
     "address": "瑞金南路628弄1号102"
   },
   {
-    "villageName": "思南新苑店",
+    "villageName": "思南新苑",
     "houseno": "1-1202",
     "contractno": 256,
     "structurearea": 106,
@@ -4274,7 +4274,7 @@ const data = [
     "address": "思南路88弄1号1202室"
   },
   {
-    "villageName": "思南新苑店",
+    "villageName": "思南新苑",
     "houseno": "3-1801",
     "contractno": 297,
     "structurearea": 105,
@@ -4285,7 +4285,7 @@ const data = [
     "address": "思南路88弄3号1801室"
   },
   {
-    "villageName": "思南新苑店",
+    "villageName": "思南新苑",
     "houseno": "5-1202",
     "contractno": 265,
     "structurearea": 163,
@@ -4296,7 +4296,7 @@ const data = [
     "address": "思南路88弄5号1202室"
   },
   {
-    "villageName": "太原邸店",
+    "villageName": "太原邸",
     "houseno": "2-102",
     "contractno": 148,
     "structurearea": 120,
@@ -4307,7 +4307,7 @@ const data = [
     "address": "太原路289弄2号102"
   },
   {
-    "villageName": "太原邸店",
+    "villageName": "太原邸",
     "houseno": "9-102",
     "contractno": 192,
     "structurearea": 105,
@@ -4318,7 +4318,7 @@ const data = [
     "address": "太原路289弄9号102室"
   },
   {
-    "villageName": "太原邸店",
+    "villageName": "太原邸",
     "houseno": "9-2002",
     "contractno": 149,
     "structurearea": 99,
@@ -4329,7 +4329,7 @@ const data = [
     "address": "太原路289弄9号2002"
   },
   {
-    "villageName": "太原邸店",
+    "villageName": "太原邸",
     "houseno": "8-201",
     "contractno": 307,
     "structurearea": 202,
@@ -4340,7 +4340,7 @@ const data = [
     "address": "太原路289弄8号201室"
   },
   {
-    "villageName": "太原邸店",
+    "villageName": "太原邸",
     "houseno": "9-103",
     "contractno": 269,
     "structurearea": 201,
@@ -4351,7 +4351,7 @@ const data = [
     "address": "太原路289弄9号103室"
   },
   {
-    "villageName": "天山河畔店",
+    "villageName": "天山河畔",
     "houseno": "19-2801",
     "contractno": 305,
     "structurearea": 187,
@@ -4362,7 +4362,7 @@ const data = [
     "address": "水城路883弄19号2801室"
   },
   {
-    "villageName": "天山河畔店",
+    "villageName": "天山河畔",
     "houseno": "12-1703",
     "contractno": 294,
     "structurearea": 142,
@@ -4373,7 +4373,7 @@ const data = [
     "address": "水城路883弄12号1703室"
   },
   {
-    "villageName": "天山河畔店",
+    "villageName": "天山河畔",
     "houseno": "18-603",
     "contractno": 404,
     "structurearea": 171,
@@ -4384,7 +4384,7 @@ const data = [
     "address": "水城路883弄"
   },
   {
-    "villageName": "天山河畔店",
+    "villageName": "天山河畔",
     "houseno": "19-501",
     "contractno": 427,
     "structurearea": 171,
@@ -4395,7 +4395,7 @@ const data = [
     "address": "水城路883弄"
   },
   {
-    "villageName": "天山河畔店",
+    "villageName": "天山河畔",
     "houseno": "11-1701",
     "contractno": 495,
     "structurearea": 162,
@@ -4406,7 +4406,7 @@ const data = [
     "address": "水城路883弄"
   },
   {
-    "villageName": "天山河畔店",
+    "villageName": "天山河畔",
     "houseno": "22-603",
     "contractno": 496,
     "structurearea": 171,
@@ -4417,7 +4417,7 @@ const data = [
     "address": "水城路883弄"
   },
   {
-    "villageName": "天山河畔店",
+    "villageName": "天山河畔",
     "houseno": "8-2103",
     "contractno": 509,
     "structurearea": 138,
@@ -4428,7 +4428,7 @@ const data = [
     "address": "水城路883弄"
   },
   {
-    "villageName": "天山河畔店",
+    "villageName": "天山河畔",
     "houseno": "25-402",
     "contractno": 510,
     "structurearea": 148,
@@ -4439,7 +4439,7 @@ const data = [
     "address": "水城路883弄"
   },
   {
-    "villageName": "天山怡景苑店",
+    "villageName": "天山怡景苑",
     "houseno": "14-1301",
     "contractno": 277,
     "structurearea": 145,
@@ -4450,7 +4450,7 @@ const data = [
     "address": "威宁路511弄14号1301室"
   },
   {
-    "villageName": "万科红郡店",
+    "villageName": "万科红郡",
     "houseno": "96号",
     "contractno": 212,
     "structurearea": 287,
@@ -4461,7 +4461,7 @@ const data = [
     "address": "诸新路377弄96号"
   },
   {
-    "villageName": "万科红郡店",
+    "villageName": "万科红郡",
     "houseno": 113,
     "contractno": 182,
     "structurearea": 233,
@@ -4472,7 +4472,7 @@ const data = [
     "address": "闵行区诸新路388弄万科红郡113号"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "12-1301",
     "contractno": 187,
     "structurearea": 92,
@@ -4483,7 +4483,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "14-701",
     "contractno": 188,
     "structurearea": 96,
@@ -4494,7 +4494,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "22-1304",
     "contractno": 218,
     "structurearea": 90,
@@ -4505,7 +4505,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "22-203",
     "contractno": 189,
     "structurearea": 91,
@@ -4516,7 +4516,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "2-301",
     "contractno": 210,
     "structurearea": 95,
@@ -4527,7 +4527,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "3-302",
     "contractno": 286,
     "structurearea": 93,
@@ -4538,7 +4538,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "6-1001",
     "contractno": 260,
     "structurearea": 97,
@@ -4549,7 +4549,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "6-702",
     "contractno": 285,
     "structurearea": 95,
@@ -4560,7 +4560,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "7-502",
     "contractno": 186,
     "structurearea": 93,
@@ -4571,7 +4571,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "8-1301",
     "contractno": 193,
     "structurearea": 93,
@@ -4582,7 +4582,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "24-301",
     "contractno": 276,
     "structurearea": 0,
@@ -4593,7 +4593,7 @@ const data = [
     "address": "谢卫路258弄24号301室"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "5-801",
     "contractno": 211,
     "structurearea": 136,
@@ -4604,7 +4604,7 @@ const data = [
     "address": "谢卫路258弄5号801室"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "9-1201",
     "contractno": 194,
     "structurearea": 136,
@@ -4615,7 +4615,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥国展店",
+    "villageName": "新虹桥国展",
     "houseno": "4-302",
     "contractno": 464,
     "structurearea": 136,
@@ -4626,7 +4626,7 @@ const data = [
     "address": "谢卫路258弄"
   },
   {
-    "villageName": "新虹桥枢纽店",
+    "villageName": "新虹桥枢纽",
     "houseno": "1-102",
     "contractno": 237,
     "structurearea": 75,
@@ -4637,7 +4637,7 @@ const data = [
     "address": "申郑路18弄"
   },
   {
-    "villageName": "新虹桥枢纽店",
+    "villageName": "新虹桥枢纽",
     "houseno": "1-301",
     "contractno": 204,
     "structurearea": 76,
@@ -4648,7 +4648,7 @@ const data = [
     "address": "申郑路18弄"
   },
   {
-    "villageName": "新虹桥枢纽店",
+    "villageName": "新虹桥枢纽",
     "houseno": "14-201",
     "contractno": 267,
     "structurearea": 78,
@@ -4659,7 +4659,7 @@ const data = [
     "address": "申郑路18弄"
   },
   {
-    "villageName": "新虹桥枢纽店",
+    "villageName": "新虹桥枢纽",
     "houseno": "14-401",
     "contractno": 249,
     "structurearea": 78,
@@ -4670,7 +4670,7 @@ const data = [
     "address": "申郑路18弄"
   },
   {
-    "villageName": "新虹桥枢纽店",
+    "villageName": "新虹桥枢纽",
     "houseno": "20-102",
     "contractno": 213,
     "structurearea": 78,
@@ -4681,7 +4681,7 @@ const data = [
     "address": "申郑路18弄"
   },
   {
-    "villageName": "新虹桥枢纽店",
+    "villageName": "新虹桥枢纽",
     "houseno": "2-301",
     "contractno": 216,
     "structurearea": 78,
@@ -4692,7 +4692,7 @@ const data = [
     "address": "申郑路18弄"
   },
   {
-    "villageName": "新虹桥枢纽店",
+    "villageName": "新虹桥枢纽",
     "houseno": "3-102",
     "contractno": 200,
     "structurearea": 75,
@@ -4703,7 +4703,7 @@ const data = [
     "address": "申郑路18弄"
   },
   {
-    "villageName": "新虹桥枢纽店",
+    "villageName": "新虹桥枢纽",
     "houseno": "10-101",
     "contractno": 201,
     "structurearea": 144,
@@ -4714,7 +4714,7 @@ const data = [
     "address": "兴虹路299弄"
   },
   {
-    "villageName": "兴国苑店",
+    "villageName": "兴国苑",
     "houseno": "1-901+902",
     "contractno": 233,
     "structurearea": 252,
@@ -4725,7 +4725,7 @@ const data = [
     "address": "湖南路308弄1号901、902室"
   },
   {
-    "villageName": "徐汇苑店",
+    "villageName": "徐汇苑",
     "houseno": "3-2502",
     "contractno": 173,
     "structurearea": 123,
@@ -4736,7 +4736,7 @@ const data = [
     "address": "天玥桥路968弄3号2502"
   },
   {
-    "villageName": "艺术公寓店",
+    "villageName": "艺术公寓",
     "houseno": "8-301",
     "contractno": 166,
     "structurearea": 147,
@@ -4747,7 +4747,7 @@ const data = [
     "address": "徐汇区衡山路17弄8号301"
   },
   {
-    "villageName": "亦园1号店",
+    "villageName": "亦园1号",
     "houseno": "1-16B",
     "contractno": 178,
     "structurearea": 254,
@@ -4758,7 +4758,7 @@ const data = [
     "address": "安福路168弄1号16B"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "1-31E",
     "contractno": 153,
     "structurearea": 109,
@@ -4769,7 +4769,7 @@ const data = [
     "address": "徐汇区辛耕路100弄1号31E"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "3-11B",
     "contractno": 289,
     "structurearea": 111,
@@ -4780,7 +4780,7 @@ const data = [
     "address": "辛耕路100弄3号11B室"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "1-3D",
     "contractno": 155,
     "structurearea": 147,
@@ -4791,7 +4791,7 @@ const data = [
     "address": "徐汇区辛耕路100弄1号3D"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "2-8D",
     "contractno": 154,
     "structurearea": 149,
@@ -4802,7 +4802,7 @@ const data = [
     "address": "徐汇区辛耕路100弄2号8D"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "3-23A",
     "contractno": 157,
     "structurearea": 150,
@@ -4813,7 +4813,7 @@ const data = [
     "address": "徐汇区辛耕路100弄3号23A"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "3-8F",
     "contractno": 158,
     "structurearea": 175,
@@ -4824,7 +4824,7 @@ const data = [
     "address": "徐汇区辛耕路100弄3号8F"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "2-502",
     "contractno": 235,
     "structurearea": 142,
@@ -4835,7 +4835,7 @@ const data = [
     "address": "辛耕路81弄2号502室"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "3-603",
     "contractno": 159,
     "structurearea": 131,
@@ -4846,7 +4846,7 @@ const data = [
     "address": "徐汇区辛耕路81弄3号603"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "4-803",
     "contractno": 160,
     "structurearea": 140,
@@ -4857,7 +4857,7 @@ const data = [
     "address": "徐汇区辛耕路81弄4号803"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "7-1001",
     "contractno": 248,
     "structurearea": 136,
@@ -4868,7 +4868,7 @@ const data = [
     "address": "辛耕路81弄7号1001室"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "7-1803",
     "contractno": 219,
     "structurearea": 141,
@@ -4879,7 +4879,7 @@ const data = [
     "address": "辛耕路81弄7号1803室"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "8-205",
     "contractno": 291,
     "structurearea": 143,
@@ -4890,7 +4890,7 @@ const data = [
     "address": "辛耕路81弄8号205室"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "永新城6-1106",
     "contractno": 343,
     "structurearea": 0,
@@ -4901,7 +4901,7 @@ const data = [
     "address": "辛耕路81弄6号1106室"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "8-801",
     "contractno": 242,
     "structurearea": 142,
@@ -4912,7 +4912,7 @@ const data = [
     "address": "辛耕路81弄8号801室"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "莎玛12-1801",
     "contractno": 161,
     "structurearea": 126,
@@ -4923,7 +4923,7 @@ const data = [
     "address": "徐汇区辛耕路81弄12号1801"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "莎玛12-2606",
     "contractno": 203,
     "structurearea": 140,
@@ -4934,7 +4934,7 @@ const data = [
     "address": "辛耕路81弄12号2606室"
   },
   {
-    "villageName": "永新花苑店",
+    "villageName": "永新花苑",
     "houseno": "莎玛12-2801",
     "contractno": 247,
     "structurearea": 126,
@@ -4945,7 +4945,7 @@ const data = [
     "address": "辛耕路81弄12号2801室"
   },
   {
-    "villageName": "永业公寓店",
+    "villageName": "永业公寓",
     "houseno": "27-1803",
     "contractno": 246,
     "structurearea": 111,
@@ -4956,7 +4956,7 @@ const data = [
     "address": "徐家汇路135弄27号1803室"
   },
   {
-    "villageName": "永业公寓店",
+    "villageName": "永业公寓",
     "houseno": "27-1804",
     "contractno": 245,
     "structurearea": 138,
@@ -4967,7 +4967,7 @@ const data = [
     "address": "徐家汇路135弄27号1804室"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "11-1601",
     "contractno": 312,
     "structurearea": 154,
@@ -4978,7 +4978,7 @@ const data = [
     "address": "黄金城道688弄11号1601室"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "7-3303",
     "contractno": 296,
     "structurearea": 71,
@@ -4989,7 +4989,7 @@ const data = [
     "address": "黄金城道688弄7号3303室"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "8-1903",
     "contractno": 333,
     "structurearea": 71,
@@ -5000,7 +5000,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "8-2003",
     "contractno": 314,
     "structurearea": 71,
@@ -5011,7 +5011,7 @@ const data = [
     "address": "黄金城道688弄8号2003室"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "8-301",
     "contractno": 283,
     "structurearea": 82,
@@ -5022,7 +5022,7 @@ const data = [
     "address": "黄金城道688弄8号301室"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "8-302",
     "contractno": 284,
     "structurearea": 67,
@@ -5033,7 +5033,7 @@ const data = [
     "address": "黄金城道688弄8号302室"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "7-2502",
     "contractno": 361,
     "structurearea": 0,
@@ -5044,7 +5044,7 @@ const data = [
     "address": "黄金城道688弄7号2502室"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "8-1003",
     "contractno": 355,
     "structurearea": 71,
@@ -5055,7 +5055,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "8-1803",
     "contractno": 346,
     "structurearea": 71,
@@ -5066,7 +5066,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "8-2605",
     "contractno": 345,
     "structurearea": 0,
@@ -5077,7 +5077,7 @@ const data = [
     "address": "黄金城道688弄8号2605室"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "9-2703",
     "contractno": 395,
     "structurearea": 114,
@@ -5088,7 +5088,7 @@ const data = [
     "address": "黄金城道688弄9号2703室"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "8-502",
     "contractno": 411,
     "structurearea": 71,
@@ -5099,7 +5099,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "8-1501",
     "contractno": 416,
     "structurearea": 82,
@@ -5110,7 +5110,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "8-1806",
     "contractno": 455,
     "structurearea": 91,
@@ -5121,7 +5121,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "10-903",
     "contractno": 463,
     "structurearea": 114,
@@ -5132,7 +5132,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "7-2003",
     "contractno": 471,
     "structurearea": 71,
@@ -5143,7 +5143,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "7-1601",
     "contractno": 476,
     "structurearea": 91,
@@ -5154,7 +5154,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "11-503",
     "contractno": 497,
     "structurearea": 149,
@@ -5165,7 +5165,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "7-1503",
     "contractno": 511,
     "structurearea": 71,
@@ -5176,7 +5176,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "9-1001",
     "contractno": 518,
     "structurearea": 112,
@@ -5187,7 +5187,7 @@ const data = [
     "address": "黄金城道路688弄"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "9-502",
     "contractno": 530,
     "structurearea": 114,
@@ -5198,7 +5198,7 @@ const data = [
     "address": "黄金城道688弄9号502室"
   },
   {
-    "villageName": "御翠豪庭店",
+    "villageName": "御翠豪庭",
     "houseno": "10-603",
     "contractno": 527,
     "structurearea": 114,
@@ -5209,7 +5209,7 @@ const data = [
     "address": "长宁区黄金城道688弄10号603室"
   },
   {
-    "villageName": "远中风华园店",
+    "villageName": "远中风华园",
     "houseno": "2-1803",
     "contractno": 282,
     "structurearea": 116,
@@ -5220,7 +5220,7 @@ const data = [
     "address": "新闸路1068弄2号1803室"
   },
   {
-    "villageName": "远中风华园店",
+    "villageName": "远中风华园",
     "houseno": "1-1003",
     "contractno": 271,
     "structurearea": 167,
@@ -5231,7 +5231,7 @@ const data = [
     "address": "新闸路1068弄1号1003室"
   },
   {
-    "villageName": "兆丰嘉园店",
+    "villageName": "兆丰嘉园",
     "houseno": "8-2501",
     "contractno": 308,
     "structurearea": 163,
@@ -5242,7 +5242,7 @@ const data = [
     "address": "长宁路888弄8号2501室"
   },
   {
-    "villageName": "兆丰嘉园店",
+    "villageName": "兆丰嘉园",
     "houseno": "8-102",
     "contractno": 457,
     "structurearea": 127,
@@ -5253,7 +5253,7 @@ const data = [
     "address": "长宁路888弄"
   },
   {
-    "villageName": "中华园店",
+    "villageName": "中华园",
     "houseno": "203长租",
     "contractno": 229,
     "structurearea": 221,
@@ -5264,7 +5264,7 @@ const data = [
     "address": "虹桥路2388号203幢"
   },
   {
-    "villageName": "中凯店",
+    "villageName": "中凯",
     "houseno": "6-1201",
     "contractno": 225,
     "structurearea": 166,
@@ -5275,7 +5275,7 @@ const data = [
     "address": "威海路333弄6号1201室"
   },
   {
-    "villageName": "中凯店",
+    "villageName": "中凯",
     "houseno": "6-801",
     "contractno": 224,
     "structurearea": 166,
@@ -5286,7 +5286,7 @@ const data = [
     "address": "威海路333弄6号801室"
   },
   {
-    "villageName": "中凯店",
+    "villageName": "中凯",
     "houseno": "16-1202",
     "contractno": 176,
     "structurearea": 232,
@@ -5297,7 +5297,7 @@ const data = [
     "address": "威海路333弄16号1202"
   },
   {
-    "villageName": "中凯店",
+    "villageName": "中凯",
     "houseno": "16-1702",
     "contractno": 228,
     "structurearea": 233,
@@ -5308,7 +5308,7 @@ const data = [
     "address": "威海路333弄16号1702室"
   },
   {
-    "villageName": "中凯店",
+    "villageName": "中凯",
     "houseno": "18-2001",
     "contractno": 174,
     "structurearea": 232,
@@ -5319,7 +5319,7 @@ const data = [
     "address": "威海路333弄18号2001"
   },
   {
-    "villageName": "中凯店",
+    "villageName": "中凯",
     "houseno": "2-2102",
     "contractno": 522,
     "structurearea": 62,
@@ -5330,7 +5330,7 @@ const data = [
     "address": "威海路333弄2号2102室"
   },
   {
-    "villageName": "华丽家族店",
+    "villageName": "华丽家族",
     "houseno": "22号803",
     "contractno": 356,
     "structurearea": 0,
@@ -5341,7 +5341,7 @@ const data = [
     "address": "锦绣路666弄22号803室"
   },
   {
-    "villageName": "华丽家族店",
+    "villageName": "华丽家族",
     "houseno": "22-1901",
     "contractno": 338,
     "structurearea": 139,
@@ -5352,7 +5352,7 @@ const data = [
     "address": "锦绣路666弄"
   },
   {
-    "villageName": "华丽家族店",
+    "villageName": "华丽家族",
     "houseno": "8-901",
     "contractno": 387,
     "structurearea": 136,
@@ -5363,7 +5363,7 @@ const data = [
     "address": "锦绣路666弄8号901室"
   },
   {
-    "villageName": "水清木华店",
+    "villageName": "水清木华",
     "houseno": "16-1502",
     "contractno": 352,
     "structurearea": 0,
@@ -5374,7 +5374,7 @@ const data = [
     "address": "芳甸路333弄16号1502室"
   },
   {
-    "villageName": "水清木华店",
+    "villageName": "水清木华",
     "houseno": "6-602",
     "contractno": 515,
     "structurearea": 137,
@@ -5385,7 +5385,7 @@ const data = [
     "address": "芳甸路333弄"
   },
   {
-    "villageName": "济南路8号店",
+    "villageName": "济南路8号",
     "houseno": "8-1308",
     "contractno": 340,
     "structurearea": 148,
@@ -5396,7 +5396,7 @@ const data = [
     "address": "济南路8号1308室"
   },
   {
-    "villageName": "古北国际花园店",
+    "villageName": "古北国际花园",
     "houseno": "1-3008",
     "contractno": 339,
     "structurearea": 76,
@@ -5407,7 +5407,7 @@ const data = [
     "address": "黄金城道500弄1号3008室"
   },
   {
-    "villageName": "古北国际花园店",
+    "villageName": "古北国际花园",
     "houseno": "18-102",
     "contractno": 374,
     "structurearea": 132,
@@ -5418,7 +5418,7 @@ const data = [
     "address": "黄金城道600弄18号102室"
   },
   {
-    "villageName": "名都城店",
+    "villageName": "名都城",
     "houseno": "27-1703",
     "contractno": 371,
     "structurearea": 121,
@@ -5429,7 +5429,7 @@ const data = [
     "address": "古北路1700弄27号1703室"
   },
   {
-    "villageName": "名都城店",
+    "villageName": "名都城",
     "houseno": "28-104",
     "contractno": 364,
     "structurearea": 170,
@@ -5440,7 +5440,7 @@ const data = [
     "address": "古北路1700弄28号104室"
   },
   {
-    "villageName": "名都城店",
+    "villageName": "名都城",
     "houseno": "3-505",
     "contractno": 475,
     "structurearea": 137,
@@ -5451,7 +5451,7 @@ const data = [
     "address": "虹许路788弄"
   },
   {
-    "villageName": "名都城店",
+    "villageName": "名都城",
     "houseno": "31-502",
     "contractno": 507,
     "structurearea": 137,
@@ -5462,7 +5462,7 @@ const data = [
     "address": "虹许路788弄"
   },
   {
-    "villageName": "嘉里华庭店",
+    "villageName": "嘉里华庭",
     "houseno": "163-1303",
     "contractno": 351,
     "structurearea": 0,
@@ -5473,7 +5473,7 @@ const data = [
     "address": "华山路1038弄163号1303室"
   },
   {
-    "villageName": "国际丽都城店",
+    "villageName": "国际丽都城",
     "houseno": "4号1901",
     "contractno": 365,
     "structurearea": 165,
@@ -5484,7 +5484,7 @@ const data = [
     "address": "北京西路758弄4号1901室"
   },
   {
-    "villageName": "国际丽都城店",
+    "villageName": "国际丽都城",
     "houseno": "9-12A01",
     "contractno": 380,
     "structurearea": 179,
@@ -5495,7 +5495,7 @@ const data = [
     "address": "北京西路758弄9号12A01室"
   },
   {
-    "villageName": "当代清水园店",
+    "villageName": "当代清水园",
     "houseno": "26-1401",
     "contractno": 357,
     "structurearea": 114,
@@ -5506,7 +5506,7 @@ const data = [
     "address": "芳甸路77弄"
   },
   {
-    "villageName": "新加坡美术馆店",
+    "villageName": "新加坡美术馆",
     "houseno": "5-3502",
     "contractno": 373,
     "structurearea": 285,
@@ -5517,7 +5517,7 @@ const data = [
     "address": "陕西南路888弄5号3502室"
   },
   {
-    "villageName": "汇豪天下店",
+    "villageName": "汇豪天下",
     "houseno": "8-1503",
     "contractno": 376,
     "structurearea": 230,
@@ -5528,7 +5528,7 @@ const data = [
     "address": "商城路108弄8号1503室"
   },
   {
-    "villageName": "汇豪天下店",
+    "villageName": "汇豪天下",
     "houseno": "8-602",
     "contractno": 385,
     "structurearea": 194,
@@ -5539,7 +5539,7 @@ const data = [
     "address": "商城路108弄8号602室"
   },
   {
-    "villageName": "泰府名邸店",
+    "villageName": "泰府名邸",
     "houseno": "13号1202",
     "contractno": 358,
     "structurearea": 0,
@@ -5550,7 +5550,7 @@ const data = [
     "address": "泰兴路625弄13号1202室"
   },
   {
-    "villageName": "泰德苑店",
+    "villageName": "泰德苑",
     "houseno": "6-501",
     "contractno": 377,
     "structurearea": 94,
@@ -5561,7 +5561,7 @@ const data = [
     "address": "蒲汇塘路163弄6号501室"
   },
   {
-    "villageName": "菊园店",
+    "villageName": "菊园",
     "houseno": "6-2802",
     "contractno": 363,
     "structurearea": 140,
@@ -5572,7 +5572,7 @@ const data = [
     "address": "浦城路366弄6号2802室"
   },
   {
-    "villageName": "菊园店",
+    "villageName": "菊园",
     "houseno": "4-2105",
     "contractno": 388,
     "structurearea": 120,
@@ -5583,7 +5583,7 @@ const data = [
     "address": "浦城路366弄4号2105室"
   },
   {
-    "villageName": "菊园店",
+    "villageName": "菊园",
     "houseno": "7-1704",
     "contractno": 400,
     "structurearea": 101,
@@ -5594,7 +5594,7 @@ const data = [
     "address": "浦城路366弄7号1704室"
   },
   {
-    "villageName": "虹桥万博店",
+    "villageName": "虹桥万博",
     "houseno": "9-1102",
     "contractno": 367,
     "structurearea": 165,
@@ -5605,7 +5605,7 @@ const data = [
     "address": "古北路69弄9号1102室"
   },
   {
-    "villageName": "御景园店",
+    "villageName": "御景园",
     "houseno": "24-1903",
     "contractno": 383,
     "structurearea": 131,
@@ -5616,7 +5616,7 @@ const data = [
     "address": "锦绣路888弄24号1903室"
   },
   {
-    "villageName": "古北恒盛苑店",
+    "villageName": "古北恒盛苑",
     "houseno": "21-401",
     "contractno": 389,
     "structurearea": 138,
@@ -5627,7 +5627,7 @@ const data = [
     "address": "姚虹路299弄21号401室"
   },
   {
-    "villageName": "嘉园店",
+    "villageName": "嘉园",
     "houseno": "6-32A",
     "contractno": 393,
     "structurearea": 228,
@@ -5638,7 +5638,7 @@ const data = [
     "address": "万航渡路458弄6号32A"
   },
   {
-    "villageName": "新天地河滨花园店",
+    "villageName": "新天地河滨花园",
     "houseno": "3-1603",
     "contractno": 401,
     "structurearea": 145,
@@ -5649,7 +5649,7 @@ const data = [
     "address": "芙蓉江路555弄3号1603室"
   },
   {
-    "villageName": "瑞仕花园店",
+    "villageName": "瑞仕花园",
     "houseno": "17-501",
     "contractno": 446,
     "structurearea": 150,
@@ -5660,7 +5660,7 @@ const data = [
     "address": "长宁区黄金城道路500弄17号501室"
   },
   {
-    "villageName": "瑞仕花园店",
+    "villageName": "瑞仕花园",
     "houseno": "15-2601",
     "contractno": 452,
     "structurearea": 174,

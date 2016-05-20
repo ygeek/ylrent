@@ -37,8 +37,16 @@ const PATHS = {
     dest: path.join(DEST, 'static/fonts')
   },
   // server
+  config: {
+    src: path.join(SRC, 'config.js'),
+    dest: DEST
+  },
   app: {
     src: path.join(SRC, 'app.js'),
+    dest: DEST
+  },
+  boot: {
+    src: path.join(SRC, 'boot.js'),
     dest: DEST
   },
   models: {

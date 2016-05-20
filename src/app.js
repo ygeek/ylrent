@@ -11,20 +11,7 @@ import mongoose from 'mongoose';
 import passport from 'passport';
 import session from 'express-session';
 import { setupAppLogger } from './app/utils/logger';
-
-require('./app/utils/boot');
-
-// BASIC CONFIG
-const config = {
-  // address of mongodb
-  db: process.env.MONGOURI || 'mongodb://localhost:27017/test',
-  // environment
-  env: process.env.NODE_ENV || 'development',
-  // port on which to listen
-  port: 5000,
-  // path to root directory of this app
-  root: path.normalize(__dirname)
-};
+import config from './config';
 
 // EXPRESS SET-UP
 // create app

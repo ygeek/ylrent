@@ -20,7 +20,7 @@ const ComunitySchema = new mongoose.Schema({
   districtId: ObjectId,      // 徐汇区
   desc: String,       // 陆家嘴中央公寓，是美国ARQ、美国泛亚易道……
   address: String,    // 上海市浦东东绣路99弄
-  lattude: Number,    // 纬度 31.221362
+  latitude: Number,    // 纬度 31.221362
   longitude: Number,  // 经度 121.545650
   isHot: Boolean,      // 是否主推
   keywords: [String]   // ["徐家汇", "一号线"]
@@ -33,7 +33,7 @@ const HouseSchema = new mongoose.Schema({
   districtId: ObjectId,      // 徐汇区
   area: Number,           // 123
   price: Number,          // 16900
-  rootType: {
+  roomType: {
     ting: Number,         // 2
     shi: Number,          // 2
     wei: Number,          // 2
@@ -56,7 +56,8 @@ const DailyRentSchema = new mongoose.Schema({
   capacityMax: Number,       // 3
   price: Number,             // 299
   isRenting: Boolean,        // 是否下架
-  imageKeys: [String]        // ["七牛图片文件KEY"]
+  keywords: [String],        // ["徐家汇"， "一号线", "xxx"]
+  imagekeys: [String]        // ["七牛图片文件KEY"]
 });
 
 HouseSchema.plugin(mongoosePaginate);
