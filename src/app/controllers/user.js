@@ -7,6 +7,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import passport from 'passport';
+import { requestSMSCode, verifySMSCode } from '../utils/sms';
 
 const User = mongoose.model('User');
 
@@ -31,16 +32,64 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-router.post('/register', (req, res, next) => {
-  User.register(new User({ username : req.body.username }), req.body.password, function(err, user) {
+router.post('/requestsms', (req, res, next) => {
+  const mobile = req.body.mobile;
+  requestSMSCode(mobile, (err, body) => {
     if (err) {
-      return res.render('register', {
-        error: err
+      res.send({
+        code: (err && err.code) || -1,
+        msg: '发送验证码失败'
+      });
+    } else {
+      res.send({
+        code: body.code || 0,
+        msg: body.error || body.msg || '发送验证码成功'
       });
     }
-    passport.authenticate('local')(req, res, function() {
-      res.redirect('/');
-    });
+  });
+});
+
+router.post('/verifysms', (req, res, next) => {
+  const mobile = req.body.mobile;
+  const smscode = req.body.smscode;
+  verifySMSCode(mobile, smscode, (err, body) => {
+    if (err) {
+      res.send({
+        code: (err && err.code) || -1,
+        msg: '短信验证失败'
+      });
+    } else {
+      res.send({
+        code: body.code || 0,
+        msg: body.error || body.msg || '短信验证成功'
+      });
+    }
+  });
+});
+
+router.post('/register', (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const smscode = req.body.smscode;
+
+  verifySMSCode(username, smscode, (err, body) => {
+    if (!err && body.code === 0) {
+      User.register(new User({ username : username }), password, function(err, user) {
+        if (err) {
+          return res.render('register', {
+            error: err
+          });
+        }
+        passport.authenticate('local')(req, res, function() {
+          res.redirect('/');
+        });
+      });
+    } else {
+      return res.render('register', {
+        error: err,
+        message: body.msg || body.error
+      });
+    }
   });
 });
 

@@ -56,6 +56,10 @@ const PATHS = {
   utils: {
     src: path.join(SRC, 'app/utils/**/*.js'),
     dest: path.join(DEST, 'app/utils')
+  },
+  data: {
+    src: path.join(SRC, 'data/**/*'),
+    dest: path.join(DEST, 'data')
   }
 };
 

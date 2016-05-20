@@ -12,6 +12,8 @@ import passport from 'passport';
 import session from 'express-session';
 import { setupAppLogger } from './app/utils/logger';
 
+require('./app/utils/boot');
+
 // BASIC CONFIG
 const config = {
   // address of mongodb
@@ -46,20 +48,14 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
-
-// load all models
-require(path.join(config.root, 'app/models'));
-
-// setup passport
 app.use(passport.initialize());
 app.use(passport.session());
-const User = require('./app/models/user');
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 // setup logger
 setupAppLogger(app);
+
+// load all models
+require(path.join(config.root, 'app/models'));
 
 // load all controllers
 app.use('/', require(path.join(config.root, 'app/controllers')));
@@ -86,6 +82,7 @@ app.use((err, req, res, next) => {
 // MONGOOSE SET-UP
 mongoose.connect(config.db);
 const db = mongoose.connection;
+
 db.on('error', () => {
   throw new Error(`unable to connect to database at ${config.db}`);
 });

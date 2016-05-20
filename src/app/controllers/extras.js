@@ -1,26 +1,23 @@
 'use strict';
 
-import path from 'path';
 import express from 'express';
+import importData from '../utils/boot';
 
-// create router and set routes
 const router = express.Router();
+
 router.get('/', (req, res, next) => {
   res.render('extras', {
     message: 'welcome to extras!',
     base: true
   });
 });
-router.get('/:message', (req, res, next) => {
-  if (req.params.hasOwnProperty('message')) {
-    res.render('extras', {
-      message: `welcome to extras!
-        you currently are at ${path.join('extras', req.params.message)}`,
-      base: false
-    });
-  } else {
-    res.status(404);
-  }
+
+router.post('/boot', (req, res, next) => {
+  importData();
+  res.send({
+    code: 0,
+    msg: 'import data started!'
+  });
 });
 
 // export router

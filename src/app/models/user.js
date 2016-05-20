@@ -3,10 +3,22 @@
  */
 
 import mongoose from 'mongoose';
+import passport from 'passport';
 import passportLocalMongoose from 'passport-local-mongoose';
 
-const userSchema = new mongoose.Schema({});
+const UserSchema = new mongoose.Schema({
+  isCrop: Boolean,
+  title: String,
+  CorpName: String,
+  Tel: String,
+  Address: String
+});
 
-userSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', UserSchema);
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+module.exports = User;
