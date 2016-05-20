@@ -1,5 +1,5 @@
 /**
- * Created by meng on 16/5/19.
+ * Created by meng on 16/5/20.
  */
 
 'use strict';
@@ -12,10 +12,12 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/house/:page', (req, res, next) => {
-  let page = parseInt(req.params.hasOwnProperty('page'));
-  if (isNaN(page)) {
-    page = 1;
-  }
-
+// set basic routes
+router.get('/', (req, res, next) => {
+  res.render('index', {
+    title: '源涞国际',
+    user: req.user
+  });
 });
+
+module.exports = router;
