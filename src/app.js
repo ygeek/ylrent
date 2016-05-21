@@ -41,6 +41,14 @@ app.use(passport.session());
 // setup logger
 setupAppLogger(app);
 
+// MONGOOSE SET-UP
+mongoose.connect(config.db);
+const db = mongoose.connection;
+
+db.on('error', () => {
+  throw new Error(`unable to connect to database at ${config.db}`);
+});
+
 // load all models
 require(path.join(config.root, 'app/models'));
 
@@ -66,13 +74,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// MONGOOSE SET-UP
-mongoose.connect(config.db);
-const db = mongoose.connection;
-
-db.on('error', () => {
-  throw new Error(`unable to connect to database at ${config.db}`);
-});
 
 // START AND STOP
 const server = app.listen(config.port, () => {

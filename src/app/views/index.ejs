@@ -14,6 +14,34 @@
     <% if (user) { %>
         <p>Hello, <%= user.username %>!</p>
     <% } %>
+
+    <h2>精品房源</h2>
+    <ul>
+        <% for (var i = 0, len = houses.length; i < len; i++) { %>
+        <li>
+            <p><%= JSON.stringify(houses[i]) %></p>
+        </li>
+        <% } %>
+    </ul>
+
+    <h2>品质小区</h2>
+    <ul>
+        <% for (var i = 0, len = comunities.length; i < len; i++) { %>
+        <li>
+            <p><%= JSON.stringify(comunities[i]) %></p>
+        </li>
+        <% } %>
+    </ul>
+
+    <h2>日租公寓</h2>
+    <ul>
+        <% for (var i = 0, len = dailyRents.length; i < len; i++) { %>
+        <li>
+            <p><%= JSON.stringify(dailyRents[i]) %></p>
+        </li>
+        <% } %>
+    </ul>
+
     <h2>more links</h2>
     <p><a href="/house/">houses</a></p>
     <p><a href="/daily/">daily rents</a></p>

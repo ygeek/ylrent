@@ -19,6 +19,19 @@ import dailyRents from './data/daily';
 
 let logger = log4js.getLogger('normal');
 
+mongoose.connect(config.db);
+const db = mongoose.connection;
+
+db.on('error', () => {
+  throw new Error(`unable to connect to database at ${config.db}`);
+});
+
+process.on('SIGINT', () => {
+  logger.info('\nshutting down!');
+  db.close();
+  process.exit();
+});
+
 // load all models
 require(path.join(config.root, 'app/models'));
 
@@ -225,18 +238,6 @@ function importAllDailyRents() {
   return Promise.all(importPromises);
 }
 
-mongoose.connect(config.db);
-const db = mongoose.connection;
-
-db.on('error', () => {
-  throw new Error(`unable to connect to database at ${config.db}`);
-});
-
-process.on('SIGINT', () => {
-  logger.info('\nshutting down!');
-  db.close();
-  process.exit();
-});
 
 importAllDistricts()
   .then(() => importAllCommerseAreas())
