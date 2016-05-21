@@ -1,0 +1,38 @@
+{
+  "apps" : [
+
+    {
+      "name"      : "WEB",
+      "script"    : "app.js",
+      "env": {
+        "COMMON_VARIABLE": "true"
+      },
+      "env_production" : {
+        "NODE_ENV": "production"
+      }
+    }
+
+  ],
+
+  "deploy" : {
+    "production" : {
+      "user" : "ylrent",
+      "host" : "ylwebtest.chinacloudapp.cn",
+      "ref"  : "origin/master",
+      "repo" : "git@github.com:ygeek/ylrent.git",
+      "path" : "/var/www/production",
+      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env production"
+    },
+    "dev" : {
+      "user" : "ylrent",
+      "host" : "ylwebtest.chinacloudapp.cn",
+      "ref"  : "origin/master",
+      "repo" : "git@github.com:ygeek/ylrent.git",
+      "path" : "/var/www/development",
+      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env dev",
+      "env"  : {
+        "NODE_ENV": "dev"
+      }
+    }
+  }
+}
