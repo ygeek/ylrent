@@ -61,7 +61,7 @@ caption,th{text-align:left;}
 			 .header .header_m .header_m_top span{float:right; display:block; margin:30px 0 0 0;}
 			    .header .header_m .header_m_top span a{float:left; padding:0 0 0 10px; background:url(../images/icon01.jpg) left no-repeat; margin:0 0 0 10px; color:#fff;}
 		.header .header_m .header_m_bottom .nav{float:left;}
-		    .header .header_m .header_m_bottom .nav a{display:block; float:left; margin:0 22px 0 0; font-size:17px; color:#fff;}
+		    .header .header_m .header_m_bottom .nav a{display:block; float:left; margin:0 60px 0 0; font-size:20px; color:#fff;}
 		.header .header_m .header_m_bottom .tel{float:right; background:url(../images/tel.jpg) left no-repeat; padding:0 0 0 50px; color:#fff; font-size:22px; font-weight:bold;}
 
 
@@ -157,7 +157,7 @@ caption,th{text-align:left;}
 /***搜索****/
 .sosuo{height:100px; background:url(../images/so_bg.png); min-width:1120px; font-size:15px; margin:-100px 0 0 0; position:relative; z-index:15;}	
    .sosuo .sosuo_m{width:1120px; margin:0 auto; padding:35px 0 0 0;}		 
-     .sosuo_text{width:500px; height:32px; line-height:32px; background:#fff; border:0; text-indent:30px; margin:0 0 0 110px;}
+     .sosuo_text{width:500px; height:32px; line-height:32px; background:#fff; color: #a5a5a5; border:0; text-indent:15px; margin:0 0 0 110px;}
 	 .sosuo_xz{width:222px; height:32px; margin:0 30px;}
 	 .sosuo_submit{width:108px; height:32px; border:0; cursor:pointer; background:url(../images/icon03.png) 15px no-repeat #fff; font-weight:bold; border-radius:3px;}
 	 
