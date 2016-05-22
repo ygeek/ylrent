@@ -14,11 +14,11 @@ const config = {
   // environment
   env: process.env.NODE_ENV || 'dev',
   // port on which to listen
-  port: process.env.NODE_ENV == 'production' ? 3000 : 5000,
+  port: process.env.NODE_ENV === 'production' ? 3000 : 5000,
   // path to root directory of this app
   root: path.normalize(__dirname),
   // log level
-  logLevel: process.env.NODE_ENV == 'production' ? log4js.levels.INFO : log4js.levels.ALL
+  logLevel: process.env.NODE_ENV === 'production' ? log4js.levels.INFO : log4js.levels.ALL
 };
 
 export default config;
