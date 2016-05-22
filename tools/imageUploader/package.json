@@ -1,0 +1,19 @@
+{
+  "name": "imageuploader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "imageUploader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csvtojson": "^0.5.12",
+    "glob": "^7.0.3",
+    "jsonfile": "^2.3.1",
+    "lodash": "^4.12.0",
+    "qiniu": "^6.1.11",
+    "url-join": "^1.1.0"
+  }
+}
