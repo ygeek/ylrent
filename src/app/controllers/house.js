@@ -30,7 +30,7 @@ router.get('/', (req, res, next) => {
   };
   
   House.paginate(query, options).then((result) => {
-    logger.debug(result);
+    logger.trace(result);
     res.render('houses', {
       title: '房源列表',
       result: result
@@ -45,9 +45,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  logger.info(req.params.id);
+  logger.trace("GET house id: ", req.params.id);
   House.findById(req.params.id, function(err, house) {
-    logger.info(house);
+    logger.trace("Queried house: ", house);
     if (err) {
       return res.render('error', {
         error: err,

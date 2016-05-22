@@ -30,7 +30,7 @@ router.get('/', (req, res, next) => {
   };
 
   DailyRent.paginate(query, options).then((result) => {
-    logger.debug(result);
+    logger.trace(result);
     res.render('dailyRents', {
       title: '日租列表',
       result: result
@@ -45,9 +45,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  logger.info(req.params.id);
+  logger.trace("GET daily rent id: ", req.params.id);
   DailyRent.findById(req.params.id, function(err, daily) {
-    logger.info(daily);
+    logger.trace("Queried daily rent: ", daily);
     if (err) {
       return res.render('error', {
         error: err,

@@ -5,6 +5,7 @@
 'use strict';
 
 import log4js from 'log4js';
+import config from '../../config';
 
 log4js.configure({
   appenders: [
@@ -14,7 +15,7 @@ log4js.configure({
 });
 
 const logger = log4js.getLogger('normal');
-logger.setLevel('INFO');
+logger.setLevel(config.logLevel);
 
 export function setupAppLogger(app) {
   app.use(log4js.connectLogger(logger, {
