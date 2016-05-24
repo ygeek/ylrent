@@ -8,23 +8,23 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 const Comunity = mongoose.model('Comunity');
-const House = mongoose.model('House');
+const Apartment = mongoose.model('Apartment');
 const DailyRent = mongoose.model('DailyRent');
 
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
 
-  let housePromise = new Promise((resolve, reject) => {
-    House
+  let apartmentPromise = new Promise((resolve, reject) => {
+    Apartment
       .find({})
       .limit(6)
       .sort('-isHot')
-      .exec((err, houses) => {
+      .exec((err, apartments) => {
         if (err) {
           reject(err);
         } else {
-          resolve(houses);
+          resolve(apartments);
         }
       });
   });
@@ -58,12 +58,12 @@ router.get('/', (req, res, next) => {
   });
 
   Promise
-    .all([housePromise, comunityPromise, dailyPromise])
-    .then(([houses, comunities, dailyRents]) => {
+    .all([apartmentPromise, comunityPromise, dailyPromise])
+    .then(([apartments, comunities, dailyRents]) => {
       res.render('index', {
         title: '源涞国际',
         user: req.user,
-        houses: houses,
+        apartments: apartments,
         comunities: comunities,
         dailyRents: dailyRents
       });

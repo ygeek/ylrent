@@ -26,7 +26,7 @@ const ComunitySchema = new mongoose.Schema({
   keywords: [String]   // ["徐家汇", "一号线"]
 });
 
-const HouseSchema = new mongoose.Schema({
+const ApartmentSchema = new mongoose.Schema({
   houseNo: String,        // 17-602
   comunityId: ObjectId,   // 陆家嘴中央公寓
   commerseAreaId: ObjectId,  // 徐家汇
@@ -60,11 +60,11 @@ const DailyRentSchema = new mongoose.Schema({
   imagekeys: [String]        // ["七牛图片文件KEY"]
 });
 
-HouseSchema.plugin(mongoosePaginate);
+ApartmentSchema.plugin(mongoosePaginate);
 DailyRentSchema.plugin(mongoosePaginate);
 
 exports.District = mongoose.model('District', DistrictSchema);
 exports.CommerseArea = mongoose.model('CommerseArea', CommerseAreaSchema);
 exports.Comunity = mongoose.model('Comunity', ComunitySchema);
-exports.House = mongoose.model('House', HouseSchema);
+exports.Apartment = mongoose.model('Apartment', ApartmentSchema);
 exports.DailyRent = mongoose.model('DailyRent', DailyRentSchema);

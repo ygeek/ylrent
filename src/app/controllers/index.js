@@ -9,7 +9,7 @@ const router = express.Router();
 
 // load other controllers
 router.use('/user', require('./user'));
-router.use('/house', require('./house'));
+router.use('/apartment', require('./apartment'));
 router.use('/daily', require('./daily'));
 router.use('/', require('./home'));
 

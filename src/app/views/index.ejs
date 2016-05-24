@@ -17,9 +17,9 @@
 
     <h2>精品房源</h2>
     <ul>
-        <% for (var i = 0, len = houses.length; i < len; i++) { %>
+        <% for (var i = 0, len = apartments.length; i < len; i++) { %>
         <li>
-            <p><%= JSON.stringify(houses[i]) %></p>
+            <p><%= JSON.stringify(apartments[i]) %></p>
         </li>
         <% } %>
     </ul>
@@ -43,7 +43,7 @@
     </ul>
 
     <h2>more links</h2>
-    <p><a href="/house/">houses</a></p>
+    <p><a href="/apartment/">apartments</a></p>
     <p><a href="/daily/">daily rents</a></p>
     <script src="/js/vendor.min.js"></script>
 </body>

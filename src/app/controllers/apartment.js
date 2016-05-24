@@ -10,7 +10,7 @@ import log4js from 'log4js';
 
 const logger = log4js.getLogger('normal');
 
-const House = mongoose.model('House');
+const Apartment = mongoose.model('Apartment');
 
 const router = express.Router();
 
@@ -29,9 +29,9 @@ router.get('/', (req, res, next) => {
     sort: sort
   };
   
-  House.paginate(query, options).then((result) => {
+  Apartment.paginate(query, options).then((result) => {
     logger.trace(result);
-    res.render('houses', {
+    res.render('apartments', {
       title: '房源列表',
       result: result
     });
@@ -45,9 +45,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  logger.trace("GET house id: ", req.params.id);
-  House.findById(req.params.id, function(err, house) {
-    logger.trace("Queried house: ", house);
+  logger.trace("GET apartment id: ", req.params.id);
+  Apartment.findById(req.params.id, function(err, apartment) {
+    logger.trace("Queried apartment: ", apartment);
     if (err) {
       return res.render('error', {
         error: err,
@@ -55,10 +55,10 @@ router.get('/:id', (req, res, next) => {
         stack: err.stack
       });
     }
-    if (!house) {
+    if (!apartment) {
       return res.status(404);
     }
-    res.render('houseDetail', { house: house });
+    res.render('apartmentDetail', { apartment: apartment });
   });
 });
 

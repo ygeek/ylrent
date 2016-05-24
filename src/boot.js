@@ -14,7 +14,7 @@ import config from './config';
 import districts from './data/district';
 import commerseAreas from './data/commerseArea';
 import comunities from './data/comunity';
-import houses from './data/house';
+import apartments from './data/apartment';
 import dailyRents from './data/daily';
 
 let logger = log4js.getLogger('normal');
@@ -38,7 +38,7 @@ require(path.join(config.root, 'app/models'));
 const District = mongoose.model('District');
 const CommerseArea = mongoose.model('CommerseArea');
 const Comunity = mongoose.model('Comunity');
-const House = mongoose.model('House');
+const Apartment = mongoose.model('Apartment');
 const DailyRent = mongoose.model('DailyRent');
 
 function importDistrict(districtObj) {
@@ -144,32 +144,32 @@ function importAllComunities() {
   return Promise.all(importPromises);
 }
 
-function importHouse(houseObj) {
+function importApartment(apartmentObj) {
   return new Promise((resolve, reject) => {
     Comunity
-      .findOne({ name: houseObj.villageName })
+      .findOne({ name: apartmentObj.villageName })
       .select('_id name commerseAreaId districtId keywords')
       .exec((err, comunity) => {
         assert.ifError(err);
-        assert.equal(comunity.name, houseObj.villageName);
+        assert.equal(comunity.name, apartmentObj.villageName);
         let query = {
-          houseNo: houseObj.houseno
+          houseNo: apartmentObj.houseno
         };
         let update = {
-          houseNo: houseObj.houseno,
+          houseNo: apartmentObj.houseno,
           comunityId: comunity._id,
           commerseAreaId: comunity.commerseAreaId,
           districtId: comunity.districtId,
-          area: houseObj.structurearea,
-          price: houseObj.rentPerMonth,
+          area: apartmentObj.structurearea,
+          price: apartmentObj.rentPerMonth,
           roomType:  {
-            ting: houseObj.ting,
-            shi: houseObj.shi,
-            wei: houseObj.wei,
+            ting: apartmentObj.ting,
+            shi: apartmentObj.shi,
+            wei: apartmentObj.wei,
             beds: 0
           },
-          contactNo: houseObj.contractno,
-          address: houseObj.address,
+          contactNo: apartmentObj.contractno,
+          address: apartmentObj.address,
           leased: false,
           isHot: false,
           keyword: comunity.keywords,
@@ -180,18 +180,18 @@ function importHouse(houseObj) {
           upsert: true,
           setDefaultsOnInsert: true
         };
-        House.findOneAndUpdate(query, update, options, (err, house) => {
+        Apartment.findOneAndUpdate(query, update, options, (err, apartment) => {
           assert.ifError(err);
-          assert.equal(house.houseNo, houseObj.houseno);
-          logger.info('import house: ', house);
-          resolve(house);
+          assert.equal(apartment.houseNo, apartmentObj.houseno);
+          logger.info('import apartment: ', apartment);
+          resolve(apartment);
         });
       });
   });
 }
 
-function importAllHouses() {
-  let importPromises = _.map(houses, (houseObj) => importHouse(houseObj));
+function importAllApartments() {
+  let importPromises = _.map(apartments, (apartmentObj) => importApartment(apartmentObj));
   return Promise.all(importPromises);
 }
 
@@ -242,7 +242,7 @@ function importAllDailyRents() {
 importAllDistricts()
   .then(() => importAllCommerseAreas())
   .then(() => importAllComunities())
-  .then(() => importAllHouses())
+  .then(() => importAllApartments())
   .then(() => importAllDailyRents())
   .then(() => logger.info('import finished!'))
   .catch((err) => {
