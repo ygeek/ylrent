@@ -18,10 +18,7 @@
         <ul class="list">
             <% for (var i = 0, len = result.docs.length; i < len; i++) { %>
                 <li class="house">
-                    <p><%= result.docs[i]._id %></p>
-                    <p><%= result.docs[i].houseNo %></p>
-                    <p><%= result.docs[i].area %></p>
-                    <p><%= result.docs[i].price %></p>
+                    <p><%= JSON.stringify(result.docs[i]) %></p>
                 </li>
             <% } %>
         </ul>

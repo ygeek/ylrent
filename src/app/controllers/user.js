@@ -32,6 +32,10 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
+router.get('/forget', function(req, res) {
+  res.render('forget');
+});
+
 router.post('/requestsms', (req, res, next) => {
   const mobile = req.body.mobile;
   requestSMSCode(mobile, (err, body) => {
