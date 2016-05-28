@@ -6,15 +6,20 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import log4js from 'log4js';
 
 const Comunity = mongoose.model('Comunity');
 const Apartment = mongoose.model('Apartment');
 const DailyRent = mongoose.model('DailyRent');
 
+const logger = log4js.getLogger('normal');
+
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
 
+  logger.info('request from', req.device.type);
+  
   let apartmentPromise = new Promise((resolve, reject) => {
     Apartment
       .find({})

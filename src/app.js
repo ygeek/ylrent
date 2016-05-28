@@ -10,6 +10,7 @@ import helmet from 'helmet';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import session from 'express-session';
+import expressDevice from 'express-device';
 import { setupAppLogger } from './app/utils/logger';
 import config from './config';
 
@@ -18,6 +19,7 @@ import config from './config';
 const app = express();
 // use ejs and set views and static directories
 app.set('view engine', 'ejs');
+app.set('view options', { layout: false });
 app.set('views', path.join(config.root, 'app/views'));
 app.use(express.static(path.join(config.root, 'static')));
 
@@ -26,6 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(expressDevice.capture());
 app.use(compress());
 app.use(cookieParser());
 app.use(favicon(path.join(config.root, 'static/img/favicon.png')));
