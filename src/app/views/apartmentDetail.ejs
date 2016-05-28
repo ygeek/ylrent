@@ -1,16 +1,420 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/error.css">
-    <title><%= apartment.houseNo %></title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= apartment.houseNo %></title>
+<link type="text/css" rel="stylesheet" href="/css/style.css" />
+<script type="text/javascript" src="/files/js/jquery.js"></script>
+
+
 </head>
 <body>
-<h1><%= apartment.houseNo %></h1>
-<%= JSON.stringify(apartment) %>
-<script src="/js/vendor.min.js"></script>
+
+<!-----头部----->
+<% include header.ejs %>
+<!-----头部----->
+<div class="clear"></div>
+
+<div class="location">
+     <a href="#">首页</a> > <a href="#">首页</a> > <a href="#">首页</a>
+</div>
+
+<div class="min_banner01"><img src="/img/banner01.jpg" width="1120" height="520" /></div>
+
+<div class="n_main">  
+    <div class="remen_top_show">
+        <div class="remen01">
+                <div class="remen01_l">
+                    <h1><%= apartment.address %></h1>
+                    <p>
+                    上海市徐汇区虹桥路168弄  徐汇区<br />
+                    2室2厅2卫  |  114平米  |  06层  |  精装修 | 现代简约
+                    </p>
+                </div>
+                <div class="remen01_r">
+                   <h1>￥ <em><%= apartment.price %></em> / 月</h1>
+                   <a href="#"><img src="/img/icon14.jpg" width="135" height="43" /></a>
+                </div>
+        </div>
+        <div class="clear"></div>
+        <div class="remen02">
+            <form action="" method="get">
+                <ul>
+                    <li>姓名：<input type="text" class="text03"/></li>
+                    <li>手机：<input type="text" class="text03"/></li>
+                    <li>验证码：<input type="text" class="text04"/></li>
+                    <li>邮箱：<input type="text" class="text03" /></li>
+                    <li style="width:300px;">看房需求：<textarea name="" class="text05"  cols="" rows=""></textarea></li>
+                    <li>预约看房：<input type="submit" class="text06" value="预约看房" /></li>
+                </ul>
+            </form>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="tabbox01" id="statetab01">
+            <ul class="tabbtn01">
+                <li class="current"><a href="#">房源信息</a></li>
+                <li><a href="#">小区位置</a></li>	
+            </ul><!--tabbtn end-->
+
+            <div class="clear"></div>
+            <div class="tabcon01">
+                <div class="tabcon01_l">
+                    <h1>设施</h1>
+                    <div class="tabcon01_l_m">
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="tabcon01_l" style="float:right;">
+                        <h1>配套</h1>
+                        <div class="tabcon01_l_m">
+                           <span>电视机</span>
+                           <span>电视机</span>
+                           <span>电视机</span>
+                           <span>电视机</span>
+                           <span>电视机</span>
+                           <span>电视机</span>
+                           <span>电视机</span>
+                           <span>电视机</span>
+                           <span>电视机</span>
+                           <span>电视机</span>
+                           <div class="clear"></div>
+                        </div>
+                </div>
+                <div class="clear"></div>
+            </div><!--tabcon end-->
+
+            <div class="tabcon01">
+                <div class="tabcon01_l">
+                    <h1>设施</h1>
+                    <div class="tabcon01_l_m">
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="tabcon01_l" style="float:right;">
+                    <h1>设施</h1>
+                    <div class="tabcon01_l_m">
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+                        <span>电视机</span>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div><!--tabcon end-->
+        </div>
+        <div class="gxm_name03">
+            <h1>源涞管家式租房服务</h1>
+            <p>Yoland源涞社区服务公寓，为所有租客提供管家式租房服务。<br />根据您的租房需求，选择对应的服务标准。</p>
+            <div class="clear"></div>
+        </div>
+
+        <div class="tabcon01_l">
+            <h1>基本服务</h1>
+            <div class="tabcon01_l_m">
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="tabcon01_l" style="float:right;">
+            <h1>VIP服务</h1>
+            <div class="tabcon01_l_m">
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+                <span>电视机</span>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+
+        <div class="xiaoqu">
+            <h1>小区介绍</h1>
+            测试测试测试测试测试
+        </div>
+
+    </div>
+    <div class="clear"></div>
+    <div class="jichang">
+        <div class="jichang_l"><img src="/img/map.jpg" width="637" height="544" /></div>
+        <div class="jichang_r">
+            <div class="tabbox02" id="statetab02">
+                <ul class="tabbtn02">
+                    <li class="current"><a>机场车站</a></li>
+                    <li><a> 地铁站 </a></li>	   
+                    <li><a> 景点娱乐</a></li>	                           
+                    <li><a>休闲娱乐</a></li>	
+                </ul><!--tabbtn end-->
+                <div class="clear"></div>
+                    <div class="tabcon02">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
+                            <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                            <tr>
+                               <td>上海浦东国际机场</td>
+                               <td><img src="/img/icon16.png" /></td>
+                               <td>30分钟</td>
+                               <td><img src="/img/icon17.png" /></td>
+                               <td>30分钟</td>
+                             </tr>
+                            <tr>
+                               <td>上海浦东国际机场</td>
+                               <td><img src="/img/icon16.png" /></td>
+                               <td>30分钟</td>
+                               <td><img src="/img/icon17.png" /></td>
+                               <td>30分钟</td>
+                             </tr>
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+                        </table>
+
+                    </div><!--tabcon end-->
+                    <div class="tabcon02">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+
+                            <tr>
+                                <td>上海浦东国际机场</td>
+                                <td><img src="/img/icon16.png" /></td>
+                                <td>30分钟</td>
+                                <td><img src="/img/icon17.png" /></td>
+                                <td>30分钟</td>
+                            </tr>
+                        </table>
+
+                    </div><!--tabcon end-->
+                    <div class="tabcon02">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
+                            <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                           <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                           <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                           <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                            <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                            <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+
+                        </table>
+
+                    </div><!--tabcon end-->
+                    <div class="tabcon02">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
+                            <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                           <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                           <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                           <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                            <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                            <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+                           <tr>
+                              <td>上海浦东国际机场</td>
+                              <td><img src="/img/icon16.png" /></td>
+                              <td>30分钟</td>
+                              <td><img src="/img/icon17.png" /></td>
+                              <td>30分钟</td>
+                            </tr>
+
+                        </table>
+
+                    </div><!--tabcon end-->
+                       
+                        
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+
+<div class="clear"></div>
+
+<% include footer.ejs %>
+<script src="/files/js/jquery1.js"></script>
+
 </body>
 </html>

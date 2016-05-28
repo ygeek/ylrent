@@ -1,51 +1,195 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/error.css">
-    <title><%= title %></title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= title %></title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="files/js/jquery.js"></script>
+<script type="text/javascript" src="files/js/superslide.2.1.js"></script>
+<script type="text/javascript" src="files/js/koala.min.1.5.js"></script>
 </head>
 <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <% if (user) { %>
-        <p>Hello, <%= user.username %>!</p>
-    <% } %>
 
-    <h2>精品房源</h2>
+<!-----头部1-2---->
+<% include header.ejs %>
+<!-----头部----->
+
+<div class="fullSlide">
+  <div class="bd">
     <ul>
-        <% for (var i = 0, len = apartments.length; i < len; i++) { %>
-        <li>
-            <p><%= JSON.stringify(apartments[i]) %></p>
-        </li>
-        <% } %>
+      <li style=" background:url(img/banner01.jpg) center 0 no-repeat;"></li>
+      <li style=" background:url(img/banner01.jpg) center 0 no-repeat;"></li>
+      <li style=" background:url(img/banner01.jpg) center 0 no-repeat;"></li>
+      <li style=" background:url(img/banner01.jpg) center 0 no-repeat;"></li>
     </ul>
-
-    <h2>品质小区</h2>
+  </div>
+  <!--<div class="hd">
     <ul>
-        <% for (var i = 0, len = comunities.length; i < len; i++) { %>
-        <li>
-            <p><%= JSON.stringify(comunities[i]) %></p>
-        </li>
-        <% } %>
     </ul>
+  </div>-->
+  <span class="prev"></span> <span class="next"></span> </div>
 
-    <h2>日租公寓</h2>
-    <ul>
-        <% for (var i = 0, len = dailyRents.length; i < len; i++) { %>
-        <li>
-            <p><%= JSON.stringify(dailyRents[i]) %></p>
-        </li>
-        <% } %>
-    </ul>
+<div class="clear"></div>
+<div class="sosuo">
+    <div class="sosuo_m">
+        <form action="" method="get">
+            <input type="text" class="sosuo_text"  onfocus="if (value =='小区  /   地标  /  商区'){value =''}"   onblur="if (value ==''){value='小区  /   地标  /  商区'}" value="小区  /   地标  /  商区" />
+            <select name="" class="sosuo_xz">
+              <option>房一</option>
+              <option>房二</option>
+            </select>
+            <input type="submit" class="sosuo_submit" value="搜索"/>
+        </form>
+    </div>
+</div>
 
-    <h2>more links</h2>
-    <p><a href="/apartment/">apartments</a></p>
-    <p><a href="/daily/">daily rents</a></p>
-    <p><a href="/about/">about</a></p>
-    <script src="/js/vendor.min.js"></script>
+<div class="clear"></div>
+<!----房子展示---->
+<div class="h_products">
+    <div class="tabbox" id="statetab">
+
+        <ul class="tabbtn">
+            <li class="current"><a>精品房源</a></li>
+            <li><a>品质小区</a></li>	
+            <li style="border:0;"><a>日租公寓</a></li>	
+        </ul><!--tabbtn end-->
+
+        <div class="clear"></div>
+
+        <div class="tabcon">
+            <ul>
+
+                <% apartments.forEach(function(val) { %>  
+
+                <li>
+                  <img <% if (val.apartmentType.imagekeys[0]) { %> src="http://o7k9opgtr.bkt.clouddn.com/<%= val.apartmentType.imagekeys[0] %>" <% }else{ %>src="img/banner01.jpg"  <% } %> /> 
+                     <h1><a href="/apartment/type/<%= val.apartmentType._id %>"><%= val.comunity.name %></a></h1>
+                     <div class="clear"></div>
+                     <h2><a href="/apartment/detail/<%= val._id %>"><%= val.apartmentType.name %></a><span>￥ <em><%= val.price %></em>/月</span></h2>
+                     <p><%= val.apartmentType.roomType.shi %>室<%= val.apartmentType.roomType.ting %>厅<%= val.apartmentType.roomType.wei %>卫 | 96平米</p>
+                </li>
+                <% }) %>
+
+            </ul>     
+        </div><!--tabcon end-->
+
+        <div class="tabcon">
+            <ul>
+                <% comunities.forEach(function(val) { %>  
+
+                <li>
+                  <img src="img/banner01.jpg" />
+                     <h1><a href="#">长宁古北</a></h1>
+                     <div class="clear"></div>
+                     <h2><a href="#"><%= val.name %></a><span>￥ <em><%= val.price %></em>/月</span></h2>
+                     <p>室1厅1卫 | 96平米</p>
+                </li>
+                <% }) %>
+
+            </ul>     
+        </div><!--tabcon end-->
+
+        <div class="tabcon">
+            <ul>
+                <% dailyRents.forEach(function(val) { %>  
+
+                <li>
+                  <img <% if (val.imagekeys[0]) { %> src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>" <% }else{ %>src="img/banner01.jpg"  <% } %> /> 
+                     <h1><a href="/apartment/type/<%= val.comunity._id %>"><%= val.comunity.name %></a></h1>
+                     <div class="clear"></div>
+                     <h2><a href="/daily/<%= val.id %>"><%= val.name %></a><span>￥ <em><%= val.price %></em>/月</span></h2>
+                     <p>室1厅1卫 | 96平米</p>
+                </li>
+                <% }) %>
+
+            </ul>     
+        </div><!--tabcon end-->
+
+    </div>
+    <div class="clear"></div>
+    <div class="more01"><a href="#">更多房源</a></div>
+    <div class="clear"></div>
+</div>
+
+<div class="bj_white">
+      <div class="gxm_icon">
+            <span>
+                 <h1>居家体验</h1>
+                 <h2>洗衣下厨便捷/配备净水软水系统</h2>
+                 <img src="img/icon04.jpg" />
+            </span>
+            <span>
+                 <h1>居家体验</h1>
+                 <h2>洗衣下厨便捷/配备净水软水系统</h2>
+                 <img src="img/icon04.jpg" />
+            </span>
+            <span style="float:right; margin:0;">
+                 <h1>居家体验</h1>
+                 <h2>洗衣下厨便捷/配备净水软水系统</h2>
+                 <img src="img/icon04.jpg" />
+            </span>
+      </div>
+       <div class="clear"></div>
+      <div class="h_ad01" style="background:url(img/ad.jpg) center no-repeat;"></div>
+      <div class="h_news">
+   
+
+               <!-- 代码 开始 -->
+<div id="fsD1" class="focus">  
+    <div id="D1pic1" class="fPic">  
+        <div class="fcon" style="display: none;">
+            <a href="#"><img src="img/banner01.jpg" style="opacity: 1; "></a>
+            <span class="shadow"><a target="_blank" href="http://ln.qq.com/a/20140625/015503.htm">红三代叶明子太庙办盛典 白色羽毛装高贵动人</a></span>
+        </div>
+        <div class="fcon" style="display: none;">
+            <a href="#"><img src="img/banner01.jpg" style="opacity: 1; "></a>
+            <span class="shadow"><a target="_blank" href="http://ln.qq.com/a/20140625/015503.htm">红三代叶明子太庙办盛典 白色羽毛装高贵动人</a></span>
+        </div>
+        <div class="fcon" style="display: none;">
+            <a href="#"><img src="img/banner01.jpg" style="opacity: 1; "></a>
+            <span class="shadow"><a target="_blank" href="http://ln.qq.com/a/20140625/015503.htm">红三代叶明子太庙办盛典 白色羽毛装高贵动人</a></span>
+        </div>
+   
+    </div>
+    <div class="fbg">  
+    <div class="D1fBt" id="D1fBt">  
+        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>  
+        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>  
+        <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a> 
+    </div>  
+    </div>  
+    <span class="prev"></span>   
+    <span class="next"></span>    
+</div>  
+<script type="text/javascript">
+	
+</script>
+<!-- 代码 结束 -->
+       <div class="h_news_r">
+              <h1><span>源涞实业 今日头条</span><a href="#"> 查看更多>> </a></h1>
+              <div class="clear"></div>
+              <div class="h_news_r_m">
+                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
+                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
+                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
+                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
+                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
+                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
+                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
+                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
+                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
+                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
+              </div>
+       </div>
+      </div>
+    <div class="clear"></div>
+</div>
+
+
+<div class="clear"></div>
+<% include footer.ejs %>
+
+<script type="text/javascript" src="files/js/index.js"></script>
+<script src="files/js/jquery1.js"></script>
 </body>
 </html>

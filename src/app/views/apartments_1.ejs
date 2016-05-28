@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/error.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <h3>found a total of
+        <span id="count"><%= result.total %></span>
+        house(s):
+    </h3>
+    <div id="house-list">
+        <ul class="list">
+            <% for (var i = 0, len = result.docs.length; i < len; i++) { %>
+                <li class="house">
+                    <p><%= JSON.stringify(result.docs[i]) %></p>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+    <script src="/js/vendor.min.js"></script>
+</body>
+</html>
