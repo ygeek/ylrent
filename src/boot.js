@@ -155,6 +155,7 @@ function importAllComunities() {
 
 function importApartmentType(apartmentObj) {
   return new Promise((resolve, reject) => {
+    logger.info('import apartment type obj: ', apartmentObj);
     Comunity
       .findOne({ name: apartmentObj.villageName })
       .select('_id name commerseArea district keywords')
@@ -180,7 +181,8 @@ function importApartmentType(apartmentObj) {
           },
           address: apartmentObj.address,
           isHot: false,
-          keywords: []
+          keywords: apartmentObj.keywords.split(/\s+/),
+          imagekeys: apartmentObj.imagekeys
         };
         let options = {
           new: true,
@@ -230,8 +232,8 @@ function importApartment(apartmentObj) {
           address: apartmentObj.address,
           leased: false,
           isHot: false,
-          keywords: [],
-          imagekeys: []
+          keywords: apartmentObj.keywords.split(/\s+/),
+          imagekeys: apartmentObj.imagekeys
         };
         let options = {
           new: true,
