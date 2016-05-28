@@ -25,6 +25,7 @@ router.get('/', (req, res, next) => {
       .find({})
       .limit(6)
       .sort('-isHot')
+      .populate('apartmentType comunity commerseArea district')
       .exec((err, apartments) => {
         if (err) {
           reject(err);
@@ -39,6 +40,7 @@ router.get('/', (req, res, next) => {
       .find({})
       .limit(6)
       .sort('-isHot')
+      .populate('commerseArea district')
       .exec((err, comunities) => {
         if (err) {
           reject(err);
@@ -53,6 +55,7 @@ router.get('/', (req, res, next) => {
       .find({})
       .limit(6)
       .sort('-isHot')
+      .populate('comunity commerseArea district')
       .exec((err, dailyRents) => {
         if (err) {
           reject(err);
