@@ -7,10 +7,12 @@ import passport from 'passport';
 import passportLocalMongoose from 'passport-local-mongoose';
 
 const UserSchema = new mongoose.Schema({
+  name: String,
+  email: String,
   isCrop: Boolean,
+  corpName: String,
   title: String,
-  CorpName: String,
-  Tel: String,
+  tel: String,
   Address: String
 });
 

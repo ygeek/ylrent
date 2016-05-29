@@ -19,29 +19,35 @@
             </div>
             <div class="clear"></div>
             <div class="registered_m01">
-                <form action="" method="get">
+                <form action="/user/login/" method="post">
                     <ul>
                         <li>
                             <img src="/img/z_icon01.png" />
                             <input type="text"
+                                   name="username"
                                    onfocus="if (value =='/  账号'){value =''}"
                                    onblur="if (value ==''){value='/  账号'}"
                                    value="/  账号"
                                    class="text01 current"
                             />
                         </li>
-                        <p>错误提示</p>
+                        <% if (usernameError) { %>
+                            <p><%= usernameError %></p>
+                        <% } %>
 
                         <li>
                             <img src="/img/z_icon06.png" />
                             <input type="text"
-                                   onfocus="if (value =='/  输入密码'){value =''}"
-                                   onblur="if (value ==''){value='/  输入密码'}"
+                                   name="password"
+                                   onfocus="if (value =='/  输入密码'){value =''; type='text';} else { type='password'; }"
+                                   onblur="if (value ==''){value='/  输入密码'; type='text';} else { type='password'; }"
                                    value="/  输入密码"
                                    class="text01 current"
                             />
                         </li>
-                        <p>错误提示</p>
+                        <% if (passwordError) { %>
+                            <p><%= passwordError %></p>
+                        <% } %>
 
                         <li style="background:none; padding:0 0 0 20px; color:#fff;">
                             <input type="submit" class="button01" value="登录"/>

@@ -20,11 +20,21 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/register', (req, res, next) => {
-  res.render('register', {});
+  res.render('register', { 
+    usernameError: null,
+    smsError: null,
+    nameError: null,
+    passwordError: null,
+    password2Error: null,
+    corpNameError: null
+  });
 });
 
 router.get('/login', (req, res) => {
-  res.render('login', { user: req.user });
+  res.render('login', { 
+    usernameError: null,
+    passwordError: null
+  });
 });
 
 router.get('/logout', function(req, res) {
@@ -75,13 +85,37 @@ router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   const smscode = req.body.smscode;
+  const name = req.body.name;
+  const email = req.body.email;
+  const isCorp = req.body.isCorp;
+  const corpName = req.body.corpName;
+  const title = req.body.title;
+  const address = req.body.address;
+  // const agreed = req.body.agreed;
+  
+  let userData = {
+    username: username,
+    name: name,
+    email: email
+  };
+  if (isCorp) {
+    userData.isCrop = isCorp;
+    userData.corpName = corpName;
+    userData.title = title;
+    userData.address = address;
+  }
 
   verifySMSCode(username, smscode, (err, body) => {
-    if (!err && body.code === 0) {
-      User.register(new User({ username : username }), password, function(err, user) {
+    if (!err && body && body.code === 0) {
+      User.register(new User(userData), password, function(err, user) {
         if (err) {
           return res.render('register', {
-            error: err
+            usernameError: err,
+            smsError: null,
+            nameError: null,
+            passwordError: null,
+            password2Error: null,
+            corpNameError: null
           });
         }
         passport.authenticate('local')(req, res, function() {
@@ -90,8 +124,12 @@ router.post('/register', (req, res, next) => {
       });
     } else {
       return res.render('register', {
-        error: err,
-        message: body.msg || body.error
+        usernameError: null,
+        smsError: body && ( body.msg || body.error ) || '短信验证失败',
+        nameError: null,
+        passwordError: null,
+        password2Error: null,
+        corpNameError: null
       });
     }
   });
@@ -101,8 +139,8 @@ router.post('/login', function(req, res, next) {
   User.authenticate()(req.body.username, req.body.password, function(err, user, options) {
     if (err || !user) {
       return res.render('login', {
-        error: err,
-        message: options.message
+        usernameError: null,
+        passwordError: options.message
       });
     }
     req.login(user, function(err) {
