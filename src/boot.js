@@ -172,19 +172,19 @@ function importApartmentType(apartmentObj) {
         ApartmentType.findOne(query, function(err, apartmentType) {
           assert.ifError(err);
           
-          var minArea = Math.min(isNaN(apartmentType.minArea) || !(apartmentType.minArea) ?
+          var minArea = Math.min(!apartmentType || isNaN(apartmentType.minArea) || !(apartmentType.minArea) ?
                                  Number.MAX_VALUE :
                                  apartmentType.minArea, 
                         apartmentObj.structurearea);
-          var maxArea = Math.max(isNaN(apartmentType.maxArea) || !(apartmentType.maxArea) ?
+          var maxArea = Math.max(!apartmentType || isNaN(apartmentType.maxArea) || !(apartmentType.maxArea) ?
                                  0 : 
                                  apartmentType.maxArea, 
                         apartmentObj.structurearea);
-          var minPrice = Math.min(isNaN(apartmentType.minPrice) || !(apartmentType.minPrice) ? 
+          var minPrice = Math.min(!apartmentType || isNaN(apartmentType.minPrice) || !(apartmentType.minPrice) ? 
                                   Number.MAX_VALUE :
                                   apartmentType.minPrice, 
                          apartmentObj.rentPerMonth);
-          var maxPrice = Math.max(apartmentType.maxPrice || !(apartmentType.maxPrice) ?
+          var maxPrice = Math.max(!apartmentType || apartmentType.maxPrice || !(apartmentType.maxPrice) ?
                                   0 :
                                   apartmentType.maxPrice, 
                          apartmentObj.rentPerMonth);
