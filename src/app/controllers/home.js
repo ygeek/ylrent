@@ -9,7 +9,7 @@ import mongoose from 'mongoose';
 import log4js from 'log4js';
 
 const Comunity = mongoose.model('Comunity');
-const Apartment = mongoose.model('Apartment');
+const ApartmentType = mongoose.model('ApartmentType');
 const DailyRent = mongoose.model('DailyRent');
 
 const logger = log4js.getLogger('normal');
@@ -21,16 +21,17 @@ router.get('/', (req, res, next) => {
   logger.info('request from', req.device.type);
   
   let apartmentPromise = new Promise((resolve, reject) => {
-    Apartment
-      .find({})
+    ApartmentType
+      .find({'$where': 'this.imagekeys.length > 1'})
       .limit(6)
       .sort('-isHot')
-      .populate('apartmentType comunity commerseArea district')
-      .exec((err, apartments) => {
+      .populate('comunity commerseArea district')
+      .exec((err, apartmentTypes) => {
+        logger.info(apartmentTypes);
         if (err) {
           reject(err);
         } else {
-          resolve(apartments);
+          resolve(apartmentTypes);
         }
       });
   });
@@ -67,11 +68,11 @@ router.get('/', (req, res, next) => {
 
   Promise
     .all([apartmentPromise, comunityPromise, dailyPromise])
-    .then(([apartments, comunities, dailyRents]) => {
+    .then(([apartmentTypes, comunities, dailyRents]) => {
       res.render('index', {
         title: '源涞国际',
         user: req.user,
-        apartments: apartments,
+        apartmentTypes: apartmentTypes,
         comunities: comunities,
         dailyRents: dailyRents
       });

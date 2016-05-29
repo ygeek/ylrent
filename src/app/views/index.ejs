@@ -59,14 +59,20 @@
         <div class="tabcon">
             <ul>
 
-                <% apartments.forEach(function(val) { %>  
+                <% apartmentTypes.forEach(function(val) { %>
 
                 <li>
-                  <img <% if (val.apartmentType.imagekeys[0]) { %> src="http://o7k9opgtr.bkt.clouddn.com/<%= val.apartmentType.imagekeys[0] %>" <% }else{ %>src="img/banner01.jpg"  <% } %> /> 
-                     <h1><a href="/apartment/type/<%= val.apartmentType._id %>"><%= val.comunity.name %></a></h1>
-                     <div class="clear"></div>
-                     <h2><a href="/apartment/detail/<%= val._id %>"><%= val.apartmentType.name %></a><span>￥ <em><%= val.price %></em>/月</span></h2>
-                     <p><%= val.apartmentType.roomType.shi %>室<%= val.apartmentType.roomType.ting %>厅<%= val.apartmentType.roomType.wei %>卫 | 96平米</p>
+                  <img
+                    <% if (val.imagekeys[0]) { %>
+                      src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>"
+                    <% }else{ %>
+                      src="img/banner01.jpg"
+                    <% } %>
+                  />
+                  <h1><a href="/apartment/type/<%= val._id %>"><%= val.comunity.name %></a></h1>
+                  <div class="clear"></div>
+                  <h2><a href="/apartment/type/<%= val._id %>"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span></h2>
+                  <p><%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫 | <%= val.maxArea %>平米</p>
                 </li>
                 <% }) %>
 
@@ -75,16 +81,21 @@
 
         <div class="tabcon">
             <ul>
-                <% comunities.forEach(function(val) { %>  
+              <% comunities.forEach(function(val) { %>
 
                 <li>
-                  <img src="img/banner01.jpg" />
-                     <h1><a href="#">长宁古北</a></h1>
-                     <div class="clear"></div>
-                     <h2><a href="#"><%= val.name %></a><span>￥ <em><%= val.price %></em>/月</span></h2>
-                     <p>室1厅1卫 | 96平米</p>
+                  <img
+                    <% if (val.imagekeys[0]) { %>
+                      src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>"
+                    <% }else{ %>
+                      src="img/banner01.jpg"
+                    <% } %>
+                  />
+                  <h1><a href="#"><%= val.name %></a></h1>
+                  <div class="clear"></div>
+                  <h2><a href="#"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span></h2>
                 </li>
-                <% }) %>
+              <% }) %>
 
             </ul>     
         </div><!--tabcon end-->
@@ -94,11 +105,17 @@
                 <% dailyRents.forEach(function(val) { %>  
 
                 <li>
-                  <img <% if (val.imagekeys[0]) { %> src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>" <% }else{ %>src="img/banner01.jpg"  <% } %> /> 
-                     <h1><a href="/apartment/type/<%= val.comunity._id %>"><%= val.comunity.name %></a></h1>
-                     <div class="clear"></div>
-                     <h2><a href="/daily/<%= val.id %>"><%= val.name %></a><span>￥ <em><%= val.price %></em>/月</span></h2>
-                     <p>室1厅1卫 | 96平米</p>
+                  <img
+                    <% if (val.imagekeys[0]) { %>
+                      src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>"
+                    <% } else { %>
+                      src="img/banner01.jpg"
+                    <% } %>
+                  />
+                  <h1><a href="/daily/<%= val._id %>"><%= val.comunity.name %></a></h1>
+                  <div class="clear"></div>
+                  <h2><a href="/daily/<%= val.id %>"><%= val.name %></a><span>￥ <em><%= val.price %></em>/月</span></h2>
+                  <p>1室1厅1卫 | 96平米</p>
                 </li>
                 <% }) %>
 
