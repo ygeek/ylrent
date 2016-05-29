@@ -7,6 +7,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
+import _ from 'lodash';
 
 const logger = log4js.getLogger('normal');
 
@@ -51,33 +52,68 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/api', (req, res, next) => {
+  let query = {};
+  if (req.query.districtId) {
+    query['district'] = req.query.districtId;
+  }
+
+  if (req.query.minPrice) {
+    if (!query['price']) {
+      query['price'] = {};
+    }
+    query['price']['$gte'] = parseInt(req.query.minPrice);
+  }
+  if (req.query.maxPrice) {
+    if (!query['price']) {
+      query['price'] = {};
+    }
+    query['price']['$lte'] = parseInt(req.query.maxPrice);
+  }
+
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
 
   let sort = [['hot', -1], ['price', -1], ['area', -1]];
-
-  let query = {};
 
   let options = {
     page: page,
     limit: 6,
     lean: true,
     sort: sort,
-    populate: ['comunity', 'commerseArea', 'district']
+    populate: ['apartmentType', 'comunity', 'commerseArea', 'district']
   };
+  
+  logger.info('query: ', query);
 
-  ApartmentType.paginate(query, options).then((result) => {
-    logger.trace(result);
-    res.json({
-      result: result
+  if (req.query.shi) {
+    let typeQuery = {'roomType.shi': parseInt(req.query.shi)};
+    ApartmentType.find(typeQuery).exec((err, apartmentTypes) => {
+      query['apartmentType'] = {'$in': _.map(apartmentTypes, (at) => at._id)};
+      Apartment.paginate(query, options).then((result) => {
+        res.json({
+          result: result
+        });
+      }).catch((err) => {
+        res.json({
+          error: err,
+          message: err.message,
+          stack: err.stack
+        });
+      });
     });
-  }).catch((err) => {
-    res.json({
-      error: err,
-      message: err.message,
-      stack: err.stack
+  } else {
+    Apartment.paginate(query, options).then((result) => {
+      res.json({
+        result: result
+      });
+    }).catch((err) => {
+      res.json({
+        error: err,
+        message: err.message,
+        stack: err.stack
+      });
     });
-  });
+  }
 });
 
 router.get('/type/:id', (req, res, next) => {
