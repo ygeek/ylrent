@@ -30,10 +30,13 @@ router.get('/', (req, res, next) => {
   };
 
   DailyRent.paginate(query, options).then((result) => {
-    logger.trace(result);
+    let startIndex = Math.max(1, result.page - 2);
+    let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
     res.render('dailyRents', {
       title: '日租列表',
-      result: result
+      result: result,
+      startIndex: startIndex,
+      endIndex: endIndex
     });
   }).catch((err) => {
     res.render('error', {

@@ -62,7 +62,7 @@
                 <% if (result.page > 3) { %>
                     <a href="/apartment/?page=<%= result.page - 1 %>">上一页</a>
                 <% } %>
-                <% for (var i = Math.max(1, result.page - 2); i < Math.min(result.page + 3, result.pages); i++) { %>
+                <% for (var i = startIndex; i <= endIndex; i++) { %>
                     <a href="/apartment/?page=<%= i %>"><%= i %></a>
                 <% } %>
                 <% if (result.page + 3 <= result.pages) { %>

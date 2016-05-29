@@ -33,10 +33,13 @@ router.get('/', (req, res, next) => {
   };
   
   ApartmentType.paginate(query, options).then((result) => {
-    logger.trace(result);
+    let startIndex = Math.max(1, result.page - 2);
+    let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
     res.render('apartmentType', {
       title: '房型列表',
-      result: result
+      result: result,
+      startIndex: startIndex,
+      endIndex: endIndex
     });
   }).catch((err) => {
     res.render('error', {
@@ -101,10 +104,16 @@ router.get('/type/:id', (req, res, next) => {
       };
       
       Apartment.paginate(query, options).then((result) => {
-        logger.trace(result);
+        
+        let startIndex = Math.max(1, result.page - 2);
+        let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
+        
         res.render('apartments', {
           title: '房型房源列表',
-          result: result
+          result: result,
+          typeId: typeId,
+          startIndex: startIndex,
+          endIndex: endIndex
         });
       }).catch((err) => {
         res.render('error', {

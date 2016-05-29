@@ -50,12 +50,15 @@
             
             <div class="clear"></div>
             <div class="page01">
-                <a href="#">上一页</a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">下一页</a>
+                <% if (result.page > 3) { %>
+                <a href="/daily/?page=<%= result.page - 1 %>">上一页</a>
+                <% } %>
+                <% for (var i = startIndex; i <= endIndex; i++) { %>
+                <a href="/daily/?page=<%= i %>"><%= i %></a>
+                <% } %>
+                <% if (result.page + 3 <= result.pages) { %>
+                <a href="/daily/?page=<%= result.page + 1 %>">下一页</a>
+                <% } %>
             </div>
         </div>
     </div>
