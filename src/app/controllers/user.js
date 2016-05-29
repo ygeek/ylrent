@@ -155,11 +155,46 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/forget', function(req, res, next) {
-  // const username = req.body.username;
-  // const smscode = req.body.smscode;
-  // const password = req.body.password;
-  
-  res.redirect('/user/login/');
+  const username = req.body.username;
+  const smscode = req.body.smscode;
+  const password = req.body.password;
+
+  verifySMSCode(username, smscode, (err, body) => {
+    if (!err && body && body.code === 0) {
+      User.findByUsername(username).then(function(user) {
+        if (user) {
+          user.setPassword(password, function() {
+            user.save(function(err) {
+              if (err) {
+                return res.render('forget', {
+                  usernameError: '重置密码失败',
+                  smsError: null,
+                  passwordError: null,
+                  password2Error: null
+                });
+              } else {
+                res.redirect('/user/login/');
+              }
+            });
+          });
+        } else {
+          return res.render('forget', {
+            usernameError: '该用户不存在',
+            smsError: null,
+            passwordError: null,
+            password2Error: null
+          });
+        }
+      });
+    } else {
+      return res.render('forget', {
+        usernameError: null,
+        smsError: body && ( body.msg || body.error ) || '短信验证失败',
+        passwordError: null,
+        password2Error: null
+      });
+    }
+  });
 });
 
 module.exports = router;
