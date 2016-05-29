@@ -6,10 +6,13 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import log4js from 'log4js';
 import passport from 'passport';
 import { requestSMSCode, verifySMSCode } from '../utils/sms';
 
 const User = mongoose.model('User');
+
+const logger = log4js.getLogger('normal');
 
 const router = express.Router();
 
@@ -20,21 +23,30 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/register', (req, res, next) => {
-  res.render('register', { 
-    usernameError: null,
-    smsError: null,
-    nameError: null,
-    passwordError: null,
-    password2Error: null,
-    corpNameError: null
-  });
+  if (req.device.type === 'phone') {
+    res.render('phone/register.ejs', {});
+  } else {
+    res.render('register', {
+      usernameError: null,
+      smsError: null,
+      nameError: null,
+      passwordError: null,
+      password2Error: null,
+      corpNameError: null
+    });
+  }
 });
 
 router.get('/login', (req, res) => {
-  res.render('login', { 
-    usernameError: null,
-    passwordError: null
-  });
+  logger.trace('login from ', req.device.type);
+  if (req.device.type === 'phone') {
+    res.render('phone/login.ejs', {});
+  } else {
+    res.render('login', {
+      usernameError: null,
+      passwordError: null
+    });
+  }
 });
 
 router.get('/logout', function(req, res) {
