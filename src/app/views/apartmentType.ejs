@@ -22,10 +22,33 @@
 <div class="n_main">
     <div class="select01">
         <ul>
-            <li><span>位置：</span><a href="#">不限</a><a href="#" id="select_hover">黄浦区</a><a href="#">黄浦区</a><a href="#">黄浦区</a><a href="#">黄浦区</a></li>
-            <li><span>房型：</span><a href="#">不限</a><a href="#">黄浦区</a><a href="#">黄浦区</a><a href="#">黄浦区</a><a href="#">黄浦区</a></li>
-            <li><span>月租：</span><a href="#">不限</a><a href="#">¥5000-¥10000</a><a href="#">¥5000-¥10000</a><a href="#">¥5000-¥10000</a></li>
-            <li><span>条件：</span><a href="#">不限</a><a href="#">黄埔区</a><a href="#">黄埔区</a><a href="#">¥5000-¥10000</a></li>
+            <li><span>位置：</span>
+                <a href="#">不限</a>
+                <% districts.forEach(function(district) { %>
+                    <a href="#"><%= district.name %></a>
+                <% }) %>
+            </li>
+
+            <li><span>房型：</span>
+                <a href="#">不限</a>
+                <a href="#">一室</a>
+                <a href="#">二室</a>
+                <a href="#">三室以上</a>
+            </li>
+
+            <li><span>月租：</span>
+                <a href="#">不限</a>
+                <a href="#">¥5000 - ¥10000</a>
+                <a href="#">¥5000 - ¥10000</a>
+                <a href="#">¥5000 - ¥10000</a>
+            </li>
+
+            <li><span>条件：</span>
+                <a href="#">不限</a>
+                <a href="#">黄埔区</a>
+                <a href="#">二室</a>
+                <a href="#">¥5000 - ¥10000</a>
+            </li>
         </ul>
     </div>
     <div class="clear"></div>

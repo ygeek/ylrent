@@ -12,6 +12,7 @@ import _ from 'lodash';
 const logger = log4js.getLogger('normal');
 
 // const ObjectId = mongoose.Schema.Types.ObjectId;
+const District = mongoose.model('District');
 const ApartmentType = mongoose.model('ApartmentType');
 const Apartment = mongoose.model('Apartment');
 
@@ -33,20 +34,23 @@ router.get('/', (req, res, next) => {
     populate: ['comunity', 'commerseArea', 'district']
   };
   
-  ApartmentType.paginate(query, options).then((result) => {
-    let startIndex = Math.max(1, result.page - 2);
-    let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
-    res.render('apartmentType', {
-      title: '房型列表',
-      result: result,
-      startIndex: startIndex,
-      endIndex: endIndex
-    });
-  }).catch((err) => {
-    res.render('error', {
-      error: err,
-      message: err.message,
-      stack: err.stack
+  District.find({}).exec((err, districts) => {
+    ApartmentType.paginate(query, options).then((result) => {
+      let startIndex = Math.max(1, result.page - 2);
+      let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
+      res.render('apartmentType', {
+        title: '房型列表',
+        result: result,
+        districts: districts,
+        startIndex: startIndex,
+        endIndex: endIndex
+      });
+    }).catch((err) => {
+      res.render('error', {
+        error: err,
+        message: err.message,
+        stack: err.stack
+      });
     });
   });
 });
@@ -162,9 +166,7 @@ router.get('/type/:id', (req, res, next) => {
 });
 
 router.get('/detail/:id', (req, res, next) => {
-  logger.trace("GET apartment id: ", req.params.id);
   Apartment.findById(req.params.id, function(err, apartment) {
-    logger.trace("Queried apartment: ", apartment);
     if (err) {
       return res.render('error', {
         error: err,
