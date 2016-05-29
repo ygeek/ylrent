@@ -89,8 +89,14 @@ router.get('/api', (req, res, next) => {
   
   logger.info('query: ', query);
 
-  if (req.query.shi) {
-    let typeQuery = {'roomType.shi': parseInt(req.query.shi)};
+  if (req.query.shi || req.query.shigte) {
+    let typeQuery = {}; 
+    if (req.query.shi) {
+      typeQuery['roomType.shi'] = parseInt(req.query.shi);
+    }
+    if (req.query.shigte) {
+      typeQuery['roomType.shi'] = { '$gte': parseInt(req.query.shigte) };
+    }
     ApartmentType.find(typeQuery).exec((err, apartmentTypes) => {
       query['apartmentType'] = {'$in': _.map(apartmentTypes, (at) => at._id)};
       Apartment.paginate(query, options).then((result) => {
