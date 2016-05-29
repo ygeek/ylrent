@@ -4,7 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>源涞国际 - 忘记密码</title>
     <link type="text/css" rel="stylesheet" href="/css/style.css" />
-
+    <script type="text/javascript" src="/files/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/sms.js"></script>
 </head>
 <body>
 
@@ -29,7 +30,8 @@
                     <ul>
                         <li>
                             <img src="/img/z_icon01.png" />
-                            <input type="text"
+                            <input id="usernameField"
+                                   type="text"
                                    name="username"
                                    onfocus="if (value =='/  账号'){value =''}"
                                    onblur="if (value ==''){value='/  账号'}"
@@ -52,7 +54,7 @@
                                        class="text02"
                                 />
                             </span>
-                            <em>获取验证码</em>
+                            <button id="sendButton">获取验证码</button>
                         </li>
                         <% if (smsError) { %>
                             <p><%= smsError %></p>
