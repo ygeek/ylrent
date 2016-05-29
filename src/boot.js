@@ -189,8 +189,6 @@ function importApartmentType(apartmentObj) {
                                   apartmentType.maxPrice, 
                          apartmentObj.rentPerMonth);
           
-          logger.info('test: ', apartmentObj, apartmentType.area, apartmentType.price, minArea, maxArea, minPrice, maxPrice);
-          
           if (!apartmentType) {
             apartmentType = new ApartmentType();
           }
