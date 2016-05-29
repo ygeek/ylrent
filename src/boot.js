@@ -168,36 +168,58 @@ function importApartmentType(apartmentObj) {
         let query = {
           name: apartmentTypeName
         };
-        let update = {
-          name: apartmentTypeName,
-          comunity: comunity,
-          commerseArea: comunity.commerseArea,
-          district: comunity.district,
-          roomType: {
+
+        ApartmentType.findOne(query, function(err, apartmentType) {
+          assert.ifError(err);
+          
+          var minArea = Math.min(isNaN(apartmentType.minArea) || !(apartmentType.minArea) ?
+                                 Number.MAX_VALUE :
+                                 apartmentType.minArea, 
+                        apartmentObj.structurearea);
+          var maxArea = Math.max(isNaN(apartmentType.maxArea) || !(apartmentType.maxArea) ?
+                                 0 : 
+                                 apartmentType.maxArea, 
+                        apartmentObj.structurearea);
+          var minPrice = Math.min(isNaN(apartmentType.minPrice) || !(apartmentType.minPrice) ? 
+                                  Number.MAX_VALUE :
+                                  apartmentType.minPrice, 
+                         apartmentObj.rentPerMonth);
+          var maxPrice = Math.max(apartmentType.maxPrice || !(apartmentType.maxPrice) ?
+                                  0 :
+                                  apartmentType.maxPrice, 
+                         apartmentObj.rentPerMonth);
+          
+          logger.info('test: ', apartmentObj, apartmentType.area, apartmentType.price, minArea, maxArea, minPrice, maxPrice);
+          
+          if (!apartmentType) {
+            apartmentType = new ApartmentType();
+          }
+          apartmentType.name = apartmentTypeName;
+          apartmentType.comunity = comunity;
+          apartmentType.commerseArea = comunity.commerseArea;
+          apartmentType.district = comunity.district;
+          apartmentType.roomType = {
             ting: apartmentObj.ting,
             shi: apartmentObj.shi,
             wei: apartmentObj.wei,
             beds: 0
-          },
-          address: apartmentObj.address,
-          isHot: false,
-          keywords: apartmentObj.keywords.split(/\s+/),
-          imagekeys: apartmentObj.imagekeys
-        };
-        let options = {
-          new: true,
-          upsert: true,
-          setDefaultsOnInsert: true
-        };
-        ApartmentType
-          .findOneAndUpdate(query, update, options)
-          .populate('comunity commerseArea district')
-          .exec((err, apartmentType) => {
+          };
+          apartmentType.address = apartmentObj.address;
+          apartmentType.isHot = false;
+          apartmentType.keywords = apartmentObj.keywords.split(/\s+/);
+          
+          apartmentType.minArea = minArea;
+          apartmentType.maxArea = maxArea;
+          apartmentType.minPrice = minPrice;
+          apartmentType.maxPrice = maxPrice;
+          
+          apartmentType.imagekeys = _.uniq(apartmentType.imagekeys.concat(apartmentObj.imagekeys));
+          apartmentType.save(function(err) {
             logger.info('import apartment type: ', apartmentType);
             assert.ifError(err);
-            assert.equal(apartmentType.name, apartmentTypeName);
             resolve(apartmentType);
           });
+        });
       });
   });
 }
@@ -247,7 +269,17 @@ function importApartment(apartmentObj) {
             assert.ifError(err);
             assert.equal(apartment.houseNo, apartmentObj.houseno);
             logger.info('import apartment: ', apartment);
-            resolve(apartment);
+            
+            apartment.comunity.minArea = Math.min(apartment.comunity.minArea || 10000, apartment.area);
+            apartment.comunity.maxArea = Math.max(apartment.comunity.maxArea || 0, apartment.area);
+            apartment.comunity.minPrice = Math.min(apartment.comunity.minPrice || 10000000, apartment.price);
+            apartment.comunity.maxPrice = Math.max(apartment.comunity.maxPrice || 0, apartment.price);
+            if (apartment.imagekeys && apartment.imagekeys.length > 0) {
+              apartment.comunity.imagekeys = apartment.imagekeys;
+            }
+            apartment.comunity.save(function(err) {
+              resolve(apartment);
+            });
           });
       });
   });

@@ -25,10 +25,10 @@
     <div class="remen_top_show">
         <div class="remen01">
                 <div class="remen01_l">
-                    <h1><%= apartment.address %></h1>
+                    <h1><%= apartment.comunity.name %> <%= apartment.houseNo %></h1>
                     <p>
-                    上海市徐汇区虹桥路168弄  徐汇区<br />
-                    2室2厅2卫  |  114平米  |  06层  |  精装修 | 现代简约
+                    <%= apartment.address %>  <%= apartment.district.name %><br />
+                    <%= apartment.apartmentType.roomType.shi %>室<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫  |  <%= apartment.area %>平米 |  精装修 | 现代简约
                     </p>
                 </div>
                 <div class="remen01_r">

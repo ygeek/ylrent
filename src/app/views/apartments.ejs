@@ -45,9 +45,9 @@
             <ul>
                 <img src="/img/banner01.jpg" width="402" height="260" />
                 <li>
-                    <h1><a href="/daily/<%= val.id %>"><%= val.name %></a></h1>
-                    <p>世茂滨江花园<br />
-                        酒店式公寓  |  2室1厅1卫  |   120平米</p>
+                    <h1><a href="/apartment/detail/<%= val.id %>"><%= val.name %></a></h1>
+                    <p><%= val.comunity.name %><br />
+                        酒店式公寓  |  <%= val.apartmentType.roomType.shi %>室<%= val.apartmentType.roomType.ting %>厅<%= val.apartmentType.roomType.wei %>卫  |  <%= val.area %>平米</p>
                     <p style="margin:130px 0 0 0;"><%= val.address %></p>
                 </li>
                 <li style="float:right; margin:0 10px 0 0;">

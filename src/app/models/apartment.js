@@ -22,6 +22,11 @@ const ComunitySchema = new mongoose.Schema({
   address: String,     // 上海市浦东东绣路99弄
   latitude: Number,    // 纬度 31.221362
   longitude: Number,   // 经度 121.545650
+  minArea: Number,     // 最小面积
+  maxArea: Number,     // 最大面积
+  minPrice: Number,    // 最低价格
+  maxPrice: Number,    // 最高价格
+  imagekeys: [String], // 照片列表
   isHot: Boolean,      // 是否主推
   keywords: [String]   // ["徐家汇", "一号线"]
 });
@@ -40,6 +45,10 @@ const ApartmentTypeSchema = new mongoose.Schema({
   address: String,        // 浦东东绣路99弄17号
   isHot: Boolean,         // 是否主推
   keywords: [String],     // ["徐家汇"， "一号线", "xxx"]
+  minArea: Number,     // 最小面积
+  maxArea: Number,     // 最大面积
+  minPrice: Number,    // 最低价格
+  maxPrice: Number,    // 最高价格
   imagekeys: [String]     // ["七牛图片文件KEY"]
 });
 
