@@ -43,7 +43,12 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/forget', function(req, res) {
-  res.render('forget');
+  res.render('forget', {
+    usernameError: null,
+    smsError: null,
+    passwordError: null,
+    password2Error: null
+  });
 });
 
 router.post('/requestsms', (req, res, next) => {
@@ -147,6 +152,14 @@ router.post('/login', function(req, res, next) {
       res.redirect('/');
     });
   });
+});
+
+router.post('/forget', function(req, res, next) {
+  // const username = req.body.username;
+  // const smscode = req.body.smscode;
+  // const password = req.body.password;
+  
+  res.redirect('/user/login/');
 });
 
 module.exports = router;
