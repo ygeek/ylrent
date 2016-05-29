@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>源涞国际 - 热门房型</title>
+<title><%= title %></title>
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
-<script type="text/javascript" src="/files/js/jquery.js"></script>
+<script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
 
 
 </head>
@@ -23,31 +23,35 @@
     <div class="select01">
         <ul>
             <li><span>位置：</span>
-                <a href="#">不限</a>
+                <a href="javascript:void(0);" class="weizhi seled" id="weizhi" vid="0">不限</a>
                 <% districts.forEach(function(district) { %>
-                    <a href="#"><%= district.name %></a>
+                    <a href="javascript:void(0);" vid="<%= district.id %>" class="weizhi" ><%= district.name %></a>
                 <% }) %>
+                <input type="hidden" name="weizhi" value="0" />
             </li>
 
             <li><span>房型：</span>
-                <a href="#">不限</a>
-                <a href="#">一室</a>
-                <a href="#">二室</a>
-                <a href="#">三室以上</a>
+                <a href="javascript:void(0);" class="fangxing seled" id="fangxing" vid="0">不限</a>
+                <a href="javascript:void(0);" class="fangxing" sid="shi" vid="1">一室</a>
+                <a href="javascript:void(0);" class="fangxing"  sid="shi" vid="2">二室</a>
+                <a href="javascript:void(0);" class="fangxing"  sid="shigte" vid="3">三室以上</a>
+                <input type="hidden" name="fangxing" value="0" />
             </li>
 
             <li><span>月租：</span>
-                <a href="#">不限</a>
-                <a href="#">¥5000 - ¥10000</a>
-                <a href="#">¥5000 - ¥10000</a>
-                <a href="#">¥5000 - ¥10000</a>
+                <a href="javascript:void(0);" id="yuezu" class="yuezu seled" min="0" max="0">不限</a>
+                <a href="javascript:void(0);" class="yuezu "  min="0" max="5000">¥5000以下</a>
+                <a href="javascript:void(0);" class="yuezu " min="5000" max="10000">¥5000 - ¥10000</a>
+                <a href="javascript:void(0);" class="yuezu " min="10001" max="15000">¥10001 - ¥15000</a>
+                <a href="javascript:void(0);" class="yuezu " min="15001" max="20000">¥15001 - ¥20000</a>
+                <a href="javascript:void(0);" class="yuezu " min="20001" max="30000">¥20001 - ¥30000</a>
+                <a href="javascript:void(0);" class="yuezu " min="30001" max="50000">¥30001 - ¥50000</a>
+                <a href="javascript:void(0);" class="yuezu " min="50000"  max="0">¥50000以上</a>
             </li>
 
-            <li><span>条件：</span>
-                <a href="#">不限</a>
-                <a href="#">黄埔区</a>
-                <a href="#">二室</a>
-                <a href="#">¥5000 - ¥10000</a>
+            <li class="tiaojian"><span >条件：</span>
+              
+                
             </li>
         </ul>
     </div>
@@ -66,7 +70,7 @@
             <% result.docs.forEach(function(val) { %> 
             
             <ul>
-                <img
+                <img 
                   <% if (val.imagekeys[0]) { %>
                     src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>"
                   <% }else{ %>
@@ -74,7 +78,7 @@
                   <% } %>
                   width="402"
                   height="260"
-                />
+                /> 
                 <li>
                     <h1><a href="/apartment/type/<%= val._id %>"><%= val.name %></a></h1>
                     <p><%= val.comunity.name %><br />
@@ -90,17 +94,21 @@
             
             <div class="clear"></div>
             <div class="page01">
+
                 <% if (result.page > 3) { %>
-                    <a href="/apartment/?page=<%= result.page - 1 %>">上一页</a>
+                    <a href="javascript:void(0);"  class="prepage">上一页</a>
                 <% } %>
                 <% for (var i = startIndex; i <= endIndex; i++) { %>
-                    <a href="/apartment/?page=<%= i %>"><%= i %></a>
+                    <a  href="javascript:void(0);" vid="<%= i %>" class="pagenum <% if (result.page == i) { %>pagesel<% } %>"  ><%= i %></a>
                 <% } %>
                 <% if (result.page + 3 <= result.pages) { %>
-                    <a href="/apartment/?page=<%= result.page + 1 %>">下一页</a>
+                    <a href="javascript:void(0);" class="nextpage">下一页</a>
                 <% } %>
+                
             </div>
         </div>
+        <input name="page" value="<%= result.page %>" class="page" type="hidden" />
+        <input name="pages" value="<%= result.pages %>" class="pages" type="hidden" />
     </div>
     <div class="clear"></div>
 </div>
@@ -125,3 +133,4 @@
 </div>
 <div class="clear"></div>
 <% include footer.ejs %>
+<script type="text/javascript" src="/files/js/ajax.js"></script>

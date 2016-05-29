@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*** index.ejs ***/
 jQuery(".fullSlide").hover(function() {
     jQuery(this).find(".prev,.next").stop(true, true).fadeTo("show", 0.5)
 },
@@ -40,4 +41,3 @@ Qfast(false, 'widgets', function () {
                 interval: 3000  //** 停顿时间  
         }) 
 })  
-
