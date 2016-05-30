@@ -159,8 +159,25 @@ caption,th{text-align:left;}
 
 /***图片Hover***/
 
+.imghover {
+	width: 310px;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+}
 
+.transition {
+	-webkit-transform: scale(2);
+	-moz-transform: scale(2);
+	-o-transform: scale(2);
+	transform: scale(2);
+}
 
+.slider-wrapper {
+	width: 90%;
+	margin: 20px auto;
+}
 
 /***搜索****/
 .sosuo{height:100px; background:url(../img/so_bg.png); min-width:1120px; font-size:15px; margin:-100px 0 0 0; position:relative; z-index:15;}	

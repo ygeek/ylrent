@@ -4,8 +4,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><%= apartment.comunity.name %><%= apartment.apartmentType.roomType.shi %>房<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫</title>
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
-<script type="text/javascript" src="/files/js/jquery.js"></script>
 
+<link rel="stylesheet" href="/files/lib/jquery.slides.css">
+<link rel="stylesheet" href="/files/lib/font-awesome.min.css">
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="/files/lib/jquery.slides.min.js"></script>
+
+<script>
+    $(function(){
+        $("#slides").slidesjs({
+            navigation: false
+        });
+    });
+</script>
 
 </head>
 <body>
@@ -19,7 +31,20 @@
      <a href="#">首页</a> > <a href="#">首页</a> > <a href="#">首页</a>
 </div>
 
-<div class="min_banner01"><img src="/img/banner01.jpg" width="1120" height="520" /></div>
+<div class="container">
+    <div id="slides">
+        <% if (apartment.imagekeys && apartment.imagekeys.length > 0) { %>
+            <% apartment.imagekeys.forEach(function(imgkey){ %>
+                <img src="http://o7k9opgtr.bkt.clouddn.com/<%= imgkey %>" width="auto" height="520" alt="" />
+            <% }) %>
+        <% } else { %>
+            <img src="/img/banner01.jpg" width="auto" height="520" alt="" />
+            <img src="/img/banner01.jpg" width="auto" height="520" alt="" />
+        <% } %>
+        <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
+        <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
+    </div>
+</div>
 
 <div class="n_main">
     <div class="remen_top_show">
@@ -414,7 +439,6 @@
 <div class="clear"></div>
 
 <% include footer.ejs %>
-<script src="/files/js/jquery1.js"></script>
 
 </body>
 </html>
