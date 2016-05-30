@@ -175,11 +175,11 @@ caption,th{text-align:left;}
 			   .tabbox .tabbtn li a{color:#999;}
 			.tabbox .tabbtn li.current a,.tabbox .tabbtn li.current span{color:#333; font-family: "微软雅黑"; font-weight:bold;}
 			.tabcon{padding:22px 0 0 0;}
-			   .tabcon li{height:360px; width:363px; background:#fff; display:block; float:left; margin:16px 16px 0 0;}
+			   .tabcon li{height:360px; cursor: pointer; width:363px; background:#fff; display:block; float:left; margin:16px 16px 0 0;}
 			     .tabcon li img{display:block; width:363px; height:240px;}
 				    .tabcon li h1{background:url(../img/so_bg.png); padding:0 30px; height:53px; line-height:53px; font-size:20px; float:left; margin:-53px 0 0 0; position:relative; z-index:10;}
-					.tabcon li h1 a{color:#fff;}
-					.tabcon li h2{padding:15px 20px 0 20px; font-size:16px; height:30px;}
+					.tabcon li h1 a{color:#fff; font-size: 20px; font-weight: 100; }
+					.tabcon li h2{padding:15px 20px 0 20px; font-weight: bolder;  font-size:16px; height:30px;}
 					   .tabcon li h2 a{float:left; color:#333; display:block;}
 					   .tabcon li h2 span{display:block; float:right; color:#9c8a68;}
 					     .tabcon li h2 span em{font-size:24px;}
@@ -210,8 +210,8 @@ caption,th{text-align:left;}
 			.focus .btn a:hover,.focus .btn a.current{  cursor:pointer;background:#fc114a;}  
 			.focus .fPic{ position:absolute; left:0px; top:0px; }  
 			.focus .D1fBt{ overflow:hidden; zoom:1;  height:16px; z-index:10;  }  
-			.focus .shadow{ width:100%; position:absolute; bottom:0; left:0px; z-index:10; height:80px; line-height: 80px; background:rgba(0,0,0,0.6);    
-			filter:progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = '#80000000',endColorstr = '#80000000')\9;  display:block;  text-align:left; }  
+			.focus .shadow{ width:100%; position:absolute; top:50%; left:60px; width: 570px; margin-top: -50px; text-align: center; z-index:10; height:100px; line-height: 100px; background:rgba(0,0,0,0.6);    
+			filter:progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = '#80000000',endColorstr = '#80000000')\9;  display:block;  }  
 			.focus .shadow a{ text-decoration:none; color:#fff; font-size:20px; overflow:hidden; margin-left:10px; font-family: "\5FAE\8F6F\96C5\9ED1";}  
 			.focus .fcon{ position:relative; width:100%; float:left;  display:none; background:#000  }  
 			.focus .fcon img{ display:block; }  
