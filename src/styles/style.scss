@@ -3,7 +3,7 @@
 --------------------------------*/
 
 body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}
-body,button,input,select,textarea{font:14px Verdana, Geneva, sans-serif; font-family:"微软雅黑";}
+body,button,input,select,textarea{font:14px Verdana, Geneva, sans-serif; font-family:"微软雅黑","Microsoft YaHei","Hiragino Sans GB","华文细黑","STHeiti",SimHei,"Helvetica Neue",Helvetica,Arial,sans-serif !important;}
 body{background:#f2f2f2 ; color:#666;}
 h1,h2,h3,h4,h5,h6{font-size:100%;}
 address,cite,dfn,em,var{font-style:normal;}
@@ -48,6 +48,8 @@ caption,th{text-align:left;}
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
 .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+.tel{fontfamily:Arial Black}
 
 /*layout style
 --------------------------------------*/
