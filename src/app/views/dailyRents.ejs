@@ -5,6 +5,7 @@
 <title>源涞国际 - 日租房源</title>
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
 <script type="text/javascript" src="/files/js/jquery.js"></script>
+<script type="text/javascript" src="/files/js/imghover.js"></script>
 </head>
 <body>
 
@@ -32,15 +33,17 @@
             <% result.docs.forEach(function(val) { %> 
             
             <ul>
-                <img
-                  <% if (val.imagekeys[0]) { %>
-                    src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>"
-                  <% }else{ %>
-                    src="/img/banner01.jpg"
-                  <% } %>
-                  width="402"
-                  height="260"
-                />
+                <a href="/daily/<%= val.id %>">
+                    <img class="imghover"
+                        <% if (val.imagekeys[0]) { %>
+                            src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>"
+                        <% }else{ %>
+                            src="/img/banner01.jpg"
+                        <% } %>
+                        width="402"
+                        height="260"
+                    />
+                </a>
                 <li>
                     <h1><a href="/daily/<%= val.id %>"><%= val.name %></a></h1>
                     <p>世茂滨江花园<br />
