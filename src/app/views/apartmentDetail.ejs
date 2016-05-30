@@ -35,11 +35,17 @@
     <div id="slides">
         <% if (apartment.imagekeys && apartment.imagekeys.length > 0) { %>
             <% apartment.imagekeys.forEach(function(imgkey){ %>
-                <img src="http://o7k9opgtr.bkt.clouddn.com/<%= imgkey %>" width="auto" height="520" alt="" />
+            <div>
+                <img class="slide" src="http://o7k9opgtr.bkt.clouddn.com/<%= imgkey %>" width="auto" height="520" alt="" />
+            </div>
             <% }) %>
         <% } else { %>
-            <img src="/img/banner01.jpg" width="auto" height="520" alt="" />
-            <img src="/img/banner01.jpg" width="auto" height="520" alt="" />
+            <div>
+                <img class="slide" src="/img/banner01.jpg" width="auto" height="520" alt="" />
+            </div>
+            <div>
+                <img class="slide" src="/img/banner01.jpg" width="auto" height="520" alt="" />
+            </div>
         <% } %>
         <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
         <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
