@@ -275,6 +275,8 @@ function ajaxget()
             pagestr += '</div>';
              $(".tuijianfangyuan_m").html(htmlstr+pagestr);
              $("input[name='pages']").val(data.result.pages);
+
+            $("html, body").animate({ scrollTop: 0 }, "slow");
         }
     });
 }
