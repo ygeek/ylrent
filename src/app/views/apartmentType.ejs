@@ -83,7 +83,7 @@
                     <h1><a href="/apartment/type/<%= val._id %>"><%= val.name %></a></h1>
                     <p><%= val.comunity.name %><br />
                         酒店式公寓  |  <%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫  | <%= val.maxArea %>平米</p>
-                    <p style="margin:130px 0 0 0;"><%= val.address %></p>
+                    <p style="margin:130px 0 0 0;"><%= val.district.name %>-<%= val.commerseArea.name %></p>
                 </li>
                 <li style="float:right; margin:0 10px 0 0;">
                     <h2>￥ <em><%= val.minPrice %></em> / 月 起</h2>

@@ -14,6 +14,7 @@ const logger = log4js.getLogger('normal');
 
 // const ObjectId = mongoose.Schema.Types.ObjectId;
 const District = mongoose.model('District');
+const CommerseArea = mongoose.model('CommerseArea');
 const ApartmentType = mongoose.model('ApartmentType');
 const Apartment = mongoose.model('Apartment');
 
@@ -47,23 +48,26 @@ router.get('/', (req, res, next) => {
   let template = req.device.type === 'phone' ? 'phone/apartmentType.ejs' : 'apartmentType' ;
   
   District.find({}).exec((err, districts) => {
-    ApartmentType.paginate(query, options).then((result) => {
-      let startIndex = Math.max(1, result.page - 2);
-      let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
-      res.render(template, {
-        title: '房型列表',
-        result: result,
-        districts: districts,
-        startIndex: startIndex,
-        endIndex: endIndex,
-        sortBy: sortBy,
-        url: url.parse(req.originalUrl).pathname
-      });
-    }).catch((err) => {
-      res.render('error', {
-        error: err,
-        message: err.message,
-        stack: err.stack
+    CommerseArea.find({}).exec((err, commerseAreas) => {
+      ApartmentType.paginate(query, options).then((result) => {
+        let startIndex = Math.max(1, result.page - 2);
+        let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
+        res.render(template, {
+          title: '房型列表',
+          result: result,
+          districts: districts,
+          commerseAreas: commerseAreas,
+          startIndex: startIndex,
+          endIndex: endIndex,
+          sortBy: sortBy,
+          url: url.parse(req.originalUrl).pathname
+        });
+      }).catch((err) => {
+        res.render('error', {
+          error: err,
+          message: err.message,
+          stack: err.stack
+        });
       });
     });
   });

@@ -171,7 +171,7 @@ caption,th{text-align:left;}
 			   .tabbox .tabbtn li a{color:#999;}
 			.tabbox .tabbtn li.current a,.tabbox .tabbtn li.current span{color:#333; font-weight:bold;}
 			.tabcon{padding:30px 0 0 0;}
-			   .tabcon li{height:340px; width:363px; background:#fff; display:block; float:left; margin:16px 16px 0 0;}
+			   .tabcon li{height:360px; width:363px; background:#fff; display:block; float:left; margin:16px 16px 0 0;}
 			     .tabcon li img{display:block; width:363px; height:240px;}
 				    .tabcon li h1{background:url(../img/so_bg.png); padding:0 30px; height:53px; line-height:53px; font-size:20px; float:left; margin:-53px 0 0 0; position:relative; z-index:10;}
 					.tabcon li h1 a{color:#fff;}
@@ -180,6 +180,7 @@ caption,th{text-align:left;}
 					   .tabcon li h2 span{display:block; float:right; color:#9c8a68;}
 					     .tabcon li h2 span em{font-size:20px;}
 					.tabcon li p{padding:0 20px;}
+                    .tabcon li p.address{padding:20px 20px;}
 /*****************************选项卡代码******************************/
    .more01 a{width:170px; height:52px; line-height:52px; background:#fff; border:1px solid #d4d4d4; margin:50px auto; display:block; text-align:center; font-size:18px;}
    

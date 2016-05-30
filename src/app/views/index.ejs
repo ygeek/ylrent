@@ -35,8 +35,9 @@
         <form action="" method="get">
             <input type="text" class="sosuo_text"  onfocus="if (value =='小区  /   地标  /  商区'){value =''}"   onblur="if (value ==''){value='小区  /   地标  /  商区'}" value="小区  /   地标  /  商区" />
             <select name="" class="sosuo_xz">
-              <option>房一</option>
-              <option>房二</option>
+              <option>一房</option>
+              <option>二房</option>
+              <option>三房及以上</option>
             </select>
             <input type="submit" class="sosuo_submit" value="搜索"/>
         </form>
@@ -73,6 +74,7 @@
                   <div class="clear"></div>
                   <h2><a href="/apartment/type/<%= val._id %>"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span></h2>
                   <p><%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫 | <%= val.maxArea %>平米</p>
+                  <p class="address"><%= val.district.name %>-<%= val.commerseArea.name %></p>
                 </li>
                 <% }) %>
 
@@ -94,6 +96,7 @@
                   <h1><a href="#"><%= val.name %></a></h1>
                   <div class="clear"></div>
                   <h2><a href="#"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span></h2>
+                  <p><%= val.district.name %>-<%= val.commerseArea.name %></p>
                 </li>
               <% }) %>
 
@@ -116,6 +119,7 @@
                   <div class="clear"></div>
                   <h2><a href="/daily/<%= val.id %>"><%= val.name %></a><span>￥ <em><%= val.price %></em>/月</span></h2>
                   <p>1室1厅1卫 | 96平米</p>
+                  <p class="address"><%= val.district.name %>-<%= val.commerseArea.name %></p>
                 </li>
                 <% }) %>
 

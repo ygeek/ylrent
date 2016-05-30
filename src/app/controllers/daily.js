@@ -36,7 +36,8 @@ router.get('/', (req, res, next) => {
     page: page,
     limit: 6,
     lean: true,
-    sort: sort
+    sort: sort,
+    populate: ['comunity', 'commerseArea', 'district']
   };
 
   let template = req.device.type === 'phone' ? 'phone/dailyRents.ejs' : 'dailyRents';
