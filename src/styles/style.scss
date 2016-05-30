@@ -11,7 +11,7 @@ code,kbd,pre,samp{font-family:courier new,courier,monospace;}
 small{font-size:12px;}
 ul,ol{list-style:none;}
 a{text-decoration:none; color:#666; }
-a:hover{text-decoration:underline; color:#a37c41;}
+a:hover{text-decoration:none; color:#a37c41;}
 sup{vertical-align:text-top;}
 sub{vertical-align:text-bottom;}
 abbr[title]{border-bottom:1px dotted;cursor:help;}
@@ -58,13 +58,15 @@ caption,th{text-align:left;}
 /*header部分*/
 .header{height:154px; background:#474747; min-width:1120px;}
     .header .header_m{width:1120px; margin:0 auto; padding:30px 0 0 0;}
-	    .header .header_m .header_m_top{height:70px; border-bottom:1px solid #fff; margin:0 0 10px 0;}
+	    .header .header_m .header_m_top{height:70px; border-bottom:1px solid #fff; }
 		     .header .header_m .header_m_top img{float:left; display:block;}
 			 .header .header_m .header_m_top span{float:right; display:block; margin:30px 0 0 0;}
 			    .header .header_m .header_m_top span a{float:left; padding:0 0 0 10px; background:url(../img/icon01.jpg) left no-repeat; margin:0 0 0 10px; color:#fff;}
-		.header .header_m .header_m_bottom .nav{float:left;}
-		    .header .header_m .header_m_bottom .nav a{display:block; float:left; margin:0 60px 0 0; font-size:20px; color:#fff;}
-		.header .header_m .header_m_bottom .tel{float:right; background:url(../img/tel.jpg) left no-repeat; padding:0 0 0 50px; color:#fff; font-size:22px; font-weight:bold;}
+                            .header .header_m .header_m_bottom { height: 50px; line-height: 50px;}
+                            .header .header_m .header_m_bottom .nav{float:left;}
+		    .header .header_m .header_m_bottom .nav a{display:block; float:left; margin:0 40px 0 0; padding-left: 10px; padding-right: 10px;text-decoration: none;  font-size:20px; color:#fff;}
+                    .header .header_m .header_m_bottom .nav a:hover { border-bottom: #fff solid 1px; background-color: #000;}
+                    .header .header_m .header_m_bottom .tel{float:right; background:url(../img/tel.jpg) left no-repeat; padding:0 0 0 50px; color:#fff; font-size:22px; font-weight:bold;}
 
 
 .fullSlide {
@@ -159,33 +161,33 @@ caption,th{text-align:left;}
 /***搜索****/
 .sosuo{height:100px; background:url(../img/so_bg.png); min-width:1120px; font-size:15px; margin:-100px 0 0 0; position:relative; z-index:15;}	
    .sosuo .sosuo_m{width:1120px; margin:0 auto; padding:35px 0 0 0;}		 
-     .sosuo_text{width:500px; height:32px; line-height:32px; background:#fff; color: #a5a5a5; border:0; text-indent:15px; margin:0 0 0 110px;}
-	 .sosuo_xz{width:222px; height:32px; margin:0 30px;}
-	 .sosuo_submit{width:108px; height:32px; border:0; cursor:pointer; background:url(../img/icon03.png) 15px no-repeat #fff; font-weight:bold; border-radius:3px;}
+     .sosuo_text{width:500px; height:32px; line-height:32px; background:#fff; color: #666; border:0; text-indent:15px; margin:0 0 0 110px;}
+	 .sosuo_xz{width:222px; color: #666;  height:32px; margin:0 30px;}
+	 .sosuo_submit{width:108px; height:32px; color: #666; border:0; cursor:pointer; background:url(../img/icon03.png) 15px no-repeat #fff; font-weight:bold; border-radius:3px;}
 	 
 	 
 /******房子展示*******/
-.h_products{width:1120px; margin:50px auto 0 auto; overflow:hidden;}
+.h_products{width:1120px; margin:40px auto 0 auto; overflow:hidden;}
      /*****************************选项卡代码**************************************/
 .tabbox{width:1180px; margin: 0 auto;}
 			.tabbox .tabbtn{height:30px; line-height:30px; cursor: pointer;  font-size:22px;}
 			.tabbox .tabbtn li{float:left; position:relative; width:190px;  text-align:center; border-right:1px solid #a9a9a9;}
 			   .tabbox .tabbtn li a{color:#999;}
-			.tabbox .tabbtn li.current a,.tabbox .tabbtn li.current span{color:#333; font-weight:bold;}
-			.tabcon{padding:30px 0 0 0;}
+			.tabbox .tabbtn li.current a,.tabbox .tabbtn li.current span{color:#333; font-family: "微软雅黑"; font-weight:bold;}
+			.tabcon{padding:22px 0 0 0;}
 			   .tabcon li{height:360px; width:363px; background:#fff; display:block; float:left; margin:16px 16px 0 0;}
 			     .tabcon li img{display:block; width:363px; height:240px;}
 				    .tabcon li h1{background:url(../img/so_bg.png); padding:0 30px; height:53px; line-height:53px; font-size:20px; float:left; margin:-53px 0 0 0; position:relative; z-index:10;}
 					.tabcon li h1 a{color:#fff;}
-					.tabcon li h2{padding:25px 20px 0 20px; font-size:16px; height:30px;}
+					.tabcon li h2{padding:15px 20px 0 20px; font-size:16px; height:30px;}
 					   .tabcon li h2 a{float:left; color:#333; display:block;}
 					   .tabcon li h2 span{display:block; float:right; color:#9c8a68;}
-					     .tabcon li h2 span em{font-size:20px;}
+					     .tabcon li h2 span em{font-size:24px;}
 					.tabcon li p{padding:0 20px;}
                     .tabcon li p.address{padding:20px 20px;}
 /*****************************选项卡代码******************************/
-   .more01 a{width:170px; height:52px; line-height:52px; background:#fff; border:1px solid #d4d4d4; margin:50px auto; display:block; text-align:center; font-size:18px;}
-   
+   .more01 a{width:170px; height:52px; line-height:52px; background:#fff; border:1px solid #d4d4d4; margin:50px auto; display:block; color: #666; text-align:center; font-size:20px;}
+  .more01 a:active { background-color: #999; color: #fff;} 
    
    
 .bj_white{background:#fff; min-width:1200px; padding:60px 0;}   
