@@ -65,13 +65,13 @@
                   height="260"
                 />
                 <li>
-                    <h1><a href="/apartment/detail/<%= val.id %>"><%= val.name %></a></h1>
+                    <h1><a href="/apartment/detail/<%= val.id %>"><%= val.comunity.name %><%= val.apartmentType.roomType.shi %>房<%= val.apartmentType.roomType.ting %>厅<%= val.apartmentType.roomType.wei %>卫</a></h1>
                     <p><%= val.comunity.name %><br />
                         酒店式公寓  |  <%= val.apartmentType.roomType.shi %>室<%= val.apartmentType.roomType.ting %>厅<%= val.apartmentType.roomType.wei %>卫  |  <%= val.area %>平米</p>
                     <p style="margin:130px 0 0 0;"><%= val.address %></p>
                 </li>
                 <li style="float:right; margin:0 10px 0 0;">
-                    <h2>￥ <em><%= val.price %></em> / 天</h2>
+                    <h2>￥ <em><%= val.price %></em> / 月</h2>
                     <span><a href="/apartment/detail/<%= val._id %>">查看详情</a></span>
                 </li>
             </ul>

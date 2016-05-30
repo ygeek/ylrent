@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><%= apartment.houseNo %></title>
+<title><%= apartment.comunity.name %><%= apartment.apartmentType.roomType.shi %>房<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫</title>
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
 <script type="text/javascript" src="/files/js/jquery.js"></script>
 
@@ -21,11 +21,11 @@
 
 <div class="min_banner01"><img src="/img/banner01.jpg" width="1120" height="520" /></div>
 
-<div class="n_main">  
+<div class="n_main">
     <div class="remen_top_show">
         <div class="remen01">
                 <div class="remen01_l">
-                    <h1><%= apartment.comunity.name %> <%= apartment.houseNo %></h1>
+                    <h1><%= apartment.comunity.name %><%= apartment.apartmentType.roomType.shi %>房<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫</h1>
                     <p>
                     <%= apartment.address %>  <%= apartment.district.name %><br />
                     <%= apartment.apartmentType.roomType.shi %>室<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫  |  <%= apartment.area %>平米  |  06层  |  精装修 | 现代简约
@@ -54,7 +54,7 @@
         <div class="tabbox01" id="statetab01">
             <ul class="tabbtn01">
                 <li class="current"><a href="#">房源信息</a></li>
-                <li><a href="#">小区位置</a></li>	
+                <li><a href="#weizhi">小区位置</a></li>
             </ul><!--tabbtn end-->
 
             <div class="clear"></div>
@@ -166,12 +166,12 @@
 
         <div class="xiaoqu">
             <h1>小区介绍</h1>
-            测试测试测试测试测试
+            <%= apartment.comunity.desc %>
         </div>
 
     </div>
     <div class="clear"></div>
-    <div class="jichang">
+    <div class="jichang" id="weizhi">
         <div class="jichang_l"><img src="/img/map.jpg" width="637" height="544" /></div>
         <div class="jichang_r">
             <div class="tabbox02" id="statetab02">

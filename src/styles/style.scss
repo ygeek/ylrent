@@ -362,7 +362,8 @@ caption,th{text-align:left;}
 		   .color01{color:#aa8f58;}
 		   .order01{padding:30px 50px 50px 50px; background:#f2f2f2; border:1px solid #d9d9d9; border-radius:10px;  -moz-border-radius:10px; -webkit-border-radius:10px; margin:30px 0; float:left;}
 		     .order01 li{height:40px; line-height:40px; display:block;}
-		   
+               .order01 li input[type="submit"]:hover{color: #fff; background:#aa8f58}
+
 		   
    .remen02{padding:30px 50px; background:#f2f2f2; border:1px solid #d9d9d9; border-radius:10px;  -moz-border-radius:10px; -webkit-border-radius:10px; margin:30px 0;}
     .remen02 li{float:left; height:26px;  width:260px; line-height:26px; display:block; margin:0 20px 30px 0;}
@@ -379,7 +380,7 @@ caption,th{text-align:left;}
      .tabbox01 .tabbtn01{height:40px; line-height:40px; padding:0 0 0 35%; }
 			.tabbox01 .tabbtn01 li{float:left; position:relative; width:150px;  border:1px solid #d9d9d9; text-align:center; margin:0 0 0 10px; font-size:18px; display:block;}
 			   .tabbox01 .tabbtn01 li a{color:#999;  }
-			.tabbox01 .tabbtn01 li.current a,.tabbox01 .tabbtn li.current span{color:#666; background:#f2f2f2; display:block;}
+			.tabbox01 .tabbtn01 li.current a,.tabbox01 .tabbtn li.current span{color:#fff; background:#aa8f58; display:block;}
 			.tabcon01{padding:30px 0; border-top:1px solid #d9d9d9; border-bottom:1px solid #d9d9d9; margin:20px 0;}
 			.tabcon01_l{width:435px; float:left;}
 			   .tabcon01_l h1{font-size:16px; margin:0 0 20px 0;}
