@@ -93,9 +93,9 @@
                       src="img/banner01.jpg"
                     <% } %>
                   />
-                  <h1><a href="#"><%= val.name %></a></h1>
+                  <h1><a href="/apartment/?communityId=<%= val._id %>"><%= val.name %></a></h1>
                   <div class="clear"></div>
-                  <h2><a href="#"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span></h2>
+                  <h2><a href="/apartment/?communityId=<%= val._id %>"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span></h2>
                   <p><%= val.district.name %>-<%= val.commerseArea.name %></p>
                 </li>
               <% }) %>
