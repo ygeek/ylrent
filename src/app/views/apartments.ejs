@@ -30,19 +30,22 @@
     <div class="tuijianfangyuan">
         <div class="gxm_name02">
             <div class="gxm_name02_l">
-                <a href="<%= url %>"
+                <a href="<%= url %>?isHot=<%= desc == 0 ? 1 : 0 %>"
                         <% if(sortBy === 'isHot') { %>
                    id="current03"
+                   desc="<%= desc %>"
                         <% } %>
                 >推荐房源</a>
-                <a href="<%= url %>?price=1"
+                <a href="<%= url %>?price=<%= desc == 0 ? 1 : 0 %>"
                         <% if(sortBy === 'price') { %>
                    id="current03"
+                   desc="<%= desc %>"
                         <% } %>
                 >价格</a>
-                <a href="<%= url %>?area=1"
+                <a href="<%= url %>?area=<%= desc == 0 ? 1 : 0 %>"
                         <% if(sortBy === 'area') { %>
                    id="current03"
+                   desc="<%= desc %>"
                         <% } %>
                 >面积</a>
             </div>
@@ -116,3 +119,4 @@
 <div class="clear"></div>
 <% include footer.ejs %>
 <script type="text/javascript" src="/files/js/imghover.js"></script>
+<script type="text/javascript" src="/files/js/sortArrow.js"></script>

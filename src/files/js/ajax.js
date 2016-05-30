@@ -144,21 +144,45 @@ $(function() {
         ajaxget();
     });
     $(document).on("click", ".isHotSort", function(e) {
-       $("#current03").removeAttr('id');
-       $(".isHotSort").attr('id', 'current03');
-        $(this).attr('style', 'background:url(../img/icon20.png) 90% no-repeat #f6f6f6;');
+        $("#current03").removeAttr('style');
+        $("#current03").removeAttr('id');
+        $(".isHotSort").attr('id', 'current03');
+        var desc = $("#current03").attr('desc');
+        if (desc == 0) {
+            $("#current03").attr('desc', 1);
+            $("#current03").attr('style', 'background:url(/img/icon13.png) 90% no-repeat #f6f6f6;');
+        } else {
+            $("#current03").attr('desc', 0);
+            $("#current03").attr('style', 'background:url(/img/icon20.png) 90% no-repeat #f6f6f6;');
+        }
         ajaxget();
     });
     $(document).on("click", ".priceSort", function(e) {
+        $("#current03").removeAttr('style');
         $("#current03").removeAttr('id');
         $(".priceSort").attr('id', 'current03');
-        $(this).attr('style', 'background:url(../img/icon20.png) 90% no-repeat #f6f6f6;');
+        var desc = $("#current03").attr('desc');
+        if (desc == 0) {
+            $("#current03").attr('desc', 1);
+            $("#current03").attr('style', 'background:url(/img/icon13.png) 90% no-repeat #f6f6f6;');
+        } else {
+            $("#current03").attr('desc', 0);
+            $("#current03").attr('style', 'background:url(/img/icon20.png) 90% no-repeat #f6f6f6;');
+        }
         ajaxget();
     });
     $(document).on("click", ".areaSort", function(e) {
+        $("#current03").removeAttr('style');
         $("#current03").removeAttr('id');
         $(".areaSort").attr('id', 'current03');
-        $(this).attr('style', 'background:url(../img/icon20.png) 90% no-repeat #f6f6f6;');
+        var desc = $("#current03").attr('desc');
+        if (desc == 0) {
+            $("#current03").attr('desc', 1);
+            $("#current03").attr('style', 'background:url(/img/icon13.png) 90% no-repeat #f6f6f6;');
+        } else {
+            $("#current03").attr('desc', 0);
+            $("#current03").attr('style', 'background:url(/img/icon20.png) 90% no-repeat #f6f6f6;');
+        }
         ajaxget();
     });
 });
@@ -199,14 +223,18 @@ function ajaxget()
     }
     
     var sortBy = null;
+    var desc = 1;
     if ($('#current03').hasClass('isHotSort')) {
         sortBy = 'isHot';
+        desc = $('#current03').attr("desc");
     }
     if ($('#current03').hasClass('priceSort')) {
         sortBy = 'price';
+        desc = $('#current03').attr("desc");
     }
     if ($('#current03').hasClass('areaSort')) {
         sortBy = 'area';
+        desc = $('#current03').attr("desc");
     }
     
     var page = $("input[name='page']").val();
@@ -217,7 +245,7 @@ function ajaxget()
       + (weizhistr ? (weizhistr + "&") : '') 
       + (fangxingstr ? (fangxingstr + "&") : '') 
       + (yuezustr ? (yuezustr + "&") : '')
-      + (sortBy ? (sortBy + '=1') : '');
+      + (sortBy ? (sortBy + '=' + desc) : '');
     
     $.ajax({
         async:false,//同步请求

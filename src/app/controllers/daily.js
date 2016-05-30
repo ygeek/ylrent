@@ -21,12 +21,19 @@ router.get('/', (req, res, next) => {
 
   let sort = [['isHot', -1], ['price', 1], ['area', -1]];
   let sortBy = 'isHot';
+  let desc = 1;
+  if (req.query.isHot) {
+    desc = parseInt(req.query.isHot);
+    sort = [['isHot', desc === 1 ? -1 : 1], ['price', 1], ['area', -1]];
+  }
   if (req.query.price) {
-    sort = [['price', 1], ['isHot', -1], ['area', -1]];
+    desc = parseInt(req.query.price);
+    sort = [['price', desc === 1 ? -1 : 1], ['isHot', -1], ['area', -1]];
     sortBy = 'price';
   }
   if (req.query.area) {
-    sort = [['area', -1], ['isHot', -1], ['price', 1]];
+    desc = parseInt(req.query.area);
+    sort = [['area', desc === 1 ? -1 : 1], ['isHot', -1], ['price', 1]];
     sortBy = 'area';
   }
 
@@ -51,6 +58,7 @@ router.get('/', (req, res, next) => {
       startIndex: startIndex,
       endIndex: endIndex,
       sortBy: sortBy,
+      desc: desc,
       url: url.parse(req.originalUrl).pathname
     });
   }).catch((err) => {

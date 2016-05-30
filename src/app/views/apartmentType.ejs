@@ -54,9 +54,9 @@
     <div class="tuijianfangyuan">
         <div class="gxm_name02">
             <div class="gxm_name02_l">
-                <a class="isHotSort" href="javascript:void(0)" <% if(sortBy === 'isHot') { %> id="current03" <% } %> >推荐房源</a>
-                <a class="priceSort" href="javascript:void(0)" <% if(sortBy === 'price') { %> id="current03" <% } %> >价格</a>
-                <a class="areaSort" href="javascript:void(0)" <% if(sortBy === 'area') { %> id="current03" <% } %> >面积</a>
+                <a class="isHotSort" href="javascript:void(0)" <% if(sortBy === 'isHot') { %> id="current03" desc="<%= desc %>" <% } %> >推荐房源</a>
+                <a class="priceSort" href="javascript:void(0)" <% if(sortBy === 'price') { %> id="current03" desc="<%= desc %>" <% } %> >价格</a>
+                <a class="areaSort" href="javascript:void(0)" <% if(sortBy === 'area') { %> id="current03" desc="<%= desc %>" <% } %> >面积</a>
             </div>
            <!-- <div class="gxm_name02_r"> 共找到<span><%= result.total %></span>套出租房源</div> -->
         </div>  
@@ -134,3 +134,4 @@
 <% include footer.ejs %>
 <script type="text/javascript" src="/files/js/ajax.js"></script>
 <script type="text/javascript" src="/files/js/imghover.js"></script>
+<script type="text/javascript" src="/files/js/sortArrow.js"></script>
