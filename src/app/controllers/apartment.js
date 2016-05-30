@@ -8,7 +8,7 @@ import url from 'url';
 import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
-import _ from 'lodash';
+// import _ from 'lodash';
 
 const logger = log4js.getLogger('normal');
 
@@ -76,29 +76,32 @@ router.get('/api', (req, res, next) => {
   }
 
   if (req.query.minPrice) {
-    if (!query['price']) {
-      query['price'] = {};
-    }
-    query['price']['$gte'] = parseInt(req.query.minPrice);
+    query['minPrice'] = {'$gte': parseInt(req.query.minPrice)};
   }
   if (req.query.maxPrice) {
-    if (!query['price']) {
-      query['price'] = {};
+    query['maxPrice'] = {'$lte': parseInt(req.query.maxPrice)};
+  }
+
+  if (req.query.shi || req.query.shigte) {
+    if (req.query.shi) {
+      query['roomType.shi'] = parseInt(req.query.shi);
     }
-    query['price']['$lte'] = parseInt(req.query.maxPrice);
+    if (req.query.shigte) {
+      query['roomType.shi'] = {'$gte': parseInt(req.query.shigte)};
+    }
   }
 
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
 
-  let sort = [['isHot', -1], ['price', 1], ['area', -1]];
+  let sort = [['isHot', -1], ['minPrice', 1], ['maxArea', -1]];
   let sortBy = 'isHot';
   if (req.query.price) {
-    sort = [['price', 1], ['isHot', -1], ['area', -1]];
+    sort = [['minPrice', 1], ['isHot', -1], ['maxArea', -1]];
     sortBy = 'price';
   }
   if (req.query.area) {
-    sort = [['area', -1], ['isHot', -1], ['price', 1]];
+    sort = [['maxArea', -1], ['isHot', -1], ['minPrice', 1]];
     sortBy = 'area';
   }
 
@@ -107,48 +110,24 @@ router.get('/api', (req, res, next) => {
     limit: 6,
     lean: true,
     sort: sort,
-    populate: ['apartmentType', 'comunity', 'commerseArea', 'district']
+    populate: ['comunity', 'commerseArea', 'district']
   };
   
   logger.info('query: ', query);
 
-  if (req.query.shi || req.query.shigte) {
-    let typeQuery = {}; 
-    if (req.query.shi) {
-      typeQuery['roomType.shi'] = parseInt(req.query.shi);
-    }
-    if (req.query.shigte) {
-      typeQuery['roomType.shi'] = { '$gte': parseInt(req.query.shigte) };
-    }
-    ApartmentType.find(typeQuery).exec((err, apartmentTypes) => {
-      query['apartmentType'] = {'$in': _.map(apartmentTypes, (at) => at._id)};
-      Apartment.paginate(query, options).then((result) => {
-        res.json({
-          result: result,
-          sortBy: sortBy,
-          url: url.parse(req.originalUrl).pathname
-        });
-      }).catch((err) => {
-        res.json({
-          error: err,
-          message: err.message,
-          stack: err.stack
-        });
-      });
+  ApartmentType.paginate(query, options).then((result) => {
+    res.json({
+      result: result,
+      sortBy: sortBy,
+      url: url.parse(req.originalUrl).pathname
     });
-  } else {
-    Apartment.paginate(query, options).then((result) => {
-      res.json({
-        result: result
-      });
-    }).catch((err) => {
-      res.json({
-        error: err,
-        message: err.message,
-        stack: err.stack
-      });
+  }).catch((err) => {
+    res.json({
+      error: err,
+      message: err.message,
+      stack: err.stack
     });
-  }
+  });
 });
 
 router.get('/type/:id', (req, res, next) => {
@@ -173,7 +152,7 @@ router.get('/type/:id', (req, res, next) => {
         sortBy = 'area';
       }
       
-      let query = { apartmentType: apartmentType };
+      let query = { apartmentType: apartmentType._id };
 
       let options = {
         page: page,

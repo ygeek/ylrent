@@ -6,16 +6,16 @@ import mongoosePaginate from 'mongoose-paginate';
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const DistrictSchema = new mongoose.Schema({
-  name: String  // 浦东新区
+  name: { type: String, unique: true, required: true }  // 浦东新区
 });
 
 const CommerseAreaSchema = new mongoose.Schema({
-  name: String,         // 世纪公园
+  name: { type: String, unique: true, required: true },         // 世纪公园
   district: { type: ObjectId, ref: 'District' }  // 浦东新区
 });
 
 const ComunitySchema = new mongoose.Schema({
-  name: String,              // 陆家嘴中央公寓
+  name: { type: String, unique: true, required: true },              // 陆家嘴中央公寓
   commerseArea: { type: ObjectId, ref: 'CommerseArea' },  // 世纪公园
   district: { type: ObjectId, ref: 'District' },  // 浦东新区
   desc: String,        // 陆家嘴中央公寓，是美国ARQ、美国泛亚易道……
@@ -32,7 +32,7 @@ const ComunitySchema = new mongoose.Schema({
 });
 
 const ApartmentTypeSchema = new mongoose.Schema({
-  name: String,              // 陆家嘴中央公寓2房
+  name: { type: String, unique: true, required: true },  // 陆家嘴中央公寓2房
   comunity: { type: ObjectId, ref: 'Comunity' },  // 陆家嘴中央公寓
   commerseArea: { type: ObjectId, ref: 'CommerseArea' }, // 徐家汇
   district: { type: ObjectId, ref: 'District' },  // 浦东新区

@@ -50,8 +50,11 @@
     <div class="min_banner01"><img src="/img/mobile/img02.jpg"></div>
     <div class="order01">
         <div class="order01_top">
-            <h1><a href="#">长宁凯欣豪苑精装2房公寓</a><br><span>2室1厅1卫   |   96平米   |   宜住3人</span></h1>
-            <h2>￥ 26900</h2>
+            <h1>
+                <a href="#"><%= apartment.comunity.name %> <%= apartment.houseNo %></a>
+                <br>
+                <span><%= apartment.apartmentType.roomType.shi %>室<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫 | <%= apartment.area %>平米 </span></h1>
+            <h2>￥ <%= apartment.price %></h2>
         </div>
         <div class="clear"></div>
         <div class="order01_bottom">
@@ -61,7 +64,7 @@
         <div class="clear"></div>
     </div>
     <div class="order_content">
-        　由梁朝伟代言的世茂滨江花园是由世茂集团投资建设的亚洲第一高楼超大型水岸豪宅区，由7栋49层至55层超高层高档公寓成，项目紧倚黄浦江东岸恢弘展开，面对繁华外滩沿江扩展近1公里，将成为浦江东岸富有时代色彩的又一标志性建筑群落。
+        由梁朝伟代言的世茂滨江花园是由世茂集团投资建设的亚洲第一高楼超大型水岸豪宅区，由7栋49层至55层超高层高档公寓成，项目紧倚黄浦江东岸恢弘展开，面对繁华外滩沿江扩展近1公里，将成为浦江东岸富有时代色彩的又一标志性建筑群落。
 
     </div>
     <img src="/img/mobile/map.jpg" width="100%">

@@ -226,11 +226,11 @@ function ajaxget()
             var htmlstr = "";
             $.each(data.result.docs,function(i,result){  
                 var imgstr = "/img/banner01.jpg";
-                if(result.apartmentType.imagekeys[0])
+                if(result.imagekeys[0])
                 {
-                    imgstr = "http://o7k9opgtr.bkt.clouddn.com/"+result.apartmentType.imagekeys[0];
+                    imgstr = "http://o7k9opgtr.bkt.clouddn.com/"+result.imagekeys[0];
                 }
-                 htmlstr += '<ul><img src="'+imgstr+'" width="402" height="260" /><li><h1><a href="/apartment/type/'+result.comunity._id+'">'+result.comunity.name+'</a></h1><p>'+result.comunity.name+'<br />  酒店式公寓  |  '+result.apartmentType.roomType.shi+'室'+result.apartmentType.roomType.ting+'厅'+result.apartmentType.roomType.wei+'卫  | '+result.apartmentType.maxArea+'平米</p><p style="margin:130px 0 0 0;">'+result.apartmentType.address+'</p></li><li style="float:right; margin:0 10px 0 0;"><h2>￥ <em>'+result.apartmentType.minPrice+'</em> / 天 起</h2><span><a href="/apartment/type/'+result.apartmentType._id+'">查看详细房源</a></span></li></ul>';
+                 htmlstr += '<ul><img src="'+imgstr+'" width="402" height="260" /><li><h1><a href="/apartment/type/'+result._id+'">'+result.name+'</a></h1><p>'+result.comunity.name+'<br />  酒店式公寓  |  '+result.roomType.shi+'室'+result.roomType.ting+'厅'+result.roomType.wei+'卫  | ' + result.minArea + ' - ' + result.maxArea+'平米</p><p style="margin:130px 0 0 0;">'+result.address+'</p></li><li style="float:right; margin:0 10px 0 0;"><h2>￥ <em>'+result.minPrice+'</em> / 月 起</h2><span><a href="/apartment/type/'+result._id+'">查看详细房源</a></span></li></ul>';
             });   
            
             var pagestr = '<div class="clear"></div><div class="page01">';

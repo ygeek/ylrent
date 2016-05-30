@@ -212,7 +212,12 @@ function importApartmentType(apartmentObj) {
           apartmentType.maxPrice = maxPrice;
           
           apartmentType.imagekeys = _.uniq(apartmentType.imagekeys.concat(apartmentObj.imagekeys));
-          apartmentType.save(function(err) {
+          
+          let query = { name: apartmentType.name };
+          let upsertData = apartmentType.toObject();
+          delete upsertData._id;
+          
+          ApartmentType.update(query, upsertData, {upsert: true}, function(err) {
             logger.info('import apartment type: ', apartmentType);
             assert.ifError(err);
             resolve(apartmentType);

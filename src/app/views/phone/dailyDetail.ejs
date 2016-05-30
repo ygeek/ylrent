@@ -39,12 +39,12 @@
     <div class="min_banner01"><img src="/img/mobile/img02.jpg"></div>
     <div class="order01">
         <div class="order01_top">
-            <h1><a href="#">长宁凯欣豪苑精装2房公寓</a><br><span>2室1厅1卫   |   96平米   |   宜住3人</span></h1>
+            <h1><a href="#"><%= daily.name %></a><br><span>2室1厅1卫   |   96平米   |   宜住3人</span></h1>
         </div>
         <div class="clear"></div>
         <div class="order01_bottom01">
             <form action="" method="get">
-                <input type="date" value="入住 -> 离开" class="date01"><h1>￥ <em>269</em> / 晚</h1>
+                <input type="date" value="入住 -> 离开" class="date01"><h1>￥ <em><%= daily.price %></em> / 晚</h1>
             </form>
         </div>
         <div class="clear"></div>
@@ -57,8 +57,7 @@
     </div>
     <div class="clear"></div>
     <div class="order_content">
-        　由梁朝伟代言的世茂滨江花园是由世茂集团投资建设的亚洲第一高楼超大型水岸豪宅区，由7栋49层至55层超高层高档公寓成，项目紧倚黄浦江东岸恢弘展开，面对繁华外滩沿江扩展近1公里，将成为浦江东岸富有时代色彩的又一标志性建筑群落。
-
+        <%= daily.comunity.desc %>
     </div>
     <img src="/img/mobile/map.jpg" width="100%">
     <div class="order01_icon">
@@ -76,7 +75,7 @@
 
     <div class="clear"></div>
     <div class="footer01">
-        <div class="footer01_l">￥<em>26900</em> / 月</div>
+        <div class="footer01_l">￥<em><%= daily.price %></em> / 天</div>
         <div class="footer01_r">
             <a href="#">立即预定</a>
         </div>
