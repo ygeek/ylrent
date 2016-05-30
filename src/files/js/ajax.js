@@ -103,7 +103,6 @@ $(function() {
             return;
         }
         
-        
         ajaxget();
     });
     //上一页
@@ -144,6 +143,21 @@ $(function() {
         $("input[name='page']").val(1);
         ajaxget();
     });
+    $(document).on("click", ".isHotSort", function(e) {
+       $("#current03").removeAttr('id');
+       $(".isHotSort").attr('id', 'current03');
+        ajaxget();
+    });
+    $(document).on("click", ".priceSort", function(e) {
+        $("#current03").removeAttr('id');
+        $(".priceSort").attr('id', 'current03');
+        ajaxget();
+    });
+    $(document).on("click", ".areaSort", function(e) {
+        $("#current03").removeAttr('id');
+        $(".areaSort").attr('id', 'current03');
+        ajaxget();
+    });
 });
 
 function ajaxget()
@@ -180,9 +194,27 @@ function ajaxget()
     { 
         yuezustr = "";
     }
+    
+    var sortBy = null;
+    if ($('#current03').hasClass('isHotSort')) {
+        sortBy = 'isHot';
+    }
+    if ($('#current03').hasClass('priceSort')) {
+        sortBy = 'price';
+    }
+    if ($('#current03').hasClass('areaSort')) {
+        sortBy = 'area';
+    }
+    
     var page = $("input[name='page']").val();
     page = (parseInt(page)<=1)?1:parseInt(page);
-    var datastr = "page="+page+"&"+(weizhistr?(weizhistr+"&"):'')+(fangxingstr?(fangxingstr+"&"):'')+(yuezustr?yuezustr:'');
+    
+    var datastr = 
+      "page=" + page + "&" 
+      + (weizhistr ? (weizhistr + "&") : '') 
+      + (fangxingstr ? (fangxingstr + "&") : '') 
+      + (yuezustr ? (yuezustr + "&") : '')
+      + (sortBy ? (sortBy + '=1') : '');
     
     $.ajax({
         async:false,//同步请求

@@ -59,21 +59,9 @@
     <div class="tuijianfangyuan">
         <div class="gxm_name02">
             <div class="gxm_name02_l">
-                <a href="<%= url %>"
-                  <% if(sortBy === 'isHot') { %>
-                    id="current03"
-                  <% } %>
-                >推荐房源</a>
-                <a href="<%= url %>?price=1"
-                  <% if(sortBy === 'price') { %>
-                    id="current03"
-                  <% } %>
-                >价格</a>
-                <a href="<%= url %>?area=1"
-                  <% if(sortBy === 'area') { %>
-                    id="current03"
-                  <% } %>
-                >面积</a>
+                <a class="isHotSort" href="javascript:void(0)" <% if(sortBy === 'isHot') { %> id="current03" <% } %> >推荐房源</a>
+                <a class="priceSort" href="javascript:void(0)" <% if(sortBy === 'price') { %> id="current03" <% } %> >价格</a>
+                <a class="areaSort" href="javascript:void(0)" <% if(sortBy === 'area') { %> id="current03" <% } %> >面积</a>
             </div>
            <!-- <div class="gxm_name02_r"> 共找到<span><%= result.total %></span>套出租房源</div> -->
         </div>  
