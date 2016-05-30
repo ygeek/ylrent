@@ -146,16 +146,19 @@ $(function() {
     $(document).on("click", ".isHotSort", function(e) {
        $("#current03").removeAttr('id');
        $(".isHotSort").attr('id', 'current03');
+        $(this).attr('style', 'background:url(../img/icon20.png) 90% no-repeat #f6f6f6;');
         ajaxget();
     });
     $(document).on("click", ".priceSort", function(e) {
         $("#current03").removeAttr('id');
         $(".priceSort").attr('id', 'current03');
+        $(this).attr('style', 'background:url(../img/icon20.png) 90% no-repeat #f6f6f6;');
         ajaxget();
     });
     $(document).on("click", ".areaSort", function(e) {
         $("#current03").removeAttr('id');
         $(".areaSort").attr('id', 'current03');
+        $(this).attr('style', 'background:url(../img/icon20.png) 90% no-repeat #f6f6f6;');
         ajaxget();
     });
 });

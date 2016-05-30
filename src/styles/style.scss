@@ -470,3 +470,23 @@ caption,th{text-align:left;}
 	    .footer .footer_m .footer_m_center a{padding:0 10px 0 0; color:#929292;}
 	.footer .footer_m .footer_m_bottom{padding:20px 0 0 0; line-height:22px; text-align:center;}
 	.footer .footer_m .footer_m_top .footer_m_top_r p font { line-height: 30px;   }	  
+.DB_tab25 {width:100%;height:246px;position:relative;overflow:hidden;cursor:pointer;}
+.DB_tab25 .DB_bgSet{position:relative;}
+.DB_tab25 .DB_bgSet li{position:absolute;width:100%;height:246px;display:none;}
+.DB_tab25 .DB_imgSet{position:absolute;width:988px;left:50%;margin-left:-500px;}
+.DB_tab25 .DB_imgSet .DB_1_1{position:absolute;left:-5px;top:10px;}
+.DB_tab25 .DB_imgSet .DB_1_2{position:absolute;left:415px;top:30px}
+.DB_tab25 .DB_imgSet .DB_1_3{position:absolute;left:730px;top:180px}
+.DB_tab25 .DB_imgSet .DB_2_1{position:absolute;left:75px;top:0px;}
+.DB_tab25 .DB_imgSet .DB_2_2{position:absolute;left:400px;top:30px}
+.DB_tab25 .DB_imgSet .DB_2_3{position:absolute;left:730px;top:180px}
+.DB_tab25 .DB_imgSet .DB_3_1{position:absolute;left:10px;top:10px;}
+.DB_tab25 .DB_imgSet .DB_3_2{position:absolute;left:540px;top:30px}
+.DB_tab25 .DB_imgSet .DB_3_3{position:absolute;left:730px;top:180px}
+.DB_tab25 .DB_menuWrap{position:absolute;width:988px;left:50%;margin-left:-500px;}
+.DB_tab25 .DB_menuWrap .DB_menuSet{position:absolute;width:100%;top:226px;text-align:center;font-size:0; border-radius:20px;}
+.DB_tab25 .DB_menuWrap .DB_menuSet li{cursor:pointer;margin:0 3px;display:inline}
+.DB_tab25 .DB_prev{position:absolute;left:0px;top:90px;cursor:pointer;display:none}
+.DB_tab25 .DB_next{position:absolute;right:0px;top:90px;cursor:pointer;display:none}
+
+

@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><%= daily.name %></title>
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
-<script type="text/javascript" src="/files/js/jquery.js"></script>
-
+<script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/files/js/jquery.DB_tabMotionBanner.min.js"></script>
 
 </head>
 <body>
@@ -18,8 +18,70 @@
 <div class="location">
      <a href="#">首页</a> > <a href="#">首页</a> > <a href="#">首页</a>
 </div>
-<div class="min_banner01"><img src="/img/banner01.jpg" width="1120" height="520" /></div>
-
+<!--<div class="min_banner01"><img src="/img/banner01.jpg" width="1120" height="520" /></div>-->
+<div class="DB_tab25">
+        <ul class="DB_bgSet">
+            <li style="background: #e67373;"></li>
+            <li style="background: #86cccc;"></li>
+            <li style="background: #ffebb3;"></li>
+            <!--<li style="background: url(/static/img/stu_banner2.jpg) no-repeat 100% 100%;"></li>-->
+        </ul>
+        <ul class="DB_imgSet">
+            <li onclick="javascript:window.location.href='#';">
+                <img class="DB_1_1" src="/img/stuimg1_1.png" alt="" />
+                <img class="DB_1_2" src="/img/stuimg1_2.png" alt="" />
+                <img class="DB_1_3" src="/img/stuimg1_3.png" alt="" />
+            </li>
+            <li onclick="javascript:window.location.href=#';">
+                <img class="DB_2_1" src="/img/stuimg2_1.png" alt="" />
+                <img class="DB_2_2" src="/img/stuimg2_2.png" alt="" />
+                <img class="DB_2_3" src="/img/stuimg2_3.png" alt="" />
+            </li>
+            <li onclick="javascript:window.location.href='#';">
+                <img class="DB_3_1" src="/img/stuimg3_1.png" alt="" />
+                <img class="DB_3_2" src="/img/stuimg3_2.png" alt="" />
+                <img class="DB_3_3" src="/img/stuimg3_3.png" alt="" />
+            </li>
+        </ul>
+        <div class="DB_menuWrap">
+            <ul class="DB_menuSet">
+                <li>
+                    <img src="/img/btn_off.png" alt="" />
+                </li>
+                <li>
+                    <img src="/img/btn_off.png" alt="" />
+                </li>
+                <li>
+                    <img src="/img/btn_off.png" alt="" />
+                </li>
+            </ul>
+            <div class="DB_next">
+                <img src="/static/img/nextArrow.png" alt="NEXT" />
+            </div>
+            <div class="DB_prev">
+                <img src="/img/prevArrow.png" alt="PREV" />
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $('.DB_tab25').DB_tabMotionBanner({
+            key: 'b28551',
+            autoRollingTime: 6000,
+            bgSpeed: 500,
+            motion: {
+                DB_1_1: { left: -50, opacity: 0, speed: 1000, delay: 500 },
+                DB_1_2: { left: -50, opacity: 0, speed: 1000, delay: 1000 },
+                DB_1_3: { left: 100, opacity: 0, speed: 1000, delay: 1500 },
+                DB_2_1: { top: 50, opacity: 0, speed: 1000, delay: 500 },
+                DB_2_2: { top: 50, opacity: 0, speed: 1000, delay: 1000 },
+                DB_2_3: { top: 100, opacity: 0, speed: 1000, delay: 1500 },
+                DB_3_1: { left: -50, opacity: 0, speed: 1000, delay: 500 },
+                DB_3_2: { top: 50, opacity: 0, speed: 1000, delay: 1000 },
+                DB_3_3: { top: 0, opacity: 0, speed: 1000, delay: 1500 },
+                end: null
+            }
+        })
+    </script>
 <div class="n_main">  
     <div class="remen_top_show">
         <div class="remen01">
