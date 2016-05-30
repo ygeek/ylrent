@@ -63,13 +63,15 @@
                 <% apartmentTypes.forEach(function(val) { %>
 
                 <li>
-                  <img
-                    <% if (val.imagekeys[0]) { %>
-                      src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
-                    <% }else{ %>
-                      src="img/banner01.jpg"
-                    <% } %>
-                  />
+                  <a href="/apartment/type/<%= val._id %>">
+                    <img class="imghover"
+                            <% if (val.imagekeys[0]) { %>
+                         src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                            <% }else{ %>
+                         src="img/banner01.jpg"
+                            <% } %>
+                    />
+                  </a>
                   <h1><a href="/apartment/type/<%= val._id %>"><%= val.comunity.name %></a></h1>
                   <div class="clear"></div>
                   <h2><a href="/apartment/type/<%= val._id %>"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span></h2>
@@ -86,13 +88,15 @@
               <% comunities.forEach(function(val) { %>
 
                 <li>
-                  <img
-                    <% if (val.imagekeys[0]) { %>
-                      src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
-                    <% }else{ %>
-                      src="img/banner01.jpg"
-                    <% } %>
-                  />
+                  <a href="/apartment/?communityId=<%= val._id %>">
+                    <img class="imghover"
+                      <% if (val.imagekeys[0]) { %>
+                        src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                      <% }else{ %>
+                        src="img/banner01.jpg"
+                      <% } %>
+                    />
+                  </a>
                   <h1><a href="/apartment/?communityId=<%= val._id %>"><%= val.name %></a></h1>
                   <div class="clear"></div>
                   <h2><a href="/apartment/?communityId=<%= val._id %>"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span></h2>
@@ -108,13 +112,15 @@
                 <% dailyRents.forEach(function(val) { %>  
 
                 <li>
-                  <img
-                    <% if (val.imagekeys[0]) { %>
-                      src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
-                    <% } else { %>
-                      src="img/banner01.jpg"
-                    <% } %>
-                  />
+                  <a  href="/daily/<%= val._id %>">
+                    <img class="imghover"
+                      <% if (val.imagekeys[0]) { %>
+                        src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                      <% } else { %>
+                        src="img/banner01.jpg"
+                      <% } %>
+                    />
+                  </a>
                   <h1><a href="/daily/<%= val._id %>"><%= val.comunity.name %></a></h1>
                   <div class="clear"></div>
                   <h2><a href="/daily/<%= val.id %>"><%= val.name %></a><span>￥ <em><%= val.price %></em>/天</span></h2>
