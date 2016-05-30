@@ -315,7 +315,7 @@ function importDailyRent(dailyRentObj) {
           price: dailyRentObj.price,
           isRenting: true,
           keywords: comunity.keywords,
-          imagekeys: []
+          imagekeys: dailyRentObj.imagekeys
         };
         let options = {
           new: true,
