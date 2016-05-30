@@ -243,7 +243,7 @@ function importApartment(apartmentObj) {
         assert.ifError(err);
         assert.equal(apartmentType.name, apartmentTypeName);
         let query = {
-          houseNo: apartmentObj.houseno
+          contractNo: apartmentObj.contractno
         };
         let update = {
           houseNo: apartmentObj.houseno,
