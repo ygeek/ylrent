@@ -40,13 +40,10 @@
 
             <li><span>月租：</span>
                 <a href="javascript:void(0);" id="yuezu" class="yuezu seled" min="0" max="0">不限</a>
-                <a href="javascript:void(0);" class="yuezu "  min="0" max="5000">¥5000以下</a>
-                <a href="javascript:void(0);" class="yuezu " min="5000" max="10000">¥5000 - ¥10000</a>
-                <a href="javascript:void(0);" class="yuezu " min="10001" max="15000">¥10001 - ¥15000</a>
-                <a href="javascript:void(0);" class="yuezu " min="15001" max="20000">¥15001 - ¥20000</a>
-                <a href="javascript:void(0);" class="yuezu " min="20001" max="30000">¥20001 - ¥30000</a>
-                <a href="javascript:void(0);" class="yuezu " min="30001" max="50000">¥30001 - ¥50000</a>
-                <a href="javascript:void(0);" class="yuezu " min="50000"  max="0">¥50000以上</a>
+                <a href="javascript:void(0);" class="yuezu "  min="0" max="10000">¥10000以下</a>
+                <a href="javascript:void(0);" class="yuezu " min="10000" max="20000">¥10000 - ¥20000</a>
+                <a href="javascript:void(0);" class="yuezu " min="20000" max="30000">¥20000 - ¥30000</a>
+                <a href="javascript:void(0);" class="yuezu " min="30000"  max="0">¥30000以上</a>
             </li>
 
             <li class="tiaojian"><span >条件：</span>
@@ -83,7 +80,8 @@
                     <h1><a href="/apartment/type/<%= val._id %>"><%= val.name %></a></h1>
                     <p><%= val.comunity.name %><br />
                         酒店式公寓  |  <%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫  | <%= val.maxArea %>平米</p>
-                    <p style="margin:130px 0 0 0;"><%= val.district.name %>-<%= val.commerseArea.name %></p>
+                    <p style="margin:110px 0 0 0;"><%= val.district.name %>-<%= val.commerseArea.name %></p>
+                    <p><%= val.comunity.address %></p>
                 </li>
                 <li style="float:right; margin:0 10px 0 0;">
                     <h2>￥ <em><%= val.minPrice %></em> / 月 起</h2>
