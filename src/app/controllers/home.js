@@ -19,6 +19,10 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
 
   logger.info('request from', req.device.type);
+
+  if (req.device.type === 'phone') {
+    return res.redirect('/apartment/');
+  }
   
   let apartmentPromise = new Promise((resolve, reject) => {
     ApartmentType

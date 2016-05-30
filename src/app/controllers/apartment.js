@@ -4,6 +4,7 @@
 
 'use strict';
 
+import url from 'url';
 import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
@@ -22,8 +23,17 @@ router.get('/', (req, res, next) => {
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
 
-  let sort = [['hot', -1], ['price', -1], ['area', -1]];
-  
+  let sort = [['isHot', -1], ['minPrice', 1], ['maxArea', -1]];
+  let sortBy = 'isHot';
+  if (req.query.price) {
+    sort = [['minPrice', 1], ['isHot', -1], ['maxArea', -1]];
+    sortBy = 'price';
+  }
+  if (req.query.area) {
+    sort = [['maxArea', -1], ['isHot', -1], ['minPrice', 1]];
+    sortBy = 'area';
+  }
+
   let query = {};
   
   let options = {
@@ -34,16 +44,20 @@ router.get('/', (req, res, next) => {
     populate: ['comunity', 'commerseArea', 'district']
   };
   
+  let template = req.device.type === 'phone' ? 'phone/apartmentType.ejs' : 'apartmentType' ;
+  
   District.find({}).exec((err, districts) => {
     ApartmentType.paginate(query, options).then((result) => {
       let startIndex = Math.max(1, result.page - 2);
       let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
-      res.render('apartmentType', {
+      res.render(template, {
         title: '房型列表',
         result: result,
         districts: districts,
         startIndex: startIndex,
-        endIndex: endIndex
+        endIndex: endIndex,
+        sortBy: sortBy,
+        url: url.parse(req.originalUrl).pathname
       });
     }).catch((err) => {
       res.render('error', {
@@ -77,7 +91,16 @@ router.get('/api', (req, res, next) => {
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
 
-  let sort = [['hot', -1], ['price', -1], ['area', -1]];
+  let sort = [['isHot', -1], ['price', 1], ['area', -1]];
+  let sortBy = 'isHot';
+  if (req.query.price) {
+    sort = [['price', 1], ['isHot', -1], ['area', -1]];
+    sortBy = 'price';
+  }
+  if (req.query.area) {
+    sort = [['area', -1], ['isHot', -1], ['price', 1]];
+    sortBy = 'area';
+  }
 
   let options = {
     page: page,
@@ -101,7 +124,9 @@ router.get('/api', (req, res, next) => {
       query['apartmentType'] = {'$in': _.map(apartmentTypes, (at) => at._id)};
       Apartment.paginate(query, options).then((result) => {
         res.json({
-          result: result
+          result: result,
+          sortBy: sortBy,
+          url: url.parse(req.originalUrl).pathname
         });
       }).catch((err) => {
         res.json({
@@ -137,7 +162,16 @@ router.get('/type/:id', (req, res, next) => {
     .exec((err, apartmentType) => {
       logger.info(apartmentType);
 
-      let sort = [['hot', -1], ['price', -1], ['area', -1]];
+      let sort = [['isHot', -1], ['price', 1], ['area', -1]];
+      let sortBy = 'isHot';
+      if (req.query.price) {
+        sort = [['price', 1], ['isHot', -1], ['area', -1]];
+        sortBy = 'price';
+      }
+      if (req.query.area) {
+        sort = [['area', -1], ['isHot', -1], ['price', 1]];
+        sortBy = 'area';
+      }
       
       let query = { apartmentType: apartmentType };
 
@@ -149,17 +183,21 @@ router.get('/type/:id', (req, res, next) => {
         populate: ['apartmentType', 'comunity', 'commerseArea', 'district']
       };
       
+      let template = req.device.type === 'phone' ? 'phone/apartments.ejs' : 'apartments';
+      
       Apartment.paginate(query, options).then((result) => {
         
         let startIndex = Math.max(1, result.page - 2);
         let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
         
-        res.render('apartments', {
+        res.render(template, {
           title: '房型房源列表',
           result: result,
           typeId: typeId,
           startIndex: startIndex,
-          endIndex: endIndex
+          endIndex: endIndex,
+          sortBy: sortBy,
+          url: url.parse(req.originalUrl).pathname
         });
       }).catch((err) => {
         res.render('error', {
@@ -172,7 +210,10 @@ router.get('/type/:id', (req, res, next) => {
 });
 
 router.get('/detail/:id', (req, res, next) => {
-  Apartment.findById(req.params.id, function(err, apartment) {
+  Apartment
+    .findById(req.params.id)
+    .populate('apartmentType comunity commerseArea district')
+    .exec(function(err, apartment) {
     if (err) {
       return res.render('error', {
         error: err,
@@ -183,7 +224,9 @@ router.get('/detail/:id', (req, res, next) => {
     if (!apartment) {
       return res.status(404);
     }
-    res.render('apartmentDetail', { apartment: apartment });
+    
+    let template = req.device.type === 'phone' ? 'phone/apartmentDetail.ejs' : 'apartmentDetail';
+    res.render(template, { apartment: apartment });
   });
 });
 
