@@ -247,6 +247,13 @@ function ajaxget()
       + (yuezustr ? (yuezustr + "&") : '')
       + (sortBy ? (sortBy + '=' + desc) : '');
     
+    var word = $("#word").attr('val');
+    var searchshi = $('#searchshi').attr('val');
+    
+    if (word && searchshi) {
+        datastr = datastr + '&word=' + word + '&searchshi=' + searchshi;
+    }
+    
     $.ajax({
         async:false,//同步请求
         type: "GET",

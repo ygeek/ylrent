@@ -32,12 +32,16 @@
 <div class="clear"></div>
 <div class="sosuo">
     <div class="sosuo_m">
-        <form action="" method="get">
-            <input type="text" class="sosuo_text"  onfocus="if (value =='小区  /   地标  /  商区'){value =''}"   onblur="if (value ==''){value='小区  /   地标  /  商区'}" value="小区  /   地标  /  商区" />
-            <select name="" class="sosuo_xz">
-              <option>一房</option>
-              <option>二房</option>
-              <option>三房及以上</option>
+        <form action="/apartment/" method="get">
+            <input name="word"
+                   type="text" class="sosuo_text"
+                   onfocus="if (value =='小区  /   地标  /  商区'){value =''}"
+                   onblur="if (value ==''){value='小区  /   地标  /  商区'}"
+                   value="小区  /   地标  /  商区" />
+            <select name="searchshi" class="sosuo_xz">
+              <option value="1">一房</option>
+              <option value="2">二房</option>
+              <option value="3">三房及以上</option>
             </select>
             <input type="submit" class="sosuo_submit" value="搜索"/>
         </form>

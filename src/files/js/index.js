@@ -42,3 +42,9 @@ Qfast(false, 'widgets', function () {
         }) 
 });
 
+jQuery('.sosuo_submit').click(function() {
+  $(this).addClass('highlighted');
+  setTimeout(function(){
+    $('.sosuo_submit').removeClass('highlighted');
+  }, 300);
+});

@@ -131,6 +131,14 @@
     <div class="clear"></div>
 </div>
 <div class="clear"></div>
+
+<% if (searchshi) { %>
+    <p hidden="hidden" id="searchshi" val="<%= searchshi %>"></p>
+<% } %>
+<% if (word) { %>
+    <p hidden="hidden" id="word" val="<%= word %>"></p>
+<% } %>
+
 <% include footer.ejs %>
 <script type="text/javascript" src="/files/js/ajax.js"></script>
 <script type="text/javascript" src="/files/js/imghover.js"></script>

@@ -15,6 +15,7 @@ const logger = log4js.getLogger('normal');
 // const ObjectId = mongoose.Schema.Types.ObjectId;
 const District = mongoose.model('District');
 const CommerseArea = mongoose.model('CommerseArea');
+const Comunity = mongoose.model('Comunity');
 const ApartmentType = mongoose.model('ApartmentType');
 const Apartment = mongoose.model('Apartment');
 
@@ -54,34 +55,84 @@ router.get('/', (req, res, next) => {
     sort: sort,
     populate: ['comunity', 'commerseArea', 'district']
   };
-  
+
   let template = req.device.type === 'phone' ? 'phone/apartmentType.ejs' : 'apartmentType' ;
   
-  District.find({}).exec((err, districts) => {
-    CommerseArea.find({}).exec((err, commerseAreas) => {
-      ApartmentType.paginate(query, options).then((result) => {
-        let startIndex = Math.max(1, result.page - 2);
-        let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
-        res.render(template, {
-          title: '房型列表',
-          result: result,
-          districts: districts,
-          commerseAreas: commerseAreas,
-          startIndex: startIndex,
-          endIndex: endIndex,
-          sortBy: sortBy,
-          desc: desc,
-          url: url.parse(req.originalUrl).pathname
-        });
-      }).catch((err) => {
-        res.render('error', {
-          error: err,
-          message: err.message,
-          stack: err.stack
+  if (req.query.word && req.query.word !== '小区  /   地标  /  商区') {
+    let word = req.query.word;
+    let searchshi = parseInt(req.query.searchshi);
+    District.find({name: new RegExp(word)}, function(err, searchDistricts) {
+      CommerseArea.find({name: new RegExp(word)}, function (err, searchCommerseAreas) {
+        Comunity.find({name: new RegExp(word)}, function (err, searchComunities) {
+          query['$or'] = [
+            {'district': {'$in': searchDistricts}},
+            {'commerseArea': {'$in': searchCommerseAreas}},
+            {'comunity': {'$in': searchComunities}}
+          ];
+          if (searchshi < 3) {
+            query['roomType.shi'] = searchshi;
+          } else {
+            query['roomType.shi'] = { '$gte': searchshi };
+          }
+          District.find({}).exec((err, districts) => {
+            CommerseArea.find({}).exec((err, commerseAreas) => {
+              ApartmentType.paginate(query, options).then((result) => {
+                let startIndex = Math.max(1, result.page - 2);
+                let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
+                res.render(template, {
+                  title: '房型列表',
+                  result: result,
+                  districts: districts,
+                  commerseAreas: commerseAreas,
+                  startIndex: startIndex,
+                  endIndex: endIndex,
+                  sortBy: sortBy,
+                  desc: desc,
+                  word: word,
+                  searchshi: searchshi,
+                  url: url.parse(req.originalUrl).pathname
+                });
+              }).catch((err) => {
+                res.render('error', {
+                  error: err,
+                  message: err.message,
+                  stack: err.stack
+                });
+              });
+            });
+          });
         });
       });
     });
-  });
+  } else {
+    District.find({}).exec((err, districts) => {
+      CommerseArea.find({}).exec((err, commerseAreas) => {
+        ApartmentType.paginate(query, options).then((result) => {
+          let startIndex = Math.max(1, result.page - 2);
+          let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
+          res.render(template, {
+            title: '房型列表',
+            result: result,
+            districts: districts,
+            commerseAreas: commerseAreas,
+            startIndex: startIndex,
+            endIndex: endIndex,
+            sortBy: sortBy,
+            desc: desc,
+            word: null,
+            searchshi: null,
+            url: url.parse(req.originalUrl).pathname
+          });
+        }).catch((err) => {
+          res.render('error', {
+            error: err,
+            message: err.message,
+            stack: err.stack
+          });
+        });
+      });
+    });
+  }
 });
 
 router.get('/api', (req, res, next) => {
@@ -139,19 +190,56 @@ router.get('/api', (req, res, next) => {
   
   logger.info('query: ', query);
 
-  ApartmentType.paginate(query, options).then((result) => {
-    res.json({
-      result: result,
-      sortBy: sortBy,
-      url: url.parse(req.originalUrl).pathname
+
+  if (req.query.word && req.query.word !== '小区  /   地标  /  商区') {
+    let word = req.query.word;
+    let searchshi = parseInt(req.query.searchshi);
+    District.find({name: new RegExp(word)}, function(err, searchDistricts) {
+      CommerseArea.find({name: new RegExp(word)}, function (err, searchCommerseAreas) {
+        Comunity.find({name: new RegExp(word)}, function (err, searchComunities) {
+          query['$or'] = [
+            {'district': {'$in': searchDistricts}},
+            {'commerseArea': {'$in': searchCommerseAreas}},
+            {'comunity': {'$in': searchComunities}}
+          ];
+          if (searchshi < 3) {
+            query['roomType.shi'] = searchshi;
+          } else {
+            query['roomType.shi'] = { '$gte': searchshi };
+          }
+          ApartmentType.paginate(query, options).then((result) => {
+            res.json({
+              result: result,
+              sortBy: sortBy,
+              url: url.parse(req.originalUrl).pathname,
+              word: word,
+              searchshi: searchshi
+            });
+          }).catch((err) => {
+            res.json({
+              error: err,
+              message: err.message,
+              stack: err.stack
+            });
+          });
+        });
+      });
     });
-  }).catch((err) => {
-    res.json({
-      error: err,
-      message: err.message,
-      stack: err.stack
+  } else {
+    ApartmentType.paginate(query, options).then((result) => {
+      res.json({
+        result: result,
+        sortBy: sortBy,
+        url: url.parse(req.originalUrl).pathname
+      });
+    }).catch((err) => {
+      res.json({
+        error: err,
+        message: err.message,
+        stack: err.stack
+      });
     });
-  });
+  }
 });
 
 router.get('/type/:id', (req, res, next) => {
