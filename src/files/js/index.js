@@ -40,10 +40,5 @@ Qfast(false, 'widgets', function () {
                 bns: ['.prev', '.next'],//** 前后按钮配置class                          
                 interval: 3000  //** 停顿时间  
         }) 
-})
+});
 
-
-$('.imghover').hover(
-  function() { $( this ).fadeTo( 'fast', '0.4'); },
-  function() { $( this ).fadeTo( 'fast', '1'); }
-);

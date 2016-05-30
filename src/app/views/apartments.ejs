@@ -5,8 +5,6 @@
 <title>源涞国际 - 热门房源</title>
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
 <script type="text/javascript" src="/files/js/jquery.js"></script>
-
-
 </head>
 <body>
 
@@ -55,15 +53,18 @@
             <% result.docs.forEach(function(val) { %> 
             
             <ul>
-                <img
-                  <% if (val.imagekeys[0]) { %>
-                    src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>"
-                  <% }else{ %>
-                    src="/img/banner01.jpg"
-                  <% } %>
-                  width="402"
-                  height="260"
-                />
+                <a href="/apartment/detail/<%= val.id %>">
+                    <img class="imghover"
+                        <% if (val.imagekeys[0]) { %>
+                            src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>"
+                        <% }else{ %>
+                            src="/img/banner01.jpg"
+                        <% } %>
+                        width="402"
+                        height="260"
+                    />
+                </a>
+
                 <li>
                     <h1><a href="/apartment/detail/<%= val.id %>"><%= val.comunity.name %><%= val.apartmentType.roomType.shi %>房<%= val.apartmentType.roomType.ting %>厅<%= val.apartmentType.roomType.wei %>卫</a></h1>
                     <p><%= val.comunity.name %><br />
@@ -114,3 +115,4 @@
 </div>
 <div class="clear"></div>
 <% include footer.ejs %>
+<script type="text/javascript" src="/files/js/imghover.js"></script>
