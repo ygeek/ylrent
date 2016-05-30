@@ -36,6 +36,9 @@ router.get('/', (req, res, next) => {
   }
 
   let query = {};
+  if (req.query.communityId) {
+    query.comunity = req.query.communityId;
+  }
   
   let options = {
     page: page,
