@@ -6,27 +6,34 @@ body {
  }
 
 #slides {
-    display: none
+    display: none;
+    position: relative;
 }
 
 #slides .slidesjs-navigation {
     margin-top:3px;
+    z-index: 999;
 }
 
 #slides .slidesjs-previous {
-    margin-right: 5px;
-    float: left;
+    position: absolute;
+    height: 80px;
+    width: auto;
+    top: 50%;
+    left: 2%;
 }
 
 #slides .slidesjs-next {
-    margin-right: 5px;
-    float: left;
+    position: absolute;
+    height: 80px;
+    width: auto;
+    top: 50%;
+    right: 2%;
 }
 
 .slidesjs-pagination {
     margin: 6px 0 0;
     float: right;
-    list-style: none;
 }
 
 .slidesjs-pagination li {
@@ -35,7 +42,7 @@ body {
 }
 
 .slidesjs-pagination li a {
-    display: block;
+    display: inline-block;
     width: 13px;
     height: 0;
     padding-top: 13px;
@@ -67,10 +74,6 @@ body {
 .navbar {
     overflow: hidden
 }
-
- #slides {
-     display: none
- }
 
 .container {
     margin: 0 auto
