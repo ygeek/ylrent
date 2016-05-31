@@ -8,6 +8,7 @@ body {
 #slides {
     display: none;
     position: relative;
+    text-align: center;
 }
 
 #slides .slidesjs-navigation {
@@ -32,12 +33,11 @@ body {
 }
 
 .slidesjs-pagination {
-    margin: 6px 0 0;
-    float: right;
+    margin: 6px auto 0;
 }
 
 .slidesjs-pagination li {
-    float: left;
+    display: inline-block;
     margin: 0 1px;
 }
 
