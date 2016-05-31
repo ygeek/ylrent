@@ -51,7 +51,7 @@
     <div class="order01">
         <div class="order01_top">
             <h1>
-                <a href="#"><%= apartment.comunity.name %> <%= apartment.houseNo %></a>
+                <a href="#"><%= apartment.comunity.name %><%= apartment.apartmentType.roomType.shi %>室<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫</a>
                 <br>
                 <span><%= apartment.apartmentType.roomType.shi %>室<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫 | <%= apartment.area %>平米 </span></h1>
             <h2>￥ <%= apartment.price %></h2>
