@@ -18,10 +18,10 @@
 </head>
 <body>
 <div class="header">
-    <!--
-    <a href="#"><div class="header_l"><img src="/img/mobile/fanhui.png" width="20" /></div></a>
-    -->
-    <div class="header_c">超过 <%= result.total %> 套房源</div>
+    
+    <a href="javascript:void(0)" onclick="history.go(-1)"><div class="header_l"><img src="/img/mobile/fanhui.png" width="20" /></div></a>
+    
+    <div class="header_font">超过 <%= result.total %> 套房源</div>
 
     <div id="dl-menu" class="dl-menuwrapper">
         <button id="dl-menu-button">Open Menu</button>
@@ -40,7 +40,7 @@
 
 </div>
 <div class="main01">
-    <div class="sort01">
+    <div class="sort01 nosx">
         <a href="<%= url %>" <% if(sortBy === 'isHot') { %> id="sort01_m" <% } %> >
             推荐<img src="/img/mobile/icon01.png">
         </a>
@@ -50,27 +50,11 @@
         <a href="<%= url %>?area=1" <% if(sortBy === 'area') { %>  id="sort01_m" <% } %> >
             面积<img src="/img/mobile/icon01.png">
         </a>
-        <a href="#" id="sort01_m">筛选<img src="/img/mobile/icon02.png"></a>
+      
     </div>
 
-    <div class="sosuo01">
-        <h1>行政区域</h1>
-        <a id="sosuo_hover" href="#">黄埔</a><a href="#">黄埔</a><a href="#">黄埔</a><a href="#">黄埔</a>
-        <div class="clear"></div>
-    </div>
-
-    <div class="sosuo01">
-        <h1>房型</h1>
-        <a id="sosuo_hover" href="#">黄埔</a><a href="#">黄埔</a><a href="#">黄埔</a><a href="#">黄埔</a>
-        <div class="clear"></div>
-    </div>
-
-    <div class="sosuo01">
-        <h1>价格</h1>
-        <a id="sosuo_hover" href="#">15000以下</a><a href="#">15000以下</a><a href="#">15000以下</a>
-        <div class="clear"></div>
-    </div>
-
+<div class="tuijianfangyuan_m">
+    <div class="houselist">
     <% result.docs.forEach(function(val) { %>
         <div class="fangyuan_pic">
             <a href="/apartment/detail/<%= val.id %>">
@@ -90,16 +74,26 @@
             <div class="clear"></div>
         </div>
     <% }) %>
-     <div class="page01">
-        <a href="#">上一页</a>
-        <a href="#" id="page_hover">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">下一页</a>
-     </div>
-    <div class="clear"></div>
+    <div class="page01">
+            <% if (result.page > 3) { %>
+                <a href="javascript:void(0);"  class="prepage">上一页</a>
+            <% } %>
+            <% for (var i = startIndex; i <= endIndex; i++) { %>
+                <a  href="javascript:void(0);" vid="<%= i %>" class="pagenum" <% if (result.page == i) { %>id="page_hover"<% } %> ><%= i %></a>
+            <% } %>
+            <% if (result.page + 3 <= result.pages) { %>
+                <a href="javascript:void(0);" class="nextpage">下一页</a>
+            <% } %>
+        </div>
+    </div>
 </div>
+	
+    <div class="clear"></div>
+    <input name="page" value="<%= result.page %>" class="page" type="hidden" />
+    <input name="pages" value="<%= result.pages %>" class="pages" type="hidden" />
+</div>
+
 <div class="clear"></div>
+<script type="text/javascript" src="/files/js/mobile.js"></script>
 </body>
 </html>

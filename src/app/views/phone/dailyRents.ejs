@@ -18,8 +18,8 @@
 </head>
 <body>
 <div class="header">
-    <a href="#"><div class="header_l"><img src="/img/mobile/fanhui.png" width="20" /></div></a>
-    <div class="header_font">超过 300 套房源</div>
+    <a href="javascript:void(0)" onclick="history.go(-1)"><div class="header_l"><img src="/img/mobile/fanhui.png" width="20" /></div></a>
+    <div class="header_font">超过 <%= result.total %> 套房源</div>
     <div id="dl-menu" class="dl-menuwrapper">
         <button id="dl-menu-button">Open Menu</button>
         <ul class="dl-menu">
@@ -57,12 +57,15 @@
         </div>
     <% }) %>
      <div class="page01">
-            <a href="#">上一页</a>
-            <a href="#" id="page_hover">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">下一页</a>
+            <% if (result.page > 3) { %>
+                <a href="javascript:void(0);"  class="prepage">上一页</a>
+            <% } %>
+            <% for (var i = startIndex; i <= endIndex; i++) { %>
+                <a  href="javascript:void(0);" vid="<%= i %>" class="pagenum" <% if (result.page == i) { %>id="page_hover"<% } %> ><%= i %></a>
+            <% } %>
+            <% if (result.page + 3 <= result.pages) { %>
+                <a href="javascript:void(0);" class="nextpage">下一页</a>
+            <% } %>
          </div>
     <div class="clear"></div>
 </div>
