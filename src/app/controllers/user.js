@@ -123,7 +123,16 @@ router.post('/register', (req, res, next) => {
   }
 
   verifySMSCode(username, smscode, (err, body) => {
-    if (!err && body && body.code === 0) {
+    if (err || body && body.code !== 0) {
+      return res.render('register', {
+        usernameError: null,
+        smsError: body && ( body.msg || body.error ) || '短信验证失败',
+        nameError: null,
+        passwordError: null,
+        password2Error: null,
+        corpNameError: null
+      });
+    } else {
       User.register(new User(userData), password, function(err, user) {
         if (err) {
           return res.render('register', {
@@ -138,15 +147,6 @@ router.post('/register', (req, res, next) => {
         passport.authenticate('local')(req, res, function() {
           res.redirect('/');
         });
-      });
-    } else {
-      return res.render('register', {
-        usernameError: null,
-        smsError: body && ( body.msg || body.error ) || '短信验证失败',
-        nameError: null,
-        passwordError: null,
-        password2Error: null,
-        corpNameError: null
       });
     }
   });
