@@ -38,11 +38,20 @@
                    onfocus="if (value =='小区  /   地标  /  商区'){value =''}"
                    onblur="if (value ==''){value='小区  /   地标  /  商区'}"
                    value="小区  /   地标  /  商区" />
-            <select name="searchshi" class="sosuo_xz">
-              <option value="1">一房</option>
-              <option value="2">二房</option>
-              <option value="3">三房及以上</option>
-            </select>
+		   <div class="sosuo_xz">
+			<div id="divselect" >
+			      <cite>房型</cite>
+			      <ul>
+				 <li><a href="javascript:;" selectid="1">一房</a></li>
+				 <li><a href="javascript:;" selectid="2">两房</a></li>
+				 <li><a href="javascript:;" selectid="3">三房</a></li>
+				 <li><a href="javascript:;" selectid="4">三房以上</a></li>
+				
+			      </ul>
+			  </div>
+		  </div>
+		  <input name="shi" type="hidden" value="" id="inputselect"/>
+           
             <input type="submit" class="sosuo_submit" value="搜索"/>
         </form>
     </div>
@@ -218,9 +227,10 @@
 
 <div class="clear"></div>
 <% include footer.ejs %>
-
 <script type="text/javascript" src="files/js/index.js"></script>
 <script type="text/javascript" src="files/js/imghover.js"></script>
 <script src="files/js/jquery1.js"></script>
+<script type="text/javascript" src="files/js/jquery.select.js"></script>
+<script type="text/javascript" src="files/js/divselect.js"></script>
 </body>
 </html>

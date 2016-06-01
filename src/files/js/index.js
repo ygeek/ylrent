@@ -41,3 +41,4 @@ Qfast(false, 'widgets', function () {
                 interval: 3000  //** 停顿时间  
         }) 
 });
+
