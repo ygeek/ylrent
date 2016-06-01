@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 $(function() {
-    $(document).on("click", "#sort01_m", function(e) {
+    $(document).on("click", "#sort02_m", function(e) {
        $(".fyss").toggle('slow'); 
     });
     
@@ -161,30 +161,30 @@ $(function() {
         ajaxget();
     });
     $(document).on("click", ".priceSort", function(e) {
-        $("#current03").removeAttr('style');
-        $("#current03").removeAttr('id');
-        $(".priceSort").attr('id', 'current03');
-        var desc = $("#current03").attr('desc');
+        $("#sort01_m").removeAttr('style');
+        $("#sort01_m").removeAttr('id');
+        $(".priceSort").attr('id', 'sort01_m');
+        var desc = $("#sort01_m").attr('desc');
         if (desc == 0) {
-            $("#current03").attr('desc', 1);
-            $("#current03").attr('style', 'background:url(/img/icon13.png) 90% no-repeat #f6f6f6;');
+            $("#sort01_m").attr('desc', 1);
+            $(this).children("img").attr("src","/img/mobile/icon01_s.png");
         } else {
-            $("#current03").attr('desc', 0);
-            $("#current03").attr('style', 'background:url(/img/icon20.png) 90% no-repeat #f6f6f6;');
+            $("#sort01_m").attr('desc', 0);
+            $(this).children("img").attr("src","/img/mobile/icon01.png");
         }
         ajaxget();
     });
     $(document).on("click", ".areaSort", function(e) {
-        $("#current03").removeAttr('style');
-        $("#current03").removeAttr('id');
-        $(".areaSort").attr('id', 'current03');
-        var desc = $("#current03").attr('desc');
+        $("#sort01_m").removeAttr('style');
+        $("#sort01_m").removeAttr('id');
+        $(".areaSort").attr('id', 'sort01_m');
+        var desc = $("#sort01_m").attr('desc');
         if (desc == 0) {
-            $("#current03").attr('desc', 1);
-            $("#current03").attr('style', 'background:url(/img/icon13.png) 90% no-repeat #f6f6f6;');
+            $("#sort01_m").attr('desc', 1);
+            $(this).children("img").attr("src","/img/mobile/icon01.png");
         } else {
-            $("#current03").attr('desc', 0);
-            $("#current03").attr('style', 'background:url(/img/icon20.png) 90% no-repeat #f6f6f6;');
+            $("#sort01_m").attr('desc', 0);
+            $(this).children("img").attr("src","/img/mobile/icon01_s.png");
         }
         ajaxget();
     });
@@ -228,17 +228,17 @@ function ajaxget()
     
     var sortBy = null;
     var desc = 1;
-    if ($('#current03').hasClass('isHotSort')) {
+    if ($('#sort01_m').hasClass('isHotSort')) {
         sortBy = 'isHot';
-        desc = $('#current03').attr("desc");
+        desc = $('#sort01_m').attr("desc");
     }
-    if ($('#current03').hasClass('priceSort')) {
+    if ($('#sort01_m').hasClass('priceSort')) {
         sortBy = 'price';
-        desc = $('#current03').attr("desc");
+        desc = $('#sort01_m').attr("desc");
     }
-    if ($('#current03').hasClass('areaSort')) {
+    if ($('#sort01_m').hasClass('areaSort')) {
         sortBy = 'area';
-        desc = $('#current03').attr("desc");
+        desc = $('#sort01_m').attr("desc");
     }
     
     var page = $("input[name='page']").val();

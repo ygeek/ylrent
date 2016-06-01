@@ -75,10 +75,10 @@ header img{display: block;padding: 10px 0 0 30px;}
 .main01{ background: #fff; padding:1px 0 20px 0;}
 .sort01{background:#b6b6b8; height:42px; line-height:42px;border-bottom:1px solid #dedede;}
 .sort01 a{height:42px; line-height:42px; float:left; width:33%; text-align:center; font-size:16px; border-right:1px solid #dedede; background:#fff; display:block;}
-.nosx a { width:49.8%;}
+.nosx a { width:49.7%;}
 .sort01 a img{margin:-3px 0 0 6px;}
 #sort01_m{ color:#fff; background:#b6b6b8; border-right:0; }
-
+#sort02_m{ color:#fff; color:#666;order-right:0; }
 .sosuo01{background:#fff; padding:10px 20px;  padding-right: 0px;  border-bottom:1px solid #dedede;}
 .sosuo01 h1{font-size:16px;}
 .sosuo01 a{padding:0 15px; height:30px; line-height:30px; display:block; float:left; border:1px solid #dedede; border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; margin:8px 10px 0 0; font-size:15px;}
@@ -95,7 +95,8 @@ header img{display: block;padding: 10px 0 0 30px;}
 .fangyuan_pic01 h2 span em{font-size:30px; }
 .fangyuan_pic01 h2 p{float:left; display:block;}
 .sosuo01  .seled {display:block; border:1px solid #e2e2e2;background:#b6b6b8; color:#fff; border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px;}
-.sosuo01  .tiaojian a {display:block; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; margin-right: 20px; display: inline;}
+.fyss .tiaojian {display:none; }
+.fyss  .tiaojian a {display:none; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; margin-right: 20px; display: inline;}
          
 /******房源详细********/
 .min_banner01 img{width:100%;}

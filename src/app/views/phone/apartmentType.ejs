@@ -42,13 +42,13 @@
         <!--<a href="<%= url %>" <% if(sortBy === 'isHot') { %> id="sort01_m" <% } %> >
             推荐<img src="/img/mobile/icon01.png">
         </a>-->
-        <a href="<%= url %>?price=1" <% if(sortBy === 'price') { %>  id="sort01_m" <% } %> >
+        <a href="javascript:void(0)" class="priceSort" <% if(sortBy === 'price') { %>  id="sort01_m" <% } %> >
             价格<img src="/img/mobile/icon01.png">
         </a>
-        <a href="<%= url %>?area=1" <% if(sortBy === 'area') { %>  id="sort01_m" <% } %> >
+        <a href="javascript:void(0)"  class="areaSort"  <% if(sortBy === 'area') { %>  id="sort01_m" <% } %> >
             面积<img src="/img/mobile/icon01.png">
         </a>
-        <a href="javascript:void(0)" id="sort01_m">筛选<img src="/img/mobile/icon02.png"></a>
+        <a href="javascript:void(0)" id="sort02_m">筛选<img src="/img/mobile/icon02.png"></a>
     </div>
     <div class="fyss">
         <div class="sosuo01">
@@ -78,6 +78,10 @@
             <a href="javascript:void(0);" class="yuezu " min="30000"  max="0">¥30000以上</a>
             <div class="clear"></div>
         </div>
+	<li class="tiaojian"><span >条件：</span>
+              
+                
+            </li>
     </div>
     <div class="tuijianfangyuan_m">
         <div class="houselist">
