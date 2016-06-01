@@ -41,10 +41,3 @@ Qfast(false, 'widgets', function () {
                 interval: 3000  //** 停顿时间  
         }) 
 });
-
-jQuery('.sosuo_submit').click(function() {
-  $(this).addClass('highlighted');
-  setTimeout(function(){
-    $('.sosuo_submit').removeClass('highlighted');
-  }, 300);
-});
