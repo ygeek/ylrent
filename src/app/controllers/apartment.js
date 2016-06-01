@@ -57,10 +57,11 @@ router.get('/', (req, res, next) => {
   };
 
   let template = req.device.type === 'phone' ? 'phone/apartmentType.ejs' : 'apartmentType' ;
-  
-  if (req.query.word && req.query.word !== '小区  /   地标  /  商区') {
-    let word = req.query.word;
-    let searchshi = parseInt(req.query.searchshi);
+
+  let word = req.query.word;
+  let searchshi = parseInt(req.query.shi);
+  logger.info('search: ', word, searchshi);
+  if (word && word !== '小区  /   地标  /  商区' && searchshi && !isNaN(searchshi)) {
     District.find({name: new RegExp(word)}, function(err, searchDistricts) {
       CommerseArea.find({name: new RegExp(word)}, function (err, searchCommerseAreas) {
         Comunity.find({name: new RegExp(word)}, function (err, searchComunities) {
@@ -69,7 +70,7 @@ router.get('/', (req, res, next) => {
             {'commerseArea': {'$in': searchCommerseAreas}},
             {'comunity': {'$in': searchComunities}}
           ];
-          if (searchshi < 3) {
+          if (searchshi <= 3) {
             query['roomType.shi'] = searchshi;
           } else {
             query['roomType.shi'] = { '$gte': searchshi };
