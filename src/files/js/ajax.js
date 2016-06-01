@@ -263,7 +263,7 @@ function ajaxget()
         success: function(data){
             var htmlstr = "";
             $.each(data.result.docs,function(i,result){  
-                var imgstr = "/img/banner01.jpg";
+                var imgstr = "/img/default.jpg";
                 if(result.imagekeys[0])
                 {
                     imgstr = "http://o7k9opgtr.bkt.clouddn.com/"+result.imagekeys[0]+"?imageView2/0/w/320/h/240";
