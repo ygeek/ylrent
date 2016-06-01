@@ -34,19 +34,26 @@ input[type="submit"], input[type="reset"], input[type="button"],input[type="text
 /*layout style
 --------------------------------------*/
 header{height: 70px;max-width: 800px;background: #fff;-moz-box-shadow: 0 5px 0 #ddd;-webkit-box-shadow: 0 5px 0 #666;box-shadow: 0 0 8px #333;position: relative;z-index: 999;}
-header img{display: block;padding: 30px 0 0 30px;}
+header img{display: block;padding: 10px 0 0 30px;}
+
 
 .header{height:70px; max-width:800px; background:#fff;  -moz-box-shadow: 0 5px 0 #ddd; -webkit-box-shadow: 0 5px 0 #666; box-shadow:0 0 8px #333; position:relative; z-index:999; text-align:center;}
 .header_l{float:left; width:15%; height:110px;}
-.header_l img{margin:38px 0 0 0;}
-.header_c{float:left; height: 60px;}
+.header_l img{margin:14px 0 0 0;}
+.header_c{float:left;  width:70%; text-align: left; margin-left: 30px;  }
+.header_r{float:left; width:15%; height:110px; }
+.header_r img{margin:40px 0 0 0;}
+
+.header_font {float:left; text-align: center;line-height:70px; width:70%;  font-size:28px;}
 .header_c img {
-  max-height: 100%;
-  width: auto;
-  margin: 10px 10px;
+   margin-top: 15px; margin-left: 0px;
 }
 .header_r{float:left; width:15%; height:70px; }
 .header_r img{margin:40px 0 0 0;}
+
+
+
+
 
 
 .main{background:#f0f0f0; padding:30px 30px 60px 30px; }
@@ -66,18 +73,19 @@ header img{display: block;padding: 30px 0 0 30px;}
 
 
 /********房源搜索*******/
-.main01{background:#f0f0f0; padding:1px 0 20px 0;}
-.sort01{background:#b6b6b8; height:42px; line-height:42px;}
+.main01{ background: #fff; padding:1px 0 20px 0;}
+.sort01{background:#b6b6b8; height:42px; line-height:42px;border-bottom:1px solid #dedede;}
 .sort01 a{height:42px; line-height:42px; float:left; width:24.8%; text-align:center; font-size:16px; border-right:1px solid #dedede; background:#fff; display:block;}
 .sort01 a img{margin:-3px 0 0 6px;}
 #sort01_m{ color:#fff; background:#b6b6b8; border-right:0;}
 
-.sosuo01{background:#fff; padding:20px 20px;  border-top:1px solid #dedede;}
+.sosuo01{background:#fff; padding:20px 20px;  border-bottom:1px solid #dedede;}
 .sosuo01 h1{font-size:16px;}
 .sosuo01 a{padding:0 15px; height:30px; line-height:30px; display:block; float:left; border:1px solid #dedede; border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; margin:15px 10px 0 0; font-size:15px;}
 .sosuo01 a:hover{display:block; background:#b6b6b8; color:#fff; }
 #sosuo_hover{display:block; background:#b6b6b8; color:#fff; }
-
+.fyss { display: none;}
+.houselist {background:#f0f0f0; padding-top: 1px;padding-bottom: 25px;}
 .fangyuan_pic{width:93%; background:#fff; margin:25px auto 0 auto;}
 .fangyuan_pic img{width:100%;}
 .fangyuan_pic01{padding:10px 20px;}
@@ -86,7 +94,9 @@ header img{display: block;padding: 30px 0 0 30px;}
 .fangyuan_pic01 h2 span{float:right; display:block; color:#b28850; font-size:16px;}
 .fangyuan_pic01 h2 span em{font-size:30px; }
 .fangyuan_pic01 h2 p{float:left; display:block;}
-
+.sosuo01  .seled {display:block; border:1px solid #e2e2e2;background:#b6b6b8; color:#fff; border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px;}
+.sosuo01  .tiaojian a {display:block; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; margin-right: 20px; display: inline;}
+         
 /******房源详细********/
 .min_banner01 img{width:100%;}
 .order01{background:#fff; padding:30px 20px;}
@@ -1118,6 +1128,7 @@ footer{text-align:center; margin:60px 0 0 0;}
 .footer01_r a{height:40px; line-height:40px; width:70%; color:#000; background:#fff;  border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; font-size:20px; margin:10px auto 10px auto;  display:block;}
 
 .page01{ text-align:center; padding:30px 0 20px 0;}
-.page01 a{padding:3px 10px; border:1px solid #ccc; border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; background:#fff;}
+.page01 a{padding:5px 10px; border:1px solid #ccc; border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; background:#fff;}
  .page01 a:hover{background:#b28850; color:#fff;}
  #page_hover{background:#b28850; color:#fff;}
+.page01 .pagesel {background:#b28850; color:#fff;}
