@@ -15,6 +15,16 @@
     <script type="text/javascript" src="/files/js/mobile/jquery.js"></script>
     <script type="text/javascript" src="/files/js/mobile/modernizr.custom.js"></script>
     <script type="text/javascript" src="/files/js/mobile/jquery.dlmenu.js"></script>
+
+    <script type="text/javascript" src="/files/js/mobile/jquery.bxslider.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.slider6').bxSlider({
+            mode: 'fade',
+            slideMargin: 10
+          });
+        });
+    </script>
 </head>
 <body>
 <div class="header">
@@ -36,7 +46,17 @@
     </script>
 </div>
 <div class="main01" style="padding:0 0 90px 0;">
-    <div class="min_banner01"><img src="/img/mobile/img02.jpg"></div>
+    <div class="slider6">
+        <% if (daily.imagekeys[0]) { %>
+        <% daily.imagekeys.forEach(function(val) { %>
+      <div class="slide"><img src="http://o7k9opgtr.bkt.clouddn.com/<%= val %>"></div>
+
+        <% }) %>
+        <% }else{ %>
+        <div class="slide"><img src="/img/mobile/img02.jpg"></div>
+        <div class="slide"><img src="/img/mobile/img02.jpg"></div>
+        <% } %>
+    </div>
     <div class="order01">
         <div class="order01_top">
             <h1><a href="#"><%= daily.name %></a><br><span>2室1厅1卫   |   96平米   |   宜住3人</span></h1>
