@@ -189,6 +189,47 @@ $(function() {
         ajaxget();
     });
     
+    
+    //发送短信
+    $(document).on("click", ".sendButton", function(e) {
+       
+        var mobile = $("#usernameField").val();
+        if(mobile=='/  手机号'||mobile=='')
+        {
+            alert('请填写手机号!');
+            return;
+        }
+        if(!isphone(mobile))
+        {
+            
+           alert('手机号码格式不正确!');
+           
+            return;
+        }
+       
+        $.ajax({
+            type: 'post',
+            url: '/user/requestsms/',
+            data: 'mobile=' + mobile,
+            dataType: 'json',
+            beforeSend:function(e){
+                
+               
+                $(".yzm").removeClass('sendButton');
+                time(".yzm");
+            },
+            success:function(data){
+                
+              if (data.code !== 0) {
+                    alert(data.msg);
+                
+              } else {
+                  alert('验证码发送成功!');
+              }
+            }
+       });
+    });
+    
 })
 
 function ajaxget()
@@ -330,4 +371,36 @@ function ajaxget()
             $("html, body").animate({ scrollTop: 0 }, "slow");
         }
     });
+}
+
+
+function isphone(inputString)
+{
+     var partten = /^1[3,5,8,7]\d{9}$/;
+     var fl=false;
+     if(partten.test(inputString))
+     {
+          //alert('是手机号码');
+          return true;
+     }
+     else
+     {
+          return false;
+          //alert('不是手机号码');
+     }
+}
+var wait = 60;
+function time(o) {
+  if (parseInt(wait) === 0) {
+    $(o).addClass("sendButton");
+   
+    $(o).val("获取验证码"); 
+    wait = 60;
+  } else {
+    $(o).val(wait + "秒");
+    wait = parseInt(wait)-1;
+    setTimeout(function() {
+      time(o);
+    }, 1000);
+  }
 }

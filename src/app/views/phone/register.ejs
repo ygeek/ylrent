@@ -12,6 +12,7 @@
     <meta content="telephone=no" name="format-detection" />
     <title>源涞国际</title>
     <link type="text/css" href="/css/mobile-main.css" rel="stylesheet" />
+<script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 <header>
@@ -26,24 +27,24 @@
     </div>
     <div class="login_resgister">
         <form action="" method="get">
-            <input type="text"
+            <input type="text" id="usernameField" name="usernameField"
                    class="login_resgister_input"
                    onfocus="if (value =='账号：手机号/用户名/邮箱'){value =''}"
                    onblur="if (value ==''){value='账号：手机号/用户名/邮箱'}"
                    value="账号：手机号/用户名/邮箱">
             <input type="text"
-                   class="login_resgister_input"
+                   class="login_resgister_input" name="password"
                    onfocus="if (value =='密码：请输入密码'){value =''}"
                    onblur="if (value ==''){value='密码：请输入密码'}"
                    value="密码：请输入密码">
 
             <div class="yanzhengma">
-                <input type="text"
+                <input type="text" name="smscode"
                        onfocus="if (value =='验证码'){value =''}"
                        onblur="if (value ==''){value='验证码'}"
                        value="验证码"
                        style="width:55%; float:left; height:50px; line-height:50px; border-radius:5px; border:0; display:block; font-size:18px; color:#d8d8d8; text-indent:20px; background:#fff;" />
-                <input type="submit"
+                <input type="button"  class="sendButton yzm"  
                        value="发送验证码"
                        style="height:34px; line-height:34px; width:40%; display:block; float:left; background:#999; color:#fff; cursor:pointer; border:0;border-radius:50px; -webkit-border-radius:50px; -moz-border-radius:50px; font-size:16px; text-shadow:0 0 1px #a7a6a6; margin:8px 10px 0 0; padding:0 5px 0 0;" />
             </div>
@@ -64,6 +65,6 @@
     <footer>联系客服：400-668-1609 源涞实业 沪ICP13031446</footer>
     <div class="clear"></div>
 </div>
-
+<script type="text/javascript" src="/files/js/mobile.js"></script>
 </body>
 </html>
