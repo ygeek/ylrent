@@ -123,7 +123,9 @@ router.post('/register', (req, res, next) => {
   }
 
   verifySMSCode(username, smscode, (err, body) => {
-    if (err || body && body.code !== 0) {
+    logger.trace('verify sms code: ', err, body);
+    if (err || body && body.code && body.code !== 0) {
+      logger.trace('verify sms error: ', err, body);
       return res.render('register', {
         usernameError: null,
         smsError: body && ( body.msg || body.error ) || '短信验证失败',
@@ -133,6 +135,7 @@ router.post('/register', (req, res, next) => {
         corpNameError: null
       });
     } else {
+      logger.trace('verify sms success', body);
       User.register(new User(userData), password, function(err, user) {
         if (err) {
           return res.render('register', {
