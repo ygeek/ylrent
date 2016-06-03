@@ -26,8 +26,9 @@
         </div>
     </div>
     <div class="login_resgister">
-        <form action="" method="get">
-            <input type="text" id="usernameField" name="usernameField"
+        <form action="/user/register/" method="post">
+            <input type="text" id="usernameField"
+                   name="username"
                    class="login_resgister_input"
                    onfocus="if (value =='账号：手机号/用户名/邮箱'){value =''}"
                    onblur="if (value ==''){value='账号：手机号/用户名/邮箱'}"
