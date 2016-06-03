@@ -1,0 +1,55 @@
+// fonts
+#slider1_container {position: relative; top: 0px; left: 0px; width: 1120px;height: 456px; background: #191919; margin:0px auto; overflow: hidden;}
+.slider1_container {position: relative;}
+.loading {position: absolute; top: 0px; left: 0px;}
+.loading .one {filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;background-color: #000000; top: 0px; left: 0px;width: 100%;height:100%;}
+.loading .two {position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;top: 0px; left: 0px;width: 100%;height:100%;}
+
+.slider1_slides {cursor: move; position: absolute; left: 0px; top: 0px; width: 1120px; height: 356px; overflow: hidden;}
+.jssora05l, .jssora05r, .jssora05ldn, .jssora05rdn{position: absolute;cursor: pointer;display: block;background: url(../img/a17.png) no-repeat;overflow:hidden;}
+.jssora05l { background-position: -10px -40px; }
+.jssora05r { background-position: -70px -40px; }
+.jssora05l:hover { background-position: -130px -40px; }
+.jssora05r:hover { background-position: -190px -40px; }
+.jssora05ldn { background-position: -250px -40px; }
+.jssora05rdn { background-position: -310px -40px; }
+
+.jssora05l { width: 40px; height: 40px; top: 158px; left: 8px;}
+.jssora05r { width: 40px; height: 40px; top: 158px; right: 8px}
+
+.jssort01 .w {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.jssort01 .c {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 68px;
+    height: 68px;
+    border: #000 2px solid;
+}
+
+.jssort01 .p:hover .c, .jssort01 .pav:hover .c, .jssort01 .pav .c {
+    background: url(../img/t01.png) center center;
+    border-width: 0px;
+    top: 2px;
+    left: 2px;
+    width: 68px;
+    height: 68px;
+}
+
+.jssort01 .p:hover .c, .jssort01 .pav:hover .c {
+    top: 0px;
+    left: 0px;
+    width: 70px;
+    height: 70px;
+    border: #fff 1px solid;
+}
+
+.jssort01 {position: absolute; width: 1120px; height: 100px; left:0px; bottom: 0px; top:356px; background-color: #fff;}
+.jssort01 .p {position: absolute; width: 72px; height: 72px; top: 0; left: 0;}
