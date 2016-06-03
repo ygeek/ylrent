@@ -1,5 +1,5 @@
 .album{
-	margin:20px auto;
+	margin:0px auto;
 	width:1120px;
 	border:10px solid #FFF;
 	-webkit-box-shadow: 1px 2px 5px #CCC;
@@ -20,7 +20,7 @@
 	position:relative;
 	z-index:1;
 	margin:0 auto;
-	height:750px;
+	height:800px;
 	text-align:center;
 	overflow:hidden;
 }
@@ -128,7 +128,7 @@
 	left:0;
 	margin:0;
 	width:1100px;
-	height:750px;
+	height:800px;
 	background-color:#FFF;
 	opacity: 0.6;
 	filter:alpha(opacity=60);
@@ -147,7 +147,7 @@
 
 .album-carousel{
 	margin:0 auto;
-	width:1100px;
+	width:580px;
 	height:80px;
 	overflow:hidden;
 }
@@ -188,7 +188,7 @@
 	z-index:1;
 	float:left;
 	margin:0;
-	width:980px;
+	width:480px;
 	height:80px;
 	background-color:#FFF;
 	overflow:hidden;
@@ -229,14 +229,14 @@
 }
 
 .album-carousel-thumb-selected a:link,.album-carousel-thumb-selected a:visited,.album-carousel-thumb-selected a:hover,.album-carousel-thumb a:hover{
-	border:3px solid #F00;
+	
 }
 
 .album-carousel-thumb img{
 	position:absolute;
 	z-index:1;
 	display:block;
-	top:-37px;
+	top:-5px;
 	left:-80px;
 	width:230px;
 	height:144px;
