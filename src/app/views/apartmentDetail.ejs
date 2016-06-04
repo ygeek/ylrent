@@ -224,10 +224,15 @@ var Album = new jQuery.Album();
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hfr56zCA14KkpuRGsr2vKcV0GOG7KtH6"></script>
 <script type="text/javascript" src="/files/js/baidumap.js"></script>
 <script type="text/javascript">
-// 百度地图API功能
 
+// 当前房源信息
 var longitude = <%= apartment.comunity.longitude %>; //当前中心点坐标
 var latitude = <%= apartment.comunity.latitude %>;
+var centerPointName = '<%= apartment.comunity.name %>';
+var centerPointAddress = '<%= apartment.comunity.address %>';
+
+
+// 百度地图API功能开始
 var map = new BMap.Map("allmap");
 var point = new BMap.Point(longitude, latitude);
 map.centerAndZoom(point, 13);
@@ -237,6 +242,36 @@ map.enableScrollWheelZoom();
 map.enableInertialDragging();
 
 map.enableContinuousZoom();
+
+
+
+//添加当前房源标注并直接显示
+var centerPoint = new BMap.Point(longitude,latitude);
+var centerContent = "地址："+centerPointAddress;
+//添加标注以及信息窗口
+//创建特殊图标
+
+var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(300,157));
+var marker2 = new BMap.Marker(centerPoint,{icon:myIcon});  // 创建标注
+map.addOverlay(marker2);              // 将特殊标注添加到地图中
+
+//添加信息窗口
+var opts1 = {width : 250,height: 80,title : centerPointName ,enableMessage:true};
+marker2.addEventListener("click",function(e){
+	var p = e.target;
+	var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+	var infoWindow = new BMap.InfoWindow(centerContent,opts1);  // 创建信息窗口对象 
+	map.openInfoWindow(infoWindow,centerPoint); //开启信息窗口
+	
+});
+
+var infoWindow = new BMap.InfoWindow(centerContent,opts1);  // 创建信息窗口对象 
+map.openInfoWindow(infoWindow,centerPoint); //开启信息窗口
+//添加当前房源结束	
+
+
+
+			
 getJsonInfo('车站','jccz');
 </script>
 
