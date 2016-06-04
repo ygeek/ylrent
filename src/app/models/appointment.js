@@ -23,7 +23,6 @@ const ApartmentOrderSchema = new mongoose.Schema({
   createdAt: { type: Date, required: true, default: Date.now }
 });
 
-
 const DailyOrderSchema = new mongoose.Schema({
   daily: { type: ObjectId, ref: 'Daily' },
   name: String,
@@ -34,8 +33,21 @@ const DailyOrderSchema = new mongoose.Schema({
   createdAt: { type: Date, required: true, default: Date.now } 
 });
 
+const DelegationOrderSchema = new mongoose.Schema({
+  name: String,
+  mobile: String,
+  startDate: Date,
+  communityName: String,
+  structure: String,
+  price: String,
+  status: { type: String, required: true, default: OrderStatus.INITIAL },
+  createdAt: { type: Date, required: true, default: Date.now } 
+});
+
 ApartmentOrderSchema.plugin(mongoosePaginate);
 DailyOrderSchema.plugin(mongoosePaginate);
+DelegationOrderSchema.plugin(mongoosePaginate);
 
 exports.ApartmentOrder = mongoose.model('ApartmentOrder', ApartmentOrderSchema);
 exports.DailyOrder = mongoose.model('DailyOrder', DailyOrderSchema);
+exports.DelegationOrder = mongoose.model('DelegationOrder', DelegationOrderSchema);

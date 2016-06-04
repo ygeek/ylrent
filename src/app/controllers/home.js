@@ -93,4 +93,8 @@ router.get('/about', (req, res, next) => {
   res.render('about');
 });
 
+router.get('/delegate', (req, res, next) => {
+  res.render('delegate');
+});
+
 module.exports = router;

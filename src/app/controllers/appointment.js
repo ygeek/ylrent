@@ -11,9 +11,10 @@ import { verifySMSCode } from '../utils/sms';
 const logger = log4js.getLogger('normal');
 
 const Apartment = mongoose.model('Apartment');
-const Daily = mongoose.model('Daily');
+const DailyRent = mongoose.model('DailyRent');
 const ApartmentOrder = mongoose.model('ApartmentOrder');
 const DailyOrder = mongoose.model('DailyOrder');
+const DelegationOrder = mongoose.model('DelegationOrder');
 
 const router = express.Router();
 
@@ -81,7 +82,7 @@ router.post('/daily', (req, res, next) => {
       req.flash('error', err && err.message ? err.message : '短信验证失败');
       res.render(currentURL);
     } else {
-      Daily
+      DailyRent
         .findById(dailyId)
         .populate('comunity commerseArea district')
         .exec((err, daily) => {
@@ -109,3 +110,42 @@ router.post('/daily', (req, res, next) => {
     }
   });
 });
+
+router.post('/delegate', (req, res, next) => {
+  const name = req.body.name;
+  const mobile = req.body.mobile;
+  const startDate = new Date(req.body.startDate);
+  const communityName = req.body.communityName;
+  const structure = req.body.structure;
+  const price = req.body.price;
+  
+  const smscode = req.body.smscode;
+  
+  const currentURL = '/delegate';
+  
+  verifySMSCode(mobile, smscode, (err, body) => {
+    if (err || body && body.code && body.code !== 0) {
+      req.flash('error', err && err.message ? err.message : '短信验证失败');
+      res.render(currentURL);
+    } else {
+      let order = new DelegationOrder();
+      order.name = name;
+      order.mobile = mobile;
+      order.startDate = startDate;
+      order.communityName = communityName;
+      order.structure = structure;
+      order.price = price;
+      order.save(function(err) {
+        if (err) {
+          req.flash('error', err && err.message ? err.message : '委托失败请重试');
+          res.render(currentURL);
+        } else {
+          req.flash('info', '委托成功');
+          res.render(currentURL);
+        }
+      });
+    }
+  });
+});
+
+module.exports = router;

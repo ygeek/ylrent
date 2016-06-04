@@ -11,6 +11,7 @@ const router = express.Router();
 router.use('/user', require('./user'));
 router.use('/apartment', require('./apartment'));
 router.use('/daily', require('./daily'));
+router.use('/appointment', require('./appointment'));
 router.use('/', require('./home'));
 
 // export router
