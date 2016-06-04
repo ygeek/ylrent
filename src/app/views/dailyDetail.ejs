@@ -175,103 +175,44 @@
     </div>
     <div class="clear"></div>
     <div class="jichang">
-        <div class="jichang_l"><img src="/img/map.jpg" width="637" height="544" /></div>
+        <div class="jichang_l" id="allmap" style="height:600px; ">
+        
+        </div>
         <div class="jichang_r">
             <div class="tabbox02" id="statetab02">
                 <ul class="tabbtn02">
-                    <li class="current"><a>机场车站</a></li>
-                    <li><a> 地铁站 </a></li>	   
-                    <li><a> 景点娱乐</a></li>	                           
-                    <li><a>休闲娱乐</a></li>	
+                    <li class="current jccz"  onclick="getJsonInfo('机场','jccz')"><a>机场车站</a></li>
+                    <li class=" dtz" onclick="getJsonInfo('地铁','dtz')"><a> 地铁站 </a></li>	   
+                    <li class=" jdyl"  onclick="getJsonInfo('景点','jdyl')"><a> 景点娱乐</a></li>	                           
+                    <li class=" xxyl" onclick="getJsonInfo('娱乐','xxyl')"><a>休闲娱乐</a></li>	
                 </ul><!--tabbtn end-->
                 <div class="clear"></div>
-                <div class="tabcon02">
-                    <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
-                        <tr>
-                            <td>上海浦东国际机场</td>
-                            <td><img src="/img/icon16.png" /></td>
-                            <td>30分钟</td>
-                            <td><img src="/img/icon17.png" /></td>
-                            <td>30分钟</td>
-                        </tr>
-                        <tr>
-                            <td>上海浦东国际机场</td>
-                            <td><img src="/img/icon16.png" /></td>
-                            <td>30分钟</td>
-                            <td><img src="/img/icon17.png" /></td>
-                            <td>30分钟</td>
-                        </tr>
-                        <tr>
-                            <td>上海浦东国际机场</td>
-                            <td><img src="/img/icon16.png" /></td>
-                            <td>30分钟</td>
-                            <td><img src="/img/icon17.png" /></td>
-                            <td>30分钟</td>
-                        </tr>
-                        <tr>
-                            <td>上海浦东国际机场</td>
-                            <td><img src="/img/icon16.png" /></td>
-                            <td>30分钟</td>
-                            <td><img src="/img/icon17.png" /></td>
-                            <td>30分钟</td>
-                        </tr>
-                        <tr>
-                            <td>上海浦东国际机场</td>
-                            <td><img src="/img/icon16.png" /></td>
-                            <td>30分钟</td>
-                            <td><img src="/img/icon17.png" /></td>
-                            <td>30分钟</td>
-                        </tr>
-                        <tr>
-                            <td>上海浦东国际机场</td>
-                            <td><img src="/img/icon16.png" /></td>
-                            <td>30分钟</td>
-                            <td><img src="/img/icon17.png" /></td>
-                            <td>30分钟</td>
-                        </tr>
-                        <tr>
-                            <td>上海浦东国际机场</td>
-                            <td><img src="/img/icon16.png" /></td>
-                            <td>30分钟</td>
-                            <td><img src="/img/icon17.png" /></td>
-                            <td>30分钟</td>
-                        </tr>
-                        <tr>
-                            <td>上海浦东国际机场</td>
-                            <td><img src="/img/icon16.png" /></td>
-                            <td>30分钟</td>
-                            <td><img src="/img/icon17.png" /></td>
-                            <td>30分钟</td>
-                        </tr>
-                    </table>
+               <div class="clear"></div>
+                    <div class="tabcon02" id="jccz">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
+                            
+                            
+                        </table>
+                    </div><!--tabcon end-->
 
-                </div><!--tabcon end-->
-                <div class="tabcon02">
-                    <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
-                        <tr>
-                            <td>上海浦东国际机场</td>
-                            <td><img src="/img/icon16.png" /></td>
-                            <td>30分钟</td>
-                            <td><img src="/img/icon17.png" /></td>
-                            <td>30分钟</td>
-                        </tr>
-                        <tr>
-                            <td>上海浦东国际机场</td>
-                            <td><img src="/img/icon16.png" /></td>
-                            <td>30分钟</td>
-                            <td><img src="/img/icon17.png" /></td>
-                            <td>30分钟</td>
-                        </tr>
-                        <tr>
-                            <td>上海浦东国际机场</td>
-                            <td><img src="/img/icon16.png" /></td>
-                            <td>30分钟</td>
-                            <td><img src="/img/icon17.png" /></td>
-                            <td>30分钟</td>
-                        </tr>
-                    </table>
-                </div><!--tabcon end-->
-            </div>
+                    <div class="tabcon02"  id="dtz">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
+                           
+                        </table>
+                    </div><!--tabcon end-->
+					<div class="tabcon02"  id="jdyl">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
+                           
+                        </table>
+                    </div><!--tabcon end-->
+					<div class="tabcon02"  id="xxyl">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
+                           
+                        </table>
+                    </div><!--tabcon end-->
+                </div>
+            
+            
         </div>
         <div class="clear"></div>
     </div>
@@ -286,4 +227,22 @@
 var Album = new jQuery.Album();
 </script>
 
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hfr56zCA14KkpuRGsr2vKcV0GOG7KtH6"></script>
+<script type="text/javascript" src="/files/js/baidumap.js"></script>
+<script type="text/javascript">
+// 百度地图API功能
+
+var longitude = <%= daily.comunity.longitude %>; //当前中心点坐标
+var latitude = <%= daily.comunity.latitude %>;
+var map = new BMap.Map("allmap");
+var point = new BMap.Point(longitude, latitude);
+map.centerAndZoom(point, 13);
+
+//设置缩放控件
+map.enableScrollWheelZoom();
+map.enableInertialDragging();
+
+map.enableContinuousZoom();
+getJsonInfo('车站','jccz');
+</script>
 

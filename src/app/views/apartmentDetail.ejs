@@ -51,29 +51,6 @@
                  <a href="#next-group" class="album-carousel-btn-next" id="album-carousel-btn-next">›</a>
         </div>
 </div>
-<!--
-<div class="container">
-    <div id="slides">
-        <% if (apartment.imagekeys && apartment.imagekeys.length > 0) { %>
-            <% apartment.imagekeys.forEach(function(imgkey){ %>
-            <div>
-                <img class="slide" src="http://o7k9opgtr.bkt.clouddn.com/<%= imgkey %>" width="auto" height="520" alt="" />
-            </div>
-            <% }) %>
-        <% } else { %>
-            <div>
-                <img class="slide" src="/img/default.jpg" width="auto" height="520" alt="" />
-            </div>
-            <div>
-                <img class="slide" src="/img/default.jpg" width="auto" height="520" alt="" />
-            </div>
-        <% } %>
-       
-        <a href="#" class="slidesjs-previous slidesjs-navigation"><img src="/img/left_slider_arrow.png" alt="" /></a>
-        <a href="#" class="slidesjs-next slidesjs-navigation"><img src="/img/right_slider_arrow.png" alt="" /></a>
-    </div>
-</div>
--->
 <div class="n_main">
     <div class="remen_top_show">
         <div class="remen01">
@@ -189,94 +166,41 @@
     </div>
 
     <div class="clear"></div>
+    <!--百度地图周边开始-->
+
     <div class="jichang" id="weizhi">
-        <div class="jichang_l"><img src="/img/map.jpg" width="637" height="544" /></div>
+        <div class="jichang_l" id="allmap" style="height:600px; ">
+        
+        </div>
         <div class="jichang_r">
             <div class="tabbox02" id="statetab02">
                 <ul class="tabbtn02">
-                    <li class="current"><a>机场车站</a></li>
-                    <li><a> 地铁站 </a></li>	   
-                    <li><a> 景点娱乐</a></li>	                           
-                    <li><a>休闲娱乐</a></li>	
+                    <li class="current jccz"  onclick="getJsonInfo('机场','jccz')"><a>机场车站</a></li>
+                    <li class=" dtz" onclick="getJsonInfo('地铁','dtz')"><a> 地铁站 </a></li>	   
+                    <li class=" jdyl"  onclick="getJsonInfo('景点','jdyl')"><a> 景点娱乐</a></li>	                           
+                    <li class=" xxyl" onclick="getJsonInfo('娱乐','xxyl')"><a>休闲娱乐</a></li>	
                 </ul><!--tabbtn end-->
                 <div class="clear"></div>
-                    <div class="tabcon02">
+                    <div class="tabcon02" id="jccz">
                         <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
-                            <tr>
-                              <td>上海浦东国际机场</td>
-                              <td><img src="/img/icon16.png" /></td>
-                              <td>30分钟</td>
-                              <td><img src="/img/icon17.png" /></td>
-                              <td>30分钟</td>
-                            </tr>
-                            <tr>
-                               <td>上海浦东国际机场</td>
-                               <td><img src="/img/icon16.png" /></td>
-                               <td>30分钟</td>
-                               <td><img src="/img/icon17.png" /></td>
-                               <td>30分钟</td>
-                             </tr>
-                            <tr>
-                               <td>上海浦东国际机场</td>
-                               <td><img src="/img/icon16.png" /></td>
-                               <td>30分钟</td>
-                               <td><img src="/img/icon17.png" /></td>
-                               <td>30分钟</td>
-                             </tr>
-                            <tr>
-                                <td>上海浦东国际机场</td>
-                                <td><img src="/img/icon16.png" /></td>
-                                <td>30分钟</td>
-                                <td><img src="/img/icon17.png" /></td>
-                                <td>30分钟</td>
-                            </tr>
-                            <tr>
-                                <td>上海浦东国际机场</td>
-                                <td><img src="/img/icon16.png" /></td>
-                                <td>30分钟</td>
-                                <td><img src="/img/icon17.png" /></td>
-                                <td>30分钟</td>
-                            </tr>
-                            <tr>
-                                <td>上海浦东国际机场</td>
-                                <td><img src="/img/icon16.png" /></td>
-                                <td>30分钟</td>
-                                <td><img src="/img/icon17.png" /></td>
-                                <td>30分钟</td>
-                            </tr>
-                            <tr>
-                                <td>上海浦东国际机场</td>
-                                <td><img src="/img/icon16.png" /></td>
-                                <td>30分钟</td>
-                                <td><img src="/img/icon17.png" /></td>
-                                <td>30分钟</td>
-                            </tr>
-                            <tr>
-                                <td>上海浦东国际机场</td>
-                                <td><img src="/img/icon16.png" /></td>
-                                <td>30分钟</td>
-                                <td><img src="/img/icon17.png" /></td>
-                                <td>30分钟</td>
-                            </tr>
+                            
+                            
                         </table>
                     </div><!--tabcon end-->
 
-                    <div class="tabcon02">
+                    <div class="tabcon02"  id="dtz">
                         <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
-                            <tr>
-                              <td>上海浦东国际机场</td>
-                              <td><img src="/img/icon16.png" /></td>
-                              <td>30分钟</td>
-                              <td><img src="/img/icon17.png" /></td>
-                              <td>30分钟</td>
-                            </tr>
-                           <tr>
-                              <td>上海浦东国际机场</td>
-                              <td><img src="/img/icon16.png" /></td>
-                              <td>30分钟</td>
-                              <td><img src="/img/icon17.png" /></td>
-                              <td>30分钟</td>
-                            </tr>
+                           
+                        </table>
+                    </div><!--tabcon end-->
+					<div class="tabcon02"  id="jdyl">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
+                           
+                        </table>
+                    </div><!--tabcon end-->
+					<div class="tabcon02"  id="xxyl">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0" align="right">
+                           
                         </table>
                     </div><!--tabcon end-->
                 </div>
@@ -295,5 +219,26 @@
 <script type="text/javascript">
 var Album = new jQuery.Album();
 </script>
+
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hfr56zCA14KkpuRGsr2vKcV0GOG7KtH6"></script>
+<script type="text/javascript" src="/files/js/baidumap.js"></script>
+<script type="text/javascript">
+// 百度地图API功能
+
+var longitude = <%= apartment.comunity.longitude %>; //当前中心点坐标
+var latitude = <%= apartment.comunity.latitude %>;
+var map = new BMap.Map("allmap");
+var point = new BMap.Point(longitude, latitude);
+map.centerAndZoom(point, 13);
+
+//设置缩放控件
+map.enableScrollWheelZoom();
+map.enableInertialDragging();
+
+map.enableContinuousZoom();
+getJsonInfo('车站','jccz');
+</script>
+
 </body>
 </html>

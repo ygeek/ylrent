@@ -464,9 +464,9 @@ background:url(../img/house.png) no-repeat   right center; }
 			   .tabbox02 .tabbtn02 li a{color:#666;}
 			.tabbox02 .tabbtn02 li.current a,.tabbox02 .tabbtn li.current span{color:#000; font-weight:bold; }
 			 .tabcon02{padding:20px 0 0 0;}
-			.tabcon02 tr{height:50px; line-height:50px; border-bottom:1px solid #eee;}
-	
-					
+			.tabcon02 tr{height:50px; cursor:pointer; line-height:50px; border-bottom:1px solid #eee;}
+.tabbtn02 li {  cursor:pointer; }	
+.tabcon02 tr td { overflow:hidden; text-overflow: ellipsis;white-space: nowrap;}					
 /*****************************选项卡代码**************************************/	  
 	    
 		.zhanghao_l{float:left; width:244px;}
