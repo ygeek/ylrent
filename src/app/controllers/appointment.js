@@ -19,6 +19,7 @@ const DelegationOrder = mongoose.model('DelegationOrder');
 const router = express.Router();
 
 router.post('/apartment', (req, res, next) => {
+  console.log('post appointment apartment: ', req.body);
   const apartmentId = req.body.apartmentId;
   const name = req.body.name;
   const mobile = req.body.mobile;
@@ -34,7 +35,7 @@ router.post('/apartment', (req, res, next) => {
     if (err || body && body.code && body.code !== 0) {
       logger.trace('verify sms error: ', err, body);
       req.flash('error', '短信验证失败!');
-      res.render(currentURL);
+      res.redirect(currentURL);
     } else {
       logger.trace('verify sms success', body);
       Apartment
@@ -51,15 +52,15 @@ router.post('/apartment', (req, res, next) => {
             order.save(function(err) {
               if (!err) {
                 req.flash('info', '公寓预订成功!');
-                res.render(currentURL);
+                res.redirect(currentURL);
               } else {
                 req.flash('error', err && err.message ? err.message : '预订失败请重试');
-                res.render(currentURL);
+                res.redirect(currentURL);
               }
             });
           } else {
             req.flash('error', err && err.message ? err.message : '预订失败请重试');
-            res.render(currentURL);
+            res.redirect(currentURL);
           }
         });
     }
@@ -96,15 +97,15 @@ router.post('/daily', (req, res, next) => {
             order.save(function(err) {
               if (!err) {
                 req.flash('info', '预订成功!');
-                res.render(currentURL);
+                res.redirect(currentURL);
               } else {
                 req.flash('error', err && err.message ? err.message : '预订失败请重试!');
-                res.render(currentURL);
+                res.redirect(currentURL);
               }
             });
           } else {
             req.flash('error', err && err.message ? err.message : '预订失败请重试!');
-            res.render(currentURL);
+            res.redirect(currentURL);
           }
         });
     }
@@ -138,10 +139,10 @@ router.post('/delegate', (req, res, next) => {
       order.save(function(err) {
         if (err) {
           req.flash('error', err && err.message ? err.message : '委托失败请重试');
-          res.render(currentURL);
+          res.redirect(currentURL);
         } else {
           req.flash('info', '委托成功');
-          res.render(currentURL);
+          res.redirect(currentURL);
         }
       });
     }
