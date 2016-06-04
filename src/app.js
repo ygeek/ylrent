@@ -11,6 +11,7 @@ import mongoose from 'mongoose';
 import passport from 'passport';
 import session from 'express-session';
 import expressDevice from 'express-device';
+import expressFlash from 'express-flash';
 import { setupAppLogger } from './app/utils/logger';
 import config from './config';
 
@@ -40,6 +41,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(expressFlash());
 
 // setup logger
 setupAppLogger(app);

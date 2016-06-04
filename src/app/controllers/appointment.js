@@ -25,17 +25,15 @@ router.post('/apartment', (req, res, next) => {
   const comment = req.body.comment;
   
   const smscode = req.body.smscode;
+  
+  const currentURL = '/apartment/detail/' + apartmentId;
 
-  logger.trace('verify sms code: ', err, body);
   verifySMSCode(mobile, smscode, (err, body) => {
+    logger.trace('verify sms code: ', err, body);
     if (err || body && body.code && body.code !== 0) {
       logger.trace('verify sms error: ', err, body);
-      // TODO: display sms verified error in the same page
-      res.render('error', {
-        error: err,
-        message: err ? err.message : '短信验证失败',
-        stack: err ? err.stack : null
-      });
+      req.flash('error', '短信验证失败!');
+      res.render(currentURL);
     } else {
       logger.trace('verify sms success', body);
       Apartment
@@ -51,22 +49,16 @@ router.post('/apartment', (req, res, next) => {
             order.comment = comment;
             order.save(function(err) {
               if (!err) {
-                // TODO: display appointment success
-                res.redirect('/');
+                req.flash('info', '公寓预订成功!');
+                res.render(currentURL);
               } else {
-                res.render('error', {
-                  error: err,
-                  message: err ? err.message : '未知错误',
-                  stack: err ? err.stack : null
-                });
+                req.flash('error', err && err.message ? err.message : '预订失败请重试');
+                res.render(currentURL);
               }
             });
           } else {
-            res.render('error', {
-              error: err,
-              message: err ? err.message : '未知错误',
-              stack: err ? err.stack : null
-            });
+            req.flash('error', err && err.message ? err.message : '预订失败请重试');
+            res.render(currentURL);
           }
         });
     }
@@ -82,14 +74,12 @@ router.post('/daily', (req, res, next) => {
   
   const smscode = req.body.smscode;
   
+  const currentURL = '/daily/detail/' + dailyId;
+  
   verifySMSCode(mobile, smscode, (err, body) => {
-    if (err || body && body.code && body.code != 0) {
-      // TODO: display sms verified error in the same page
-      res.render('error', {
-        error: err,
-        message: err ? err.message : '短信验证失败',
-        stack: err ? err.stack : null
-      });
+    if (err || body && body.code && body.code !== 0) {
+      req.flash('error', err && err.message ? err.message : '短信验证失败');
+      res.render(currentURL);
     } else {
       Daily
         .findById(dailyId)
@@ -104,22 +94,16 @@ router.post('/daily', (req, res, next) => {
             order.endDate = endDate;
             order.save(function(err) {
               if (!err) {
-                // TODO: display appointment success
-                res.redirect('/');
+                req.flash('info', '预订成功!');
+                res.render(currentURL);
               } else {
-                res.render('error', {
-                  error: err,
-                  message: err ? err.message : '未知错误',
-                  stack: err ? err.stack : null
-                });
+                req.flash('error', err && err.message ? err.message : '预订失败请重试!');
+                res.render(currentURL);
               }
             });
           } else {
-            res.render('error', {
-              error: err,
-              message: err ? err.message : '未知错误',
-              stack: err ? err.stack : null
-            });
+            req.flash('error', err && err.message ? err.message : '预订失败请重试!');
+            res.render(currentURL);
           }
         });
     }
