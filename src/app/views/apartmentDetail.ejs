@@ -29,22 +29,23 @@
 		  <p class="album-image-loading-overlay hide" id="album-image-loading-overlay"><img src="/files/lib/jqueryhdp/img/loading.gif" alt="loading..." width="100" height="100" /></p>
 	 </div>
         <div class="album-carousel" id="album-carousel">
-                 <a href="#prev-group" class="album-carousel-btn-prev" id="album-carousel-btn-prev">‹</a>
-                 <div class="album-carousel-zone" id="album-carousel-zone">
-                 <ul class="album-carousel-list" id="album-carousel-list">
-                         <% if (apartment.imagekeys && apartment.imagekeys.length > 0) { %>
-			<% for (var i=0;i<apartment.imagekeys.length;i++){  %>
-
-			
-                       
-                            <li class="album-carousel-thumb <% if(i==0){ %>  album-carousel-thumb-selected <% } %> "><a href="http://o7k9opgtr.bkt.clouddn.com/<%= apartment.imagekeys[i] %>"><img src="http://o7k9opgtr.bkt.clouddn.com/<%= apartment.imagekeys[i] %>"   /></a></li>
-                         
-                        <% } %>
+            <a href="#prev-group" class="album-carousel-btn-prev" id="album-carousel-btn-prev">‹</a>
+                <div class="album-carousel-zone" id="album-carousel-zone">
+                    <ul class="album-carousel-list" id="album-carousel-list">
+                        <% if (apartment.imagekeys && apartment.imagekeys.length > 0) { %>
+                            <% for (var i=0;i<apartment.imagekeys.length;i++){  %>
+                                <li class="album-carousel-thumb <% if(i == 0) { %>  album-carousel-thumb-selected <% } %> ">
+                                    <a href="http://o7k9opgtr.bkt.clouddn.com/<%= apartment.imagekeys[i] %>">
+                                        <img src="http://o7k9opgtr.bkt.clouddn.com/<%= apartment.imagekeys[i] %>" />
+                                    </a>
+                                </li>
+                            <% } %>
                         <% } else { %>
-                         <li class="album-carousel-thumb  album-carousel-thumb-selected"><a href="/img/default.jpg"><img src="/img/default.jpg" width="230" height="144" /></a></li>
-                         <li class="album-carousel-thumb "><a href="/img/default.jpg"><img src="/img/default.jpg" width="230" height="144" /></a></li>
-                
-                        
+                           <li class="album-carousel-thumb  album-carousel-thumb-selected">
+                               <a href="/img/default.jpg">
+                                   <img src="/img/default.jpg" width="230" height="144" />
+                               </a>
+                           </li>
                         <% } %>
                  </ul>
                  </div>

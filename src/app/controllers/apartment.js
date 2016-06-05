@@ -254,6 +254,10 @@ router.get('/type/:id', (req, res, next) => {
     let apartmentType = await ApartmentType.findById(typeId).exec();
 
     logger.trace(apartmentType);
+    
+    if (!apartmentType) {
+      return res.status(404);
+    }
 
     let sortCondition = genApartmentSortCondition(req.query.price, req.query.area);
 

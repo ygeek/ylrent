@@ -13,29 +13,35 @@ const logger = log4js.getLogger('normal');
 
 const DailyRent = mongoose.model('DailyRent');
 
+function genDailySortCondition(priceDescent, areaDescent) {
+  let sort = [['isHot', -1], ['price', 1], ['area', -1]];
+  let sortBy = 'isHot';
+  let descent = 1;
+
+  if (priceDescent) {
+    descent = parseInt(priceDescent);
+    sort = [['price', descent === 1 ? -1 : 1], ['isHot', -1], ['area', -1]];
+    sortBy = 'price';
+  }
+  if (areaDescent) {
+    descent = parseInt(areaDescent);
+    sort = [['area', descent === 1 ? -1 : 1], ['isHot', -1], ['price', 1]];
+    sortBy = 'area';
+  }
+  return {
+    sort: sort,
+    sortBy: sortBy,
+    descent: descent
+  };
+}
+
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
-
-  let sort = [['isHot', -1], ['price', 1], ['area', -1]];
-  let sortBy = 'isHot';
-  let desc = 1;
-  if (req.query.isHot) {
-    desc = parseInt(req.query.isHot);
-    sort = [['isHot', desc === 1 ? -1 : 1], ['price', 1], ['area', -1]];
-  }
-  if (req.query.price) {
-    desc = parseInt(req.query.price);
-    sort = [['price', desc === 1 ? -1 : 1], ['isHot', -1], ['area', -1]];
-    sortBy = 'price';
-  }
-  if (req.query.area) {
-    desc = parseInt(req.query.area);
-    sort = [['area', desc === 1 ? -1 : 1], ['isHot', -1], ['price', 1]];
-    sortBy = 'area';
-  }
+  
+  let sortCondition = genDailySortCondition(req.query.price, req.query.area);
 
   let query = {};
 
@@ -43,7 +49,7 @@ router.get('/', (req, res, next) => {
     page: page,
     limit: 6,
     lean: true,
-    sort: sort,
+    sort: sortCondition.sort,
     populate: ['comunity', 'commerseArea', 'district']
   };
 
@@ -57,8 +63,8 @@ router.get('/', (req, res, next) => {
       result: result,
       startIndex: startIndex,
       endIndex: endIndex,
-      sortBy: sortBy,
-      desc: desc,
+      sortBy: sortCondition.sortBy,
+      desc: sortCondition.descent,
       url: url.parse(req.originalUrl).pathname
     });
   }).catch((err) => {
