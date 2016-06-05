@@ -21,7 +21,7 @@
             </div>
             <div class="clear"></div>
             <div class="registered_m01">
-                <form action="/user/register/" method="post">
+                <form action="/user/register/" method="post" onsubmit="return checkRegister();">
                     <ul>
                         <li>
                             <img src="/img/z_icon01.png" />
@@ -35,7 +35,7 @@
                             />
                         </li>
                         
-                        <p class="usernameError"></p>
+                        <p class="usernameError" <% if (usernameError) { %>style="display:block;"<% } %>><%= usernameError %></p>
                         
                         <li class="yanzm" style="background:none; padding:0;">
                             <span>
@@ -51,7 +51,7 @@
                             <em class="sendButton">获取验证码</em>
                         </li>
 
-                        <p class="smsError"></p>
+                        <p class="smsError" <% if (smsError) { %>style="display:block;"<% } %>><%= smsError %></p>
 
                         <li>
                             <img src="/img/z_icon03.png" />
@@ -63,6 +63,7 @@
                                    class="text01"
                             />
                         </li>
+						<p  class="name" <% if (nameError) { %>style="display:block;"<% } %>><%= nameError %></p>
                         <br />
                         <li>
                             <img src="/img/z_icon04.png" />
@@ -74,9 +75,9 @@
                                    class="text01 current"
                             />
                         </li>
-                        <% if (nameError) { %>
-                            <p><%= nameError %></p>
-                        <% } %>
+                       
+                            <p  class="email" <% if (nameError) { %>style="display:block;"<% } %>><%= nameError %></p>
+                       
 
                         <li>
                             <img src="/img/z_icon05.png" />
@@ -88,9 +89,9 @@
                                    class="text01 current"
                             />
                         </li>
-                        <% if (passwordError) { %>
-                            <p><%= passwordError %></p>
-                        <% } %>
+                      
+                            <p  class="password" <% if (passwordError) { %>style="display:block;"<% } %>><%= passwordError %></p>
+                      
 
                         <li>
                             <img src="/img/z_icon06.png" />
@@ -102,9 +103,9 @@
                                    class="text01 current"
                             />
                         </li>
-                        <% if (password2Error) { %>
-                            <p><%= password2Error %></p>
-                        <% } %>
+                        
+                            <p class="password2" <% if (password2Error) { %>style="display:block;"<% } %>><%= password2Error %></p>
+                        
 
                         <li style="background:none; padding:0; color:#fff;">
                             <input name="isCorp"
@@ -123,9 +124,8 @@
                                    class="text01 current"
                             />
                         </li>
-                        <% if (corpNameError) { %>
-                            <p><%= corpNameError %></p>
-                        <% } %>
+						<p class="corpName" <% if (corpNameError) { %>style="display:block;"<% } %>><%= corpNameError %></p>
+                        
 
                         <li>
                             <img src="/img/z_icon08.png" />
@@ -137,6 +137,8 @@
                                    class="text01"
                             />
                         </li>
+						<p class="title" ></p>
+                        
                         <br />
 
                         <li>
@@ -149,6 +151,7 @@
                                    class="text01"
                             />
                         </li>
+						<p class="address" ></p>
                         <br />
                         <li style="background:none; padding:0; color:#fff;">
                             <input name="agreed"

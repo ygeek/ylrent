@@ -328,7 +328,7 @@ background:url(../img/house.png) no-repeat   right center; }
                         .registered_m01 li img{display:block; float:left; margin:13px 0 0 0;}
 			.text01{height:46px;  color:#666; line-height:46px; width:340px; float:left; margin:0 0 0 10px; border:0;}
 			   .current0{background:url(../img/z_icon10.png) right no-repeat;}
-			 .registered_m01 p{background:url(../img/z_icon12.png) left no-repeat; display: none; color:#f58220; padding:0 0 0 25px; height:20px; line-height:25px; }
+			 .registered_m01 p{background:url(../img/z_icon12.png) left no-repeat; display: none; color:#f58220; padding:0 0 0 25px; height:20px; line-height:25px; overflow:hidden; }
 			 .registered_m01 br{ height:32px; line-height:32px; display:block;}
 			   .current01{background:none; display:block;}
 			 .yanzm{background:none; display:block;}
