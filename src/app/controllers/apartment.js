@@ -9,6 +9,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
 import _ from 'lodash';
+// import 'babel-polyfill';
 
 const logger = log4js.getLogger('normal');
 
@@ -19,260 +20,228 @@ const Comunity = mongoose.model('Comunity');
 const ApartmentType = mongoose.model('ApartmentType');
 const Apartment = mongoose.model('Apartment');
 
+function genApartmentTypeSortCondition(priceDescent, areaDescent) {
+  let sort = [['isHot', -1], ['minPrice', 1], ['maxArea', -1]];
+  let sortBy = 'isHot';
+  let descent = 1;
+  
+  if (priceDescent) {
+    descent = parseInt(priceDescent);
+    sort = [['minPrice', descent === 1 ? -1 : 1], ['isHot', -1], ['maxArea', -1]];
+    sortBy = 'price';
+  }
+  
+  if (areaDescent) {
+    descent = parseInt(areaDescent);
+    sort = [['maxArea', descent === 1 ? -1 : 1], ['isHot', -1], ['minPrice', 1]];
+    sortBy = 'area';
+  }
+  
+  return {
+    sort: sort,
+    sortBy: sortBy,
+    descent: descent
+  };
+}
+
+function genApartmentSortCondition(priceDescent, areaDescent) {
+  let sort = [['isHot', -1], ['price', 1], ['area', -1]];
+  let sortBy = 'isHot';
+  let descent = 1;
+  
+  if (priceDescent) {
+    descent = parseInt(priceDescent);
+    sort = [['price', descent === 1 ? -1 : 1], ['isHot', -1], ['area', -1]];
+    sortBy = 'price';
+  }
+  if (areaDescent) {
+    descent = parseInt(areaDescent);
+    sort = [['area', descent === 1 ? -1 : 1], ['isHot', -1], ['price', 1]];
+    sortBy = 'area';
+  }
+  return {
+    sort: sort,
+    sortBy: sortBy,
+    descent: descent
+  };
+}
+
+async function queryApartmentTypes(page, districtId, comunityId, keyword, rooms, minPrice, maxPrice, sort) {
+  let query = {};
+  
+  let options = {
+    page: page,
+    limit: 6,
+    lean: true,
+    sort: sort,
+    populate: ['comunity', 'commerseArea', 'district']
+  };
+  
+  // district
+  if (districtId) {
+    query.district = districtId;
+  }
+  
+  // comunity
+  if (comunityId) {
+    query.comunity = comunityId;
+  }
+  
+  // keyword
+  if (keyword && keyword !== '小区  /   地标  /  商区') {
+    let searchDistricts = await District.find({name: new RegExp(keyword)}).exec();
+    let searchCommerseAreas = await CommerseArea.find({name: new RegExp(keyword)}).exec();
+    let searchComunities = await Comunity.find({name: new RegExp(keyword)}).exec();
+    
+    query['$or'] = [
+      {'district': {'$in': searchDistricts}},
+      {'commerseArea': {'$in': searchCommerseAreas}},
+      {'comunity': {'$in': searchComunities}}
+    ];
+  }
+  
+  // rooms
+  if (rooms && !isNaN(rooms)) {
+    if (rooms <= 3) {
+      query['roomType.shi'] = rooms;
+    } else {
+      query['roomType.shi'] = { '$gte': rooms };
+    }
+  }
+  
+  // price
+  if (minPrice && !isNaN(minPrice)) {
+    query['minPrice'] = {'$gte': parseInt(minPrice)};
+  }
+  if (maxPrice && !isNaN(maxPrice)) {
+    query['maxPrice'] = {'$lte': parseInt(maxPrice)};
+  }
+
+  return await ApartmentType.paginate(query, options);
+}
+
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
-
-  let sort = [['isHot', -1], ['minPrice', 1], ['maxArea', -1]];
-  let sortBy = 'isHot';
-  let desc = 1;
-  if (req.query.isHot) {
-    desc = parseInt(req.query.isHot);
-    sort = [['isHot', desc === 1 ? -1 : 1], ['price', 1], ['area', -1]];
-  }
-  if (req.query.price) {
-    desc = parseInt(req.query.price);
-    sort = [['price', desc === 1 ? -1 : 1], ['isHot', -1], ['area', -1]];
-    sortBy = 'price';
-  }
-  if (req.query.area) {
-    desc = parseInt(req.query.area);
-    sort = [['area', desc === 1 ? -1 : 1], ['isHot', -1], ['price', 1]];
-    sortBy = 'area';
-  }
-
-  let query = {};
-  if (req.query.communityId) {
-    query.comunity = req.query.communityId;
-  }
   
-  let options = {
-    page: page,
-    limit: 6,
-    lean: true,
-    sort: sort,
-    populate: ['comunity', 'commerseArea', 'district']
-  };
+  let comunityId = req.query.comunityId;
+  
+  let keyword = req.query.word;
+  
+  let rooms = parseInt(req.query.searchshi);
 
-  let template = req.device.type === 'phone' ? 'phone/apartmentType.ejs' : 'apartmentType' ;
+  let sortCondition = genApartmentTypeSortCondition(req.query.price, req.query.area);
+  
+  (async function() {
+    let result = await queryApartmentTypes(page, null, comunityId, keyword, rooms, sortCondition.sort);
 
-  let word = req.query.word;
-  let searchshi = parseInt(req.query.shi);
-  logger.info('search: ', word, searchshi);
-  if (word && word !== '小区  /   地标  /  商区' && searchshi && !isNaN(searchshi)) {
-    District.find({name: new RegExp(word)}, function(err, searchDistricts) {
-      CommerseArea.find({name: new RegExp(word)}, function (err, searchCommerseAreas) {
-        Comunity.find({name: new RegExp(word)}, function (err, searchComunities) {
-          query['$or'] = [
-            {'district': {'$in': searchDistricts}},
-            {'commerseArea': {'$in': searchCommerseAreas}},
-            {'comunity': {'$in': searchComunities}}
-          ];
-          if (searchshi <= 3) {
-            query['roomType.shi'] = searchshi;
-          } else {
-            query['roomType.shi'] = { '$gte': searchshi };
-          }
+    let startIndex = Math.max(1, result.page - 2);
+    let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
+    
+    let districts = await District.find({}).exec();
+    let commerseAreas = await CommerseArea.find({}).exec();
 
-          District.find({}).exec((err, districts) => {
-
-            CommerseArea.find({}).exec((err, commerseAreas) => {
-
-              ApartmentType.paginate(query, options).then((result) => {
-                let startIndex = Math.max(1, result.page - 2);
-                let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
-                res.render(template, {
-                  title: '房型列表',
-                  result: result,
-                  districts: districts,
-                  commerseAreas: commerseAreas,
-                  startIndex: startIndex,
-                  endIndex: endIndex,
-                  sortBy: sortBy,
-                  desc: desc,
-                  word: word,
-                  searchshi: searchshi,
-                  url: url.parse(req.originalUrl).pathname
-                });
-              }).catch((err) => {
-                res.render('error', {
-                  error: err,
-                  message: err.message,
-                  stack: err.stack
-                });
-              });
-
-            });
-
-          });
-
-        });
-      });
+    let template = req.device.type === 'phone' ? 'phone/apartmentType.ejs' : 'apartmentType' ;
+    
+    res.render(template, {
+      title: '房型列表',
+      result: result,
+      districts: districts,
+      commerseAreas: commerseAreas,
+      startIndex: startIndex,
+      endIndex: endIndex,
+      sortBy: sortCondition.sortBy,
+      desc: sortCondition.descent,
+      word: keyword,
+      searchshi: rooms,
+      url: url.parse(req.originalUrl).pathname
     });
-  } else {
-    District.find({}).exec((err, districts) => {
-      CommerseArea.find({}).exec((err, commerseAreas) => {
-        ApartmentType.paginate(query, options).then((result) => {
-          let startIndex = Math.max(1, result.page - 2);
-          let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
-          res.render(template, {
-            title: '房型列表',
-            result: result,
-            districts: districts,
-            commerseAreas: commerseAreas,
-            startIndex: startIndex,
-            endIndex: endIndex,
-            sortBy: sortBy,
-            desc: desc,
-            word: null,
-            searchshi: null,
-            url: url.parse(req.originalUrl).pathname
-          });
-        }).catch((err) => {
-          res.render('error', {
-            error: err,
-            message: err.message,
-            stack: err.stack
-          });
-        });
-      });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
     });
-  }
+  });
 });
 
 router.get('/api', (req, res, next) => {
-  let query = {};
-  if (req.query.districtId) {
-    query['district'] = req.query.districtId;
-  }
-
-  if (req.query.minPrice) {
-    query['minPrice'] = {'$gte': parseInt(req.query.minPrice)};
-  }
-  if (req.query.maxPrice) {
-    query['maxPrice'] = {'$lte': parseInt(req.query.maxPrice)};
-  }
-
-  if (req.query.shi || req.query.shigte) {
-    if (req.query.shi) {
-      query['roomType.shi'] = parseInt(req.query.shi);
-    }
-    if (req.query.shigte) {
-      query['roomType.shi'] = {'$gte': parseInt(req.query.shigte)};
-    }
-  }
-
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
 
-  let sort = [['isHot', -1], ['minPrice', 1], ['maxArea', -1]];
-  let sortBy = 'isHot';
-  let desc = 1;
-  if (req.query.isHot) {
-    desc = parseInt(req.query.isHot);
-    sort = [['isHot', desc === 1 ? -1 : 1], ['minPrice', 1], ['maxArea', -1]];
-  }
-  if (req.query.price) {
-    desc = parseInt(req.query.price);
-    sort = [['minPrice', desc === 1 ? -1 : 1], ['isHot', -1], ['maxArea', -1]];
-    sortBy = 'price';
-  }
-  if (req.query.area) {
-    desc = parseInt(req.query.area);
-    sort = [['maxArea', desc === 1 ? -1 : 1], ['isHot', -1], ['minPrice', 1]];
-    sortBy = 'area';
-  }
+  let districtId = req.query.districtId;
+
+  let keyword = req.query.word;
+
+  let rooms = req.query.shi;
+
+  let minPrice = req.query.minPrice;
   
-  logger.info('sort ', sortBy, desc);
+  let maxPrice = req.query.maxPrice;
 
-  let options = {
-    page: page,
-    limit: 6,
-    lean: true,
-    sort: sort,
-    populate: ['comunity', 'commerseArea', 'district']
-  };
-  
-  logger.info('query: ', query);
+  let sortCondition = genApartmentTypeSortCondition(req.query.price, req.query.area);
 
-
-  if (req.query.word && req.query.word !== '小区  /   地标  /  商区') {
-    let word = req.query.word;
-    let searchshi = parseInt(req.query.searchshi);
-    District.find({name: new RegExp(word)}, function(err, searchDistricts) {
-      CommerseArea.find({name: new RegExp(word)}, function (err, searchCommerseAreas) {
-        Comunity.find({name: new RegExp(word)}, function (err, searchComunities) {
-          query['$or'] = [
-            {'district': {'$in': searchDistricts}},
-            {'commerseArea': {'$in': searchCommerseAreas}},
-            {'comunity': {'$in': searchComunities}}
-          ];
-          if (searchshi < 3) {
-            query['roomType.shi'] = searchshi;
-          } else {
-            query['roomType.shi'] = { '$gte': searchshi };
-          }
-          ApartmentType.paginate(query, options).then((result) => {
-            res.json({
-              result: result,
-              sortBy: sortBy,
-              url: url.parse(req.originalUrl).pathname,
-              word: word,
-              searchshi: searchshi
-            });
-          }).catch((err) => {
-            res.json({
-              error: err,
-              message: err.message,
-              stack: err.stack
-            });
-          });
-        });
-      });
+  (async function() {
+    let result = await queryApartmentTypes(page, districtId, null, keyword, rooms, minPrice, maxPrice, sortCondition.sort);
+    res.json({
+      result: result,
+      sortBy: sortCondition.sortBy,
+      url: url.parse(req.originalUrl).pathname,
+      word: keyword,
+      searchshi: rooms
     });
-  } else {
-    ApartmentType.paginate(query, options).then((result) => {
-      res.json({
-        result: result,
-        sortBy: sortBy,
-        url: url.parse(req.originalUrl).pathname
-      });
-    }).catch((err) => {
-      res.json({
-        error: err,
-        message: err.message,
-        stack: err.stack
-      });
+  })().catch(err => {
+    res.json({
+      error: err,
+      message: err.message,
+      stack: err.stack
     });
-  }
+  });
 });
 
-router.get('/map', (req, res, next) => {
-  ApartmentType
+function queryApartmentTypesMapData() {
+  return ApartmentType
     .find({})
     .populate('comunity', 'latitude longitude')
     .select('_id comunity')
     .exec()
-    .then(apartmentTypes => {
-      res.render('apartmentTypeMap', {
-        apartmentTypes: _.map(apartmentTypes, 
-          apartmentType => ({
-            id: apartmentType._id.toString(),
-            longitude: apartmentType.comunity.longitude,
-            latitude: apartmentType.comunity.latitude
-          })
-        )
-      });
-    })
-    .catch(err => {
-      res.render('error', {
-        error: err,
-        message: err.message,
-        stack: err.stack
-      });
+    .then(apartmentTypes =>
+      _.map(apartmentTypes, apartmentType => ({
+        id: apartmentType._id.toString(),
+        longitude: apartmentType.comunity.longitude,
+        latitude: apartmentType.comunity.latitude
+      }))
+    );
+}
+
+router.get('/map/api', (req, res, next) => {
+  queryApartmentTypesMapData().then(data => {
+    res.json({
+      apartmentTypes: data
     });
+  }).catch(err => {
+    res.json({
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
+});
+
+router.get('/map', (req, res, next) => {
+  queryApartmentTypesMapData().then(data => {
+    res.render('apartmentTypeMap', {
+      apartmentTypes: data
+    });
+  }).catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
 });
 
 router.get('/type/:id', (req, res, next) => {
@@ -281,64 +250,47 @@ router.get('/type/:id', (req, res, next) => {
   
   let typeId = req.params.id;
 
-  ApartmentType
-    .findById(typeId)
-    .exec((err, apartmentType) => {
-      logger.info(apartmentType);
+  (async function() {
+    let apartmentType = await ApartmentType.findById(typeId).exec();
 
-      let sort = [['isHot', -1], ['price', 1], ['area', -1]];
-      let sortBy = 'isHot';
-      let desc = 1;
-      if (req.query.isHot) {
-        desc = parseInt(req.query.isHot);
-        sort = [['isHot', desc === 1 ? -1 : 1], ['price', 1], ['area', -1]];
-      }
-      if (req.query.price) {
-        desc = parseInt(req.query.price);
-        sort = [['price', desc === 1 ? -1 : 1], ['isHot', -1], ['area', -1]];
-        sortBy = 'price';
-      }
-      if (req.query.area) {
-        desc = parseInt(req.query.area);
-        sort = [['area', desc === 1 ? -1 : 1], ['isHot', -1], ['price', 1]];
-        sortBy = 'area';
-      }
-      
-      let query = { apartmentType: apartmentType._id };
+    logger.trace(apartmentType);
 
-      let options = {
-        page: page,
-        limit: 6,
-        lean: true,
-        sort: sort,
-        populate: ['apartmentType', 'comunity', 'commerseArea', 'district']
-      };
-      
-      let template = req.device.type === 'phone' ? 'phone/apartments.ejs' : 'apartments';
-      
-      Apartment.paginate(query, options).then((result) => {
-        
-        let startIndex = Math.max(1, result.page - 2);
-        let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
-        
-        res.render(template, {
-          title: '房型房源列表',
-          result: result,
-          typeId: typeId,
-          startIndex: startIndex,
-          endIndex: endIndex,
-          sortBy: sortBy,
-          desc: desc,
-          url: url.parse(req.originalUrl).pathname
-        });
-      }).catch((err) => {
-        res.render('error', {
-          error: err,
-          message: err.message,
-          stack: err.stack
-        });
-      }); 
+    let sortCondition = genApartmentSortCondition(req.query.price, req.query.area);
+
+    let query = { apartmentType: apartmentType._id };
+
+    let options = {
+      page: page,
+      limit: 6,
+      lean: true,
+      sort: sortCondition.sort,
+      populate: ['apartmentType', 'comunity', 'commerseArea', 'district']
+    };
+
+    let template = req.device.type === 'phone' ? 'phone/apartments.ejs' : 'apartments';
+
+    let result = await Apartment.paginate(query, options);
+
+    let startIndex = Math.max(1, result.page - 2);
+    let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
+
+    res.render(template, {
+      title: '房型房源列表',
+      result: result,
+      typeId: typeId,
+      startIndex: startIndex,
+      endIndex: endIndex,
+      sortBy: sortCondition.sortBy,
+      desc: sortCondition.descent,
+      url: url.parse(req.originalUrl).pathname
     });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
 });
 
 router.get('/detail/:id', (req, res, next) => {
