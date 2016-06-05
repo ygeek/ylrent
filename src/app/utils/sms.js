@@ -5,6 +5,7 @@
 'use strict';
 
 import request from 'request';
+import rp from 'request-promise';
 import log4js from 'log4js';
 
 const leancloudConfig = {
@@ -26,6 +27,7 @@ export function requestSMSCode(mobilePhone, callback) {
   });
 }
 
+
 export function verifySMSCode(mobilePhone, code, callback) {
   let url = 'https://api.leancloud.cn/1.1/verifySmsCode/' + code;
   logger.info('verify sms code url: ', url);
@@ -40,4 +42,27 @@ export function verifySMSCode(mobilePhone, code, callback) {
     logger.info('verify sms body: ', error, body);
     callback(error, body);
   });
+}
+
+export async function asyncRequestSMSCode(mobilePhone) {
+  let options = {
+    method: 'POST',
+    url: 'https://api.leancloud.cn/1.1/requestSmsCode',
+    headers: leancloudConfig,
+    json: { mobilePhoneNumber: mobilePhone }
+  };
+  return rp(options);
+}
+
+export async function asyncVerifySMSCode(mobilePhone, code) {
+  let url = 'https://api.leancloud.cn/1.1/verifySmsCode/' + code;
+  logger.info('verify sms code url: ', url);
+  let options = {
+    method: 'POST',
+    url: url,
+    headers: leancloudConfig,
+    qs: { mobilePhoneNumber: mobilePhone },
+    json: true
+  };
+  return rp(options);
 }

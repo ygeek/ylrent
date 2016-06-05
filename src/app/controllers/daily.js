@@ -55,25 +55,26 @@ router.get('/', (req, res, next) => {
 
   let template = req.device.type === 'phone' ? 'phone/dailyRents.ejs' : 'dailyRents';
 
-  DailyRent.paginate(query, options).then((result) => {
-    let startIndex = Math.max(1, result.page - 2);
-    let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
-    res.render(template, {
-      title: '日租列表',
-      result: result,
-      startIndex: startIndex,
-      endIndex: endIndex,
-      sortBy: sortCondition.sortBy,
-      desc: sortCondition.descent,
-      url: url.parse(req.originalUrl).pathname
+  DailyRent.paginate(query, options)
+    .then((result) => {
+      let startIndex = Math.max(1, result.page - 2);
+      let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
+      res.render(template, {
+        title: '日租列表',
+        result: result,
+        startIndex: startIndex,
+        endIndex: endIndex,
+        sortBy: sortCondition.sortBy,
+        desc: sortCondition.descent,
+        url: url.parse(req.originalUrl).pathname
+      });
+    }).catch((err) => {
+      res.render('error', {
+        error: err,
+        message: err.message,
+        stack: err.stack
+      });
     });
-  }).catch((err) => {
-    res.render('error', {
-      error: err,
-      message: err.message,
-      stack: err.stack
-    });
-  });
 });
 
 router.get('/:id', (req, res, next) => {

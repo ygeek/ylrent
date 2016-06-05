@@ -24,51 +24,30 @@ router.get('/', (req, res, next) => {
     return res.redirect('/apartment/');
   }
   
-  let apartmentPromise = new Promise((resolve, reject) => {
+  let apartmentPromise = 
     ApartmentType
-      .find({'$where': 'this.imagekeys.length > 1'})
-      .limit(6)
-      .sort('-isHot')
-      .populate('comunity commerseArea district')
-      .exec((err, apartmentTypes) => {
-        logger.info(apartmentTypes);
-        if (err) {
-          reject(err);
-        } else {
-          resolve(apartmentTypes);
-        }
-      });
-  });
+    .find({'$where': 'this.imagekeys.length > 1'})
+    .limit(6)
+    .sort('-isHot')
+    .populate('comunity commerseArea district')
+    .exec();
+  
 
-  let comunityPromise = new Promise((resolve, reject) => {
+  let comunityPromise =
     Comunity
       .find({})
       .limit(6)
       .sort('-isHot')
       .populate('commerseArea district')
-      .exec((err, comunities) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(comunities);
-        }
-      });
-  });
+      .exec();
   
-  let dailyPromise = new Promise((resolve, reject) => {
+  let dailyPromise =
     DailyRent
       .find({})
       .limit(6)
       .sort('-isHot')
       .populate('comunity commerseArea district')
-      .exec((err, dailyRents) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(dailyRents);
-        }
-      });
-  });
+      .exec();
 
   Promise
     .all([apartmentPromise, comunityPromise, dailyPromise])

@@ -130,7 +130,7 @@ router.get('/', (req, res, next) => {
   
   let keyword = req.query.word;
   
-  let rooms = parseInt(req.query.searchshi);
+  let rooms = parseInt(req.query.shi);
 
   let sortCondition = genApartmentTypeSortCondition(req.query.price, req.query.area);
   
