@@ -47,6 +47,7 @@ app.use(expressFlash());
 setupAppLogger(app);
 
 // MONGOOSE SET-UP
+mongoose.Promise = global.Promise;
 mongoose.connect(config.db);
 const db = mongoose.connection;
 

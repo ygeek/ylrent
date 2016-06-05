@@ -8,7 +8,7 @@ import url from 'url';
 import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
-// import _ from 'lodash';
+import _ from 'lodash';
 
 const logger = log4js.getLogger('normal');
 
@@ -75,8 +75,11 @@ router.get('/', (req, res, next) => {
           } else {
             query['roomType.shi'] = { '$gte': searchshi };
           }
+
           District.find({}).exec((err, districts) => {
+
             CommerseArea.find({}).exec((err, commerseAreas) => {
+
               ApartmentType.paginate(query, options).then((result) => {
                 let startIndex = Math.max(1, result.page - 2);
                 let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
@@ -100,8 +103,11 @@ router.get('/', (req, res, next) => {
                   stack: err.stack
                 });
               });
+
             });
+
           });
+
         });
       });
     });
@@ -243,6 +249,32 @@ router.get('/api', (req, res, next) => {
   }
 });
 
+router.get('/map', (req, res, next) => {
+  ApartmentType
+    .find({})
+    .populate('comunity', 'latitude longitude')
+    .select('_id comunity')
+    .exec()
+    .then(apartmentTypes => {
+      res.render('apartmentTypeMap', {
+        apartmentTypes: _.map(apartmentTypes, 
+          apartmentType => ({
+            id: apartmentType._id.toString(),
+            longitude: apartmentType.comunity.longitude,
+            latitude: apartmentType.comunity.latitude
+          })
+        )
+      });
+    })
+    .catch(err => {
+      res.render('error', {
+        error: err,
+        message: err.message,
+        stack: err.stack
+      });
+    });
+});
+
 router.get('/type/:id', (req, res, next) => {
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
@@ -310,24 +342,25 @@ router.get('/type/:id', (req, res, next) => {
 });
 
 router.get('/detail/:id', (req, res, next) => {
+  let template = req.device.type === 'phone' ? 'phone/apartmentDetail.ejs' : 'apartmentDetail';
   Apartment
     .findById(req.params.id)
     .populate('apartmentType comunity commerseArea district')
-    .exec(function(err, apartment) {
-    if (err) {
-      return res.render('error', {
+    .exec()
+    .then(apartment => {
+      if (!apartment) {
+        return res.status(404);
+      }
+      res.render(template, { apartment: apartment });
+    })
+    .catch(err => {
+      res.render('error', {
         error: err,
         message: err.message,
         stack: err.stack
-      });
-    }
-    if (!apartment) {
-      return res.status(404);
-    }
+      }); 
+    });
     
-    let template = req.device.type === 'phone' ? 'phone/apartmentDetail.ejs' : 'apartmentDetail';
-    res.render(template, { apartment: apartment });
-  });
 });
 
 module.exports = router;
