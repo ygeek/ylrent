@@ -1,14 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/main.css">
-    <title></title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>地图找房</title>
+<link type="text/css" rel="stylesheet" href="/css/style.css" />
+<script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hfr56zCA14KkpuRGsr2vKcV0GOG7KtH6"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+<style type="text/css">
+		
+		#allmap{width:100%;height:500px;}
+
+</style>
 </head>
 <body>
-<h1>地图找房</h1>
-<%= JSON.stringify(apartmentTypes) %>
-</body>
-</html>
+
+<!-----头部----->
+<% include header.ejs %>
+<!-----头部----->
+<div class="clear"></div>
+<div class="n_main" id="allmap">
+</div>
+
+<script type="text/javascript">
+// 百度地图API功能
+var map = new BMap.Map("allmap");
+map.centerAndZoom('上海市',15);
+map.enableScrollWheelZoom();
+var pt = null;
+var markers = [];
+getMarkers();
+//获取聚合数据
+function getMarkers()
+{
+	$.ajax({
+        async:false,//同步请求
+        type: "GET",
+        url: "/apartment/map/api",
+        dataType: "JSON",
+        data: "1=1",
+        success: function(data){
+            $.each(data.apartmentTypes,function(key,val){
+				
+				 pt = new BMap.Point(val.longitude, val.latitude);
+	  			 markers.push(new BMap.Marker(pt));
+			});
+			var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
+        }
+    });
+}	
+</script>

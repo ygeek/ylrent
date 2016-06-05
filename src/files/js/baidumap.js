@@ -30,11 +30,24 @@ function getJsonInfo(query,htmlid)
 	var ht = $("#"+htmlid+" table").attr('ht');
 	if(ht=="1")
 	{
-		return;
+		$("#"+htmlid+" table").html('');
 	}
 	$("#"+htmlid+" table").attr('ht','1');
-	
-	$.getJSON("http://api.map.baidu.com/place/v2/search?query="+encodeURIComponent(query)+"&page_size=10&page_num=0&scope=2&region="+encodeURIComponent(city)+"&output=json&ak=hfr56zCA14KkpuRGsr2vKcV0GOG7KtH6&callback=?", function(data){ 
+	deletePoint();
+	addThisMaker();
+	var filter = $("."+htmlid).attr('filter');
+	var filterStr = '';
+	var radius  = $("."+htmlid).attr('radius');
+	if(!radius) radius='20000';
+	if(filter)
+	{
+		filterStr = '&filter='+filter+'&location='+latitude+','+longitude+'&radius='+radius;
+	}
+	else
+	{
+		filterStr = '&location='+latitude+','+longitude+'&radius='+radius;
+	}
+	$.getJSON("http://api.map.baidu.com/place/v2/search?query="+encodeURIComponent(query)+"&page_size=10&page_num=0&scope=2"+filterStr+"&output=json&ak=hfr56zCA14KkpuRGsr2vKcV0GOG7KtH6&callback=?", function(data){ 
 		//获取数据成功！
 		if(data.status==0)
 		{
@@ -86,7 +99,41 @@ function getJsonInfo(query,htmlid)
 		}
 	});
 }
-
+//清空标注点
+function deletePoint(){
+	var allOverlay = map.getOverlays();
+	for (var i = 0; i < allOverlay.length; i++){
+		map.removeOverlay(allOverlay[i]);	
+	}
+}
+//添加当前标注
+function addThisMaker()
+{
+	//添加当前房源标注并直接显示
+	var centerPoint = new BMap.Point(longitude,latitude);
+	var centerContent = "地址："+centerPointAddress;
+	//添加标注以及信息窗口
+	//创建特殊图标
+	
+	var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(300,157));
+	var marker2 = new BMap.Marker(centerPoint,{icon:myIcon});  // 创建标注
+	map.addOverlay(marker2);              // 将特殊标注添加到地图中
+	
+	//添加信息窗口
+	var opts1 = {width : 250,height: 80,title : centerPointName ,enableMessage:true};
+	marker2.addEventListener("click",function(e){
+		var p = e.target;
+		var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+		var infoWindow = new BMap.InfoWindow(centerContent,opts1);  // 创建信息窗口对象 
+		map.openInfoWindow(infoWindow,centerPoint); //开启信息窗口
+		
+	});
+	
+	var infoWindow = new BMap.InfoWindow(centerContent,opts1);  // 创建信息窗口对象 
+	map.openInfoWindow(infoWindow,centerPoint); //开启信息窗口
+	//添加当前房源结束		
+		
+}
 //自动获取信息框
 function infoOpen(x,y,content,name)
 {
