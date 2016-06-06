@@ -361,13 +361,15 @@ background:url(../img/house.png) no-repeat   right center; }
 	  .gxm_name02_r{float:right; color:#fff; padding:0 20px 0 0;}
            .gxm_name02_r span{font-size:22px; font-weight:bold; }
 	.tuijianfangyuan_m{padding:30px;}
-	   .tuijianfangyuan_m img{float:left; display:block; margin:30px 30px 0 0;}
-	   .tuijianfangyuan_m ul{height:294px; border-bottom:1px solid #ccc; display:block; margin:0 0 30px 0;}
+	   .tuijianfangyuan_m img{float:left; display:block; margin:20px 30px 0 0; width: 340px; height: 227px;}
+	   .tuijianfangyuan_m ul{height:284px; border-bottom:1px solid #ccc; display:block; margin:0 0 20px 0;}
 	   .tuijianfangyuan_m li{display:block; float:left;}
-	     .tuijianfangyuan_m li h1{font-size:20px; margin:0 0 20px 0;}
+           
+	     .tuijianfangyuan_m li h1{font-size:20px; margin:20px 0 20px 0; line-height: 20px; }
 		 .tuijianfangyuan_m li p{color:#999; font-size:16px; line-height:26px;}
+                 .tuijianfangyuan_m li .address{ margin-top: 120px; font-size: 16px; line-height: 16px;}
 		 .tuijianfangyuan_m li h2{color:#9c8a68; font-size:20px;}
-		    .tuijianfangyuan_m li span{height:50px; line-height:50px; padding:0 30px; border:2px solid #666; display:block; font-size:22px; text-align:center; margin:140px 0 0 0;}
+		    .tuijianfangyuan_m li span{height:50px; line-height:50px; padding:0 30px; border:2px solid #666; display:block; font-size:22px; text-align:center; margin:125px 0 0 0;}
 			 .tuijianfangyuan_m li h2 em{font-size:40px;}
 			
 			.page01{ text-align:center; padding:20px 0 40px 0;}

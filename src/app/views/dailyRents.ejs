@@ -55,16 +55,16 @@
                         <% }else{ %>
                             src="/img/default.jpg"
                         <% } %>
-                        style="width: 320px; max-height: 240px; height: auto;"
+                     
                     />
                 </a>
                 <li>
                     <h1><a href="/daily/<%= val.id %>"><%= val.name %></a></h1>
                     <p>世茂滨江花园<br />
                         酒店式公寓  |  2室1厅1卫  |   120平米</p>
-                    <p style="margin:130px 0 0 0;"><%= val.district.name %>-<%= val.commerseArea.name %></p>
+                    <p class="address"><%= val.district.name %>-<%= val.commerseArea.name %></p>
                 </li>
-                <li style="float:right; margin:0 10px 0 0;">
+                <li style="float:right; margin:10px 10px 0 0;">
                     <h2>￥ <em><%= val.price %></em> / 天</h2>
                     <span><a href="/daily/<%= val.id %>">查看详情</a></span>
                 </li>
