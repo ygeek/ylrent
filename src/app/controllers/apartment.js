@@ -216,6 +216,74 @@ function queryApartmentTypesMapData() {
     );
 }
 
+router.get('/map/district/api', (req, res, next) => {
+  District
+    .find({})
+    .exec()
+    .then(districts => {
+      res.json({
+        districts: districts
+      });
+    });
+});
+
+router.get('/map/commersearea/api', (req, res, next) => {
+  CommerseArea
+    .find({})
+    .exec()
+    .then(commerseAreas => {
+      res.json({
+        commerseAreas: commerseAreas
+      });
+    });
+});
+
+router.get('/map/community/api', (req, res, next) => {
+  (async function() {
+    let comunities = await Apartment
+      .aggregate({
+        '$group': { _id: '$comunity', count: { '$sum': 1 } }
+      })
+      .exec();
+    
+    let results = await Comunity
+      .populate(comunities, { 
+        path: '_id',
+        select: 'name latitude longitude address'
+      });
+    
+    res.json({
+      communities: results
+    });
+  })()
+    .catch(err => {
+      res.json({
+        error: err.message
+      });
+    });
+});
+
+router.get('/map/community/apartments/api', (req, res, next) => {
+  (async function() {
+    let apartments = await Apartment
+      .find({comunity: req.query.communityId})
+      .populate({
+        path: 'apartmentType',
+        select: 'roomType'
+      })
+      .select('apartmentType area price leased imagekeys')
+      .exec();
+    res.json({
+      apartments: apartments
+    });
+  })()
+    .catch(err => {
+      res.json({
+        error: err.message
+      });
+    });
+});
+
 router.get('/map/api', (req, res, next) => {
   queryApartmentTypesMapData().then(data => {
     res.json({
