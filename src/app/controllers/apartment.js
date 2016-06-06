@@ -217,23 +217,51 @@ function queryApartmentTypesMapData() {
 }
 
 router.get('/map/district/api', (req, res, next) => {
-  District
-    .find({})
-    .exec()
-    .then(districts => {
+  (async function() {
+    let districts = await Apartment
+      .aggregate({
+        '$group': { _id: '$district', count: { '$sum': 1 } }
+      })
+      .exec();
+    
+    let results = await District
+      .populate(districts, {
+        path: '_id', 
+        select: 'name'
+      });
+    
+    res.json({
+      districts: results
+    });
+  })()
+    .catch(err => {
       res.json({
-        districts: districts
+        error: err.message
       });
     });
 });
 
 router.get('/map/commersearea/api', (req, res, next) => {
-  CommerseArea
-    .find({})
-    .exec()
-    .then(commerseAreas => {
+  (async function() {
+    let commerseAreas = await Apartment
+      .aggregate({
+        '$group': { _id: '$commerseArea', count: { '$sum': 1 } }
+      })
+      .exec();
+    
+    let results = await CommerseArea
+      .populate(commerseAreas, {
+        path: '_id',
+        select: 'name'
+      });
+    
+    res.json({
+      commerseAreas: results
+    });
+  })()
+    .catch(err => {
       res.json({
-        commerseAreas: commerseAreas
+        error: err.message
       });
     });
 });
