@@ -182,7 +182,7 @@ caption,th{text-align:left;}
 /***搜索****/
 .sosuo{height:100px; background:url(../img/so_bg.png); min-width:1120px;  font-size:15px; margin:-100px 0 0 0; position:relative; z-index:15;}	
    .sosuo .sosuo_m{width:1120px; margin:0 auto; padding:35px 0 0 0; position: relative;}		 
-     .sosuo_text{width:500px; border-radius: 3px; float:left; height:32px; line-height:32px; background:#fff; color: #666; border:0; text-indent:15px; margin:0 0 0 110px;}
+     .sosuo_text{width:500px;cursor:pointer; border-radius: 3px; float:left; height:32px; line-height:32px; background:#fff; color: #666; border:0; text-indent:15px; margin:0 0 0 110px;}
 	 .sosuo_xz{width:222px; float:left; color: #666;  height:32px; margin:0 30px;}
 	 .sosuo_submit{width:108px;float:left; height:32px; color: #666; border:0; cursor:pointer; background:url(../img/icon03.png) 15px no-repeat #fff; font-weight:bold; border-radius:3px;}
 	 .sosuo .highlighted { background: #a37c41; }
@@ -190,7 +190,7 @@ caption,th{text-align:left;}
 #divselect cite{width:202px;  height:32px;line-height:32px; display:block; color:#807a62; cursor:pointer;font-style:normal;
 padding-left:10px; padding-right:0px; border:0px solid #fff; 
 background:url(../img/house.png) no-repeat   right center; }
-#divselect ul{width:220px;border:1px solid #fff; background-color:#ffffff; position:absolute; z-index:20000; margin-top:-1px; display:none;}
+#divselect ul{width:220px;border:1px solid #fff; background-color:#ffffff; position:absolute; z-index:20000; margin-top:5px; display:none;}
 #divselect ul li{height:32px; line-height:32px;}
 #divselect ul li a{display:block; height:32px; color:#333333; text-decoration:none; padding-left:10px; padding-right:10px;}
 #divselect ul li a:hover{background-color:#CCC;}
@@ -204,7 +204,7 @@ background:url(../img/house.png) no-repeat   right center; }
 #delselect ul li a:hover{background-color:#CCC;}
 
 
-.regionsel { position: absolute; background-color: #fff; width: 500px; top:73px; left: 110px; height: 150px; border-radius: 3px; padding-top: 5px;  }
+.regionsel { position: absolute; background-color: #fff; width: 500px; top:73px; left: 110px; height: 150px; border-radius: 3px; padding-top: 5px; display:none;  }
 .regionsel .qus { float: left; width: 100%;}
 .regionsel .qu { margin-top: 5px; width: 70px; float: left; height: 16px; border-right: 1px solid #666; line-height: 16px; font-size: 15px; text-align: center; cursor: pointer; color: #999;}
 .regionsel .qu:hover { color: #000;} 

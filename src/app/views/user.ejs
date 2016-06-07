@@ -1,22 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/error.css">
-    <title>User</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>源涞国际 - 热门房源</title>
+<link type="text/css" rel="stylesheet" href="/css/style.css" />
+<script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
-    <h1>User</h1>
-    <p>Welcome to User</p>
-    <h2>more links</h2>
-    <% if (user) { %>
-        <p>Hello, <%= user.username %>!</p>
-    <% } %>
-    <p><a href="/house/">houses</a></p>
-    <p><a href="/daily/">daily rents</a></p>
-    <script src="/js/vendor.min.js"></script>
-</body>
-</html>
+
+<!-----头部----->
+<% include header.ejs %>
+<!-----头部----->
+<div class="clear"></div>
+
+<div class="location">
+    <a href="/">首页</a> >
+    <a href="/user/">个人中心</a>
+</div>
+<div class="n_main">
+     <div class="zhanghao_l">
+           <a id="zhangbao_hover" href="/user/">个人信息</a>
+           <a href="#">我的订单</a>
+     </div>
+     <div class="zhanghao_r">
+          <h1>您好，<%= user.name %> ！</h1>
+          <div class="zhanghao_r_m">
+               <p>基础信息</p>
+               <p>手机：<%= user.username %></p>
+               <p>邮箱：<%= user.email %></p>
+			   <p>姓名：<%= user.name %></p>
+               <p><span class="mima">密码：</span><span class="xiugai"><a href="#">修改</a></span></p>
+          </div>
+          <div class="zhanghao_r_m">
+               <p><span class="mima" style="font-weight:bold; font-size:18px;">企业信息</span><span class="xiugai" style="float:right; margin:0 30px 0 0;"><a href="#">修改</a></span></p>
+               <p>公司：源涞国际</p>
+               <p>职位：销售总监</p>
+               <p>地址：上海市  徐汇区  天钥桥路***号</p>
+               <p>公司电话：86 - 21 - 789878</p>
+               <p><span class="xiugai"><a href="#">确认修改</a></span></p>
+          </div>
+     </div>
+  <div class="clear"></div>
+</div>
+<% include footer.ejs %>

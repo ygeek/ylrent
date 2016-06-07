@@ -43,13 +43,22 @@ Qfast(false, 'widgets', function () {
 });
 
 $(function(){
+  
     //地区选择框
-    $(document).on("click", ".region", function(e) {
-        $(".regionsel").show();
+    $(document).on("click", ".sosuo_text", function(e) {
+        $(".regionsel").toggle();
+		
     });
     $(document).on("click", ".qu", function(e) {
-        alert();
+      	$(".qu").attr("style","");
+		$(this).attr("style","color:#000;");
         $(".lists").hide();
         $("#"+$(this).attr("id")+"list").show();
     });
+	
+	$(document).on("click", ".shangqu", function(e) {
+      	$(".sosuo_text").val($(this).html());
+        $(".regionsel").hide();
+    });
+
 });
