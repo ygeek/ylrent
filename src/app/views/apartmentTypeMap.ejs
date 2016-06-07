@@ -237,7 +237,7 @@ function createPic(point,txt,className,val)
                     title : val._id.name+"("+val.count+"套)" , // 信息窗口标题
                    
                   }
-                var scon = "地址:"+val._id.address+"<br><a href='/apartment/type/"+val._id._id+"' >查看详情>></a>";
+                    var scon = "地址:"+val._id.address+"<br><a href='/apartment/detail/"+val._id._id+"' >查看详情>></a>";
                   var infoWindow = new BMap.InfoWindow(scon, opts);  // 创建信息窗口对象 
                   map.openInfoWindow(infoWindow,points); //开启信息窗口
             }  

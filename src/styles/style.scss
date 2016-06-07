@@ -274,7 +274,7 @@ background:url(../img/house.png) no-repeat   right center; }
 .n_main{width:1120px; margin:0 auto; }
    .n_main_m{padding:40px; line-height:24px; background:#fff; margin:50px 0;}
    .gxm_name01 h1{font-size:30px; padding:0 0 30px 0;}
-.location{height:80px; line-height:80px; width:1120px; margin:0 auto; font-size:16px;}
+.location{height:50px; line-height:50px; width:1120px; margin:0 auto; font-size:16px;}
 .n_news_main{width:1120px; margin:0 auto 60px auto;}
     .n_news_main_l{width:728px; float:left;}
 	   .n_news_main_l ul{background:#fff; height:174px; padding:0 30px; margin:0 0 20px 0;}
@@ -342,7 +342,7 @@ background:url(../img/house.png) no-repeat   right center; }
 
 
 /**************热门房源*************/	
-.select01{padding:30px; background:#fff; border:1px solid #dfdfdf; font-size:15px; margin:0 0 40px 0;}
+.select01{padding:30px; background:#fff; border:1px solid #dfdfdf; font-size:15px; margin:0 0 30px 0;}
    .select01 li{height:25px; line-height:25px; display:block; padding:10px 0;}
       .select01 li a{padding:0 10px; display:block; float:left;}
 	  .select01 li a:hover{display:block; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px;}
@@ -362,7 +362,7 @@ background:url(../img/house.png) no-repeat   right center; }
            .gxm_name02_r span{font-size:22px; font-weight:bold; }
 	.tuijianfangyuan_m{padding:30px;}
 	   .tuijianfangyuan_m img{float:left; display:block; margin:20px 30px 0 0; width: 340px; height: 227px;}
-	   .tuijianfangyuan_m ul{height:284px; border-bottom:1px solid #ccc; display:block; margin:0 0 20px 0;}
+	   .tuijianfangyuan_m ul{height:250px; border-bottom:1px solid #ccc; display:block; margin:0 0 0px 0; padding-bottom: 18px; }
 	   .tuijianfangyuan_m li{display:block; float:left;}
            
 	     .tuijianfangyuan_m li h1{font-size:20px; margin:20px 0 20px 0; line-height: 20px; }
