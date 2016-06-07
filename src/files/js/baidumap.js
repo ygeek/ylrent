@@ -30,7 +30,19 @@ function getJsonInfo(query,htmlid)
 	var ht = $("#"+htmlid+" table").attr('ht');
 	if(ht=="1")
 	{
-		$("#"+htmlid+" table").html('');
+            //直接调用缓存数据
+            var datas = $("div").data("'"+htmlid+"'");
+            deletePoint();
+            addThisMaker();
+            $.each( datas.results, function(key, val){
+				
+                var ggpoint = new BMap.Point(val.location.lng,val.location.lat);
+                var content = "地址："+val.address;
+                //添加标注以及信息窗口
+                addMarker(ggpoint,content,val.name); 
+            });
+            return ;
+		//$("#"+htmlid+" table").html('');
 	}
 	$("#"+htmlid+" table").attr('ht','1');
 	deletePoint();
@@ -91,7 +103,8 @@ function getJsonInfo(query,htmlid)
 				transit.search(point, ggpoint);
 				
 			});
-			
+			//缓存起来数据
+                        $("div").data("'"+htmlid+"'",data);
 		}
 		else
 		{

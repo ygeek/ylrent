@@ -11,12 +11,13 @@
 <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
 <style type="text/css">
 		
-		#allmap{width:100%;height:500px;}
-		.djhbig{position:absolute; background:url(/img/djhbig2.png) no-repeat; color:#fff; height:48px; width:75px; line-height:12px; padding-top:27px; text-align:center; font-size:12px; white-space:nowrap;}
-		
-		.djhmids{position:absolute; background:url(/img/djhmids2.png) no-repeat; color:#fff; height:40px; width:60px; line-height:12px; padding-top:20px; text-align:center; font-size:12px; white-space:nowrap;}
-		
-		.djhmid{position:absolute; background:url(/img/djhmid2.png) no-repeat; color:#fff; height:25px; width:40px; line-height:12px; padding-top:15px; text-align:center; font-size:12px; white-space:nowrap;}
+#allmap{width:100%;height:500px;}
+.djhbig{position:absolute; background:url(/img/djhbig2.png) no-repeat; color:#fff; height:48px; width:75px; line-height:12px; padding-top:27px; text-align:center; font-size:12px; white-space:nowrap;}
+
+.djhmids{position:absolute; background:url(/img/djhmids2.png) no-repeat; color:#fff; height:40px; width:60px; line-height:12px; padding-top:20px; text-align:center; font-size:12px; white-space:nowrap;}
+
+.djhmid{position:absolute; background:url(/img/djhmid2.png) no-repeat; color:#fff; height:25px; width:40px; line-height:12px; padding-top:15px; text-align:center; font-size:12px; white-space:nowrap;}
+
 </style>
 </head>
 <body>
@@ -33,34 +34,13 @@
 var map = new BMap.Map("allmap");
 map.centerAndZoom('上海市',15);
 map.enableScrollWheelZoom();
-var pt = null;
-var markers = [];
-//getMarkers();
-//获取聚合数据
-function getMarkers()
-{
-	$.ajax({
-        async:false,//同步请求
-        type: "GET",
-        url: "/apartment/map/api",
-        dataType: "JSON",
-        data: "1=1",
-        success: function(data){
-            $.each(data.apartmentTypes,function(key,val){
-				
-				 pt = new BMap.Point(val.longitude, val.latitude);
-	  			 markers.push(new BMap.Marker(pt));
-			});
-			var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
-        }
-    });
-}
+
+
 getDistrict();
 getCommersearea();
 getCommunity();
 //地址解析对象
 
-//var myGeo = new BMap.Geocoder();
 
 
 //获取数据 并缓存起来
@@ -73,7 +53,7 @@ function getDistrict()  //顶级数据
         dataType: "JSON",
         data: "1=1",
         success: function(data){
-			$("div").data("districts",data.districts);  
+            $("div").data("districts",data.districts);  
         }
     });
 }
@@ -86,7 +66,7 @@ function getCommersearea()  //二级数据
         dataType: "JSON",
         data: "1=1",
         success: function(data){
-			$("div").data("commerseareas",data.commerseAreas);  
+            $("div").data("commerseareas",data.commerseAreas);  
         }
     });
 }
@@ -99,7 +79,7 @@ function getCommunity()  //三级数据
         dataType: "JSON",
         data: "1=1",
         success: function(data){
-			$("div").data("communitys",data.communities);  
+            $("div").data("communitys",data.communities);  
         }
     });
 }
@@ -128,69 +108,58 @@ map.addEventListener("zoomend", function(){
 	var myGeo = new BMap.Geocoder();
 	if(parseInt(zoomnum)<=13)
 	{
-	
-	
-		map.clearOverlays();  
-		$.each(districts,function(key,val){
-			
-			myGeo.getPoint("上海市"+val._id.name, function(point){
-				
-				var txt = val._id.name + "<br/>"+ val.count + "套", mouseoverTxt = txt ;
-				
-				createPic(point,txt,'djhbig');
-				
-			
-			}, "上海市");
-			
-		});
+            map.clearOverlays();  //清除其他覆盖物
+            $.each(districts,function(key,val){
+
+                    myGeo.getPoint("上海市"+val._id.name, function(point){
+
+                        var txt = val._id.name + "<br/>"+ val.count + "套", mouseoverTxt = txt ;
+
+                        createPic(point,txt,'djhbig',val);
+
+
+                    }, "上海市");
+
+            });
 		
 	}
 	
 	if(parseInt(zoomnum)>=14&&parseInt(zoomnum)<16)
 	{
-	
-	
-		map.clearOverlays();  
-		$.each(commerseareas,function(key,val){
-			
-			myGeo.getPoint("上海市"+val._id.name, function(point){
-				
-				var txt = val._id.name + "<br/>"+ val.count + "套", mouseoverTxt = txt ;
-				
-				createPic(point,txt,'djhmids');
-				
-			
-			}, "上海市");
-			
-		});
+            map.clearOverlays();  
+            $.each(commerseareas,function(key,val){
+
+                    myGeo.getPoint("上海市"+val._id.name, function(point){
+
+                            var txt = val._id.name + "<br/>"+ val.count + "套", mouseoverTxt = txt ;
+
+                            createPic(point,txt,'djhmids',val);
+
+                    }, "上海市");
+
+            });
 		
 	}
 	if(parseInt(zoomnum)>=16)
 	{
-	
-	
-		map.clearOverlays();  
-		$.each(communitys,function(key,val){
-			
-				
-				
-				myGeo.getPoint(val._id.address, function(point){
-				
-					var txt =val.count + "套", mouseoverTxt = txt ;
-					
-					createPic(point,txt,'djhmid');
-					
-				
-				}, "上海市");
-			
-			
-		});
+            map.clearOverlays();  
+            $.each(communitys,function(key,val){
+
+                myGeo.getPoint(val._id.address, function(point){
+
+                        var txt =val.count + "套", mouseoverTxt = txt ;
+
+                        createPic(point,txt,'djhmid',val);
+
+                }, "上海市");
+                
+            });
 		
 	}
 	
 });	
 
-function createPic(point,txt,className)
+function createPic(point,txt,className,val)
 {
 
 	ComplexCustomOverlay.prototype = new BMap.Overlay();
@@ -230,7 +199,8 @@ function createPic(point,txt,className)
 			this.getElementsByTagName("span")[0].innerHTML = that._text;
 			
 		}
-	
+                
+
 		map.getPanes().labelPane.appendChild(div);
 		
 		return div;
@@ -242,10 +212,41 @@ function createPic(point,txt,className)
 		this._div.style.top  = pixel.y - 30 + "px";
 	}
 
+        ComplexCustomOverlay.prototype.addEventListener = function (event, fun) {
+            this._div['on' + event] = fun;
+        }
 	var myCompOverlay = new ComplexCustomOverlay(new BMap.Point(point.lng,point.lat), txt,txt);
 				
 	map.addOverlay(myCompOverlay);
-
-
+        myCompOverlay.addEventListener("click", function () {
+            var zoomnum = map.getZoom();
+            if(parseInt(zoomnum)<=13)  //进行二级跳转
+            {
+                map.centerAndZoom(new BMap.Point(point.lng,point.lat), 15);
+            }   
+            if(parseInt(zoomnum)>13&&parseInt(zoomnum)<=15)  //进行三级跳转
+            {
+                map.centerAndZoom(new BMap.Point(point.lng,point.lat), 17);
+            }   
+            if(parseInt(zoomnum)>15)  
+            {
+                var points = new BMap.Point(point.lng,point.lat);
+                var opts = {
+                    width : 250,     // 信息窗口宽度
+                    height: 80,     // 信息窗口高度
+                    title : val._id.name+"("+val.count+"套)" , // 信息窗口标题
+                   
+                  }
+                var scon = "地址:"+val._id.address+"<br><a href='/apartment/type/"+val._id._id+"' >查看详情>></a>";
+                  var infoWindow = new BMap.InfoWindow(scon, opts);  // 创建信息窗口对象 
+                  map.openInfoWindow(infoWindow,points); //开启信息窗口
+            }  
+            
+                
+        });
+        
 }
+	
 </script>
+
+<script type="text/javascript" src="/files/js/baidumap.js"></script>
