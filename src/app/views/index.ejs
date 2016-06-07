@@ -36,7 +36,7 @@
                    type="text" class="sosuo_text"
                    onfocus="if (value =='小区  /   地标  /  商区'){value =''}"
                    onblur="if (value ==''){value='小区  /   地标  /  商区'}"
-                   value="小区  /   地标  /  商区" />
+                   value="小区  /   地标  /  商区" class="region" />
 		   <div class="sosuo_xz">
 			<div id="divselect" >
 			      <cite>房型</cite>
@@ -52,6 +52,21 @@
 		  <input name="shi" type="hidden" value="" id="inputselect"/>
            
             <input type="submit" class="sosuo_submit" value="搜索"/>
+                    <div class="regionsel">
+                        <div class="qus">
+                            <div class="qu" id="huangpu">黄浦区</div><div class="qu" id="zhujiang">黄浦区</div><div class="qu">黄浦区</div><div class="qu">黄浦区</div><div class="qu">黄浦区</div>
+                            <div class="qu">黄浦区</div><div class="qu">黄浦区</div><div class="qu">黄浦区</div><div class="qu">黄浦区</div>
+                        </div>
+                        <div class="lists" id="huangpulist" style="display:block;">
+                            <div class="shangqu">陆家嘴商区</div><div class="shangqu">陆家嘴商区</div><div class="shangqu">陆家嘴商区</div>
+                        </div>
+                        <div class="lists" id="zhujianglist">
+                            <div class="shangqu">张家湾商区</div><div class="shangqu">陆家嘴商区</div><div class="shangqu">陆家嘴商区</div>
+                        </div>
+                        <div class="lists">
+                            <div class="shangqu">珠江商区</div><div class="shangqu">陆家嘴商区</div><div class="shangqu">陆家嘴商区</div>
+                        </div>
+                    </div>
         </form>
     </div>
 </div>
@@ -231,5 +246,10 @@
 <script src="files/js/jquery1.js"></script>
 
 <script type="text/javascript" src="files/js/divselect.js"></script>
+<script>
+$(function(){
+    $.divselect("#divselect","#inputselect");
+});
+</script>
 </body>
 </html>

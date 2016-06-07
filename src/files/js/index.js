@@ -42,3 +42,14 @@ Qfast(false, 'widgets', function () {
         }) 
 });
 
+$(function(){
+    //地区选择框
+    $(document).on("click", ".region", function(e) {
+        $(".regionsel").show();
+    });
+    $(document).on("click", ".qu", function(e) {
+        alert();
+        $(".lists").hide();
+        $("#"+$(this).attr("id")+"list").show();
+    });
+});

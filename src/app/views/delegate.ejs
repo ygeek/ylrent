@@ -1,45 +1,122 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/main.css">
-    <title></title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>房东委托</title>
+
+<link type="text/css" rel="stylesheet" href="/css/style.css" />
+<script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/files/lib/laydate/laydate.js"></script>
+
 </head>
 <body>
-<h1>委托页面</h1>
+
+<!-----头部----->
+<% include header.ejs %>
+<!-----头部----->
+<div class="clear"></div>
 
 
-<form action="/appointment/delegate/" method="post">
+<!-----头部----->
+<div class="clear"></div>
+<div class="min_banner" style="background:url(/img/weituo_bg.jpg) center no-repeat; height:630px;">
+             <div class="weituo">
+                    <div class="weituo_r">
+                    <h1>房东委托</h1>
+                    <form action="/appointment/delegate/" method="post">
+                    <ul>
+                        <li><img src="/img/icon18.png" /><em></em><input name="name" class="weituo01" onfocus="if (value =='姓名'){value =''}"   onblur="if (value ==''){value='姓名'}" value="姓名" type="text" /></li>
+                        <li><img src="/img/icon19.png" /><em></em><input name="mobile" class="weituo01" onfocus="if (value =='手机号'){value =''}"   onblur="if (value ==''){value='手机号'}" value="手机号" type="text" /></li>
+                        <li><img src="/img/icon19.png" /><em></em><input name="startDate" class="weituo01" onfocus="if (value =='起租日期'){value =''}"   onblur="if (value ==''){value='起租日期'}" value="起租日期"  onclick="laydate()" type="text"  /></li>
+                        <li><img src="/img/icon19.png" /><em></em><input name="name" class="weituo01" onfocus="if (value =='选择小区'){value =''}"   onblur="if (value ==''){value='选择小区'}" value="选择小区" type="text" /></li>
+                        <li  ><img src="/img/icon19.png" /><em></em>
+                        
+                        <div class="weituo01" id="delselect">
+                            <cite>房型</cite>
+                            <ul  class="divselect">
+                               <li><a href="javascript:;" selectid="1">一房</a></li>
+                               <li><a href="javascript:;" selectid="2">两房</a></li>
+                               <li><a href="javascript:;" selectid="3">三房</a></li>
+                               <li><a href="javascript:;" selectid="4">三房以上</a></li>
 
-    <input type="text"
-           name="name"
-           placeholder="姓名"/>
+                            </ul>
+                        </div>
+                        </li>
+                        <input name="shi" type="hidden" value="" id="inputselect"/>
+                        <li><img src="/img/icon19.png" /><em></em><input class="weituo01" onfocus="if (value =='意向租金'){value =''}"   onblur="if (value ==''){value='意向租金'}" value="意向租金" type="text" /></li>
+                        <li style="border:0"><input type="submit" class="weituo02" value="提交委托" /></li>
+                    </ul>
+                    </form>
+                         <div class="clear"></div>
+                    </div>
+             </div>
+</div>
 
-    <input type="text"
-           name="name"
-           placeholder="手机号"/>
+<div class="n_main">
+      <div class="weituo_m">
+             <div class="weituo_m_name"><h1>源涞优势</h1></div>
+             <div class="weituo_m01">
+                  <img src="/img/img01.jpg" width="180" height="180" />
+                  <img src="/img/img01.jpg" width="180" height="180" />
+                  <img src="/img/img01.jpg" width="180" height="180" />
+                  <img src="/img/img01.jpg" width="180" height="180" />
+                  <img src="/img/img01.jpg" width="180" height="180" />
+             </div>
+              <div class="clear"></div>
+               <div class="weituo_m_name"><h1>增值服务</h1></div>
+               <div class="weituo_m02">
+                    <ul>
+                        <li>
+                             <img src="/img/banner01.jpg" width="120" height="120" />
+                             <h1>不费精力</h1>
+                             <p>售后、维修、管理<br /> 
+一站式服务</p>
+                        </li>
+                         <li>
+                             <img src="/img/banner01.jpg" width="120" height="120" />
+                             <h1>不费精力</h1>
+                             <p>售后、维修、管理<br /> 
+一站式服务</p>
+                        </li>
+                         <li>
+                             <img src="/img/banner01.jpg" width="120" height="120" />
+                             <h1>不费精力</h1>
+                             <p>售后、维修、管理<br /> 
+一站式服务</p>
+                        </li>
+                         <li>
+                             <img src="/img/banner01.jpg" width="120" height="120" />
+                             <h1>不费精力</h1>
+                             <p>售后、维修、管理<br /> 
+一站式服务</p>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+               </div>
+                <div class="weituo_m_name"><h1>托管方案</h1></div>
+                <div class="weituo03">
+                  测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+                </div>
+                <div class="weituo_m_name"><h1>托管流程</h1></div>
+                <div class="weituo03">
+                  测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+                </div>
+      </div>
+      
+     
+</div>
 
-    <input type="text"
-           name="name"
-           placeholder="起租日期"/>
+<% include footer.ejs %>
 
-    <input type="text"
-           name="name"
-           placeholder="小区"/>
 
-    <input type="text"
-           name="name"
-           placeholder="户型"/>
 
-    <input type="text"
-           name="name"
-           placeholder="意向租金"/>
+<script type="text/javascript" src="/files/js/divselect.js"></script>
+<script>
+$(function(){
+    $.divselect("#delselect","#inputselect");
+});
+</script>
 
-    <input type="submit"
-           value="提交委托"/>
-</form>
 
 </body>
 </html>

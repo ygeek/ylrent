@@ -1,9 +1,12 @@
 jQuery.divselect = function(divselectid,inputselectid) {
 	var inputselect = $(inputselectid);
 	$(divselectid+" cite").click(function(){
+               
 		var ul = $(divselectid+" ul");
 		if(ul.css("display")=="none"){
+                       // ul.show();
 			ul.slideDown("fast");
+                        
 		}else{
 			ul.slideUp("fast");
 		}
@@ -26,10 +29,8 @@ jQuery.divselect = function(divselectid,inputselectid) {
 		
 	});
 	$(document).click(function(){
-		$(divselectid+" ul").hide();
+		//$(divselectid+" ul").hide();
 	});
 };
 
-$(function(){
-	$.divselect("#divselect","#inputselect");
-});
+
