@@ -139,7 +139,7 @@ router.post('/delegate', (req, res, next) => {
     res.redirect(currentURL);
   })().catch(err => {
     req.flash('error', err && err.message ? err.message : '委托失败请重试');
-    res.render(currentURL); 
+    res.redirect(currentURL); 
   });
 });
 

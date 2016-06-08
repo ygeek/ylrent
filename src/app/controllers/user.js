@@ -246,7 +246,9 @@ router.post('/password', (req, res, next) => {
   
   User.authenticate()(req.user.username, oldPassword, function(err, user, options) {
     if (err || !user) {
-      req.flash('error', err.message);
+      if (err) {
+        req.flash('error', err.message);
+      }
       res.redirect('/user/');
     } else {
       user.setPassword(password, function() {

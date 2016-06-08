@@ -5,7 +5,6 @@
 'use strict';
 
 import path from 'path';
-import assert from 'assert';
 import log4js from 'log4js';
 import mongoose from 'mongoose';
 import _ from 'lodash';
@@ -42,311 +41,280 @@ const ApartmentType = mongoose.model('ApartmentType');
 const Apartment = mongoose.model('Apartment');
 const DailyRent = mongoose.model('DailyRent');
 
-function importDistrict(districtObj) {
-  return new Promise((resolve, reject) => {
-    let query = {
-      name: districtObj.DistrictName
-    };
-    let update = {
-      name: districtObj.DistrictName
-    };
-    let options = {
-      new: true,
-      upsert: true,
-      setDefaultsOnInsert: true
-    };
-    District.findOneAndUpdate(query, update, options, function(err, district) {
-      assert.ifError(err);
-      assert.equal(district.name, districtObj.DistrictName);
-      logger.info('import district: ', district);
-      resolve(district);
-    });
-  });
+async function importDistrict(districtObj) {
+  let query = {
+    name: districtObj.DistrictName
+  };
+  let update = {
+    name: districtObj.DistrictName
+  };
+  let options = {
+    new: true,
+    upsert: true,
+    setDefaultsOnInsert: true
+  };
+  let district = await District.findOneAndUpdate(query, update, options).exec();
+  logger.info('import district: ', district);
+  return district;
 }
 
-function importAllDistricts() {
-  let importPromises = _.map(districts, (district) => importDistrict(district));
-  return Promise.all(importPromises);
+async function importAllDistricts() {
+  let results = [];
+  for (let district of districts) {
+    results.push(await importDistrict(district));
+  }
+  return results;
 }
 
-function importCommerseArea(areaObj) {
-  return new Promise((resolve, reject) => {
-    District
-      .findOne({ name: areaObj.districtName })
-      .select('_id name')
-      .exec((err, district) => {
-        assert.equal(district.name, areaObj.districtName);
-        let query = {
-          name: areaObj.CBDName
-        };
-        let update = {
-          name: areaObj.CBDName,
-          district: district
-        };
-        let options = {
-          new: true,
-          upsert: true,
-          setDefaultsOnInsert: true
-        };
-        CommerseArea
-          .findOneAndUpdate(query, update, options)
-          .populate('district')
-          .exec((err, commerseArea) => {
-            assert.ifError(err);
-            assert.equal(commerseArea.name, areaObj.CBDName);
-            assert.ok(commerseArea.district._id.equals(district._id));
-            logger.info('import commerse area: ', commerseArea);
-            resolve(commerseArea);
-          });
-      });
-  });
+async function importCommerseArea(areaObj) {
+  let district = await District.findOne({ name: areaObj.districtName }).exec();
+  
+  let query = {
+    name: areaObj.CBDName
+  };
+  let update = {
+    name: areaObj.CBDName,
+    district: district
+  };
+  let options = {
+    new: true,
+    upsert: true,
+    setDefaultsOnInsert: true
+  };
+  let area = await CommerseArea
+    .findOneAndUpdate(query, update, options)
+    .populate('district')
+    .exec();
+  logger.info('import commerseArea: ', area);
+  return area;
 }
 
-function importAllCommerseAreas() {
-  let importPromises = _.map(commerseAreas, (areaObj) => importCommerseArea(areaObj));
-  return Promise.all(importPromises);
+async function importAllCommerseAreas() {
+  let results = [];
+  for (let areaObj of commerseAreas) {
+    results.push(await importCommerseArea(areaObj));
+  }
+  return results;
 }
 
-function importComunity(comunityObj) {
-  return new Promise((resolve, reject) => {
-    CommerseArea
-      .findOne({ name: comunityObj.CBDName })
-      .select('_id name district')
-      .populate('district')
-      .exec((err, commerseArea) => {
-        logger.info('importComunity commerseArea: ', commerseArea);
-        assert.equal(commerseArea.name, comunityObj.CBDName);
-        let query = {
-          name: comunityObj.villageName
-        };
-        let update = {
-          name: comunityObj.villageName,
-          commerseArea: commerseArea,
-          district: commerseArea.district,
-          desc: comunityObj.desc,
-          address: comunityObj.address,
-          latitude: comunityObj.lat,
-          longitude: comunityObj.lon,
-          isHot: false,
-          keywords: [comunityObj.CBDName]
-        };
-        let options = {
-          new: true,
-          upsert: true,
-          setDefaultsOnInsert: true
-        };
-        Comunity
-          .findOneAndUpdate(query, update, options)
-          .populate('district commerseArea')
-          .exec((err, comunity) => {
-            assert.ifError(err);
-            assert.equal(comunity.name, comunityObj.villageName);
-            logger.info('import comunity: ', comunity);
-            resolve(comunity);
-          });
-      });
-  });
+async function importComunity(comunityObj) {
+  let commerseArea = await CommerseArea
+    .findOne({ name: comunityObj.CBDName })
+    .populate('district')
+    .exec();
+
+  let query = {
+    name: comunityObj.villageName
+  };
+  let update = {
+    name: comunityObj.villageName,
+    commerseArea: commerseArea,
+    district: commerseArea.district,
+    desc: comunityObj.desc,
+    address: comunityObj.address,
+    latitude: comunityObj.lat,
+    longitude: comunityObj.lon,
+    isHot: false,
+    keywords: [comunityObj.CBDName]
+  };
+  let options = {
+    new: true,
+    upsert: true,
+    setDefaultsOnInsert: true
+  };
+  
+  let comunity = await Comunity
+    .findOneAndUpdate(query, update, options)
+    .populate('district commerseArea')
+    .exec();
+  logger.info('import community: ', comunity);
+  return comunity;
 }
 
-function importAllComunities() {
-  let importPromises = _.map(comunities, (comunityObj) => importComunity(comunityObj));
-  return Promise.all(importPromises);
+async function importAllComunities() {
+  let results = [];
+  for (let comunityObj of comunities) {
+    results.push(await importComunity(comunityObj));
+  }
+  return results;
 }
 
-function importApartmentType(apartmentObj) {
-  return new Promise((resolve, reject) => {
-    logger.info('import apartment type obj: ', apartmentObj);
-    Comunity
-      .findOne({ name: apartmentObj.villageName })
-      .select('_id name commerseArea district keywords')
-      .populate('commerseArea district')
-      .exec((err, comunity) => {
-        logger.info('importApartmentType comunity', comunity);
-        assert.ifError(err);
-        assert.equal(comunity.name, apartmentObj.villageName);
-        const apartmentTypeName = comunity.name + apartmentObj.shi.toString() + '房';
-        let query = {
-          name: apartmentTypeName
-        };
+async function importApartmentType(apartmentObj) {
+  let comunity = await Comunity
+    .findOne({ name: apartmentObj.villageName })
+    .populate('commerseArea district')
+    .exec();
 
-        ApartmentType.findOne(query, function(err, apartmentType) {
-          assert.ifError(err);
-          
-          var minArea = Math.min(!apartmentType || isNaN(apartmentType.minArea) || !(apartmentType.minArea) ?
-                                 Number.MAX_VALUE :
-                                 apartmentType.minArea, 
-                        apartmentObj.structurearea);
-          var maxArea = Math.max(!apartmentType || isNaN(apartmentType.maxArea) || !(apartmentType.maxArea) ?
-                                 0 : 
-                                 apartmentType.maxArea, 
-                        apartmentObj.structurearea);
-          var minPrice = Math.min(!apartmentType || isNaN(apartmentType.minPrice) || !(apartmentType.minPrice) ? 
-                                  Number.MAX_VALUE :
-                                  apartmentType.minPrice, 
-                         apartmentObj.rentPerMonth);
-          var maxPrice = Math.max(!apartmentType || apartmentType.maxPrice || !(apartmentType.maxPrice) ?
-                                  0 :
-                                  apartmentType.maxPrice, 
-                         apartmentObj.rentPerMonth);
-          
-          if (!apartmentType) {
-            apartmentType = new ApartmentType();
-          }
-          apartmentType.name = apartmentTypeName;
-          apartmentType.comunity = comunity;
-          apartmentType.commerseArea = comunity.commerseArea;
-          apartmentType.district = comunity.district;
-          apartmentType.roomType = {
-            ting: apartmentObj.ting,
-            shi: apartmentObj.shi,
-            wei: apartmentObj.wei,
-            beds: 0
-          };
-          apartmentType.address = apartmentObj.address;
-          apartmentType.isHot = false;
-          apartmentType.keywords = apartmentObj.keywords.split(/\s+/);
-          
-          apartmentType.minArea = minArea;
-          apartmentType.maxArea = maxArea;
-          apartmentType.minPrice = minPrice;
-          apartmentType.maxPrice = maxPrice;
-          
-          apartmentType.imagekeys = _.uniq(apartmentType.imagekeys.concat(apartmentObj.imagekeys));
-          
-          let query = { name: apartmentType.name };
-          let upsertData = apartmentType.toObject();
-          delete upsertData._id;
-          
-          ApartmentType.update(query, upsertData, {upsert: true}, function(err) {
-            logger.info('import apartment type: ', apartmentType);
-            assert.ifError(err);
-            resolve(apartmentType);
-          });
-        });
-      });
-  });
+  const apartmentTypeName = comunity.name + apartmentObj.shi.toString() + '房';
+  let apartmentType = await ApartmentType.findOne({ name: apartmentTypeName }).exec();
+
+  var minArea = Math.min(!apartmentType || isNaN(apartmentType.minArea) || !(apartmentType.minArea) ?
+      Number.MAX_VALUE :
+      apartmentType.minArea,
+    apartmentObj.structurearea);
+  var maxArea = Math.max(!apartmentType || isNaN(apartmentType.maxArea) || !(apartmentType.maxArea) ?
+      0 :
+      apartmentType.maxArea,
+    apartmentObj.structurearea);
+  var minPrice = Math.min(!apartmentType || isNaN(apartmentType.minPrice) || !(apartmentType.minPrice) ?
+      Number.MAX_VALUE :
+      apartmentType.minPrice,
+    apartmentObj.rentPerMonth);
+  var maxPrice = Math.max(!apartmentType || apartmentType.maxPrice || !(apartmentType.maxPrice) ?
+      0 :
+      apartmentType.maxPrice,
+    apartmentObj.rentPerMonth);
+
+  if (!apartmentType) {
+    apartmentType = new ApartmentType();
+  }
+  apartmentType.name = apartmentTypeName;
+  apartmentType.comunity = comunity;
+  apartmentType.commerseArea = comunity.commerseArea;
+  apartmentType.district = comunity.district;
+  apartmentType.roomType = {
+    ting: apartmentObj.ting,
+    shi: apartmentObj.shi,
+    wei: apartmentObj.wei,
+    beds: 0
+  };
+  apartmentType.address = apartmentObj.address;
+  apartmentType.isHot = false;
+  apartmentType.keywords = apartmentObj.keywords.split(/\s+/);
+
+  apartmentType.minArea = minArea;
+  apartmentType.maxArea = maxArea;
+  apartmentType.minPrice = minPrice;
+  apartmentType.maxPrice = maxPrice;
+
+  if (!apartmentType.imagekeys) {
+    apartmentType.imagekeys = [];
+  }
+  apartmentType.imagekeys = _.uniq(apartmentType.imagekeys.concat(apartmentObj.imagekeys));
+
+  let upsertData = apartmentType.toObject();
+  delete upsertData._id;
+
+  await ApartmentType.update({ name: apartmentType.name }, upsertData, {upsert: true}).exec();
+  logger.info('import apartmentType: ', apartmentType);
+  return apartmentType;
 }
 
-function importAllApartmentTypes() {
-  let importPromises = _.map(apartments, (apartmentObj) => importApartmentType(apartmentObj));
-  return Promise.all(importPromises);
+async function importAllApartmentTypes() {
+  let results = [];
+  for (let apartmentObj of apartments) {
+    results.push(await importApartmentType(apartmentObj));
+  }
+  return results;
 }
 
-function importApartment(apartmentObj) {
-  return new Promise((resolve, reject) => {
-    const apartmentTypeName = apartmentObj.villageName + apartmentObj.shi.toString() + '房';
-    ApartmentType
-      .findOne({name: apartmentTypeName})
-      .select('_id name comunity commerseArea district')
-      .populate('comunity commerseArea district')
-      .exec((err, apartmentType) => {
-        assert.ifError(err);
-        assert.equal(apartmentType.name, apartmentTypeName);
-        let query = {
-          contractNo: apartmentObj.contractno
-        };
-        let update = {
-          houseNo: apartmentObj.houseno,
-          apartmentType: apartmentType,
-          comunity: apartmentType.comunity,
-          commerseArea: apartmentType.commerseArea,
-          district: apartmentType.district,
-          area: apartmentObj.structurearea,
-          price: apartmentObj.rentPerMonth,
-          contactNo: apartmentObj.contractno,
-          address: apartmentObj.address,
-          leased: false,
-          isHot: false,
-          keywords: apartmentObj.keywords.split(/\s+/),
-          imagekeys: apartmentObj.imagekeys
-        };
-        let options = {
-          new: true,
-          upsert: true,
-          setDefaultsOnInsert: true
-        };
-        Apartment
-          .findOneAndUpdate(query, update, options)
-          .populate('apartmentType comunity commerseArea district')
-          .exec((err, apartment) => {
-            assert.ifError(err);
-            assert.equal(apartment.houseNo, apartmentObj.houseno);
-            logger.info('import apartment: ', apartment);
-            
-            apartment.comunity.minArea = Math.min(apartment.comunity.minArea || 10000, apartment.area);
-            apartment.comunity.maxArea = Math.max(apartment.comunity.maxArea || 0, apartment.area);
-            apartment.comunity.minPrice = Math.min(apartment.comunity.minPrice || 10000000, apartment.price);
-            apartment.comunity.maxPrice = Math.max(apartment.comunity.maxPrice || 0, apartment.price);
-            if (apartment.imagekeys && apartment.imagekeys.length > 0) {
-              apartment.comunity.imagekeys = apartment.imagekeys;
-            }
-            apartment.comunity.save(function(err) {
-              resolve(apartment);
-            });
-          });
-      });
-  });
+async function importApartment(apartmentObj) {
+  const apartmentTypeName = apartmentObj.villageName + apartmentObj.shi.toString() + '房';
+  
+  let apartmentType = await ApartmentType
+    .findOne({ name: apartmentTypeName })
+    .populate('comunity commerseArea district')
+    .exec();
+
+  let query = {
+    contractNo: apartmentObj.contractno
+  };
+  let update = {
+    houseNo: apartmentObj.houseno,
+    apartmentType: apartmentType,
+    comunity: apartmentType.comunity,
+    commerseArea: apartmentType.commerseArea,
+    district: apartmentType.district,
+    area: apartmentObj.structurearea,
+    price: apartmentObj.rentPerMonth,
+    contactNo: apartmentObj.contractno,
+    address: apartmentObj.address,
+    leased: false,
+    isHot: false,
+    keywords: apartmentObj.keywords.split(/\s+/),
+    imagekeys: apartmentObj.imagekeys
+  };
+  let options = {
+    new: true,
+    upsert: true,
+    setDefaultsOnInsert: true
+  };
+  
+  let apartment = await Apartment
+    .findOneAndUpdate(query, update, options)
+    .populate('apartmentType comunity commerseArea district')
+    .exec();
+
+  apartment.comunity.minArea = Math.min(apartment.comunity.minArea || 10000, apartment.area);
+  apartment.comunity.maxArea = Math.max(apartment.comunity.maxArea || 0, apartment.area);
+  apartment.comunity.minPrice = Math.min(apartment.comunity.minPrice || 10000000, apartment.price);
+  apartment.comunity.maxPrice = Math.max(apartment.comunity.maxPrice || 0, apartment.price);
+  if (apartment.imagekeys && apartment.imagekeys.length > 0) {
+    apartment.comunity.imagekeys = apartment.imagekeys;
+  }
+  await apartment.comunity.save();
+  logger.info('import apartment: ', apartment);
+  return apartment;
 }
 
-function importAllApartments() {
-  let importPromises = _.map(apartments, (apartmentObj) => importApartment(apartmentObj));
-  return Promise.all(importPromises);
+async function importAllApartments() {
+  let results = [];
+  for (let apartmentObj of apartments) {
+    results.push(await importApartment(apartmentObj));
+  }
+  return results;
 }
 
-function importDailyRent(dailyRentObj) {
-  return new Promise((resolve, reject) => {
-    Comunity
-      .findOne({ name: dailyRentObj.comunityName })
-      .select('_id name commerseArea district keywords')
-      .populate('commerseArea district')
-      .exec((err, comunity) => {
-        assert.ifError(err);
-        assert.equal(comunity.name, dailyRentObj.comunityName);
-        let query = {
-          name: dailyRentObj.name
-        };
-        let update = {
-          name: dailyRentObj.name,
-          comunity: comunity,
-          commerseArea: comunity.commerseArea,
-          district: comunity.district,
-          capacityMin: dailyRentObj.capacityMin,
-          capacityMax: dailyRentObj.capacityMax,
-          price: dailyRentObj.price,
-          isRenting: true,
-          keywords: comunity.keywords,
-          imagekeys: dailyRentObj.imagekeys
-        };
-        let options = {
-          new: true,
-          upsert: true,
-          setDefaultsOnInsert: true
-        };
-        DailyRent
-          .findOneAndUpdate(query, update, options)
-          .populate('comunity commerseArea district')
-          .exec((err, dailyRent) => {
-          assert.ifError(err);
-          assert.equal(dailyRent.name, dailyRentObj.name);
-          logger.info('import daily rent: ', dailyRent);
-          resolve(dailyRent);
-        });
-      });
-  });
+async function importDailyRent(dailyRentObj) {
+  let comunity = await Comunity
+    .findOne({ name: dailyRentObj.comunityName })
+    .populate('commerseArea district')
+    .exec();
+
+  let query = {
+    name: dailyRentObj.name
+  };
+  let update = {
+    name: dailyRentObj.name,
+    comunity: comunity,
+    commerseArea: comunity.commerseArea,
+    district: comunity.district,
+    capacityMin: dailyRentObj.capacityMin,
+    capacityMax: dailyRentObj.capacityMax,
+    price: dailyRentObj.price,
+    isRenting: true,
+    keywords: comunity.keywords,
+    imagekeys: dailyRentObj.imagekeys
+  };
+  let options = {
+    new: true,
+    upsert: true,
+    setDefaultsOnInsert: true
+  };
+  let dailyRent = await DailyRent
+    .findOneAndUpdate(query, update, options)
+    .populate('comunity commerseArea district')
+    .exec();
+  logger.info('import daily rent: ', dailyRent);
+  return dailyRent;
 }
 
-function importAllDailyRents() {
-  let importPromises = _.map(dailyRents, (dailyRentObj) => importDailyRent(dailyRentObj));
-  return Promise.all(importPromises);
+async function importAllDailyRents() {
+  let results = [];
+  for (let dailyRentObj of dailyRents) {
+    results.push(await importDailyRent(dailyRentObj));
+  }
+  return results;
 }
 
-importAllDistricts()
-  .then(() => importAllCommerseAreas())
-  .then(() => importAllComunities())
-  .then(() => importAllApartmentTypes())
-  .then(() => importAllApartments())
-  .then(() => importAllDailyRents())
-  .then(() => logger.info('import finished!'))
-  .catch((err) => {
-    logger.error('import error: ', err);
-  });
+(async function() {
+  await importAllDistricts();
+  await importAllCommerseAreas();
+  await importAllComunities();
+  await importAllApartmentTypes();
+  await importAllApartments();
+  await importAllDailyRents();
+  logger.info('import finished!');
+})().catch(err => {
+  logger.error('import error: ', err);
+});
