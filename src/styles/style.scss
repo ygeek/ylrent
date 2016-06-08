@@ -50,7 +50,7 @@ caption,th{text-align:left;}
 .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
 
 .tel{fontfamily:Arial Black}
-
+.hide { display: none;}
 /*layout style
 --------------------------------------*/
 /*首页开始*/
@@ -492,8 +492,16 @@ background:url(../img/house.png) no-repeat   right center; }
 		.zhanghao_r{float:right;  width:850px; margin:0 0 40px 0; }
 		   .zhanghao_r h1{height:60px; line-height:60px; padding:0 0 0 40px; font-size:18px; background:#fff;}
 		   .zhanghao_r_m{margin:8px 0 0 0;}
+                   
+                   .zhanghao_r_m .noediter { display: none; float: left;}
+                   .zhanghao_r_m .edityes { display: block;  float: left;}
+                 
 		   .zhanghao_r_m p{height:50px; line-height:50px; padding:0 0 0 50px; font-size:16px; margin:2px 0 0 0; background:#fff;}
-			.xiugai a{display:block; padding:0 30px; height:30px; line-height:30px; border:1px solid #d2d2d2; display:block; float:left; margin:8px 0 0 0;}
+                   .zhanghao_r_m p span{float:left; }
+                   .editpaslist {display: none;}
+                   .zhanghao_r_m p .xiugai input { margin-top: 8px; width: 300px; height: 28px; line-height: 28px; }
+                   .zhanghao_r_m p .xiugai .submit {display:block;  height:30px; wdith:100px; line-height:20px; background-color: #fff; cursor:pointer; border:1px solid #d2d2d2; display:block; float:left; margin:8px 0 0 0; }
+                   .xiugai a{display:block; padding:0 30px; height:30px; line-height:30px; border:1px solid #d2d2d2; display:block; float:left; margin:8px 0 0 0;}
 			.mima{float:left; display:block;}
 			
 			.zhanghao_r_m01{margin:5px 0 30px 0;}

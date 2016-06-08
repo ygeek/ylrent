@@ -7,7 +7,7 @@
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/files/lib/laydate/laydate.js"></script>
-
+<script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
 </head>
 <body>
 
@@ -23,12 +23,12 @@
              <div class="weituo">
                     <div class="weituo_r">
                     <h1>房东委托</h1>
-                    <form action="/appointment/delegate/" method="post">
+                    <form action="/appointment/delegate" class="registerform" method="post">
                     <ul>
-                        <li><img src="/img/icon18.png" /><em></em><input name="name" class="weituo01" onfocus="if (value =='姓名'){value =''}"   onblur="if (value ==''){value='姓名'}" value="姓名" type="text" /></li>
-                        <li><img src="/img/icon19.png" /><em></em><input name="mobile" class="weituo01" onfocus="if (value =='手机号'){value =''}"   onblur="if (value ==''){value='手机号'}" value="手机号" type="text" /></li>
-                        <li><img src="/img/icon19.png" /><em></em><input name="startDate" class="weituo01" onfocus="if (value =='起租日期'){value =''}"   onblur="if (value ==''){value='起租日期'}" value="起租日期"  onclick="laydate()" type="text"  /></li>
-                        <li><img src="/img/icon19.png" /><em></em><input name="name" class="weituo01" onfocus="if (value =='选择小区'){value =''}"   onblur="if (value ==''){value='选择小区'}" value="选择小区" type="text" /></li>
+                        <li><img src="/img/icon18.png" /><em></em><input datatype="*" tip="姓名" errormsg="请填写姓名"  name="name" class="weituo01"  value="姓名" type="text" /></li>
+                        <li><img src="/img/icon19.png" /><em></em><input datatype="m" tip="手机号" errormsg="请填写手机号" name="mobile" class="weituo01" value="手机号" type="text" /></li>
+                        <li><img src="/img/icon19.png" /><em></em><input datatype="*" tip="起租日期" errormsg="请选择日期" name="startDate" class="weituo01"  value="起租日期"  onclick="laydate()" type="text"  /></li>
+                        <li><img src="/img/icon19.png" /><em></em><input datatype="*" tip="选择小区" errormsg="请选择小区" name="name" class="weituo01"  value="选择小区" type="text" /></li>
                         <li  ><img src="/img/icon19.png" /><em></em>
                         
                         <div class="weituo01" id="delselect">
@@ -42,8 +42,8 @@
                             </ul>
                         </div>
                         </li>
-                        <input name="shi" type="hidden" value="" id="inputselect"/>
-                        <li><img src="/img/icon19.png" /><em></em><input class="weituo01" onfocus="if (value =='意向租金'){value =''}"   onblur="if (value ==''){value='意向租金'}" value="意向租金" type="text" /></li>
+                        <input name="shi" type="hidden" datatype="*" tip="请选择房型" value="" id="inputselect"/>
+                        <li><img src="/img/icon19.png" /><em></em><input class="weituo01" datatype="n" errormsg="请填写意向租金" tip="意向租金" value="意向租金" type="text" /></li>
                         <li style="border:0"><input type="submit" class="weituo02" value="提交委托" /></li>
                     </ul>
                     </form>
@@ -115,6 +115,23 @@
 $(function(){
     $.divselect("#delselect","#inputselect");
 });
+
+$(function(){
+	
+	$.Tipmsg.r=null;
+		
+	var showmsg=function(msg){
+		alert(msg);
+	}
+	
+	$(".registerform").Validform({
+		tiptype:function(msg){
+			showmsg(msg);
+		},
+		tipSweep:true,
+		ajaxPost:false,
+	});
+})
 </script>
 
 
