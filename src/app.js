@@ -43,6 +43,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(expressFlash());
 
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+
 // setup logger
 setupAppLogger(app);
 

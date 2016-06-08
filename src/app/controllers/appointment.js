@@ -18,6 +18,7 @@ const DelegationOrder = mongoose.model('DelegationOrder');
 
 const router = express.Router();
 
+
 router.post('/apartment', (req, res, next) => {
   console.log('post appointment apartment: ', req.body);
   const apartmentId = req.body.apartmentId;

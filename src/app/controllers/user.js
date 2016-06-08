@@ -14,11 +14,35 @@ const User = mongoose.model('User');
 
 const logger = log4js.getLogger('normal');
 
+const ApartmentOrder = mongoose.model('ApartmentOrder');
+const DailyOrder = mongoose.model('DailyOrder');
+
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-  res.render('user', {
-    user: req.user
+  if (req.user) {
+    res.render('user', {});
+  } else {
+    res.redirect('/user/login');
+  }
+});
+
+router.get('/orders', (req, res, next) => {
+  if (!req.user) {
+    return res.redirect('/user/login/');
+  }
+
+  (async function() {
+    let apartmentOrders = await ApartmentOrder.find({}).exec();
+    let dailyOrders = await DailyOrder.find({}).exec();
+
+    res.render('orders', {
+      apartmentOrders,
+      dailyOrders
+    });
+  })().catch(err => {
+    req.flash('error', err);
+    res.redirect('/user/');
   });
 });
 
@@ -210,6 +234,65 @@ router.post('/forget', function(req, res, next) {
       });
     }
   });
+});
+
+router.post('/password', (req, res, next) => {
+  if (!req.user) {
+    return res.redirect('/user/login');
+  }
+  
+  const oldPassword = req.body.oldpassword;
+  const password = req.body.password;
+  
+  User.authenticate()(req.user.username, oldPassword, function(err, user, options) {
+    if (err || !user) {
+      req.flash('error', err.message);
+      res.redirect('/user/');
+    } else {
+      user.setPassword(password, function() {
+        user.save(err => {
+          if (err) {
+            req.flash('error', err.message);
+            res.redirect('/user/');
+          } else {
+            req.flash('info', '密码修改成功');
+            res.redirect('/user/');
+          }
+        });
+      });
+    }
+  });
+});
+
+router.post('/update', (req, res, next) => {
+  if (!req.user) {
+    return res.redirect('/user/login');
+  }
+
+  const corpName = req.body.corpName;
+  const title = req.body.title;
+  const tel = req.body.tel;
+  const address = req.body.Address;
+
+  if (corpName && title && tel && address) {
+    req.user.isCrop = true;
+    req.user.corpName = corpName;
+    req.user.title = title;
+    req.user.tel = tel;
+    req.user.Address = address;
+    req.user.save(err => {
+      if (err) {
+        req.flash('error', err.message);
+        res.redirect('/user/');
+      } else {
+        req.flash('info', '信息更新成功');
+        res.redirect('/user/');
+      }
+    });
+  } else {
+    req.flash('error', '信息填写有误');
+    req.redirect('/user/');
+  }
 });
 
 module.exports = router;

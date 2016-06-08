@@ -5,6 +5,18 @@
 <title>源涞国际 - 热门房源</title>
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
+<link type="text/css" rel="stylesheet" href="/files/lib/jquery-flash/jquery.flash.css" />
+<script type="text/javascript" src="/files/lib/jquery-flash/jquery.flash.js"></script>
+<% if (messages.error || messages.info) { %>
+    <script type="text/javascript">
+        <% if (messages.info) { %>
+            $.flash(<%= messages.info %>);
+        <% } %>
+        <% if (messages.error) { %>
+            $.flash(<%= messages.error %>);
+        <% } %>
+    </script>
+<% } %>
 </head>
 <body>
 
@@ -20,7 +32,7 @@
 <div class="n_main">
      <div class="zhanghao_l">
            <a id="zhangbao_hover" href="/user/">个人信息</a>
-           <a href="#">我的订单</a>
+           <a href="/user/orders/">我的订单</a>
      </div>
      <div class="zhanghao_r">
           <h1>您好，<%= user.name %> ！</h1>
@@ -29,16 +41,30 @@
                <p>手机：<%= user.username %></p>
                <p>邮箱：<%= user.email %></p>
 			   <p>姓名：<%= user.name %></p>
-               <p><span class="mima">密码：</span><span class="xiugai"><a href="#">修改</a></span></p>
+               <p>
+                   <span class="mima">密码：</span>
+                   <span class="xiugai"><a href="#">修改</a></span>
+               </p>
           </div>
-          <div class="zhanghao_r_m">
-               <p><span class="mima" style="font-weight:bold; font-size:18px;">企业信息</span><span class="xiugai" style="float:right; margin:0 30px 0 0;"><a href="#">修改</a></span></p>
-               <p>公司：源涞国际</p>
-               <p>职位：销售总监</p>
-               <p>地址：上海市  徐汇区  天钥桥路***号</p>
-               <p>公司电话：86 - 21 - 789878</p>
-               <p><span class="xiugai"><a href="#">确认修改</a></span></p>
-          </div>
+          <% if (user.isCrop) { %>
+              <div class="zhanghao_r_m">
+                  <p>
+                      <span class="mima" style="font-weight:bold; font-size:18px;">企业信息</span>
+                      <span class="xiugai" style="float:right; margin:0 30px 0 0;">
+                          <a href="#">修改</a>
+                      </span>
+                  </p>
+                  <p>公司：<%= user.corpName %></p>
+                  <p>职位：<%= user.title %></p>
+                  <p>地址：<%= user.Address %></p>
+                  <p>公司电话：<%= user.tel %></p>
+                  <p>
+                      <span class="xiugai">
+                          <a href="#">确认修改</a>
+                      </span>
+                  </p>
+              </div>
+          <% } %>
      </div>
   <div class="clear"></div>
 </div>

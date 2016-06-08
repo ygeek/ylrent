@@ -3,7 +3,11 @@
         <div class="header_m_top">
             <img src="/img/logo.jpg" />
             <span>
-              <a href="/user/register/">注册</a><a href="/user/login/">登录</a>
+                <% if (user) { %>
+                    <a href="/user/">个人中心</a>
+                <% } else { %>
+                    <a href="/user/register/">注册</a><a href="/user/login/">登录</a>
+                <% } %>
             </span>
         </div>
         <div class="header_m_bottom">
