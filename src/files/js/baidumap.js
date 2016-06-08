@@ -128,7 +128,7 @@ function addThisMaker()
 	//添加标注以及信息窗口
 	//创建特殊图标
 	
-	var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(300,157));
+	var myIcon = new BMap.Icon("/img/dibiao.png", new BMap.Size(42,42));
 	var marker2 = new BMap.Marker(centerPoint,{icon:myIcon});  // 创建标注
 	map.addOverlay(marker2);              // 将特殊标注添加到地图中
 	
