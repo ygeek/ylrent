@@ -33,8 +33,8 @@ router.get('/orders', (req, res, next) => {
   }
 
   (async function() {
-    let apartmentOrders = await ApartmentOrder.find({}).exec();
-    let dailyOrders = await DailyOrder.find({}).exec();
+    let apartmentOrders = await ApartmentOrder.find({}).populate('apartment').exec();
+    let dailyOrders = await DailyOrder.find({}).populate('daily').exec();
 
     res.render('orders', {
       apartmentOrders,
