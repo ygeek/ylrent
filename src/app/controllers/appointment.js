@@ -32,16 +32,13 @@ router.post('/apartment', (req, res, next) => {
   const currentURL = '/apartment/detail/' + apartmentId;
   
   (async function() {
-    
-    /*
     let body = await asyncVerifySMSCode(mobile, smscode);
     
     if (body && body.code && body.code !== 0) {
-      throw new Error('短信验证失败');
+      // throw new Error('短信验证失败');
     }
 
     logger.trace('verify sms success', body);
-     */
     
     let apartment = await Apartment
       .findById(apartmentId)
@@ -102,14 +99,11 @@ router.post('/daily', (req, res, next) => {
   const currentURL = '/daily/detail/' + dailyId;
   
   (async function() {
-    
-    /*
     let body = await asyncVerifySMSCode(mobile, smscode);
 
     if (body && body.code && body.code !== 0) {
-      throw new Error('短信验证失败');
+      // throw new Error('短信验证失败');
     }
-    */
 
     let daily = await DailyRent
       .findById(dailyId)
@@ -170,13 +164,11 @@ router.post('/delegate', (req, res, next) => {
   const currentURL = '/delegate';
   
   (async function() {
-    /*
     let body = await asyncVerifySMSCode(mobile, smscode);
 
     if (body && body.code && body.code !== 0) {
-      throw new Error('短信验证失败');
+      // throw new Error('短信验证失败');
     }
-    */
 
     let order = new DelegationOrder();
     order.name = name;
