@@ -288,7 +288,7 @@ function getPrice(start,end)
 {
 	var days = DateDiff(start,end);
 	var danjia = $(".danjia").html();
-	if(parseInt(days)<1)
+	if(parseInt(days)<1||isNaN(days))
 	{
 		days=1;
 	} 

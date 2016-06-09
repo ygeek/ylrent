@@ -99,7 +99,10 @@ $(function(){
 				}
 				else
 				{
+					
 					$.flash(data.msg) ;
+					$(".editpas").show();
+       				 $(".editpaslist").hide();
 					$('.userinfo')[0].reset();
 				}
 			}
@@ -131,8 +134,10 @@ $(function(){
 				}
 				else
 				{
+					
 					$.flash(data.msg) ;
-					$('.userinfo')[0].reset();
+					$(".nocropedit").show();
+        			$(".cropedit").hide();
 				}
             }
     });

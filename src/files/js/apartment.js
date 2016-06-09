@@ -32,11 +32,13 @@ $(function(){
 			if(data.code!=0)  //验证失败
 			{
 				$.flash(data.msg) ;
-			
+				
 			}
 			else
 			{
 				$.flash(data.msg) ;
+				$(".remen02").toggle("slow");
+				$(".order01").toggle("slow");
 				$('.apartmentform')[0].reset();
 			}
 		}
