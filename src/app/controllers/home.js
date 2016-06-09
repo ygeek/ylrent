@@ -8,6 +8,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
 
+const District = mongoose.model('District');
+const CommerseArea = mongoose.model('CommerseArea');
 const Comunity = mongoose.model('Comunity');
 const ApartmentType = mongoose.model('ApartmentType');
 const DailyRent = mongoose.model('DailyRent');
@@ -23,6 +25,10 @@ router.get('/', (req, res, next) => {
   if (req.device.type === 'phone') {
     return res.redirect('/apartment/');
   }
+
+  let districtPromise = District.find({}).exec();
+  
+  let commerseAreaPromise = CommerseArea.find({}).exec();
   
   let apartmentPromise = 
     ApartmentType
@@ -31,7 +37,6 @@ router.get('/', (req, res, next) => {
     .sort('-isHot')
     .populate('comunity commerseArea district')
     .exec();
-  
 
   let comunityPromise =
     Comunity
@@ -50,14 +55,16 @@ router.get('/', (req, res, next) => {
       .exec();
 
   Promise
-    .all([apartmentPromise, comunityPromise, dailyPromise])
-    .then(([apartmentTypes, comunities, dailyRents]) => {
+    .all([apartmentPromise, comunityPromise, dailyPromise, districtPromise, commerseAreaPromise])
+    .then(([apartmentTypes, comunities, dailyRents, districts, commerseAreas]) => {
       res.render('index', {
         title: '源涞国际',
         user: req.user,
         apartmentTypes: apartmentTypes,
         comunities: comunities,
-        dailyRents: dailyRents
+        dailyRents: dailyRents,
+        districts: districts,
+        commerseAreas: commerseAreas
       });
     }).catch((err) => {
       res.render('error', {
