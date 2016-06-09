@@ -80,7 +80,7 @@
                     <li  style="width:300px; "><span style="float:left;">验证码：</span><input datatype="n" type="text" style="float:left; " class="text04" name="smscode" /> <input type="button" class="text04 sendButtons yanzhengma" style="float:left; line-height:20px; cursor:pointer; margin-left:5px; height:28px;"  value="获取验证码" /></li>
                     <li>邮箱：<input type="text" datatype="e" name=""email class="text03" /></li>
                     <li style="width:300px; margin-left:-29px;">看房需求：<textarea name="comment" class="text05"  cols="50" rows="30"></textarea></li>
-                    <li style="width:300px; ">预约看房时间：<input type="text" datatype="*"   onclick="laydate()" name="startDate" style="width:190px;" class="text03"/> <input type="submit" class="text06" value="预约看房" style="margin-top:28px; margin-left:98px;" /></li>
+                    <li style="width:300px; ">预约看房时间：<input type="text" datatype="*"   onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" name="startDate" style="width:190px;" class="text03"/> <input type="submit" class="text06" value="预约看房" style="margin-top:28px; margin-left:98px;" /></li>
 					<input type="hidden" name="apartmentId" value="<%= apartment._id %>" />
                 </ul>
             </form>

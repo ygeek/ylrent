@@ -51,22 +51,22 @@
 			  </div>
 		  </div>
 		  <input name="shi" type="hidden" value="" id="inputselect"/>
-           
+          
             <input type="submit" class="sosuo_submit" value="搜索"/>
                     <div class="regionsel">
                         <div class="qus">
-                            <div class="qu" id="huangpu">黄浦区</div><div class="qu" id="zhujiang">黄浦区</div><div class="qu">黄浦区</div><div class="qu">黄浦区</div><div class="qu">黄浦区</div>
-                            <div class="qu">黄浦区</div><div class="qu">黄浦区</div><div class="qu">黄浦区</div><div class="qu">黄浦区</div>
+							<% districts.forEach(function(val) { %>
+                            <div class="qu" id="<%= val._id._id %>"><%= val._id.name %></div>
+							<% }) %>
                         </div>
-                        <div class="lists" id="huangpulist" style="display:block;">
-                            <div class="shangqu">陆家嘴商区</div><div class="shangqu">陆家嘴商区</div><div class="shangqu">陆家嘴商区</div>
+						<% districts.forEach(function(val) { %>
+                        <div class="lists" id="<%= val._id._id %>list" >
+						<% val.commerseAreas.forEach(function(v) { %>
+                            <div class="shangqu"><%= v %></div>
+						<% }) %>
                         </div>
-                        <div class="lists" id="zhujianglist">
-                            <div class="shangqu">张家湾商区</div><div class="shangqu">陆家嘴商区</div><div class="shangqu">陆家嘴商区</div>
-                        </div>
-                        <div class="lists">
-                            <div class="shangqu">珠江商区</div><div class="shangqu">陆家嘴商区</div><div class="shangqu">陆家嘴商区</div>
-                        </div>
+						<% }) %>
+                       
                     </div>
         </form>
     </div>
