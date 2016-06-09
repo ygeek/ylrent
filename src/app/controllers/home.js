@@ -66,9 +66,6 @@ router.get('/', (req, res, next) => {
   Promise
     .all([apartmentPromise, comunityPromise, dailyPromise, districtPromise])
     .then(([apartmentTypes, comunities, dailyRents, districts]) => {
-      
-      logger.info(districts);
-      
       res.render('index', {
         title: '源涞国际',
         user: req.user,
