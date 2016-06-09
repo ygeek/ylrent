@@ -20,12 +20,17 @@ const router = express.Router();
 
 
 router.post('/apartment', (req, res, next) => {
+  if (!req.user) {
+    return res.redirect('/user/login/');
+  }
+
   console.log('post appointment apartment: ', req.body);
   const apartmentId = req.body.apartmentId;
   const name = req.body.name;
   const mobile = req.body.mobile;
   const email = req.body.email;
   const comment = req.body.comment;
+  const date = req.body.date;
   
   const smscode = req.body.smscode;
   
@@ -47,11 +52,13 @@ router.post('/apartment', (req, res, next) => {
     
     if (apartment) {
       let order = new ApartmentOrder();
+      order.user = req.user;
       order.apartment = apartment;
       order.name = name;
       order.mobile = mobile;
       order.email = email;
       order.comment = comment;
+      order.date = date;
       await order.save();
       req.flash('info', '公寓预订成功!');
       res.redirect(currentURL);
@@ -59,13 +66,17 @@ router.post('/apartment', (req, res, next) => {
       res.status(404);
     }
   })().catch(err => {
-    logger.trace('verify sms error: ', err);
+    logger.error('appointment apartment error: ', err);
     req.flash('error', err.message);
     res.redirect(currentURL);
   });
 });
 
 router.post('/daily', (req, res, next) => {
+  if (!req.user) {
+    return res.redirect('/user/login/');
+  }
+  
   const dailyId = req.body.dailyId;
   const name = req.body.name;
   const mobile = req.body.mobile;
@@ -90,6 +101,7 @@ router.post('/daily', (req, res, next) => {
     
     if (!daily) {
       let order = new DailyOrder();
+      order.user = req.user;
       order.daily = daily;
       order.name = name;
       order.mobile = mobile;
@@ -109,6 +121,10 @@ router.post('/daily', (req, res, next) => {
 });
 
 router.post('/delegate', (req, res, next) => {
+  if (!req.user) {
+    return res.redirect('/user/login/');
+  }
+
   const name = req.body.name;
   const mobile = req.body.mobile;
   const startDate = new Date(req.body.startDate);
@@ -128,6 +144,7 @@ router.post('/delegate', (req, res, next) => {
     }
 
     let order = new DelegationOrder();
+    order.user = req.user;
     order.name = name;
     order.mobile = mobile;
     order.startDate = startDate;

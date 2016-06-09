@@ -31,7 +31,6 @@ router.get('/', (req, res, next) => {
     .sort('-isHot')
     .populate('comunity commerseArea district')
     .exec();
-  
 
   let comunityPromise =
     Comunity

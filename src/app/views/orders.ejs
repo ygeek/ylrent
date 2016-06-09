@@ -6,16 +6,6 @@
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
-<% if (messages.error || messages.info) { %>
-    <script type="text/javascript">
-        <% if (messages.info) { %>
-            $.flash(<%= messages.info %>);
-        <% } %>
-        <% if (messages.error) { %>
-            $.flash(<%= messages.error %>);
-        <% } %>
-    </script>
-<% } %>
 </head>
 <body>
 
@@ -45,29 +35,18 @@
                      <em style="border:0;">状态</em>
                  </h2>
                  <div class="clear"></div>
-                 <p>
-                    <em>东方曼哈顿2房</em>
-                    <em>东方曼哈顿2房</em>
-                    <em>东方曼哈顿2房</em>
-                    <em>东方曼哈顿2房</em>
-                    <em style="border:0;">东方曼哈顿2房</em>
-                 </p>
-                 <p>
-                    <em>东方曼哈顿2房</em>
-                    <em>东方曼哈顿2房</em>
-                    <em>东方曼哈顿2房</em>
-                    <em>东方曼哈顿2房</em>
-                    <em style="border:0;">东方曼哈顿2房</em>
-                 </p>
-                 <p>
-                    <em>东方曼哈顿2房</em>
-                    <em>东方曼哈顿2房</em>
-                    <em>东方曼哈顿2房</em>
-                    <em>东方曼哈顿2房</em>
-                    <em style="border:0;">东方曼哈顿2房</em>
-                 </p>
+                 <% for (var i = 0; i < apartmentOrders.length; i++) { %>
+                     <p>
+                         <em><%= apartmentOrders[i]._id %></em>
+                         <em><%= apartmentOrders[i].createdAt %></em>
+                         <em><%= apartmentOrders[i].comment %></em>
+                         <em><%= apartmentOrders[i].date %></em>
+                         <em style="border:0;"><%= apartmentOrders[i].status %></em>
+                     </p>
+                 <% } %>
           </div>
-		  <h1>长租带看预约</h1>
+
+		  <h1>日租预约</h1>
           <div class="zhanghao_r_m01">
                  <h2>
                      <em>订单编号</em>
@@ -106,7 +85,20 @@
 <% include footer.ejs %>
 
 
-
+<link type="text/css" rel="stylesheet" href="/files/lib/jquery-flash/jquery.flash.css" />
+<script type="text/javascript" src="/files/lib/jquery-flash/jquery.flash.js"></script>
+<script type="text/javascript">
+    $(function() {
+        <% if (messages.error || messages.info) { %>
+            <% if (messages.info) { %>
+                $.flash("<%= messages.info %>");
+            <% } %>
+            <% if (messages.error) { %>
+                $.flash("<%= messages.error %>");
+            <% } %>
+        <% } %>
+    });
+</script>
 
 <!DOCTYPE html>
 <html lang="en">

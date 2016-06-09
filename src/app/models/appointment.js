@@ -14,6 +14,7 @@ export const OrderStatus = {
 };
 
 const ApartmentOrderSchema = new mongoose.Schema({
+  user: { type: ObjectId, ref: 'User' },
   apartment: { type: ObjectId, ref: 'Apartment' },
   name: String,
   mobile: String,
@@ -24,6 +25,7 @@ const ApartmentOrderSchema = new mongoose.Schema({
 });
 
 const DailyOrderSchema = new mongoose.Schema({
+  user: { type: ObjectId, ref: 'User' },
   daily: { type: ObjectId, ref: 'Daily' },
   name: String,
   mobile: String,
@@ -34,6 +36,7 @@ const DailyOrderSchema = new mongoose.Schema({
 });
 
 const DelegationOrderSchema = new mongoose.Schema({
+  user: { type: ObjectId, ref: 'User' },
   name: String,
   mobile: String,
   startDate: Date,

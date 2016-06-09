@@ -62,11 +62,12 @@
             </div>
             <div class="remen01_r01">
                 <form action="" method="get">
-                    <input type="text" onfocus="if (value == '入住 -> 离开') {
-                                value = ''
-                            }"   onblur="if (value == '') {
-                                        value = '入住 -> 离开'
-                                    }" value="入住 -> 离开" class="text07" /><input type="submit" class="text08" value="立即预定" />
+                    <input type="text"
+                           onfocus="if (value == '入住 -> 离开') { value = '' }"
+                           onblur="if (value == '') { value = '入住 -> 离开' }"
+                           value="入住 -> 离开"
+                           class="text07" />
+                    <input type="submit" class="text08" value="立即预定" />
                 </form>
                 <p>
                     ￥<span class="color01"><%= daily.price %></span> / 天<em>｜</em>
@@ -75,9 +76,12 @@
                 </p>
                 <div class="order01">
                     <form action="" method="get">
+                        <input type="hidden" name="dailyId" value="<%= daily._id %>" />
+                        <input type="hidden" name="startDate" value="" />
+                        <input type="hidden" name="endDate" value="" />
                         <ul>
-                            <li>姓名：<input type="text" class="text09"/></li>
-                            <li>手机：<input type="text" class="text09"/></li>
+                            <li>姓名：<input name="name" type="text" class="text09"/></li>
+                            <li>手机：<input name="mobile" type="text" class="text09"/></li>
                             <li><input type="submit" class="text10" value="立即预定" /></li>
                         </ul>
                     </form>
@@ -246,10 +250,21 @@ map.enableInertialDragging();
 
 map.enableContinuousZoom();
 
-
-
-
-
 getJsonInfo('机场$车站','jccz')
 </script>
 
+
+<link type="text/css" rel="stylesheet" href="/files/lib/jquery-flash/jquery.flash.css" />
+<script type="text/javascript" src="/files/lib/jquery-flash/jquery.flash.js"></script>
+<script type="text/javascript">
+    $(function() {
+        <% if (messages.error || messages.info) { %>
+            <% if (messages.info) { %>
+                $.flash("<%= messages.info %>");
+            <% } %>
+            <% if (messages.error) { %>
+                $.flash("<%= messages.error %>");
+            <% } %>
+        <% } %>
+    });
+</script>
