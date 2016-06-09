@@ -9,8 +9,8 @@ import rp from 'request-promise';
 import log4js from 'log4js';
 
 const leancloudConfig = {
-  'X-LC-Id': 'jqkXh6wD9aecX74oeOVz9CtN-gzGzoHsz',
-  'X-LC-Key': 'wflBBpW9pcnMkPXf5Xjuk510'
+  'X-LC-Id': 'QTohRgKnY7UdXzg3TRJRCJso-gzGzoHsz',
+  'X-LC-Key': 'bGJxnqgPJGUKnBGwA5nbTVLr'
 };
 
 const logger = log4js.getLogger('normal');
