@@ -6,6 +6,10 @@
 <link href="/files/lib/jqueryhdp/css/album.css" rel="stylesheet" type="text/css" media="all" />
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/files/lib/laydate/laydate.js"></script>
+<script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
+<link type="text/css" rel="stylesheet" href="/files/lib/jquery-flash/jquery.flash.css" />
+<script type="text/javascript" src="/files/lib/jquery-flash/jquery.flash.js"></script>
 </head>
 <body>
 
@@ -61,39 +65,38 @@
                 </p>
             </div>
             <div class="remen01_r01">
-                <form action="" method="get">
-                    <input type="text" onfocus="if (value == '入住 -> 离开') {
-                                value = ''
-                            }"   onblur="if (value == '') {
-                                        value = '入住 -> 离开'
-                                    }" value="入住 -> 离开" class="text07" /><input type="submit" class="text08" value="立即预定" />
-                </form>
+                <form action="/appointment/daily" class="apartmentform"  method="post">
+                    <input type="text" class="laydate-icon text07 " datatype="*" tip="入住时间"  id="start" name="startDate" value="入住时间" /> <input class="laydate-icon text07" type="text" name="endDate" datatype="*" tip="离开时间"  id="end" value="离开时间" /><input type="button" class="text08 dailyyuyue" value="立即预定" />
+                
                 <p>
                     ￥<span class="color01"><%= daily.price %></span> / 天<em>｜</em>
                     <span>1</span> / 晚<em>｜</em>
                     共￥<span><%= daily.price %></span>
                 </p>
                 <div class="order01">
-                    <form action="" method="get">
+                   
                         <ul>
-                            <li>姓名：<input type="text" class="text09"/></li>
-                            <li>手机：<input type="text" class="text09"/></li>
+                            <li>姓名：<input type="text" name="name" datatype="*" class="text07"/></li>
+                            <li>手机：<input type="text" datatype="m" name="mobile" id="usernameField" class="text07"/></li>
+							<li>验证码：<input type="text" datatype="n" name="smsCode" class="text07"/></li>
+							<li><input type="button" class="text04  sendButtons yanzhengma" value="获取验证码" /></li>
                             <li><input type="submit" class="text10" value="立即预定" /></li>
                         </ul>
-                    </form>
+                   
                 </div>
+				 </form>
             </div>
         </div>
 
         <div class="clear"></div>
         <div class="tabbox01" id="statetab01">
             <ul class="tabbtn01">
-                <li class="current"><a href="#">房源信息</a></li>
-                <li><a href="#">小区位置</a></li>	
+                <li class="current"><a href="#fangyuan">房源信息</a></li>
+                <li><a href="#weizhi">小区位置</a></li>	
             </ul><!--tabbtn end-->
 
             <div class="clear"></div>
-            <div class="tabcon01">
+            <div class="tabcon01" id="fangyuan">
                 <div class="tabcon01_l">
                     <h1>设施</h1>
                     <div class="tabcon01_l_m">
@@ -171,7 +174,7 @@
 
     </div>
     <div class="clear"></div>
-    <div class="jichang">
+    <div class="jichang" id="weizhi">
         <div class="jichang_l" id="allmap" style="height:600px; ">
         
         </div>
@@ -226,6 +229,7 @@ var Album = new jQuery.Album();
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hfr56zCA14KkpuRGsr2vKcV0GOG7KtH6"></script>
 <script type="text/javascript" src="/files/js/baidumap.js"></script>
+<script type="text/javascript" src="/files/js/apartment.js"></script>
 <script type="text/javascript">
 // 百度地图API功能
 
@@ -250,6 +254,32 @@ map.enableContinuousZoom();
 
 
 
-getJsonInfo('机场$车站','jccz')
+getJsonInfo('机场$车站','jccz');
+
+var start = {
+    elem: '#start',
+    format: 'YYYY/MM/DD hh:mm:ss',
+    min: laydate.now(), //设定最小日期为当前日期
+    max: '2099-06-16 23:59:59', //最大日期
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+         end.min = datas; //开始日选好后，重置结束日的最小日期
+         end.start = datas //将结束日的初始值设定为开始日
+    }
+};
+var end = {
+    elem: '#end',
+    format: 'YYYY/MM/DD hh:mm:ss',
+    min: laydate.now(),
+    max: '2099-06-16 23:59:59',
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+        start.max = datas; //结束日选好后，重置开始日的最大日期
+    }
+};
+laydate(start);
+laydate(end);
 </script>
 

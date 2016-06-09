@@ -8,7 +8,9 @@ $(function(){
 	$(document).on("click",".yuyue",function(){
 		$(".remen02").toggle();
 	});
-	
+	$(document).on("click",".dailyyuyue",function(){
+		$(".order01").toggle("slow");
+	});
 	
 	$.Tipmsg.r=null;
 		

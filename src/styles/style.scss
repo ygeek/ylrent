@@ -402,12 +402,12 @@ background:url(../img/house.png) no-repeat   right center; }
      .remen01_r h1{font-size:20px; color:#aa8f58; margin:0 0 20px 0;}
 	 .remen01_r h1 em{font-size:30px;} 
 	 
-	 .remen01_r01{float:right; color:#999; text-align:right; margin:0 0 30px 0;}
+	 .remen01_r01{float:right; color:#999; position:relative; text-align:right; margin:0 0 30px 0;}
 	    .remen01_r01 p{margin:15px 0 0;}
 		   .remen01_r01 p span{font-size:40px; font-weight:bold;}
 		   .remen01_r01 p em{font-size:40px; font-family:Verdana, Geneva, sans-serif; margin:0 15px;}
 		   .color01{color:#aa8f58;}
-		   .order01{padding:30px 50px 50px 50px; background:#f2f2f2; border:1px solid #d9d9d9; border-radius:10px;  -moz-border-radius:10px; -webkit-border-radius:10px; margin:30px 0; float:left;}
+		   .order01{padding:30px 50px 50px 50px;  position:absolute; z-index:999; background:#f2f2f2; border:1px solid #d9d9d9; border-radius:10px;  -moz-border-radius:10px; -webkit-border-radius:10px; margin:30px 0; top:80px; display:none; right:100px;}
 		     .order01 li{height:40px; line-height:40px; display:block;}
                .order01 li input[type="submit"]:hover{color: #fff; background:#aa8f58}
 
@@ -415,13 +415,14 @@ background:url(../img/house.png) no-repeat   right center; }
    .remen02{padding:30px 40px; height:150px; background:#f2f2f2; border:1px solid #d9d9d9; border-radius:10px;  -moz-border-radius:10px; -webkit-border-radius:10px; margin:30px 0;}
     .remen02 li{float:left; height:26px;  width:280px; line-height:26px; display:block; margin:0 20px 30px 0;}
 	   .text03{height:26px; width:200px; line-height:26px; background:#fff; border:1px solid #d9d9d9;}
-	   .text04{height:26px; width:110px; line-height:26px; background:#fff; border:1px solid #d9d9d9;}
+	   .text04{height:26px; cursor:pointer; width:110px; line-height:26px; background:#fff; border:1px solid #d9d9d9;}
 	   .text05{height:90px; width:200px; line-height:22px; background:#fff; border:1px solid #d9d9d9;}
 	   .text06{height:35px; line-height:35px; border:1px solid #d9d9d9; background:#fff; padding:0 60px; font-size:16px; cursor:pointer;}
-	   .text07{height:30px; width:300px; line-height:30px; border:2px solid #ddd; border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; text-indent:30px; font-size:15px; color:#999;}
+	   .text07{height:30px; width:250px; line-height:30px; border:2px solid #ddd; border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; text-indent:10px; font-size:15px; color:#999;}
+	   .remen01_r01 .text07{height:30px; width:250px; line-height:30px; border:2px solid #ddd; border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; text-indent:10px; font-size:15px; color:#999;}
 	   .text08{height:34px; line-height:34px; border:1px solid #d9d9d9; background:#959595; padding:0 20px; font-size:16px; cursor:pointer; color:#fff; border:0; margin:0 0 0 15px;}
 	   .text09{height:26px; width:290px; line-height:26px; background:#fff; border:1px solid #d9d9d9;}
-	   .text10{height:35px; line-height:35px; border:1px solid #d9d9d9; background:#fff; padding:0 60px; font-size:16px; cursor:pointer; margin:15px 0 0 0;}
+	   .text10{height:35px; line-height:30px; border:1px solid #d9d9d9; background:#fff; padding:0 60px; font-size:16px; cursor:pointer; margin:15px 0 0 0;}
 
 
      .tabbox01 .tabbtn01{height:40px; line-height:40px; padding:0 0 0 35%; }
