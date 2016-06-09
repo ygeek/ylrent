@@ -8,8 +8,8 @@
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/files/lib/laydate/laydate.js"></script>
 <script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
-<link type="text/css" rel="stylesheet" href="/files/lib/jquery-flash/jquery.flash.css" />
-<script type="text/javascript" src="/files/lib/jquery-flash/jquery.flash.js"></script>
+<link type="text/css" rel="stylesheet" href="/files/lib/jqueryflash/jquery.flash.css" />
+<script type="text/javascript" src="/files/lib/jqueryflash/jquery.flash.js"></script>
 </head>
 <body>
 
@@ -69,9 +69,9 @@
                     <input type="text" class="laydate-icon text07 " datatype="*" tip="入住时间"  id="start" name="startDate" value="入住时间" /> <input class="laydate-icon text07" type="text" name="endDate" datatype="*" tip="离开时间"  id="end" value="离开时间" /><input type="button" class="text08 dailyyuyue" value="立即预定" />
                 
                 <p>
-                    ￥<span class="color01"><%= daily.price %></span> / 天<em>｜</em>
-                    <span>1</span> / 晚<em>｜</em>
-                    共￥<span><%= daily.price %></span>
+                    ￥<span class="color01 danjia"><%= daily.price %></span> / 天<em>｜</em>
+                    <span class="days">1</span> / 晚<em>｜</em>
+                    共￥<span class="zongjia"><%= daily.price %></span>
                 </p>
                 <div class="order01">
                    
@@ -258,7 +258,7 @@ getJsonInfo('机场$车站','jccz');
 
 var start = {
     elem: '#start',
-    format: 'YYYY/MM/DD hh:mm:ss',
+    format: 'YYYY/MM/DD',
     min: laydate.now(), //设定最小日期为当前日期
     max: '2099-06-16 23:59:59', //最大日期
     istime: true,
@@ -266,19 +266,46 @@ var start = {
     choose: function(datas){
          end.min = datas; //开始日选好后，重置结束日的最小日期
          end.start = datas //将结束日的初始值设定为开始日
+		 getPrice($("#start").val(),$("#end").val());
     }
 };
 var end = {
     elem: '#end',
-    format: 'YYYY/MM/DD hh:mm:ss',
+    format: 'YYYY/MM/DD',
     min: laydate.now(),
     max: '2099-06-16 23:59:59',
     istime: true,
     istoday: false,
     choose: function(datas){
         start.max = datas; //结束日选好后，重置开始日的最大日期
+		//计算时间差和价格
+		getPrice($("#start").val(),$("#end").val());
+		
     }
 };
+//计算日期和价格
+function getPrice(start,end)
+{
+	var days = DateDiff(start,end);
+	var danjia = $(".danjia").html();
+	if(parseInt(days)<1)
+	{
+		days=1;
+	} 
+	$(".days").html(days);
+	$(".zongjia").html(parseInt(days)*parseInt(danjia));
+	console.log(days);
+	console.log(danjia);
+}
+function  DateDiff(sDate1,  sDate2){    
+       var  aDate,  oDate1,  oDate2,  iDays ;
+       aDate  =  sDate1.split("/") ;
+       oDate1  =  new  Date(aDate[1]  +  '/'  +  aDate[2]  +  '/'  +  aDate[0])  ;
+       aDate  =  sDate2.split("/") ;
+       oDate2  =  new  Date(aDate[1]  +  '/'  +  aDate[2]  +  '/'  +  aDate[0]) ;
+       iDays  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24) ;
+       return  iDays ;
+}   
 laydate(start);
 laydate(end);
 </script>

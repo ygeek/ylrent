@@ -6,7 +6,7 @@
 
 $(function(){
 	$(document).on("click",".yuyue",function(){
-		$(".remen02").toggle();
+		$(".remen02").toggle("slow");
 	});
 	$(document).on("click",".dailyyuyue",function(){
 		$(".order01").toggle("slow");
@@ -15,7 +15,7 @@ $(function(){
 	$.Tipmsg.r=null;
 		
 	var showmsg=function(msg){
-		alert(msg);
+		$.flash(msg);
 	}
 	
 	$(".apartmentform").Validform({
@@ -27,6 +27,19 @@ $(function(){
 		},
 		tipSweep:true,
 		ajaxPost:true,
+		callback:function(data){
+			console.log(data.msg);
+			if(data.code!=0)  //验证失败
+			{
+				$.flash(data.msg) ;
+			
+			}
+			else
+			{
+				$.flash(data.msg) ;
+				$('.apartmentform')[0].reset();
+			}
+		}
 	});
 	
 	$(document).on("click",".sendButtons",function(){
