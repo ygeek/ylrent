@@ -26,9 +26,18 @@ router.get('/', (req, res, next) => {
     return res.redirect('/apartment/');
   }
 
-  let districtPromise = District.find({}).exec();
-  
-  let commerseAreaPromise = CommerseArea.find({}).exec();
+  let districtPromise = (async function() {
+    let districts = await CommerseArea
+      .aggregate({
+        '$group': { _id: '$district', commerseAreas: { '$addToSet': '$name' } }
+      }).exec();
+    
+    return await District
+      .populate(districts, {
+        path: '_id',
+        select: 'name'
+      });
+  })();
   
   let apartmentPromise = 
     ApartmentType
@@ -45,7 +54,7 @@ router.get('/', (req, res, next) => {
       .sort('-isHot')
       .populate('commerseArea district')
       .exec();
-  
+
   let dailyPromise =
     DailyRent
       .find({})
@@ -55,16 +64,18 @@ router.get('/', (req, res, next) => {
       .exec();
 
   Promise
-    .all([apartmentPromise, comunityPromise, dailyPromise, districtPromise, commerseAreaPromise])
-    .then(([apartmentTypes, comunities, dailyRents, districts, commerseAreas]) => {
+    .all([apartmentPromise, comunityPromise, dailyPromise, districtPromise])
+    .then(([apartmentTypes, comunities, dailyRents, districts]) => {
+      
+      logger.info(districts);
+      
       res.render('index', {
         title: '源涞国际',
         user: req.user,
         apartmentTypes: apartmentTypes,
         comunities: comunities,
         dailyRents: dailyRents,
-        districts: districts,
-        commerseAreas: commerseAreas
+        districts: districts
       });
     }).catch((err) => {
       res.render('error', {
