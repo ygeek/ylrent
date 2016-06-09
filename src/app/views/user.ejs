@@ -102,8 +102,10 @@ $(function(){
         $(".cropedit").show();
     });
     $(".corpinfo").Validform({
-            tiptype:function(msg){
-                    showmsg(msg);
+            tiptype:function(msg,o,cssctl){
+					if(!o.obj.is("form")){
+						showmsg(msg);
+					}
             },
             tipSweep:true,
             ajaxPost:true,
