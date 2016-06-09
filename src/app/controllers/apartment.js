@@ -126,7 +126,7 @@ router.get('/', (req, res, next) => {
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
   
-  let comunityId = req.query.comunityId;
+  let comunityId = req.query.communityId;
   
   let keyword = req.query.word;
   

@@ -251,6 +251,7 @@ async function importApartment(apartmentObj) {
   apartment.comunity.maxPrice = Math.max(apartment.comunity.maxPrice || 0, apartment.price);
   if (apartment.imagekeys && apartment.imagekeys.length > 0) {
     apartment.comunity.imagekeys = apartment.imagekeys;
+    logger.info('update comunity imagekeys: ', apartment.comunity.imagekeys);
   }
   await apartment.comunity.save();
   logger.info('import apartment: ', apartment);
