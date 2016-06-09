@@ -20,7 +20,7 @@
             </div>
             <div class="clear"></div>
             <div class="registered_m01">
-                <form action="/user/login/" id="login" method="post" onsubmit="return checkLogin();">
+                <form action="/user/login/<%= next ? "?next=" + next : "" %>" id="login" method="post" onsubmit="return checkLogin();">
                     <ul>
                         <li>
                             <img src="/img/z_icon01.png" style="margin-right:5px;"  />

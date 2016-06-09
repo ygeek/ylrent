@@ -20,12 +20,14 @@ const router = express.Router();
 
 
 router.post('/apartment', (req, res, next) => {
+  const apartmentId = req.body.apartmentId;
+  const currentURL = '/apartment/detail/' + apartmentId;
+  
   if (!req.user) {
-    return res.redirect('/user/login/');
+    return res.redirect('/user/login/?next=' + currentURL);
   }
 
   console.log('post appointment apartment: ', req.body);
-  const apartmentId = req.body.apartmentId;
   const name = req.body.name;
   const mobile = req.body.mobile;
   const email = req.body.email;
@@ -33,8 +35,6 @@ router.post('/apartment', (req, res, next) => {
   const date = req.body.date;
   
   const smscode = req.body.smscode;
-  
-  const currentURL = '/apartment/detail/' + apartmentId;
   
   (async function() {
     let body = await asyncVerifySMSCode(mobile, smscode);
@@ -73,20 +73,20 @@ router.post('/apartment', (req, res, next) => {
 });
 
 router.post('/daily', (req, res, next) => {
+  const dailyId = req.body.dailyId;
+  const currentURL = '/daily/detail/' + dailyId;
+
   if (!req.user) {
-    return res.redirect('/user/login/');
+    return res.redirect('/user/login/?next=' + currentURL);
   }
   
-  const dailyId = req.body.dailyId;
   const name = req.body.name;
   const mobile = req.body.mobile;
   const startDate = new Date(req.body.startDate);
   const endDate = new Date(req.body.endDate);
   
   const smscode = req.body.smscode;
-  
-  const currentURL = '/daily/detail/' + dailyId;
-  
+
   (async function() {
     let body = await asyncVerifySMSCode(mobile, smscode);
 
@@ -121,8 +121,10 @@ router.post('/daily', (req, res, next) => {
 });
 
 router.post('/delegate', (req, res, next) => {
+  const currentURL = '/delegate';
+  
   if (!req.user) {
-    return res.redirect('/user/login/');
+    return res.redirect('/user/login/?next=' + currentURL);
   }
 
   const name = req.body.name;
@@ -133,8 +135,6 @@ router.post('/delegate', (req, res, next) => {
   const price = req.body.price;
   
   const smscode = req.body.smscode;
-  
-  const currentURL = '/delegate';
   
   (async function() {
     let body = await asyncVerifySMSCode(mobile, smscode);

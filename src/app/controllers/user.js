@@ -47,8 +47,11 @@ router.get('/orders', (req, res, next) => {
 });
 
 router.get('/register', (req, res, next) => {
+  let nextURL = req.query.next;
   if (req.device.type === 'phone') {
-    res.render('phone/register.ejs', {});
+    res.render('phone/register.ejs', {
+      next: nextURL
+    });
   } else {
     res.render('register', {
       usernameError: null,
@@ -56,19 +59,24 @@ router.get('/register', (req, res, next) => {
       nameError: null,
       passwordError: null,
       password2Error: null,
-      corpNameError: null
+      corpNameError: null,
+      next: nextURL
     });
   }
 });
 
 router.get('/login', (req, res) => {
   logger.trace('login from ', req.device.type);
+  let nextURL = req.query.next;
   if (req.device.type === 'phone') {
-    res.render('phone/login.ejs', {});
+    res.render('phone/login.ejs', {
+      next: nextURL
+    });
   } else {
     res.render('login', {
       usernameError: null,
-      passwordError: null
+      passwordError: null,
+      next: nextURL
     });
   }
 });
@@ -180,6 +188,7 @@ router.post('/register', (req, res, next) => {
 });
 
 router.post('/login', function(req, res, next) {
+  let nextURL = req.query.next;
   User.authenticate()(req.body.username, req.body.password, function(err, user, options) {
     if (err || !user) {
       return res.render('login', {
@@ -188,7 +197,14 @@ router.post('/login', function(req, res, next) {
       });
     }
     req.login(user, function(err) {
-      res.redirect('/');
+      if (err) {
+        res.render('login', {
+          usernameError: null,
+          passwordError: err.message
+        });
+      } else {
+        res.redirect(nextURL ? nextURL : '/');
+      }
     });
   });
 });
