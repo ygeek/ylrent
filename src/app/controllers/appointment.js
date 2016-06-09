@@ -53,15 +53,37 @@ router.post('/apartment', (req, res, next) => {
       order.email = email;
       order.comment = comment;
       await order.save();
-      req.flash('info', '公寓预订成功!');
-      res.redirect(currentURL);
+      
+      if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+        res.json({
+          code: 0,
+          msg: '公寓预订成功'
+        });
+      } else {
+        req.flash('info', '公寓预订成功!');
+        res.redirect(currentURL);
+      }
     } else {
-      res.status(404);
+      if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+        res.json({
+          code: -2,
+          msg: '房源不存在'
+        });
+      } else {
+        res.status(404);
+      }
     }
   })().catch(err => {
-    logger.trace('verify sms error: ', err);
-    req.flash('error', err.message);
-    res.redirect(currentURL);
+    logger.trace('appointment apartment error: ', err);
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      res.json({
+        code: -1,
+        msg: err.message
+      });
+    } else {
+      req.flash('error', err.message);
+      res.redirect(currentURL);
+    }
   });
 });
 
@@ -96,15 +118,36 @@ router.post('/daily', (req, res, next) => {
       order.startDate = startDate;
       order.endDate = endDate;
       await order.save();
-      
-      req.flash('info', '预订成功!');
-      res.redirect(currentURL);
+
+      if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+        res.json({
+          code: 0,
+          msg: '预订成功'
+        });
+      } else {
+        req.flash('info', '预订成功!');
+        res.redirect(currentURL);
+      }
     } else {
-      res.status(404);
+      if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+        res.json({
+          code: -1,
+          msg: '房源信息有误'
+        });
+      } else {
+        res.status(404);
+      }
     }
   })().catch(err => {
-    req.flash('error', err && err.message ? err.message : '预订失败请重试!');
-    res.redirect(currentURL);
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      res.json({
+        code: -2,
+        msg: err.message
+      });
+    } else {
+      req.flash('error', err && err.message ? err.message : '预订失败请重试!');
+      res.redirect(currentURL);
+    }
   });
 });
 
@@ -135,11 +178,26 @@ router.post('/delegate', (req, res, next) => {
     order.structure = structure;
     order.price = price;
     await order.save();
-    req.flash('info', '委托成功');
-    res.redirect(currentURL);
+    
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      res.json({
+        code: 0,
+        msg: '委托成功'
+      });
+    } else {
+      req.flash('info', '委托成功');
+      res.redirect(currentURL);
+    }
   })().catch(err => {
-    req.flash('error', err && err.message ? err.message : '委托失败请重试');
-    res.redirect(currentURL); 
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      res.json({
+        code: -1,
+        msg: err.message
+      });
+    } else {
+      req.flash('error', err && err.message ? err.message : '委托失败请重试');
+      res.redirect(currentURL); 
+    }
   });
 });
 

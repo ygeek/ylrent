@@ -253,12 +253,26 @@ router.post('/password', (req, res, next) => {
     } else {
       user.setPassword(password, function() {
         user.save(err => {
-          if (err) {
-            req.flash('error', err.message);
-            res.redirect('/user/');
+          if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+            if (err) {
+              res.json({
+                code: -1,
+                msg: err.message
+              });
+            } else {
+              res.json({
+                code: 0,
+                msg: '密码修改成功'
+              });
+            }
           } else {
-            req.flash('info', '密码修改成功');
-            res.redirect('/user/');
+            if (err) {
+              req.flash('error', err.message);
+              res.redirect('/user/');
+            } else {
+              req.flash('info', '密码修改成功');
+              res.redirect('/user/');
+            }
           }
         });
       });
@@ -283,17 +297,38 @@ router.post('/update', (req, res, next) => {
     req.user.tel = tel;
     req.user.Address = address;
     req.user.save(err => {
-      if (err) {
-        req.flash('error', err.message);
-        res.redirect('/user/');
+      if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+        if (err) {
+          res.json({
+            code: -1,
+            msg: err.message
+          });
+        } else {
+          res.json({
+            code: 0,
+            msg: '信息更新成功'
+          });
+        }
       } else {
-        req.flash('info', '信息更新成功');
-        res.redirect('/user/');
+        if (err) {
+          req.flash('error', err.message);
+          res.redirect('/user/');
+        } else {
+          req.flash('info', '信息更新成功');
+          res.redirect('/user/');
+        }
       }
     });
   } else {
-    req.flash('error', '信息填写有误');
-    req.redirect('/user/');
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      res.json({
+        code: -1,
+        msg: '信息填写有误'
+      });
+    } else {
+      req.flash('error', '信息填写有误');
+      req.redirect('/user/');
+    }
   }
 });
 
