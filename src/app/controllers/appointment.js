@@ -20,17 +20,13 @@ const router = express.Router();
 
 router.get('/apartment/:id', (req, res, next) => {
   let apartmentId = req.params.id;
-  let startDate = req.query.startDate;
-  let endDate = req.query.endDate;
   Apartment
     .findById(apartmentId)
     .populate('district commerseArea comunity apartmentType')
     .exec(function(err, apartment) {
     if (!err && apartment) {
       res.render('phone/apartmentOrder.ejs', {
-        apartment: apartment,
-        startDate: startDate,
-        endDate: endDate
+        apartment: apartment
       });
     } else {
       res.status(404);
