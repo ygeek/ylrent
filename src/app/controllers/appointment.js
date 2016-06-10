@@ -20,7 +20,10 @@ const router = express.Router();
 
 router.get('/apartment/:id', (req, res, next) => {
   let apartmentId = req.params.id;
-  Apartment.findById(apartmentId).exec(function(err, apartment) {
+  Apartment
+    .findById(apartmentId)
+    .populate('district commerseArea comunity apartmentType')
+    .exec(function(err, apartment) {
     if (!err && apartment) {
       res.render('phone/apartmentOrder.ejs', {
         apartment: apartment
@@ -34,7 +37,10 @@ router.get('/apartment/:id', (req, res, next) => {
 router.get('/daily/:id', (req, res, next) => {
   let dailyId = req.params.id;
   
-  DailyRent.findById(dailyId).exec(function(err, daily) {
+  DailyRent
+    .findById(dailyId)
+    .populate('district commerseArea comunity')
+    .exec(function(err, daily) {
     if (!err && daily) {
       res.render('phone/dailyOrder.ejs', {
         daily: daily
