@@ -158,7 +158,7 @@ router.post('/register', (req, res, next) => {
   
   (async function() {
     let smsOK = await verifySMSCode(username, smscode);
-    if (smsOK) {
+    if (!smsOK) {
       logger.trace('verify sms failed');
       return res.render('register', {
         usernameError: null,
