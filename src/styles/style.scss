@@ -509,19 +509,19 @@ background:url(../img/house.png) no-repeat   right center; }
 			.zhanghao_r_m01{margin:5px 0 30px 0;}
 			.zhanghao_r_m01 h2{background:#fff; height:60px; line-height:60px;}
 		        .zhanghao_r_m01 h2 em{float:left;  display:block; width:19.8%; text-align:center; font-size:16px; border-right:1px solid #f2f2f2;}
-				.zhanghao_r_m01 p{margin:1px 0 0 0; display:block;  height:60px; line-height:60px; background:#fff; }
-				.zhanghao_r_m01 p em{float:left;display:block; overflow:hidden;  vertical-align: middle;  width:19.8%; text-align:center; border-right:1px solid #f2f2f2;}
-		
+				.zhanghao_r_m01 p{margin:1px 0 0 0; display:block;  height:60px;  background:#fff; }
+				.zhanghao_r_m01 p em{float:left;display:block; height: 60px; line-height: 20px; overflow:hidden;  vertical-align: middle;  width:19.8%; text-align:center; border-right:1px solid #f2f2f2;}
+                               
 		
 		
 		
 		.weituo{width:1120px; margin:0 auto; }
-		    .weituo_r{float:right; width:340px;  border-radius:8px;  -moz-border-radius:8px; -webkit-border-radius:8px; padding:40px 60px; background:url(../img/so_bg.png); margin:35px 0 0 0;} 
+		    .weituo_r{float:right; width:340px;  border-radius:8px;  -moz-border-radius:8px; -webkit-border-radius:8px; padding:20px 60px; padding-bottom: 25px; background:url(../img/so_bg.png); margin:25px 0 0 0;} 
 			   .weituo_r h1{text-align:center; font-size:24px; color:#fff;}
-			    .weituo_r li{height:42px; line-height:42px; border:1px solid #c6c6c6; border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; margin:20px 0 0 0; display:block;}
+			    .weituo_r li{height:42px; line-height:42px; border:1px solid #c6c6c6; border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; margin:18px 0 0 0; display:block; float: left;}
 				.weituo_r li img{float:left; margin:8px 0 0 20px;display:block;}
 				.weituo_r li em{float:left; display:block; width:1px; height:30px; background:#c6c6c6; margin:6px 0 0 15px;}
-			   .weituo01{float:left; width:260px; height:32px; line-height:32px;  margin:5px 0 0 10px; background:none; border:0;font-size:16px; color:#fff;}
+			   .weituo01{float:left; width:267px; height:32px; line-height:32px;  margin:5px 0 0 10px; background:none; border:0;font-size:16px; color:#fff;}
 			   .weituo02{height:42px; line-height:32px; border:1px solid #c6c6c6; border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; margin:20px 0 0 50px; display:block; width:240px; background:none; font-size:20px; color:#fff; cursor:pointer;}
 			   .weituo_m{background:#fff; padding:20px 30px 60px 30px; margin:30px 0;}
 			      .weituo_m_name h1{font-size:30px; text-align:center; margin:50px 0 40px 0;}
