@@ -60,8 +60,8 @@
                             <img src="/img/z_icon05.png" />
                             <input type="text"
                                    name="password"
-                                   onfocus="if (value =='/  输入密码'){value =''}"
-                                   onblur="if (value ==''){value='/  输入密码'}"
+                                   onfocus="if (value =='/  输入密码'){ value =''; type='password'; } else { type='password'; }"
+                                   onblur="if (value ==''){ value='/  输入密码'; type='text' } else { type='password'; }"
                                    value="/  输入密码"
                                    class="text01 current"
                             />
@@ -72,8 +72,8 @@
                             <img src="/img/z_icon06.png" />
                             <input type="text"
                                    name="password2"
-                                   onfocus="if (value =='/  输入密码'){value =''}"
-                                   onblur="if (value ==''){value='/  输入密码'}"
+                                   onfocus="if (value =='/  输入密码'){ value =''; type='password' } else { type='password' }"
+                                   onblur="if (value ==''){ value='/  输入密码'; type='text' } else { type='password' }"
                                    value="/  输入密码"
                                    class="text01 current"
                             />
