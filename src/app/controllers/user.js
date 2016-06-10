@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 import log4js from 'log4js';
 import passport from 'passport';
 import promisify from 'es6-promisify';
+import moment from 'moment';
 import { requestSMSCode, verifySMSCode } from '../utils/sms';
 
 const User = mongoose.model('User');
@@ -34,12 +35,33 @@ router.get('/orders', (req, res, next) => {
   }
 
   (async function() {
-    let apartmentOrders = await ApartmentOrder.find({ mobile: req.user.username }).populate('apartment').exec();
+    let apartmentOrders = await ApartmentOrder
+      .find({ mobile: req.user.username })
+      .populate({
+        path: 'apartment',
+        model: 'Apartment',
+        populate: {
+          path: 'apartmentType',
+          model: 'ApartmentType'
+        }
+      })
+      .exec();
     let dailyOrders = await DailyOrder.find({ mobile: req.user.username }).populate('daily').exec();
+    
+    for (let order of apartmentOrders) {
+      order.createdAt_formatted = moment(order.createdAt).format('YYYY-MM-DD HH:mm:ss');
+      order.date_formatted = moment(order.date).format('YYYY-MM-DD');
+    }
+
+    for (let order of dailyOrders) {
+      order.createdAt_formatted = moment(order.createdAt).format('YYYY-MM-DD HH:mm:ss');
+      order.startDate_formatted = moment(order.startDate).format('YYYY-MM-DD');
+      order.endDate_formatted = moment(order.endDate).format('YYYY-MM-DD');
+    }
 
     res.render('orders', {
-      apartmentOrders,
-      dailyOrders
+      apartmentOrders: apartmentOrders,
+      dailyOrders: dailyOrders
     });
   })().catch(err => {
     req.flash('error', err);

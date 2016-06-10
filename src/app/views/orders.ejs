@@ -22,6 +22,7 @@
 <!-----头部----->
 <% include header.ejs %>
 <!-----头部----->
+
 <div class="clear"></div>
 
 <div class="location">
@@ -46,18 +47,18 @@
                  </h2>
                  <div class="clear"></div>
                 
-				  <% apartmentOrders.forEach(function(val) { %>
+              <% apartmentOrders.forEach(function(val) { %>
                  <p>
-                    <em><%= val.apartment.contactNo %></em>
-                    <em><%= val.createdAt %></em>
-                    <em><%= val.comment %></em>
-                    <em><%= val.createdAt %></em>
+                    <em><%= val._id %></em>
+                    <em><%= val.createdAt_formatted %></em>
+                    <em><%= val.apartment.apartmentType.name %></em>
+                    <em><%= val.date_formatted %></em>
                     <em style="border:0;"><%= val.status %></em>
                  </p>
 				 <% }) %>
                 
           </div>
-		  <h1>长租带看预约</h1>
+		  <h1>日租预约</h1>
           <div class="zhanghao_r_m01">
                  <h2>
                      <em style="width:10%">订单编号</em>
@@ -73,16 +74,15 @@
                  <% dailyOrders.forEach(function(val) { %>
                  <p>
                     <em  style="width:10%"><%= val._id %></em>
-                    <em style="width:15%"><%= val.createdAt %></em>
-                    <em style="width:20%"><%= val.comment %></em>
-                    <em style="width:15%"><%= val.startDate %></em>
-                    <em style="width:15%"><%= val.endDate %></em>
-                    <em style="width:15%"><%= val.daily.price %></em>
+                    <em style="width:15%"><%= val.createdAt_formatted %></em>
+                    <em style="width:20%"><%= val.daily.name %></em>
+                    <em style="width:15%"><%= val.startDate_formatted %></em>
+                    <em style="width:15%"><%= val.endDate_formatted %></em>
+                    <em style="width:15%"><%= Math.round((val.endDate - val.startDate)/(1000 * 60 * 60 * 24)) * val.daily.price %></em>
                     <em style="border:0; width:9%"><%= val.status %></em>
                  </p>
 				 <% }) %>
           </div>
-          
      </div>
   <div class="clear"></div>
 </div>

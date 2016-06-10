@@ -10,7 +10,7 @@ import autoIncrement from 'mongoose-auto-increment';
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 export const OrderStatus = {
-  INITIAL: '未处理',
+  INITIAL: '待确认',
   PROCESSING: '处理中',
   CLOSED: '已完成' 
 };
@@ -21,6 +21,7 @@ const ApartmentOrderSchema = new mongoose.Schema({
   mobile: String,
   email: String,
   comment: String,
+  date: Date,
   status: { type: String, required: true, default: OrderStatus.INITIAL },
   createdAt: { type: Date, required: true, default: Date.now }
 });

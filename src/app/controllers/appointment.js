@@ -62,6 +62,7 @@ router.post('/apartment', (req, res, next) => {
   const mobile = req.body.mobile;
   const email = req.body.email;
   const comment = req.body.comment;
+  const date = new Date(req.body.startDate);
   
   const smscode = req.body.smscode;
   
@@ -86,6 +87,7 @@ router.post('/apartment', (req, res, next) => {
       order.mobile = mobile;
       order.email = email;
       order.comment = comment;
+      order.date = date;
       await order.save();
       
       if (req.xhr || req.headers.accept.indexOf('json') > -1) {
