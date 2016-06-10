@@ -260,7 +260,7 @@ router.post('/forget', function(req, res, next) {
       });
     }
 
-    let setPassword = promisify(user.findByUsername, user);
+    let setPassword = promisify(user.setPassword, user);
     await setPassword(password);
     await user.save();
     res.redirect('/user/login/');
