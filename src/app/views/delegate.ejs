@@ -10,6 +10,8 @@
 <script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
 <link type="text/css" rel="stylesheet" href="/files/lib/jqueryflash/jquery.flash.css" />
 <script type="text/javascript" src="/files/lib/jqueryflash/jquery.flash.js"></script>
+<script type="text/javascript" src="/files/lib/jquery.loading.min.js"></script>
+<link type="text/css" rel="stylesheet" href="/files/lib/jquery.loading.min.css" />
 </head>
 <body>
 
@@ -149,6 +151,10 @@ $(function(){
 		},
 		tipSweep:true,
 		ajaxPost:true,
+        beforeSubmit: function(form) {
+            $('body').loading();
+            return true;
+        },
 		callback:function(data){
 			console.log(data.msg);
 			if(data.code!=0)  //验证失败
@@ -161,6 +167,7 @@ $(function(){
 				$.flash(data.msg) ;
 				$('.apartmentform')[0].reset();
 			}
+            $('body').loading('stop');
 		}
 	});
 })

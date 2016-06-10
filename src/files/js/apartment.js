@@ -27,6 +27,10 @@ $(function(){
 		},
 		tipSweep:true,
 		ajaxPost:true,
+		beforeSubmit: function(form) {
+			$('body').loading();
+			return true;
+		},
 		callback:function(data){
 			console.log(data.msg);
 			if(data.code!=0)  //验证失败
@@ -41,6 +45,7 @@ $(function(){
 				$(".order01").toggle("slow");
 				$('.apartmentform')[0].reset();
 			}
+			$('body').loading('stop');
 		}
 	});
 	

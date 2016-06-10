@@ -5,6 +5,8 @@
 <title>源涞国际 - 热门房源</title>
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/files/lib/jquery.loading.min.js"></script>
+<link type="text/css" rel="stylesheet" href="/files/lib/jquery.loading.min.css" />
 <script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
 </head>
 <body>
@@ -81,32 +83,35 @@ $(function(){
     }
 
     $(".userinfo").Validform({
-            tiptype:function(msg,o,cssctl){
-                    if(!o.obj.is("form")){
-                            showmsg(msg);
-                    }
-            },
-            tipSweep:true,
-            ajaxPost:true,
-            callback:function(data){
-				console.log(data.msg);
-				if(data.code!=0)  //验证失败
-				{
-					$.flash(data.msg) ;
-				
-				}
-				else
-				{
-					
-					$.flash(data.msg) ;
-					$(".editpas").show();
-       				 $(".editpaslist").hide();
-					$('.userinfo')[0].reset();
-				}
-			}
+        tiptype:function(msg,o,cssctl){
+                if(!o.obj.is("form")){
+                        showmsg(msg);
+                }
+        },
+        tipSweep:true,
+        ajaxPost:true,
+        beforeSubmit: function(form) {
+            $('body').loading();
+            return true;
+        },
+        callback:function(data){
+            console.log(data.msg);
+            if(data.code!=0)  //验证失败
+            {
+                $.flash(data.msg) ;
+
+            }
+            else
+            {
+                $.flash(data.msg) ;
+                $(".editpas").show();
+                 $(".editpaslist").hide();
+                $('.userinfo')[0].reset();
+            }
+            $('body').loading('stop');
+        }
     });
     $(document).on("click",".editpasa",function(e){
-        
         $(".editpas").hide();
         $(".editpaslist").show();
     });
@@ -116,33 +121,37 @@ $(function(){
         $(".cropedit").show();
     });
     $(".corpinfo").Validform({
-            tiptype:function(msg,o,cssctl){
-                    if(!o.obj.is("form")){
-                            showmsg(msg);
-                    }
-            },
-            tipSweep:true,
-            ajaxPost:true,
-            callback:function(data){
-                console.log(data);
-				if(data.code!=0)  //验证失败
-				{
-					$.flash(data.msg) ;
-				
-				}
-				else
-				{
-					
-					$.flash(data.msg) ;
-					$(".nocropedit").show();
-        			$(".cropedit").hide();
-				}
+        tiptype:function(msg,o,cssctl){
+                if(!o.obj.is("form")){
+                        showmsg(msg);
+                }
+        },
+        tipSweep:true,
+        ajaxPost:true,
+        beforeSubmit: function(form) {
+            $('body').loading();
+            return true;
+        },
+        callback:function(data){
+            console.log(data);
+            if(data.code!=0)  //验证失败
+            {
+                $.flash(data.msg) ;
+
             }
+            else
+            {
+
+                $.flash(data.msg) ;
+                $(".nocropedit").show();
+                $(".cropedit").hide();
+            }
+            $('body').loading('stop');
+        }
     });
 })
 </script>
 
-<script type="text/javascript" src="/files/lib/jquery.isloading.min.js"></script>
 
 <link type="text/css" rel="stylesheet" href="/files/lib/jqueryflash/jquery.flash.css" />
 <script type="text/javascript" src="/files/lib/jqueryflash/jquery.flash.js"></script>
