@@ -8,6 +8,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
 import passport from 'passport';
+import promisify from 'es6-promisify';
 import { requestSMSCode, verifySMSCode } from '../utils/sms';
 
 const User = mongoose.model('User');
@@ -33,8 +34,8 @@ router.get('/orders', (req, res, next) => {
   }
 
   (async function() {
-    let apartmentOrders = await ApartmentOrder.find({}).populate('apartment').exec();
-    let dailyOrders = await DailyOrder.find({}).populate('daily').exec();
+    let apartmentOrders = await ApartmentOrder.find({ mobile: req.user.username }).populate('apartment').exec();
+    let dailyOrders = await DailyOrder.find({ mobile: req.user.username }).populate('daily').exec();
 
     res.render('orders', {
       apartmentOrders,
@@ -89,37 +90,46 @@ router.get('/forget', function(req, res) {
 
 router.post('/requestsms', (req, res, next) => {
   const mobile = req.body.mobile;
-  requestSMSCode(mobile, (err, body) => {
-    if (err) {
-      res.send({
-        code: (err && err.code) || -1,
-        msg: '发送验证码失败'
+  requestSMSCode(mobile)
+    .then(body => {
+      logger.trace('request sms code success');
+      res.json({
+        code: 0,
+        msg: '发送验证码成功'
       });
-    } else {
-      res.send({
-        code: body.code || 0,
-        msg: body.error || body.msg || '发送验证码成功'
+    })
+    .catch(err => {
+      logger.trace('request sms code failed', err);
+      res.json({
+        code: err.code || -1,
+        msg: (err.error && err.error.message) || err.message || '发送验证码失败'
       });
-    }
-  });
+    });
 });
 
 router.post('/verifysms', (req, res, next) => {
   const mobile = req.body.mobile;
   const smscode = req.body.smscode;
-  verifySMSCode(mobile, smscode, (err, body) => {
-    if (err) {
+  verifySMSCode(mobile, smscode)
+    .then(smsOK => {
+      if (!smsOK) {
+        res.send({
+          code: -1,
+          msg: '短信验证失败'
+        });
+      } else {
+        res.send({
+          code: 0,
+          msg: '短信验证成功'
+        });
+      }
+    })
+    .catch(err => {
       res.send({
         code: (err && err.code) || -1,
-        msg: '短信验证失败'
+        msg: (err && err.message) || '短信验证失败'
       });
-    } else {
-      res.send({
-        code: body.code || 0,
-        msg: body.error || body.msg || '短信验证成功'
-      });
-    }
-  });
+    });
 });
 
 router.post('/register', (req, res, next) => {
@@ -145,50 +155,60 @@ router.post('/register', (req, res, next) => {
     userData.title = title;
     userData.address = address;
   }
-
-  verifySMSCode(username, smscode, (err, body) => {
-    logger.trace('verify sms code: ', err, body);
-    if (err || body && body.code && body.code !== 0) {
-      logger.trace('verify sms error: ', err, body);
+  
+  (async function() {
+    let smsOK = await verifySMSCode(username, smscode);
+    if (smsOK) {
+      logger.trace('verify sms failed');
       return res.render('register', {
         usernameError: null,
-        smsError: body && ( body.msg || body.error ) || '短信验证失败',
+        smsError: '短信验证失败',
         nameError: null,
         passwordError: null,
         password2Error: null,
         corpNameError: null
-      });
+      }); 
     } else {
-      logger.trace('verify sms success', body);
-      User.register(new User(userData), password, function(err, user) {
-        if (err) {
-          return res.render('register', {
-            usernameError: err,
-            smsError: null,
-            nameError: null,
-            passwordError: null,
-            password2Error: null,
-            corpNameError: null
-          });
-        }
-        passport.authenticate('local')(req, res, function() {
-          res.redirect('/');
-        });
-      });
+      logger.trace('verify sms success');
+
+      const register = promisify(User.register, User);
+      await register(new User(userData), password);
+      
+      const authenticate = promisify(passport.authenticate('local'));
+      await authenticate(req, res);
+
+      res.redirect('/');
     }
+  })().catch(err => {
+    res.render('register', {
+      usernameError: err.message,
+      smsError: null,
+      nameError: null,
+      passwordError: null,
+      password2Error: null,
+      corpNameError: null
+    });
   });
 });
 
 router.post('/login', function(req, res, next) {
-  User.authenticate()(req.body.username, req.body.password, function(err, user, options) {
-    if (err || !user) {
+  (async function() {
+    const authenticate = promisify(User.authenticate(), { multiArgs: true });
+    let [user, options] = await authenticate(req.body.username, req.body.password);
+    if (!user) {
       return res.render('login', {
         usernameError: null,
         passwordError: options.message
       });
     }
-    req.login(user, function(err) {
-      res.redirect('/');
+    
+    const login = promisify(req.login, req);
+    await login(user);
+    res.redirect('/');
+  }).catch(err => {
+    res.render('login', {
+      usernameError: null,
+      passwordError: err.message || '登录失败请重试'
     });
   });
 });
@@ -198,41 +218,38 @@ router.post('/forget', function(req, res, next) {
   const smscode = req.body.smscode;
   const password = req.body.password;
 
-  verifySMSCode(username, smscode, (err, body) => {
-    if (!err && body && body.code === 0) {
-      User.findByUsername(username).then(function(user) {
-        if (user) {
-          user.setPassword(password, function() {
-            user.save(function(err) {
-              if (err) {
-                return res.render('forget', {
-                  usernameError: '重置密码失败',
-                  smsError: null,
-                  passwordError: null,
-                  password2Error: null
-                });
-              } else {
-                res.redirect('/user/login/');
-              }
-            });
-          });
-        } else {
-          return res.render('forget', {
-            usernameError: '该用户不存在',
-            smsError: null,
-            passwordError: null,
-            password2Error: null
-          });
-        }
-      });
-    } else {
+  (async function() {
+    let smsOK = await verifySMSCode(username, smscode);
+    if (!smsOK) {
       return res.render('forget', {
         usernameError: null,
-        smsError: body && ( body.msg || body.error ) || '短信验证失败',
+        smsError: '短信验证失败',
         passwordError: null,
         password2Error: null
       });
     }
+
+    let user = await User.findByUsername(username);
+    if (!user) {
+      return res.render('forget', {
+        usernameError: '该用户不存在',
+        smsError: null,
+        passwordError: null,
+        password2Error: null
+      });
+    }
+
+    let setPassword = promisify(user.findByUsername, user);
+    await setPassword(password);
+    await user.save();
+    res.redirect('/user/login/');
+  })().catch(err => {
+    res.render('forget', {
+      usernameError: '重置密码失败.' + err.message,
+      smsError: null,
+      passwordError: null,
+      password2Error: null
+    });
   });
 });
 
@@ -243,39 +260,45 @@ router.post('/password', (req, res, next) => {
   
   const oldPassword = req.body.oldpassword;
   const password = req.body.password;
-  
-  User.authenticate()(req.user.username, oldPassword, function(err, user, options) {
-    if (err || !user) {
-      if (err) {
-        req.flash('error', err.message);
-      }
-      res.redirect('/user/');
-    } else {
-      user.setPassword(password, function() {
-        user.save(err => {
-          if (req.xhr || req.headers.accept.indexOf('json') > -1) {
-            if (err) {
-              res.json({
-                code: -1,
-                msg: err.message
-              });
-            } else {
-              res.json({
-                code: 0,
-                msg: '密码修改成功'
-              });
-            }
-          } else {
-            if (err) {
-              req.flash('error', err.message);
-              res.redirect('/user/');
-            } else {
-              req.flash('info', '密码修改成功');
-              res.redirect('/user/');
-            }
-          }
+
+  (async function() {
+    const authenticate = promisify(User.authenticate(), { multiArgs: true });
+    let [user, options] = await authenticate(req.user.username, oldPassword);
+    if (!user) {
+      if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+        res.json({
+          code: -1,
+          msg: options.message || '验证失败,请重试'
         });
+      } else {
+        req.flash('error', options.message || '验证失败,请重试');
+        return res.redirect('/user/');
+      }
+    }
+
+    let setPassword = promisify(user.setPassword, user);
+    await setPassword(password);
+
+    await user.save();
+
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      res.json({
+        code: 0,
+        msg: '密码修改成功'
       });
+    } else {
+      req.flash('info', '密码修改成功');
+      res.redirect('/user/');
+    }
+  })().catch(err => {
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      res.json({
+        code: -1,
+        msg: err.message
+      });
+    } else {
+      req.flash('error', err.message);
+      res.redirect('/user/');
     }
   });
 });

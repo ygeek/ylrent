@@ -2,11 +2,24 @@
  * Created by meng on 16/6/9.
  */
 
-import mongoose from 'mongoose';
+"use strict";
 
-const SMSValidationSchema = new mongoose.Schema({
+import mongoose from 'mongoose';
+import log4js from 'log4js';
+
+const logger = log4js.getLogger('normal');
+
+const expires = 600;
+
+const SMSCodeSchema = new mongoose.Schema({
+  mobile: String,
   code: String,
-  createdAt: { type: Date, default: Date.now, expires: 600 }
+  createdAt: { type: Date, default: Date.now, expires: expires }
 });
 
-exports.SMSValidation = mongoose.model('SMSValidation', SMSValidationSchema);
+SMSCodeSchema.post('remove', function(doc) {
+  logger.trace('removed sms code: ', doc, expires);
+});
+
+exports.expires = expires;
+exports.SMSValidation = mongoose.model('SMSCode', SMSCodeSchema);

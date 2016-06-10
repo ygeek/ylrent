@@ -67,7 +67,7 @@ $(function(){
 			
 			success:function(data){
 			  if (data.code !== 0) {
-					alert(data.msg);
+					$.flash(data.msg);
 				
 			  }
 			  else

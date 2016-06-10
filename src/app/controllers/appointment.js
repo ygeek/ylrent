@@ -6,7 +6,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
-import { asyncVerifySMSCode } from '../utils/sms';
+import { verifySMSCode } from '../utils/sms';
 
 const logger = log4js.getLogger('normal');
 
@@ -32,14 +32,12 @@ router.post('/apartment', (req, res, next) => {
   const currentURL = '/apartment/detail/' + apartmentId;
   
   (async function() {
-    let body = await asyncVerifySMSCode(mobile, smscode);
+    let smsOK = await verifySMSCode(mobile, smscode);
     
-    if (body && body.code && body.code !== 0) {
-      // throw new Error('短信验证失败');
+    if (!smsOK) {
+      throw new Error('短信验证失败');
     }
 
-    logger.trace('verify sms success', body);
-    
     let apartment = await Apartment
       .findById(apartmentId)
       .populate('comunity commerseArea district')
@@ -75,13 +73,16 @@ router.post('/apartment', (req, res, next) => {
     }
   })().catch(err => {
     logger.trace('appointment apartment error: ', err);
+
+    const errMessage = err.error && err.error.error || err.message;
+    
     if (req.xhr || req.headers.accept.indexOf('json') > -1) {
       res.json({
         code: -1,
-        msg: err.message
+        msg: errMessage
       });
     } else {
-      req.flash('error', err.message);
+      req.flash('error', errMessage);
       res.redirect(currentURL);
     }
   });
@@ -99,10 +100,10 @@ router.post('/daily', (req, res, next) => {
   const currentURL = '/daily/detail/' + dailyId;
   
   (async function() {
-    let body = await asyncVerifySMSCode(mobile, smscode);
+    let smsOK = await verifySMSCode(mobile, smscode);
 
-    if (body && body.code && body.code !== 0) {
-      // throw new Error('短信验证失败');
+    if (!smsOK) {
+      throw new Error('短信验证失败');
     }
 
     let daily = await DailyRent
@@ -110,7 +111,7 @@ router.post('/daily', (req, res, next) => {
       .populate('comunity commerseArea district')
       .exec();
     
-    if (!daily) {
+    if (daily) {
       let order = new DailyOrder();
       order.daily = daily;
       order.name = name;
@@ -139,13 +140,15 @@ router.post('/daily', (req, res, next) => {
       }
     }
   })().catch(err => {
+    logger.info('appointment daily error:', err);
+    const errMessage = err.error && err.error.error || err.message;
     if (req.xhr || req.headers.accept.indexOf('json') > -1) {
       res.json({
         code: -2,
-        msg: err.message
+        msg: errMessage
       });
     } else {
-      req.flash('error', err && err.message ? err.message : '预订失败请重试!');
+      req.flash('error', errMessage ? errMessage : '预订失败请重试!');
       res.redirect(currentURL);
     }
   });
@@ -164,10 +167,10 @@ router.post('/delegate', (req, res, next) => {
   const currentURL = '/delegate';
   
   (async function() {
-    let body = await asyncVerifySMSCode(mobile, smscode);
+    let smsOK = await verifySMSCode(mobile, smscode);
 
-    if (body && body.code && body.code !== 0) {
-      // throw new Error('短信验证失败');
+    if (!smsOK) {
+      throw new Error('短信验证失败');
     }
 
     let order = new DelegationOrder();
@@ -189,13 +192,14 @@ router.post('/delegate', (req, res, next) => {
       res.redirect(currentURL);
     }
   })().catch(err => {
+    const errMessage = err.error && err.error.error || err.message;
     if (req.xhr || req.headers.accept.indexOf('json') > -1) {
       res.json({
         code: -1,
-        msg: err.message
+        msg: errMessage
       });
     } else {
-      req.flash('error', err && err.message ? err.message : '委托失败请重试');
+      req.flash('error', errMessage ? errMessage : '委托失败请重试');
       res.redirect(currentURL); 
     }
   });

@@ -9,7 +9,6 @@ import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
 import _ from 'lodash';
-// import 'babel-polyfill';
 
 const logger = log4js.getLogger('normal');
 
