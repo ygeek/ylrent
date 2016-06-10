@@ -29,24 +29,14 @@
 <body>
 <div class="header">
     <a href="javascript:void(0)" onclick="history.go(-1)"><div class="header_l"><img src="/img/mobile/fanhui.png" width="20" /></div></a>
-    <div class="header_font"><%= apartment.comunity.name %><%= apartment.apartmentType.roomType.shi %>室<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫</div>
+    <div class="header_font"><%= apartment.comunity.name %></div>
     <div id="dl-menu" class="dl-menuwrapper">
         <button id="dl-menu-button">菜单</button>
         <ul class="dl-menu">
             <li><a href="/apartment/">热门房源</a></li>
             <li><a href="/daily/">日租房源</a></li>
             <li><a href="/user/login/">用户登录</a></li>
-            <!--
-            <li>
-                <a href="Line">租房网</a>
-                <ul class="dl-submenu">
-                    <li class="dl-back"><a href="#">返回上一级</a></li>
-                    <li><a href="#">租房网</a></li>
-                    <li><a href="#">租房网</a></li>
-                    <li><a href="#">租房网</a></li>
-                </ul>
-            </li>
-            -->
+           
         </ul>
     </div>
 
@@ -85,10 +75,9 @@
         <div class="clear"></div>
     </div>
     <div class="order_content">
-        由梁朝伟代言的世茂滨江花园是由世茂集团投资建设的亚洲第一高楼超大型水岸豪宅区，由7栋49层至55层超高层高档公寓成，项目紧倚黄浦江东岸恢弘展开，面对繁华外滩沿江扩展近1公里，将成为浦江东岸富有时代色彩的又一标志性建筑群落。
-
+       <%= apartment.comunity.desc %>
     </div>
-    <img src="/img/mobile/map.jpg" width="100%">
+    <div style="width:100%; height:300px" id="allmap"></div>
     <div class="order01_icon">
         <h1>配套设施</h1>
         <div class="clear"></div>
@@ -106,11 +95,48 @@
     <div class="footer01">
         <div class="footer01_l">￥<em>26900</em> / 月</div>
         <div class="footer01_r">
-            <a href="#">预约看房</a>
+            <a href="/appointment/apartment/<%= apartment._id %>">预约看房</a>
         </div>
     </div>
 </div>
 <div class="clear"></div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hfr56zCA14KkpuRGsr2vKcV0GOG7KtH6"></script>
+<script type="text/javascript" src="/files/js/baidumap.js"></script>
+<script type="text/javascript">
 
+// 当前房源信息
+var longitude = <%= apartment.comunity.longitude %>; //当前中心点坐标
+var latitude = <%= apartment.comunity.latitude %>;
+var centerPointName = '<%= apartment.comunity.name %>';
+var centerPointAddress = '<%= apartment.comunity.address %>';
+
+
+// 百度地图API功能开始
+var map = new BMap.Map("allmap");
+var point = new BMap.Point(longitude, latitude);
+map.centerAndZoom(point, 15);
+
+//设置缩放控件
+map.enableScrollWheelZoom();
+map.enableInertialDragging();
+
+map.enableContinuousZoom();
+
+
+
+//添加当前房源标注并直接显示
+var centerPoint = new BMap.Point(longitude,latitude);
+var centerContent = "地址："+centerPointAddress;
+//添加标注以及信息窗口
+//创建特殊图标$
+
+
+
+
+			
+addThisMaker();
+
+
+</script>
 </body>
 </html>

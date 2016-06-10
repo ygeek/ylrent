@@ -16,6 +16,9 @@
     <script type="text/javascript" src="/files/js/mobile/modernizr.custom.js"></script>
     <script type="text/javascript" src="/files/js/mobile/jquery.dlmenu.js"></script>
 
+    <script type="text/javascript" src="/files/lib/dateRange/dateRange.js"></script>
+    <link rel="stylesheet" type="text/css" href="/files/lib/dateRange/dateRange.css"/>
+
     <script type="text/javascript" src="/files/js/mobile/jquery.bxslider.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -59,18 +62,20 @@
     </div>
     <div class="order01">
         <div class="order01_top">
-            <h1><a href="#"><%= daily.name %></a><br><span>2室1厅1卫   |   96平米   |   宜住3人</span></h1>
+            <h1><a href="#"><%= daily.name %></a><br><!--<span>3室2厅1卫 |   100平米   |   宜住3人</span>--></h1>
         </div>
         <div class="clear"></div>
         <div class="order01_bottom01">
             <form action="" method="get">
-                <input type="date" value="入住 -> 离开" class="date01"><h1>￥ <em><%= daily.price %></em> / 晚</h1>
+                <input type="txt" value="" placeholder="请选择时间" id="date1" class="date01"><h1>￥ <em class="danjia"><%= daily.price %></em> / 晚</h1>
+                <input type="hidden" name="startDate" value="" >
+                <input type="hidden" name="endDate" value="" >
             </form>
         </div>
         <div class="clear"></div>
         <div class="order01_bottom02">
-            <h2><a href="#">立即预定</a></h2>
-            <h1>共3晚     |     合计 154元</h1>
+            <h2><a href="javascript:void(0);" onclick="yuding()">立即预定</a></h2>
+            <h1>共<span class="days">1</span>晚     |     合计 <span class="zongjia"><%= daily.price %></span>元</h1>
 
         </div>
         <div class="clear"></div>
@@ -79,7 +84,7 @@
     <div class="order_content">
         <%= daily.comunity.desc %>
     </div>
-    <img src="/img/mobile/map.jpg" width="100%">
+    <div style="width:100%; height:300px" id="allmap"></div>
     <div class="order01_icon">
         <h1>配套设施</h1>
         <div class="clear"></div>
@@ -97,11 +102,98 @@
     <div class="footer01">
         <div class="footer01_l">￥<em><%= daily.price %></em> / 天</div>
         <div class="footer01_r">
-            <a href="#">立即预定</a>
+            <a href="javascript:void(0);" onclick="yuding()">立即预定</a>
         </div>
     </div>
 </div>
 <div class="clear"></div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hfr56zCA14KkpuRGsr2vKcV0GOG7KtH6"></script>
+<script type="text/javascript" src="/files/js/baidumap.js"></script>
+<script type="text/javascript">
 
+// 当前房源信息
+var longitude = <%= daily.comunity.longitude %>; //当前中心点坐标
+var latitude = <%= daily.comunity.latitude %>;
+var centerPointName = '<%= daily.comunity.name %>';
+var centerPointAddress = '<%= daily.comunity.address %>';
+
+
+// 百度地图API功能开始
+var map = new BMap.Map("allmap");
+var point = new BMap.Point(longitude, latitude);
+map.centerAndZoom(point, 15);
+
+//设置缩放控件
+map.enableScrollWheelZoom();
+map.enableInertialDragging();
+
+map.enableContinuousZoom();
+
+
+
+//添加当前房源标注并直接显示
+var centerPoint = new BMap.Point(longitude,latitude);
+var centerContent = "地址："+centerPointAddress;
+//添加标注以及信息窗口
+//创建特殊图标$
+
+
+
+
+			
+addThisMaker();
+
+var dateRange1 = new pickerDateRange('date1', {
+        aRecent90Days : 'aRecent90Days', //最近90天
+        needCompare : false,
+        autoSubmit : false,
+        inputTrigger : 'input_trigger1',
+        theme : 'ta',
+        success:function(obj){
+            console.log(obj);
+            getPrice(obj.startDate,obj.endDate);
+            $("input[name='startDate']").val(obj.startDate);
+            $("input[name='endDate']").val(obj.endDate);
+        },
+});
+
+//计算日期和价格
+function getPrice(start,end)
+{
+	var days = DateDiff(start,end);
+	var danjia = $(".danjia").html();
+	if(parseInt(days)<1||isNaN(days))
+	{
+		days=1;
+	} 
+	$(".days").html(days);
+	$(".zongjia").html(parseInt(days)*parseInt(danjia));
+	console.log(days);
+	console.log(danjia);
+}
+function  DateDiff(sDate1,  sDate2){    
+       var  aDate,  oDate1,  oDate2,  iDays ;
+       aDate  =  sDate1.split("-") ;
+       oDate1  =  new  Date(aDate[1]  +  '/'  +  aDate[2]  +  '/'  +  aDate[0])  ;
+       aDate  =  sDate2.split("-") ;
+       oDate2  =  new  Date(aDate[1]  +  '/'  +  aDate[2]  +  '/'  +  aDate[0]) ;
+       iDays  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24) ;
+       return  iDays ;
+}   
+function yuding()
+{
+    var startDate=$("input[name='startDate']").val();
+    var endDate=$("input[name='endDate']").val();
+    var dailyId = '<%= daily._id %>';
+    if(startDate==''||endDate=='')
+    {
+        alert('请先选择日期!');return false;
+    }
+    else
+    {
+        location.href='/appointment/daily/'+dailyId+'?startDate='+startDate+'&endDate='+endDate;
+    }
+}
+</script>
 </body>
 </html>

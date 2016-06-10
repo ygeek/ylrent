@@ -1,12 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="viewport" content="width=device-width"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" name="viewport" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no" name="format-detection" />
+<title>租房网</title>
+<link type="text/css" href="/css/mobile-main.css" rel="stylesheet" />
+<script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/files/lib/laydate/laydate.js"></script>
+<script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
+
 </head>
 <body>
-<%= JSON.stringify(apartment) %>
-<%= startDate %>
-<%= endDate %>
+<div class="header">
+       <a href="javascript:void(0)" onclick="history.go(-1)"><div class="header_l"><img src="/img/mobile/fanhui.png" width="20" /></div></a>
+      <div class="header_font">预约看房</div>
+     <div class="header_r"></div>
+</div>
+<div class="main01" style="padding:0 0 90px 0;">
+     <div class="order01">
+             <div class="order01_top">
+                   <h1><%= apartment.comunity.name %><br><span><%= apartment.comunity.address %></span></h1>
+             </div>
+           
+          <div class="clear"></div> 
+     </div>
+     <div style="height:20px; width:100%; background-color:#f2f2f2;"></div>
+
+     <div class="yuyue01">
+            <form action="/appointment/apartment" class="registerform" method="post">
+                <ul>
+                  <li><img src="/img/mobile/icon11.png" /><em></em><input class="weituo01" datatype="*" placeholder="姓名"  value="" type="text" /></li>
+           
+                    <li><img src="/img/mobile/icon12.png" /><em></em><input class="weituo01"  datatype="m" placeholder="手机号" value="" type="text" /></li>
+                    <li><img src="/img/mobile/icon12.png" /><em></em><input class="weituo01" onfocus="(this.type='date')"  placeholder="看房日期" value="" type="text" /></li>
+                 
+                </ul>
+                <div class="clear"></div>
+                <input type="hidden" name="apartmentId" value="<%= apartment._id %>" />
+                <input type="submit" value="预约看房" class="login_button01 yuyue">
+
+                <div class="clear"></div>
+            </form>
+     </div>
+</div>
+<div class="clear"></div>
+<script>
+
+
+$(function(){
+	
+	$.Tipmsg.r=null;
+		
+	var showmsg=function(msg){
+		alert(msg);
+	}
+	
+	$(".registerform").Validform({
+		tiptype:function(msg,o,cssctl){
+			if(!o.obj.is("form")){
+				showmsg(msg);
+			}
+		},
+		tipSweep:true,
+		ajaxPost:true,
+                beforeSubmit: function(form) {
+                   
+                    return true;
+                },
+		callback:function(data){
+			console.log(data.msg);
+			if(data.code!=0)  //验证失败
+			{
+				alert(data.msg) ;
+			
+			}
+			else
+			{
+				alert(data.msg) ;
+				history.go(-1);
+			}
+            
+		}
+	});
+})
+</script>
+
 </body>
 </html>
+
+
