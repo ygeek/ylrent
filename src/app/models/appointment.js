@@ -24,7 +24,7 @@ const ApartmentOrderSchema = new mongoose.Schema({
 });
 
 const DailyOrderSchema = new mongoose.Schema({
-  daily: { type: ObjectId, ref: 'Daily' },
+  daily: { type: ObjectId, ref: 'DailyRent' },
   name: String,
   mobile: String,
   startDate: Date,
