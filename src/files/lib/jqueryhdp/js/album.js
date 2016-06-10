@@ -142,26 +142,26 @@
 				}
 				
 				// 图片缩放和调整显示位置
-				image.animate({
-					"width": width + PX,
-					"height": height + PX,
-					"margin-left": -(width / 2) + PX,
-					"margin-top": -(height / 2) + PX
-				}, 500, function(){
-					// 更新图片路径和图片alt属性
-					image.attr({
-						"src": src,
-						"alt": alt
-					});
-					// 更新图片说明文字
-					title.html(alt);
-					// 更新下载图片的链接路径
-					btnDownload.attr("href", src);
-					
-					// 隐藏loading图片的遮罩层
-					overlay.addClass(CLS_HIDE);
-					Album.isloading = false;
-				});
+        image.css({
+          "width": width + PX,
+          "height": height + PX,
+          "margin-left": -(width / 2) + PX,
+          "margin-top": -(height / 2) + PX
+        });
+
+        image.attr({
+          "src": src,
+          "alt": alt
+        });
+
+        // 更新图片说明文字
+        title.html(alt);
+        // 更新下载图片的链接路径
+        btnDownload.attr("href", src);
+
+        // 隐藏loading图片的遮罩层
+        overlay.addClass(CLS_HIDE);
+        Album.isloading = false;
 			});
 			
 			return this;
