@@ -24,7 +24,7 @@
             <li><span>位置：</span>
                 <a href="javascript:void(0);" class="weizhi seled" id="weizhi" vid="0">不限</a>
                 <% districts.forEach(function(district) { %>
-                    <a href="javascript:void(0);" vid="<%= district.id %>" class="weizhi" ><%= district.name %></a>
+                    <a href="javascript:void(0);" vid="<%= district._id._id %>" class="weizhi" ><%= district._id.name %></a>
                 <% }) %>
                 <input type="hidden" name="weizhi" value="0" />
             </li>

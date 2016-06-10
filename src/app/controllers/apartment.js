@@ -139,8 +139,16 @@ router.get('/', (req, res, next) => {
     let startIndex = Math.max(1, result.page - 2);
     let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
     
-    let districts = await District.find({}).exec();
-    let commerseAreas = await CommerseArea.find({}).exec();
+    let districts = await CommerseArea
+      .aggregate({
+        '$group': { _id: '$district', commerseAreas: { '$addToSet': '$name' } }
+      }).exec();
+
+    districts = await District
+      .populate(districts, {
+        path: '_id',
+        select: 'name'
+      });
 
     let template = req.device.type === 'phone' ? 'phone/apartmentType.ejs' : 'apartmentType' ;
     
@@ -148,7 +156,6 @@ router.get('/', (req, res, next) => {
       title: '房型列表',
       result: result,
       districts: districts,
-      commerseAreas: commerseAreas,
       startIndex: startIndex,
       endIndex: endIndex,
       sortBy: sortCondition.sortBy,
