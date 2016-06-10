@@ -20,13 +20,17 @@ const router = express.Router();
 
 router.get('/apartment/:id', (req, res, next) => {
   let apartmentId = req.params.id;
+  let startDate = req.query.startDate;
+  let endDate = req.query.endDate;
   Apartment
     .findById(apartmentId)
     .populate('district commerseArea comunity apartmentType')
     .exec(function(err, apartment) {
     if (!err && apartment) {
       res.render('phone/apartmentOrder.ejs', {
-        apartment: apartment
+        apartment: apartment,
+        startDate: startDate,
+        endDate: endDate
       });
     } else {
       res.status(404);
@@ -36,14 +40,18 @@ router.get('/apartment/:id', (req, res, next) => {
 
 router.get('/daily/:id', (req, res, next) => {
   let dailyId = req.params.id;
-  
+  let startDate = req.query.startDate;
+  let endDate = req.query.endDate;
+
   DailyRent
     .findById(dailyId)
     .populate('district commerseArea comunity')
     .exec(function(err, daily) {
     if (!err && daily) {
       res.render('phone/dailyOrder.ejs', {
-        daily: daily
+        daily: daily,
+        startDate: startDate,
+        endDate: endDate
       });
     } else {
       res.status(404);
