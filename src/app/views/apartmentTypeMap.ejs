@@ -11,12 +11,12 @@
 <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
 <style type="text/css">
 		
-#allmap{width:100%;height:500px;}
-.djhbig{position:absolute; background:url(/img/djhbig2.png) no-repeat; color:#fff; height:48px; width:75px; line-height:12px; padding-top:27px; text-align:center; font-size:12px; white-space:nowrap;}
+#allmap{width:100%;height:650px;}
+.djhbig{position:absolute; background:url(/img/djhbig.png) no-repeat; color:#fff; height:66px; width:96px; line-height:20px; padding-top:30px; text-align:center; font-size:16px; white-space:nowrap;}
 
-.djhmids{position:absolute; background:url(/img/djhmids2.png) no-repeat; color:#fff; height:40px; width:60px; line-height:12px; padding-top:20px; text-align:center; font-size:12px; white-space:nowrap;}
+.djhmids{position:absolute; background:url(/img/djhmids.png) no-repeat; color:#fff; height:57px; width:83px; line-height:16px; padding-top:26px; text-align:center; font-size:14px; white-space:nowrap;}
 
-.djhmid{position:absolute; background:url(/img/djhmid2.png) no-repeat; color:#fff; height:25px; width:40px; line-height:12px; padding-top:15px; text-align:center; font-size:12px; white-space:nowrap;}
+.djhmid{position:absolute; background:url(/img/djhmid.png) no-repeat; color:#fff; height:41px; width:63px; line-height:16px; padding-top:22px; text-align:center; font-size:14px; white-space:nowrap;}
 
 </style>
 </head>
@@ -188,14 +188,14 @@ function createPic(point,txt,className,val)
 		
 		div.onmouseover = function(){
 			
-			this.style.background = "url(/img/"+className+".png) no-repeat";
+			this.style.background = "url(/img/"+className+"2.png) no-repeat";
 			this.getElementsByTagName("span")[0].innerHTML = that._overText;
 		
 		}
 	
 		div.onmouseout = function(){
 			
-			this.style.background = "url(/img/"+className+"2.png) no-repeat";
+			this.style.background = "url(/img/"+className+".png) no-repeat";
 			this.getElementsByTagName("span")[0].innerHTML = that._text;
 			
 		}
