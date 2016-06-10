@@ -12,6 +12,7 @@ import passport from 'passport';
 import session from 'express-session';
 import expressDevice from 'express-device';
 import expressFlash from 'express-flash';
+import autoIncrement from 'mongoose-auto-increment';
 import { setupAppLogger } from './app/utils/logger';
 import config from './config';
 
@@ -55,6 +56,8 @@ setupAppLogger(app);
 mongoose.Promise = global.Promise;
 mongoose.connect(config.db);
 const db = mongoose.connection;
+
+autoIncrement.initialize(db);
 
 db.on('error', () => {
   throw new Error(`unable to connect to database at ${config.db}`);

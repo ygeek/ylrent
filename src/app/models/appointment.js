@@ -4,6 +4,8 @@
 
 import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate';
+import autoIncrement from 'mongoose-auto-increment';
+
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
@@ -47,6 +49,10 @@ const DelegationOrderSchema = new mongoose.Schema({
 ApartmentOrderSchema.plugin(mongoosePaginate);
 DailyOrderSchema.plugin(mongoosePaginate);
 DelegationOrderSchema.plugin(mongoosePaginate);
+
+ApartmentOrderSchema.plugin(autoIncrement.plugin, 'ApartmentOrder');
+DailyOrderSchema.plugin(autoIncrement.plugin, 'DailyOrder');
+DelegationOrderSchema.plugin(autoIncrement.plugin, 'DelegationOrder');
 
 exports.ApartmentOrder = mongoose.model('ApartmentOrder', ApartmentOrderSchema);
 exports.DailyOrder = mongoose.model('DailyOrder', DailyOrderSchema);
