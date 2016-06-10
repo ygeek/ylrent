@@ -201,11 +201,10 @@ router.post('/login', function(req, res, next) {
         passwordError: options.message
       });
     }
-    
     const login = promisify(req.login, req);
     await login(user);
     res.redirect('/');
-  }).catch(err => {
+  })().catch(err => {
     res.render('login', {
       usernameError: null,
       passwordError: err.message || '登录失败请重试'

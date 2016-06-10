@@ -18,6 +18,32 @@ const DelegationOrder = mongoose.model('DelegationOrder');
 
 const router = express.Router();
 
+router.get('/apartment/:id', (req, res, next) => {
+  let apartmentId = req.params.id;
+  Apartment.findById(apartmentId).exec(function(err, apartment) {
+    if (!err && apartment) {
+      res.render('phone/apartmentOrder.ejs', {
+        apartment: apartment
+      });
+    } else {
+      res.status(404);
+    }
+  });
+});
+
+router.get('/daily/:id', (req, res, next) => {
+  let dailyId = req.params.id;
+  
+  DailyRent.findById(dailyId).exec(function(err, daily) {
+    if (!err && daily) {
+      res.render('phone/dailyOrder.ejs', {
+        daily: daily
+      });
+    } else {
+      res.status(404);
+    }
+  });
+});
 
 router.post('/apartment', (req, res, next) => {
   console.log('post appointment apartment: ', req.body);
