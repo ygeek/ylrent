@@ -65,7 +65,7 @@ function genApartmentSortCondition(priceDescent, areaDescent) {
   };
 }
 
-async function queryApartmentTypes(page, districtId, comunityId, keyword, rooms, minPrice, maxPrice, sort) {
+async function queryApartmentTypes(page, districtId, comunityId, keyword, rooms, minPrice, maxPrice, sort, commerseAreaId) {
   let query = {};
   
   let options = {
@@ -84,6 +84,11 @@ async function queryApartmentTypes(page, districtId, comunityId, keyword, rooms,
   // comunity
   if (comunityId) {
     query.comunity = comunityId;
+  }
+  
+  // commerse area
+  if (commerseAreaId) {
+    query.commerseArea = commerseAreaId;
   }
   
   // keyword
@@ -134,7 +139,7 @@ router.get('/', (req, res, next) => {
   let sortCondition = genApartmentTypeSortCondition(req.query.price, req.query.area);
   
   (async function() {
-    let result = await queryApartmentTypes(page, null, comunityId, keyword, rooms, sortCondition.sort);
+    let result = await queryApartmentTypes(page, null, comunityId, keyword, rooms, sortCondition.sort, null);
 
     let startIndex = Math.max(1, result.page - 2);
     let endIndex = Math.min(Math.max(startIndex + 4, result.page + 2), result.pages);
@@ -178,6 +183,8 @@ router.get('/api', (req, res, next) => {
   page = isNaN(page) ? 1 : page;
 
   let districtId = req.query.districtId;
+  
+  let commerseAreaId = req.query.commerseAreaId;
 
   let keyword = req.query.word;
 
@@ -190,7 +197,7 @@ router.get('/api', (req, res, next) => {
   let sortCondition = genApartmentTypeSortCondition(req.query.price, req.query.area);
 
   (async function() {
-    let result = await queryApartmentTypes(page, districtId, null, keyword, rooms, minPrice, maxPrice, sortCondition.sort);
+    let result = await queryApartmentTypes(page, districtId, null, keyword, rooms, minPrice, maxPrice, sortCondition.sort, commerseAreaId);
     res.json({
       result: result,
       sortBy: sortCondition.sortBy,
