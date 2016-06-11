@@ -55,7 +55,7 @@
             <h1>行政区域</h1>
             <a href="javascript:void(0);" class="weizhi seled" id="weizhi" vid="0">不限</a>
             <% districts.forEach(function(district) { %>
-                <a href="javascript:void(0);" vid="<%= district.id %>" class="weizhi" ><%= district.name %></a>
+                <a href="javascript:void(0);" vid="<%= district._id._id %>" class="weizhi" ><%= district._id.name %></a>
             <% }) %>
             <div class="clear"></div>
         </div>

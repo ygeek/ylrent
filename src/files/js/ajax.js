@@ -5,6 +5,31 @@
  */
 /*** apartment.ejs ***/
 $(function() {
+    $(document).on("click", ".weizhichild", function(e) {
+        var vid = $(this).attr("vid");
+        $("input[name='weizhi']").val(vid);
+        $(".weizhipar").attr("id","");
+        $(this).parent().parent().parent().children(".weizhipar").attr("id","select_hover");
+        $("input[name='page']").val(1);
+        if(vid=="0")
+        {
+            $(".weizhied").remove();
+            ajaxget();
+            return;
+        }
+        var weizhied = $(".weizhied").html();
+        if(!weizhied)
+        {
+            $(".tiaojian").append('<a href="javascript:void(0);" class="weizhied" vid="'+vid+'">'+$(this).html()+'</a>');
+        }
+        else
+        {
+            $(".weizhied").html($(this).html());
+            $(".weizhied").attr("vid",vid);
+        }
+        ajaxget();
+    });
+    //不能删除 移动端还要继续用
     $(document).on("click", ".weizhi", function(e) {
         var vid = $(this).attr("vid");
         $("input[name='weizhi']").val(vid);
@@ -268,7 +293,7 @@ function ajaxget()
                 {
                     imgstr = "http://o7k9opgtr.bkt.clouddn.com/"+result.imagekeys[0]+"?imageView2/0/w/320/h/240";
                 }
-                 htmlstr += '<ul><a href="' + '/apartment/type/' + result._id + '"><img class="imghover" src="'+imgstr+'" width="402" height="260" /></a><li><h1><a href="/apartment/type/'+result._id+'">'+result.name+'</a></h1><p>'+result.comunity.name+'<br />  酒店式公寓  |  '+result.roomType.shi+'室'+result.roomType.ting+'厅'+result.roomType.wei+'卫  | ' + result.minArea + ' - ' + result.maxArea+'平米</p><p style="margin:130px 0 0 0;">'+result.address+'</p></li><li style="float:right; margin:0 10px 0 0;"><h2>￥ <em>'+result.minPrice+'</em> / 月 起</h2><span><a href="/apartment/type/'+result._id+'">查看详细房源</a></span></li></ul>';
+                 htmlstr += '<ul><a href="' + '/apartment/type/' + result._id + '"><img class="imghover" src="'+imgstr+'" width="402" height="260" /></a><li><h1><a href="/apartment/type/'+result._id+'">'+result.name+'</a></h1><p>'+result.comunity.name+'<br />  酒店式公寓  |  '+result.roomType.shi+'室'+result.roomType.ting+'厅'+result.roomType.wei+'卫  | ' + result.minArea + ' - ' + result.maxArea+'平米</p><p style="margin:110px 0 0 0;">'+result.address+'</p></li><li style="float:right; margin:0 10px 0 0;"><h2>￥ <em>'+result.minPrice+'</em> / 月 起</h2><span><a href="/apartment/type/'+result._id+'">查看详细房源</a></span></li></ul>';
             });
 
             if (data.result.docs.length == 0) {

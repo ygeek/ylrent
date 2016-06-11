@@ -19,16 +19,33 @@
 </div>
 
 <div class="n_main">
-    <div class="select01">
-        <ul>
-            <li><span>位置：</span>
-                <a href="javascript:void(0);" class="weizhi seled" id="weizhi" vid="0">不限</a>
-                <% districts.forEach(function(district) { %>
-                    <a href="javascript:void(0);" vid="<%= district._id._id %>" class="weizhi" ><%= district._id.name %></a>
-                <% }) %>
-                <input type="hidden" name="weizhi" value="0" />
-            </li>
 
+
+    <div class="select_main">
+        <div class="select_main01">
+            <div class="select_main01_name">位置：</div>
+            <div class="select_main01_name01"><a id="select_hover" href="#">不限</a></div>
+            <div class="select_main01_content">
+                <ul>
+                    <% districts.forEach(function(district) { %>
+                   
+                    <li id="select_hover01"><a class="select_current weizhipar" href="javascript:void(0);" vid="<%= district._id._id %>" ><%= district._id.name %></a>
+                        <ul>
+                            <% district.commerseAreas.forEach(function(val) { %>
+                            <li><a href="javascript:void(0);" vid="<%= val._id %>" class="weizhichild" ><%= val.name %></a></li>
+                           <% }) %>
+
+                            <div class="clear"></div>
+                        </ul>
+                    </li>
+                    <% }) %>
+                </ul>
+                <input type="hidden" name="weizhi" value="0" />
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="select01">
+        <ul>
             <li><span>房型：</span>
                 <a href="javascript:void(0);" class="fangxing seled" id="fangxing" vid="0">不限</a>
                 <a href="javascript:void(0);" class="fangxing" sid="shi" vid="1">一室</a>
@@ -52,6 +69,15 @@
             </li>
         </ul>
     </div>
+                       
+</div>
+
+
+
+
+
+
+    
     <div class="clear"></div>
     <div class="tuijianfangyuan">
         <div class="gxm_name02">

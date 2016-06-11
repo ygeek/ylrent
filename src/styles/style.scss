@@ -356,9 +356,28 @@ background:url(../img/house.png) no-repeat   right center; }
 
 
 /**************热门房源*************/	
-.select01{padding:30px; background:#fff; border:1px solid #dfdfdf; font-size:15px; margin:0 0 30px 0;}
+.select_main{padding:30px; background:#fff; border:1px solid #dfdfdf; font-size:15px; margin:0 0 40px 0; width:1080px;}
+   .select_main01{height:28px; line-height:28px; display:block;}
+       .select_main01_name{float:left;}
+	   .select_main01_name01 a{float:left; padding:0 10px;}
+	   .select_main01_content{float:left; margin:0 0 0 1px;}
+	      .select_main01_content li{float:left; display:block; width:88px; height:42px; line-height:30px; text-align:center;}
+		      .select_main01_content li ul{display:none; }
+			   .select_main01_content ul li:hover a {width:88px;height:42px; display:block; background:url(/img/fangyuan01.jpg) top no-repeat; position:relative; z-index:1;}
+			 .select_main01_content ul li:hover ul{display:block; min-width:260px; margin:-1px 0 0 -95px; background:#fff; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px;  padding:10px; position:relative;}
+			 .select_main01_content ul li:hover ul li{height:28px; line-height:28px; float:left; display:block; width:86px;}
+			 .select_main01_content ul li:hover ul li a{display:block; float:left; font-size:14px; font-weight:normal;background:none;}	 
+			  #select_hover01{display:block; line-height:30px;   color:#a37c41; margin:-1px 0 0 0;}
+			
+			  
+	   #select_hover01:hover{ background:url(/img/fangyuan01.jpg) right no-repeat; position:relative; z-index:1px;display:block; margin:-1px 0 0 -1px; line-height:30px;  width:87px; } 
+         
+
+
+
+.select01{ background:#fff; font-size:15px; margin:0 0 30px 0;}
    .select01 li{height:25px; line-height:25px; display:block; padding:10px 0;}
-      .select01 li a{padding:0 10px; display:block; float:left;}
+      .select01 li a{padding:0 20px; display:block; float:left;}
 	  .select01 li a:hover{display:block; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px;}
 	   .select01  .seled {display:block; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px;}
            .select01  .tiaojian a {display:block; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; margin-right: 20px; display: inline;}
@@ -477,7 +496,7 @@ background:url(../img/house.png) no-repeat   right center; }
 			.jichang_r{float:right; width:405px;}
 			    /*****************************选项卡代码**************************************/
 			.tabbox02 .tabbtn02{height:18px; line-height:18px; font-size:16px;}
-			.tabbox02 .tabbtn02 li{float:left; position:relative; width:96px; background:url(../img/xxk.jpg) repeat-x; text-align:center; margin:0 0 0 2px; border-right:1px solid #666;}
+			.tabbox02 .tabbtn02 li{float:left; position:relative; width:96px; background:url(/img/xxk.jpg) repeat-x; text-align:center; margin:0 0 0 2px; border-right:1px solid #666;}
 			   .tabbox02 .tabbtn02 li a{color:#666;}
 			.tabbox02 .tabbtn02 li.current a,.tabbox02 .tabbtn li.current span{color:#000; font-weight:bold; }
 			 .tabcon02{padding:20px 0 0 0;}
