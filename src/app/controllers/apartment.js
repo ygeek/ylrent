@@ -146,7 +146,7 @@ router.get('/', (req, res, next) => {
     
     let districts = await CommerseArea
       .aggregate({
-        '$group': { _id: '$district', commerseAreas: { '$addToSet': '$name' } }
+        '$group': { _id: '$district', commerseAreas: { '$addToSet': { _id: '$_id', name: '$name'} } }
       }).exec();
 
     districts = await District
