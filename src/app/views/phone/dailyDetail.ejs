@@ -19,15 +19,9 @@
     <script type="text/javascript" src="/files/lib/dateRange/dateRange.js"></script>
     <link rel="stylesheet" type="text/css" href="/files/lib/dateRange/dateRange.css"/>
 
-    <script type="text/javascript" src="/files/js/mobile/jquery.bxslider.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-          $('.slider6').bxSlider({
-            mode: 'fade',
-            slideMargin: 10
-          });
-        });
-    </script>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="/files/lib/swiper/css/swiper.min.css">
+<link rel="stylesheet" href="/files/lib/swiper/css/mobile.css">
 </head>
 <body>
 <div class="header">
@@ -49,17 +43,39 @@
     </script>
 </div>
 <div class="main01" style="padding:0 0 90px 0;">
-    <div class="slider6">
-        <% if (daily.imagekeys[0]) { %>
-        <% daily.imagekeys.forEach(function(val) { %>
-      <div class="slide"><img src="http://o7k9opgtr.bkt.clouddn.com/<%= val %>"></div>
 
-        <% }) %>
+    <!-- Swiper -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+         <% if (daily.imagekeys[0]) { %>
+        <% daily.imagekeys.forEach(function(val) { %>
+        <div class="swiper-slide">
+            <!-- Required swiper-lazy class and image source specified in data-src attribute -->
+            <img data-src="http://o7k9opgtr.bkt.clouddn.com/<%= val %>" class="swiper-lazy">
+            <!-- Preloader image -->
+            <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
+        </div>
+         <% }) %>
         <% }else{ %>
-        <div class="slide"><img src="/img/mobile/img02.jpg"></div>
-        <div class="slide"><img src="/img/mobile/img02.jpg"></div>
+        <div class="swiper-slide">
+            <img data-src="/img/mobile/img02.jpg" class="swiper-lazy">
+            <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="/img/mobile/img02.jpg" class="swiper-lazy">
+            <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
+        </div>
         <% } %>
+
     </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination swiper-pagination-black"></div>
+    <!-- Navigation -->
+    <div class="swiper-button-next swiper-button-black"></div>
+    <div class="swiper-button-prev swiper-button-black"></div>
+</div>
+
+   
     <div class="order01">
         <div class="order01_top">
             <h1><a href="#"><%= daily.name %></a><br><!--<span>3室2厅1卫 |   100平米   |   宜住3人</span>--></h1>
@@ -195,5 +211,22 @@ function yuding()
     }
 }
 </script>
+
+<!-- Swiper JS -->
+    <script src="/files/lib/swiper/js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+    
+        paginationClickable: true,
+        // Disable preloading of all images
+        preloadImages: true,
+        // Enable lazy loading
+        lazyLoading: true
+    });
+    </script>
 </body>
 </html>

@@ -13,19 +13,19 @@ $(function() {
         $("input[name='page']").val(1);
         if(vid=="0")
         {
-            $(".weizhied").remove();
+            $(".weizhichilded").remove();
             ajaxget();
             return;
         }
-        var weizhied = $(".weizhied").html();
-        if(!weizhied)
+        var weizhichilded = $(".weizhichilded").html();
+        if(!weizhichilded)
         {
-            $(".tiaojian").append('<a href="javascript:void(0);" class="weizhied" vid="'+vid+'">'+$(this).html()+'</a>');
+            $(".tiaojian").append('<a href="javascript:void(0);" class="weizhichilded" vid="'+vid+'">'+$(this).html()+'</a>');
         }
         else
         {
-            $(".weizhied").html($(this).html());
-            $(".weizhied").attr("vid",vid);
+            $(".weizhichilded").html($(this).html());
+            $(".weizhichilded").attr("vid",vid);
         }
         ajaxget();
     });
@@ -220,6 +220,12 @@ function ajaxget()
     { 
         weizhistr = "districtId="+weizhi;
     }
+    var weizhichild = $(".weizhichilded").attr("vid");
+    var weizhichildstr = "";
+    if(weizhichild&&weizhichild!=0)
+    { 
+        weizhichildstr = "commerseAreaId="+weizhichild;
+    }
     var fangxingsid = $(".fangxinged").attr("sid");
     var fangxingvid = $(".fangxinged").attr("vid");
     var fangxingstr = "";
@@ -268,6 +274,7 @@ function ajaxget()
     var datastr = 
       "page=" + page + "&" 
       + (weizhistr ? (weizhistr + "&") : '') 
+      + (weizhichildstr ? (weizhichildstr + "&") : '') 
       + (fangxingstr ? (fangxingstr + "&") : '') 
       + (yuezustr ? (yuezustr + "&") : '')
       + (sortBy ? (sortBy + '=' + desc) : '');
