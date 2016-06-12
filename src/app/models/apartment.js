@@ -81,6 +81,7 @@ const DailyRentSchema = new mongoose.Schema({
   imagekeys: [String]        // ["七牛图片文件KEY"]
 });
 
+ComunitySchema.plugin(mongoosePaginate);
 ApartmentTypeSchema.plugin(mongoosePaginate);
 ApartmentSchema.plugin(mongoosePaginate);
 DailyRentSchema.plugin(mongoosePaginate);

@@ -12,6 +12,8 @@ router.use('/user', require('./user'));
 router.use('/apartment', require('./apartment'));
 router.use('/daily', require('./daily'));
 router.use('/appointment', require('./appointment'));
+router.use('/news', require('./news'));
+router.use('/cms', require('./cms'));
 router.use('/', require('./home'));
 
 // export router

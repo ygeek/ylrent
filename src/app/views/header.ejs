@@ -6,6 +6,9 @@
                 <% if (user) { %>
                     <a href="/user/">个人中心</a>
                     <a href="/user/logout/">注销</a>
+                    <% if (user.isStaff) { %>
+                        <a href="/cms/">管理后台</a>
+                    <% } %>
                 <% } else { %>
                     <a href="/user/register/">注册</a>
                     <a href="/user/login/">登录</a>

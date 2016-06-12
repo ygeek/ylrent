@@ -13,7 +13,8 @@ const UserSchema = new mongoose.Schema({
   corpName: String,
   title: String,
   tel: String,
-  Address: String
+  Address: String,
+  isStaff: Boolean
 });
 
 UserSchema.plugin(passportLocalMongoose);
