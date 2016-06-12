@@ -232,7 +232,7 @@ background:url(../img/house.png) no-repeat   right center; }
 /*****************************选项卡代码******************************/
    .more01 a{width:170px; height:52px; line-height:52px; background:#fff; border:1px solid #d4d4d4; margin:50px auto; display:block; color: #666; text-align:center; font-size:20px;}
      .more01 a:active { background-color: #999; color: #fff;}
-     .more01 a:hover { background-color: #a37c41; color: #fff;}
+     .more01 a:hover { background-color: #959595; color: #fff;}
 
    
 .bj_white{background:#fff; min-width:1200px; padding:60px 0;}   
@@ -257,7 +257,7 @@ background:url(../img/house.png) no-repeat   right center; }
 			.focus .D1fBt{ overflow:hidden; zoom:1;  height:16px; z-index:10;  }  
 			.focus .shadow{ width:100%; position:absolute; top:50%; left:60px; width: 570px; margin-top: -50px; text-align: center; z-index:10; height:100px; line-height: 100px; background:rgba(0,0,0,0.6);    
 			filter:progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = '#80000000',endColorstr = '#80000000')\9;  display:block;  }  
-			.focus .shadow a{ text-decoration:none; color:#fff; font-size:26px; overflow:hidden; margin-left:10px; font-family: "\5FAE\8F6F\96C5\9ED1";}  
+			.focus .shadow a{ text-decoration:none; font-weight: bolder;  color:#fff; font-size:26px; overflow:hidden; margin-left:10px; font-family: "\5FAE\8F6F\96C5\9ED1";}  
 			.focus .fcon{ position:relative; width:100%; float:left;  display:none; background:#000  }  
 			.focus .fcon img{ display:block; }  
 			.focus .fbg{bottom:25px; right:40px; position:absolute; height:21px; text-align:center; z-index: 200; }  
@@ -356,10 +356,10 @@ background:url(../img/house.png) no-repeat   right center; }
 
 
 /**************热门房源*************/	
-.select_main{padding:30px; background:#fff; border:1px solid #dfdfdf; font-size:15px; margin:0 0 40px 0; width:1080px;}
-   .select_main01{height:28px; line-height:28px; display:block;}
+.select_main{padding:30px; background:#fff; border:1px solid #dfdfdf; font-size:15px; margin:0 0 29px 0;}
+   .select_main01{height:28px; line-height:28px; display:block; width:1090px;}
        .select_main01_name{float:left;}
-	   .select_main01_name01 a{float:left; padding:0 10px;}
+	   .select_main01_name01 a{float:left; padding:0 20px;}
 	   .select_main01_content{float:left; margin:0 0 0 1px;}
 	      .select_main01_content li{float:left; display:block; width:88px; height:42px; line-height:30px; text-align:center;}
 		      .select_main01_content li ul{display:none; }
@@ -367,19 +367,19 @@ background:url(../img/house.png) no-repeat   right center; }
 			 .select_main01_content ul li:hover ul{display:block; min-width:260px; margin:-1px 0 0 -95px; background:#fff; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px;  padding:10px; position:relative;}
 			 .select_main01_content ul li:hover ul li{height:28px; line-height:28px; float:left; display:block; width:86px;}
 			 .select_main01_content ul li:hover ul li a{display:block; float:left; font-size:14px; font-weight:normal;background:none;}	 
-			  #select_hover01{display:block; line-height:30px;   color:#a37c41; margin:-1px 0 0 0;}
-			
+			  #select_hover01{display:block;height:32px; line-height: 30px;  background:url(/img/fangyuan02.jpg) center no-repeat; color:#a37c41; margin:-1px 0 0 0;}
+			  .select_current{color:#a37c41;}
 			  
-	   #select_hover01:hover{ background:url(/img/fangyuan01.jpg) right no-repeat; position:relative; z-index:1px;display:block; margin:-1px 0 0 -1px; line-height:30px;  width:87px; } 
-         
+	   #select_hover01:hover{ background:url(/img/fangyuan01.jpg) right no-repeat; position:relative; z-index:1px; border:1px solid #fff; display:block; margin:-1px 0 0 -1px; line-height:28px;  width:87px; } 
+			 
 
-
-
-.select01{ background:#fff; font-size:15px; margin:0 0 30px 0;}
-   .select01 li{height:25px; line-height:25px; display:block; padding:10px 0;}
-      .select01 li a{padding:0 20px; display:block; float:left;}
+   .select01 li{height:28px; line-height:28px; display:block; padding:10px 0;}
+      .select01 li a{padding:0 20px; display:block; float:left; border:1px solid #fff; margin:0 2px 0 0;}
 	  .select01 li a:hover{display:block; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px;}
-	   .select01  .seled {display:block; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px;}
+	  .select01 li span{display:block; float:left;}
+	 
+          
+          .select01  .seled {display:block; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px;}
            .select01  .tiaojian a {display:block; border:1px solid #e2e2e2;border-radius:5px;  -moz-border-radius:5px; -webkit-border-radius:5px; margin-right: 20px; display: inline;}
          
            .select01 li span{display:block; float:left;}
@@ -393,9 +393,9 @@ background:url(../img/house.png) no-repeat   right center; }
 		  #current03{border-top:1px solid #dadada; display:block; color:#333; background:url(../img/icon13.png) 90% no-repeat #f6f6f6;}
 	  .gxm_name02_r{float:right; color:#fff; padding:0 20px 0 0;}
            .gxm_name02_r span{font-size:22px; font-weight:bold; }
-	.tuijianfangyuan_m{padding:30px;}
+	.tuijianfangyuan_m{padding:30px;padding-top: 0px; }
 	   .tuijianfangyuan_m img{float:left; display:block; margin:20px 30px 0 0; width: 340px; height: 227px;}
-	   .tuijianfangyuan_m ul{height:250px; border-bottom:1px solid #ccc; display:block; margin:0 0 0px 0; padding-bottom: 18px; }
+	   .tuijianfangyuan_m ul{height:250px;padding-top: 10px; border-bottom:1px solid #ccc; display:block; margin:0 0 0px 0; padding-bottom: 18px; }
 	   .tuijianfangyuan_m li{display:block; float:left;}
            
 	     .tuijianfangyuan_m li h1{font-size:20px; margin:20px 0 20px 0; line-height: 20px; }
@@ -403,7 +403,9 @@ background:url(../img/house.png) no-repeat   right center; }
                  .tuijianfangyuan_m li .address{ margin-top: 120px; font-size: 16px; line-height: 16px;}
 		 .tuijianfangyuan_m li h2{color:#9c8a68; font-size:20px;}
 		    .tuijianfangyuan_m li span{height:50px; line-height:50px; padding:0 30px; border:2px solid #666; display:block; font-size:22px; text-align:center; margin:125px 0 0 0;}
-			 .tuijianfangyuan_m li h2 em{font-size:40px;}
+                     .tuijianfangyuan_m li span:hover{height:50px; line-height:50px; padding:0 30px; border:2px solid #959595; color: #fff; background-color:#959595;  display:block; font-size:22px; text-align:center; margin:125px 0 0 0;}
+                     .tuijianfangyuan_m li span:hover a { color: #fff;}
+                    .tuijianfangyuan_m li h2 em{font-size:40px;}
 			
 			.page01{ text-align:center; padding:20px 0 40px 0;}
                         
@@ -573,7 +575,7 @@ background:url(../img/house.png) no-repeat   right center; }
 			   .footer .footer_m .footer_m_top .footer_m_top_l h1{color:#fff; font-size:16px;}
 			.footer .footer_m .footer_m_top .footer_m_top_r{float:right;}
 			   .footer .footer_m .footer_m_top .footer_m_top_r p{text-align:center; float:left; margin:0 0 0 10px; color:#fff;}
-	.footer .footer_m .footer_m_center{border-bottom:1px solid #b5b8bb; font-size:12px;line-height: 33px; padding:10px 0;}
+	.footer .footer_m .footer_m_center{border-bottom:1px solid #b5b8bb; font-size:14px;line-height: 33px; padding:10px 0;}
 	    .footer .footer_m .footer_m_center a{padding:0 10px 0 0; color:#929292;}
 	.footer .footer_m .footer_m_bottom{padding:20px 0 0 0; line-height:22px; text-align:center;}
 	.footer .footer_m .footer_m_top .footer_m_top_r p font { line-height: 30px;   }	  

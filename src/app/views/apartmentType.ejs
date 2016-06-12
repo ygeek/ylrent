@@ -15,7 +15,7 @@
 
 <div class="location">
     <a href="/">首页</a> >
-    <a href="/apartment/">热门房型</a>
+    <a href="/apartment/">热门房源</a>
 </div>
 
 <div class="n_main">
@@ -24,12 +24,12 @@
     <div class="select_main">
         <div class="select_main01">
             <div class="select_main01_name">位置：</div>
-            <div class="select_main01_name01"><a id="select_hover" href="#">不限</a></div>
+            <div class="select_main01_name01"><a id="select_hover" class="weizhipara" href="javascript:void(0);">不限</a></div>
             <div class="select_main01_content">
                 <ul>
                     <% districts.forEach(function(district) { %>
                    
-                    <li id="select_hover01"><a class="select_current weizhipar" href="javascript:void(0);" vid="<%= district._id._id %>" ><%= district._id.name %></a>
+                    <li class="weizhipar" id="" ><a class=" " href="javascript:void(0);" vid="<%= district._id._id %>" ><%= district._id.name %></a>
                         <ul>
                             <% district.commerseAreas.forEach(function(val) { %>
                             <li><a href="javascript:void(0);" vid="<%= val._id %>" class="weizhichild" ><%= val.name %></a></li>

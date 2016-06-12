@@ -9,7 +9,8 @@ $(function() {
         var vid = $(this).attr("vid");
         $("input[name='weizhi']").val(vid);
         $(".weizhipar").attr("id","");
-        $(this).parent().parent().parent().children(".weizhipar").attr("id","select_hover");
+        $(".weizhipara").attr("id","");
+        $(this).parent().parent().parent().attr("id","select_hover01");
         $("input[name='page']").val(1);
         if(vid=="0")
         {
@@ -145,6 +146,20 @@ $(function() {
         }
         
         
+        ajaxget();
+    });
+    $(document).on("click", ".weizhipara", function(e) {
+        $(this).attr("id","select_hover");
+        $(".weizhipar").removeClass("seled");
+        $(".weizhichilded").remove();
+        $("input[name='page']").val(1);
+        ajaxget();
+    });
+    $(document).on("click", ".weizhichilded", function(e) {
+        $(this).remove();
+        $(".weizhipar").removeClass("seled");
+        $(".weizhipara").attr("id","select_hover");
+        $("input[name='page']").val(1);
         ajaxget();
     });
     $(document).on("click", ".weizhied", function(e) {
