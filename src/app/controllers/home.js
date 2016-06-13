@@ -19,11 +19,10 @@ const logger = log4js.getLogger('normal');
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-
   logger.info('request from', req.device.type);
 
   if (req.device.type === 'phone') {
-    return res.redirect('/apartment/');
+    return res.render('phone/index.ejs', {});
   }
 
   let districtPromise = (async function() {
