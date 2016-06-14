@@ -150,7 +150,7 @@ $(function() {
     });
     $(document).on("click", ".weizhipara", function(e) {
         $(this).attr("id","select_hover");
-        $(".weizhipar").removeClass("seled");
+        $(".weizhipar").attr("id","");
         $(".weizhichilded").remove();
         $("input[name='page']").val(1);
         ajaxget();

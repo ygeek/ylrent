@@ -13,37 +13,27 @@
     <title>源涞国际</title>
     <link type="text/css" href="/css/mobile-main.css" rel="stylesheet" />
 </head>
-<body>
-<header>
-    <a href="#"><img src="/img/mobile/logo.png"></a>
-</header>
-<div class="main">
-    <div class="menu">
-        <div class="menu01">
-            <span class="menu01_l"><a id="menu_hover_l" href="/user/login/">登录</a></span>
-            <span class="menu01_r"><a href="/user/register/">注册</a></span>
+<body style="background:url(/img/mobile/login_bg.jpg) center no-repeat;  background-attachment:fixed;">
+        <div class="login_header">
+              <img src="/img/mobile/login_logo.png">
         </div>
-    </div>
-    <div class="login_resgister">
-        <form action="/user/login/" method="post">
-            <input type="text"
-                   name="username"
-                   class="login_resgister_input"
-                   placeholder='账号：手机号/用户名/邮箱'
-                   value="">
-            <input type="text"
-                   name="password"
-                   class="login_resgister_input"
-                   placeholder='密码：请输入密码'
-                   value="">
-            <input type="submit"
-                   value="登录"
-                   class="login_button">
-        </form>
-    </div>
-    <div class="clear"></div>
-    <footer>联系客服：400-668-1609 源涞实业 沪ICP13031446</footer>
-    <div class="clear"></div>
-</div>
+             <div class="login_main">
+              <form  action="/user/login/" method="post">
+                    <ul>
+                          <li><img src="/img/mobile/login_icon01.png" height="40" /><em></em><input class="login_text01"name="username" type="text" placeholder='账号：手机号/用户名/邮箱' value="" /></li>
+                   
+                     <li><img src="/img/mobile/login_icon02.png" height="40" /><em></em><input class="login_text01" placeholder='密码：请输入密码' value="" type="password" /></li>
+                     <div class="clear"></div>
+                      <input type="submit" value="登录" class="login_dl">
+                      </ul>
+                   </form>
+                   <div class="clear"></div>
+                           <div class="login_text02"><a href="/user/register">账号注册</a></div>
+                           <div class="login_footer">联系客服：400-668-1609 源涞实业 沪ICP13031446</div>
+                    <div class="clear"></div>
+             </div>
+<script type="text/javascript" src="/files/js/mobile.js"></script>
 </body>
-</html>
+
+
+

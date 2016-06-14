@@ -25,10 +25,58 @@
 <!-----头部----->
 <% include header.ejs %>
 <!-----头部----->
+<div class="location">
+    <a href="/">首页</a> >
+    <a href="/apartment/">地圖找房</a>
+</div>
 <div class="clear"></div>
+<div class="n_main">
+
+
+    <div class="select_main">
+        <div class="select_main01">
+            <div class="select_main01_name">位置：</div>
+            <div class="select_main01_name01"><a id="select_hover" class="weizhipara" href="javascript:void(0);">不限</a></div>
+            <div class="select_main01_content">
+                <ul>
+                    
+                </ul>
+                <input type="hidden" name="weizhi" value="0" />
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="select01">
+        <ul>
+            <li><span>房型：</span>
+                <a href="javascript:void(0);" class="fangxing seled" id="fangxing" vid="0">不限</a>
+                <a href="javascript:void(0);" class="fangxing" sid="shi" vid="1">一室</a>
+                <a href="javascript:void(0);" class="fangxing"  sid="shi" vid="2">二室</a>
+                <a href="javascript:void(0);" class="fangxing"  sid="shi" vid="3">三室</a>
+                <a href="javascript:void(0);" class="fangxing"  sid="shi" vid="4">三室以上</a>
+                <input type="hidden" name="fangxing" value="0" />
+            </li>
+
+            <li><span>月租：</span>
+                <a href="javascript:void(0);" id="yuezu" class="yuezu seled" min="0" max="0">不限</a>
+                <a href="javascript:void(0);" class="yuezu "  min="0" max="10000">¥10000以下</a>
+                <a href="javascript:void(0);" class="yuezu " min="10000" max="20000">¥10000 - ¥20000</a>
+                <a href="javascript:void(0);" class="yuezu " min="20000" max="30000">¥20000 - ¥30000</a>
+                <a href="javascript:void(0);" class="yuezu " min="30000"  max="0">¥30000以上</a>
+            </li>
+
+            <li class="tiaojian"><span >条件：</span>
+              
+                
+            </li>
+        </ul>
+    </div>
+                       
+</div>
+</div>
 <div class="n_main" id="allmap">
 </div>
 
+<% include footer.ejs %>
 <script type="text/javascript">
 // 百度地图API功能
 var map = new BMap.Map("allmap");
