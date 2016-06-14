@@ -370,8 +370,15 @@ background:url(../img/house.png) no-repeat   right center; }
 			  #select_hover01{display:block;height:32px; line-height: 30px;  background:url(/img/fangyuan02.jpg) center no-repeat; color:#a37c41; margin:-1px 0 0 0;}
 			  .select_current{color:#a37c41;}
 			  
-	   #select_hover01:hover{ background:url(/img/fangyuan01.jpg) right no-repeat; position:relative; z-index:1px; border:1px solid #fff; display:block; margin:-1px 0 0 -1px; line-height:28px;  width:87px; } 
-			 
+	  	
+           #select_hover01{display:block;height:32px;line-height:30px;background:url(/img/fangyuan02.jpg) 50% no-repeat;color:#a37c41;margin:0 0 0}
+
+            #select_hover01:hover{background:url(/img/fangyuan01.jpg) 100% no-repeat;position:relative;z-index:1;border:1px solid #fff;display:block;margin:0 0 0 -1px;line-height:28px;width:87px}
+
+            .select_main01_name01 a{float:left;padding:0 20px; border:1px solid #fff;}
+           
+           
+           
 
    .select01 li{height:28px; line-height:28px; display:block; padding:10px 0;}
       .select01 li a{padding:0 20px; display:block; float:left; border:1px solid #fff; margin:0 2px 0 0;}
