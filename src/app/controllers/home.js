@@ -90,4 +90,8 @@ router.get('/delegate', (req, res, next) => {
   res.render('delegate');
 });
 
+router.get('/team', (req, res, next) => {
+  res.render('team');
+});
+
 module.exports = router;
