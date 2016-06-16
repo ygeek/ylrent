@@ -21,64 +21,42 @@
 
 <div class="n_news_main">
       <div class="n_news_main_l">
-             <ul>
-                 <img src="/img/banner01.jpg" width="180" height="128" />
-                 <li>
-                     <h1><a href="#">轨交 | 11号线迪士尼站通车啦 周边楼盘又该傲娇了</a></h1>
-                     <p>今年一季度，受益于较宽松的货币政策和去库存的利好等因素推动，北京、上海、深圳三大重点城市销售量量价齐升，上市龙头房企一季报整体表现强势。尽管部分城市交易情况在调控政策下环...<a href="#">更多</a></p>
-                     <span>腾讯房地产[微博] 2016-05-09 08:26</span>
-                 </li>
-             </ul>
-              <ul>
-                 <img src="/img/banner01.jpg" width="180" height="128" />
-                 <li>
-                     <h1><a href="#">轨交 | 11号线迪士尼站通车啦 周边楼盘又该傲娇了</a></h1>
-                     <p>今年一季度，受益于较宽松的货币政策和去库存的利好等因素推动，北京、上海、深圳三大重点城市销售量量价齐升，上市龙头房企一季报整体表现强势。尽管部分城市交易情况在调控政策下环...<a href="#">更多</a></p>
-                     <span>腾讯房地产[微博] 2016-05-09 08:26</span>
-                 </li>
-             </ul>
-              <ul>
-                 <img src="/img/banner01.jpg" width="180" height="128" />
-                 <li>
-                     <h1><a href="#">轨交 | 11号线迪士尼站通车啦 周边楼盘又该傲娇了</a></h1>
-                     <p>今年一季度，受益于较宽松的货币政策和去库存的利好等因素推动，北京、上海、深圳三大重点城市销售量量价齐升，上市龙头房企一季报整体表现强势。尽管部分城市交易情况在调控政策下环...<a href="#">更多</a></p>
-                     <span>腾讯房地产[微博] 2016-05-09 08:26</span>
-                 </li>
-             </ul>
-              <ul>
-                 <img src="/img/banner01.jpg" width="180" height="128" />
-                 <li>
-                     <h1><a href="#">轨交 | 11号线迪士尼站通车啦 周边楼盘又该傲娇了</a></h1>
-                     <p>今年一季度，受益于较宽松的货币政策和去库存的利好等因素推动，北京、上海、深圳三大重点城市销售量量价齐升，上市龙头房企一季报整体表现强势。尽管部分城市交易情况在调控政策下环...<a href="#">更多</a></p>
-                     <span>腾讯房地产[微博] 2016-05-09 08:26</span>
-                 </li>
-             </ul>
+          <% newsList.docs.forEach(function(val) { %>
+          <ul>
+              <img src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekey %>?imageView2/0/w/320/h/24" width="180" height="128" />
+              <li>
+                  <h1><a href="/news/val._id">val.title</a></h1>
+                  <p><%= val.content.substr(0, 80) %>...
+                      <a href="#">更多</a>
+                  </p>
+                  <span><%= val.source %> <%= val.date %></span>
+              </li>
+          </ul>
+          <% }) %>
       </div>
       <div class="n_news_main_r">
-              
-
                <!-- 代码 开始 -->
             <div id="fsD1" class="focus" style="width:368px; height:288px;">  
-                <div id="D1pic1" class="fPic">  
-                    <div class="fcon" style="display: none;">
-                        <a href="#"><img src="/img/banner01.jpg" style="width:368px; height:288px; opacity: 1;" ></a>
-                    </div>
-                   <div class="fcon" style="display: none;">
-                        <a href="#"><img src="/img/banner01.jpg" style="width:368px; height:288px; opacity: 1;" ></a>
-                    </div>
-                   <div class="fcon" style="display: none;">
-                        <a href="#"><img src="/img/banner01.jpg" style="width:368px; height:288px; opacity: 1;" ></a>
-                    </div>
-
+                <div id="D1pic1" class="fPic">
+                    <% latestNews.forEach(function(val){ %>
+                        <div class="fcon" style="display: none;">
+                            <a href="#"><img src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekey %>?imageView2/0/w/320/h/24" style="width:368px; height:288px; opacity: 1;" ></a>
+                        </div>
+                    <% }) %>
                 </div>
                 <div class="fbg">  
-                <div class="D1fBt" id="D1fBt">  
-                    <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>  
-                    <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>  
-                    <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a> 
-                </div>  
-                </div>  
-                <span class="prev"></span>   
+                    <div class="D1fBt" id="D1fBt">
+                        <% for (var i = 0; i < latestNews.length; i++) { %>
+                            <a href="javascript:void(0)"
+                               hidefocus="true"
+                               target="_self"
+                               class="<% if (i == 0) { %>current<% }%>">
+                                <i><%= i + 1 %></i>
+                            </a>
+                        <% }%>
+                    </div>
+                </div>
+                <span class="prev"></span>
                 <span class="next"></span>    
             </div>  
     <script type="text/javascript">
@@ -103,42 +81,27 @@
 <div class="clear"></div>
       <div class="remenfangy">
             <h1>热门房源</h1>
-            <a href="#">
-                 <img src="/img/banner01.jpg" width="328" height="156" />
-                 <h2><span>测试测试测试测试测试测试测试测试测试测试测试测试</span></h2>
-            </a>
-             <p><span>2室1厅1卫 | 114平米</span> <em>￥26900 / 月</em></p>
-             <div class="clear"></div> 
-             
-             <a href="#">
-                 <img src="/img/banner01.jpg" width="328" height="156" />
-                 <h2><span>测试测试测试测试测试测试测试测试测试测试测试测试</span></h2>
-            </a>
-             <p><span>2室1厅1卫 | 114平米</span> <em>￥26900 / 月</em></p>
-             <div class="clear"></div> 
-             
-             <a href="#">
-                 <img src="/img/banner01.jpg" width="328" height="156" />
-                 <h2><span>测试测试测试测试测试测试测试测试测试测试测试测试</span></h2>
-            </a>
-             <p><span>2室1厅1卫 | 114平米</span> <em>￥26900 / 月</em></p>
-            <div class="clear"></div> 
-            
+
+            <% apartmentTypes.forEach(function(val) { %>
+                <a href="/apartment/type/<%= val._id %>">
+                    <img class="imghover"
+                            <% if (val.imagekeys[0]) { %>
+                         src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                            <% }else{ %>
+                         src="/img/default.jpg"
+                            <% } %>
+                    />
+                    <h2><span><%= val.name %><br><%= val.comunity.address %></span></h2>
+                </a>
+                <p>
+                    <span><%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫 | <%= val.maxArea %>平米</span>
+                    <em>￥<%= val.minPrice %> / 月</em>
+                </p>
+                <div class="clear"></div>
+            <% }) %>
       </div>
       </div>
      <div class="clear"></div>
 </div>
 
 <% include footer.ejs %>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<%= JSON.stringify(newsList) %>
-</body>
-</html>

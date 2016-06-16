@@ -7,6 +7,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 const News = mongoose.model('News');
+const ApartmentType = mongoose.model('ApartmentType');
 
 const router = express.Router();
 
@@ -21,32 +22,80 @@ router.get('/', (req, res, next) => {
     sort: [['date', -1]]
   };
 
-  News
-    .paginate({}, options)
-    .then(newsList => {
+  let newsPromise = News.paginate({}, options);
+  
+  let latestNewsPromise = News
+    .find({})
+    .limit(4)
+    .sort('-date')
+    .exec();
+
+  let hotApartments = ApartmentType
+    .find({})
+    .limit(4)
+    .sort('-isHot')
+    .populate('comunity commerseArea district')
+    .exec();
+  
+  Promise
+    .all([latestNewsPromise, newsPromise, hotApartments])
+    .then(([latestNews, newsList, apartmentTypes]) => {
       res.render('newsList', {
-        newsList: newsList
+        latestNews: latestNews,
+        newsList: newsList,
+        apartmentTypes: apartmentTypes
       });
-    })
-    .catch(err => {
-      res.render('error', {
-        error: err,
-        message: err.message,
-        statck: err.statck
-      });
+    }).catch(err => {
+
     });
 });
 
 router.get('/:id', (req, res, next) => {
   let newsId = req.params.id;
-  News.findById(newsId).exec(function(err, news) {
-    if (!err && news) {
-      res.render('news', {
-        news: news
-      });
-    } else {
-      res.status(404);
-    }
+
+  (async function() {
+    let news = await News.findById(newsId).exec();
+    
+    let latestNewsPromise = News
+      .find({})
+      .limit(10)
+      .sort('-date')
+      .exec();
+    
+    let prevNewsPromise = News
+      .find({ date: { '$lt': news.date } })
+      .limit(1)
+      .sort('-date')
+      .exec();
+    
+    let nextNewsPromise = News
+      .find({ date: { '$gt': news.date } })
+      .limit(1)
+      .sort('date')
+      .exec();
+    
+    let [
+      latestNews,
+      prevNews,
+      nextNews
+    ] = await Promise.all([
+      latestNewsPromise,
+      prevNewsPromise,
+      nextNewsPromise
+    ]);
+    
+    res.render('news', {
+      news: news,
+      prevNews: prevNews,
+      nextNews: nextNews,
+      latestNews: latestNews
+    });
+  })().catch(function(err) {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      statck: err.statck
+    });
   });
 });
 

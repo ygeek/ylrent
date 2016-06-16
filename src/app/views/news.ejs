@@ -21,58 +21,48 @@
 <div class="n_news_main">
    <div class="n_news_main_l">
       <div class="n_news_main_m" >
-                    <div class="title01">
-                        <h1>【大申网】源涞标准，助力开发商拓展长租服务式公寓</h1>
-                        <p>来源：中国经济周刊  作者：腾讯咨询  2016-05-09 08:39</p>
-                    </div>
-                    <div class="n_news_main_m01">
-                         测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试v
-                    </div>
-                    <div class="next">
-                        <p>上一篇：<a href="#">上一篇</a></p>
-                        <p>下一篇：<a href="#">下一篇</a></p>
-			        </div>
-                    <div class="xianguan">
-                         <h1>相关资讯</h1>
-                         <div class="xianguan_m">
-                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
-                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
-                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
-                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
-                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
-                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
-                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
-                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
-                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
-                  <p><a href="#">【搜狐】中产崛起加速“服务式公寓”市场爆发</a></p>
+        <div class="title01">
+            <h1><%= news.title %></h1>
+            <p>来源：<%= news.source %>  作者：<%= news.author %>  <%= news.date %></p>
+        </div>
+        <div class="n_news_main_m01">
+            <%= news.content %>
+        </div>
+        <div class="next">
+            <p>上一篇：<a href="/news/<%= prevNews._id %>">上一篇</a></p>
+            <p>下一篇：<a href="/news/<%= nextNews._id %>">下一篇</a></p>
+        </div>
+        <div class="xianguan">
+             <h1>相关资讯</h1>
+             <div class="xianguan_m">
+                 <% latestNews.forEach(function(val) { %>
+                     <p><a href="/news/<%= val._id %>"><%= val.title %></a></p>
+                 <% }) %>
               </div>
-                    </div>
-               </div>
+        </div>
       </div>
+  </div>
       
      <div class="n_news_main_r">
-              
-
-               <!-- 代码 开始 -->
+            <!-- 代码 开始 -->
             <div id="fsD1" class="focus" style="width:368px; height:288px;">  
-                <div id="D1pic1" class="fPic">  
-                    <div class="fcon" style="display: none;">
-                        <a href="#"><img src="/img/banner01.jpg" style="width:368px; height:288px; opacity: 1;" ></a>
-                    </div>
-                   <div class="fcon" style="display: none;">
-                        <a href="#"><img src="/img/banner01.jpg" style="width:368px; height:288px; opacity: 1;" ></a>
-                    </div>
-                   <div class="fcon" style="display: none;">
-                        <a href="#"><img src="/img/banner01.jpg" style="width:368px; height:288px; opacity: 1;" ></a>
-                    </div>
-
+                <div id="D1pic1" class="fPic">
+                    <% for (var i = 0; i < 3 && i < latestNews.length; i++) { %>
+                        <div class="fcon" style="display: none;">
+                            <a href="/news/<%= latestNews[i]._id %>">
+                                <img src="http://o7k9opgtr.bkt.clouddn.com/<%= latestNews[i].imagekey %>?imageView2/0/w/320/h/240" style="width:368px; height:288px; opacity: 1;" >
+                            </a>
+                        </div>
+                    <% } %>
                 </div>
                 <div class="fbg">  
-                <div class="D1fBt" id="D1fBt">  
-                    <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>  
-                    <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>  
-                    <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a> 
-                </div>  
+                <div class="D1fBt" id="D1fBt">
+                    <% for (var i = 0; i < 3 && i < latestNews.length; i++) { %>
+                        <a href="javascript:void(0)" hidefocus="true" target="_self" class="<% if (i == 0) { %>current"<% } %>>
+                            <i><%= i + 1 %></i>
+                        </a>
+                    <% } %>
+                </div>
                 </div>  
                 <span class="prev"></span>   
                 <span class="next"></span>    
@@ -99,42 +89,25 @@
 <div class="clear"></div>
       <div class="remenfangy">
             <h1>热门房源</h1>
-            <a href="#">
-                 <img src="/img/banner01.jpg" width="328" height="156" />
-                 <h2><span>测试测试测试测试测试测试测试测试测试测试测试测试</span></h2>
-            </a>
-             <p><span>2室1厅1卫 | 114平米</span> <em>￥26900 / 月</em></p>
-             <div class="clear"></div> 
-             
-             <a href="#">
-                 <img src="/img/banner01.jpg" width="328" height="156" />
-                 <h2><span>测试测试测试测试测试测试测试测试测试测试测试测试</span></h2>
-            </a>
-             <p><span>2室1厅1卫 | 114平米</span> <em>￥26900 / 月</em></p>
-             <div class="clear"></div> 
-             
-             <a href="#">
-                 <img src="/img/banner01.jpg" width="328" height="156" />
-                 <h2><span>测试测试测试测试测试测试测试测试测试测试测试测试</span></h2>
-            </a>
-             <p><span>2室1厅1卫 | 114平米</span> <em>￥26900 / 月</em></p>
-            <div class="clear"></div> 
-            
+          <% apartmentTypes.forEach(function(val) { %>
+              <a href="/apartment/type/<%= val._id %>">
+                  <img class="imghover"
+                          <% if (val.imagekeys[0]) { %>
+                       src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                          <% }else{ %>
+                       src="/img/default.jpg"
+                          <% } %>
+                  />
+                  <h2><span><%= val.name %><br><%= val.comunity.address %></span></h2>
+              </a>
+              <p>
+                  <span><%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫 | <%= val.maxArea %>平米</span>
+                  <em>￥<%= val.minPrice %> / 月</em>
+              </p>
+              <div class="clear"></div>
+          <% }) %>
       </div>
       </div>
      <div class="clear"></div>
 </div>
 <% include footer.ejs %>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<%= JSON.stringify(news) %>
-</body>
-</html>
