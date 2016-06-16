@@ -1,10 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/files/cms/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/files/cms/css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/files/cms/js/jquery.js"></script>
+<script type="text/javascript" src="/files/cms/js/select-ui.min.js"></script>
+<script type="text/javascript" src="/files/lib/laypage/laypage.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".click").click(function(){
+  $(".tip").fadeIn(200);
+  });
+  
+  $(".tiptop a").click(function(){
+  $(".tip").fadeOut(200);
+});
+
+  $(".sure").click(function(){
+  $(".tip").fadeOut(100);
+});
+
+  $(".cancel").click(function(){
+  $(".tip").fadeOut(100);
+});
+
+});
+</script>
+
+
 </head>
+
+
 <body>
-<%= JSON.stringify(communities) %>
+
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">小区管理</a></li>
+         
+        </ul>
+    </div>
+    
+    <div class="rightinfo">
+    
+        <div class="tools">
+
+            <ul class="toolbar">
+                <li class="click"><span><img src="/files/cms/images/t01.png" /></span>添加小区</li>
+          
+            </ul>
+            <ul class="seachform">
+                <form name="sousuo" action="/cms/orders/apartment" method="get" />
+                <li><input name="search" placeholder="小区" type="text" class="scinput" /></li>
+                <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
+                </form>
+            </ul>
+        </div>
+        <table class="tablelist">
+            <thead>
+            <tr>
+
+                <th>小区名字</th>
+                <th>行政区</th>
+                <th>商圈</th>
+                
+                
+                <th>是否推荐</th>
+                <th>地址</th>
+                <th>坐标</th>
+               
+              
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% communities.docs.forEach(function(val){  %>
+                <tr>
+
+                    <td><%= val.name %></td>
+                    <td><%= val.district.name %></td>
+                    <td><%= val.commerseArea.name %></td>
+                    <td><% if(val.isHot){ %>是<% }else{ %>否<% } %></td>
+                    <td><%= val.address %></td>
+                    <td><%= val.longitude %>,<%= val.latitude %></td>
+                    
+                 
+                  
+                    <td><a href="/cms/community/<%= val._id %>" class="tablelink"> 修改</a></td>
+                </tr> 
+             <% }) ; %>   
+
+            </tbody>
+        </table>
+
+
+        <div class="pagin" id="page11">
+           
+        </div>
+
+
+        
+    </div>
+    
+<script type="text/javascript">
+    $('.tablelist tbody tr:odd').addClass('odd');
+    laypage({
+        cont: 'page11',
+        pages: '<%= communities.pages %>',
+        curr: function(){ //通过url获取当前页，也可以同上（pages）方式获取
+            var page = location.search.match(/page=(\d+)/);
+            return page ? page[1] : 1;
+        }(), 
+        jump: function(e, first){ //触发分页后的回调
+            if(!first){ //一定要加此判断，否则初始时会无限刷新
+                location.href = '?page='+e.curr;
+            }
+        }
+    });
+
+</script>
+
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+

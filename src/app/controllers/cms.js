@@ -26,6 +26,27 @@ router.get('/', (req, res, next) => {
   res.render('cms-home', {});
 });
 
+router.get('/top', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+  
+  res.render('cms-top', {});
+});
+router.get('/menu', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+  
+  res.render('cms-menu', {});
+});
+router.get('/index', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+  
+  res.render('cms-index', {});
+});
 router.get('/news', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
     return res.redirect('/user/login');
