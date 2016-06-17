@@ -63,7 +63,7 @@ router.get('/news', (req, res, next) => {
 
   let options = {
     page: page,
-    limit: 8,
+    limit: 10,
     lean: true,
     sort: [['date', -1]]
   };
@@ -122,35 +122,45 @@ router.get('/orders/apartment', (req, res, next) => {
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
 
-  let options = {
-    page: page,
-    limit: 8,
-    lean: true,
-    sort: [['createdAt', -1]],
-    populate: [{
-      path: 'apartment',
-      populate: { path: 'apartmentType' }
-    }]
-  };
+  (async function() {
+    let query = {};
 
-  ApartmentOrder
-    .paginate({}, options)
-    .then(orders => {
-      for (let order of orders.docs) {
-        order.createdAt_formatted = moment(order.createdAt).format('YYYY-MM-DD HH:mm:ss');
-        order.date_formatted = moment(order.date).format('YYYY-MM-DD HH:mm:ss');
-      }
-      res.render('cms-apartmentOrders', {
-        orders: orders
-      });
-    })
-    .catch(err => {
-      res.render('error', {
-        error: err,
-        message: err.message,
-        stack: err.stack
-      });
+    let keyword = req.query.keyword;
+    if (keyword) {
+      query['$or'] = [
+        {'name': keyword},
+        {'mobile': keyword},
+        {'_id': Number(keyword)}
+      ];
+    }
+
+    let options = {
+      page: page,
+      limit: 10,
+      lean: true,
+      sort: [['createdAt', -1]],
+      populate: [{
+        path: 'apartment',
+        populate: { path: 'apartmentType' }
+      }]
+    };
+
+    let orders = await ApartmentOrder.paginate(query, options);
+
+    for (let order of orders.docs) {
+      order.createdAt_formatted = moment(order.createdAt).format('YYYY-MM-DD HH:mm:ss');
+      order.date_formatted = moment(order.date).format('YYYY-MM-DD HH:mm:ss');
+    }
+    res.render('cms-apartmentOrders', {
+      orders: orders
     });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
 });
 
 router.get('/orders/daily', (req, res, next) => {
@@ -160,35 +170,44 @@ router.get('/orders/daily', (req, res, next) => {
 
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
-
-  let options = {
-    page: page,
-    limit: 8,
-    lean: true,
-    sort: [['createdAt', -1]],
-    populate: ['daily']
-  };
   
-  DailyOrder
-    .paginate({}, options)
-    .then(orders => {
-      //logger.trace(orders);
-      for (let order of orders.docs) {
-        order.createdAt_formatted = moment(order.createdAt).format('YYYY-MM-DD HH:mm:ss');
-        order.startDate_formatted = moment(order.startDate).format('YYYY-MM-DD');
-        order.endDate_formatted = moment(order.endDate).format('YYYY-MM-DD');        
-      }
-      res.render('cms-dailyOrders', {
-        orders: orders
-      });
-    })
-    .catch(err => {
-      res.render('error', {
-        error: err,
-        message: err.message,
-        stack: err.stack
-      });
+  (async function() {
+    let query = {};
+
+    let keyword = req.query.keyword;
+    if (keyword) {
+      query['$or'] = [
+        {name: keyword},
+        {mobile: keyword},
+        {_id: Number(keyword)}
+      ];
+    }
+
+    let options = {
+      page: page,
+      limit: 10,
+      lean: true,
+      sort: [['createdAt', -1]],
+      populate: ['daily']
+    };
+
+    let orders = await DailyOrder.paginate(query, options);
+
+    for (let order of orders.docs) {
+      order.createdAt_formatted = moment(order.createdAt).format('YYYY-MM-DD HH:mm:ss');
+      order.startDate_formatted = moment(order.startDate).format('YYYY-MM-DD');
+      order.endDate_formatted = moment(order.endDate).format('YYYY-MM-DD');
+    }
+    res.render('cms-dailyOrders', {
+      orders: orders
     });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
 });
 
 router.post('/orders/apartment/confirm/:id', (req, res, next) => {
@@ -251,6 +270,96 @@ router.post('/orders/daily/cancel/:id', (req, res, next) => {
   }); 
 });
 
+router.post('/apartment/rent/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  const apartmentId = req.params.id;
+  Apartment.findByIdAndUpdate(apartmentId, {leased: true}, function(err, daily) {
+    if (err) {
+      res.json({error: err.message});
+    } else {
+      res.json({daily: daily});
+    }
+  });
+});
+
+router.post('/apartment/available/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  const apartmentId = req.params.id;
+  Apartment.findByIdAndUpdate(apartmentId, {leased: false}, function(err, daily) {
+    if (err) {
+      res.json({error: err.message});
+    } else {
+      res.json({daily: daily});
+    }
+  });
+});
+
+router.post('/apartment/recommend/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  const apartmentId = req.params.id;
+  Apartment.findByIdAndUpdate(apartmentId, {isHot: true}, function(err, daily) {
+    if (err) {
+      res.json({error: err.message});
+    } else {
+      res.json({daily: daily});
+    }
+  });
+});
+
+router.post('/apartment/unrecommend/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  const apartmentId = req.params.id;
+  Apartment.findByIdAndUpdate(apartmentId, {isHot: false}, function(err, daily) {
+    if (err) {
+      res.json({error: err.message});
+    } else {
+      res.json({daily: daily});
+    }
+  });
+});
+
+router.post('/daily/rent/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  const dailyId = req.params.id;
+  DailyRent.findByIdAndUpdate(dailyId, {isRenting: false}, function(err, daily) {
+    if (err) {
+      res.json({error: err.message});
+    } else {
+      res.json({daily: daily});
+    }
+  });
+});
+
+router.post('/daily/available/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  const dailyId = req.params.id;
+  DailyRent.findByIdAndUpdate(dailyId, {isRenting: true}, function(err, daily) {
+    if (err) {
+      res.json({error: err.message});
+    } else {
+      res.json({daily: daily});
+    }
+  });
+});
+
 router.get('/apartments', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
     return res.redirect('/user/login');
@@ -261,7 +370,7 @@ router.get('/apartments', (req, res, next) => {
 
   let options = {
     page: page,
-    limit: 8,
+    limit: 10,
     lean: true,
     populate: ['comunity', 'commerseArea', 'district', 'apartmentType']
   };
@@ -292,7 +401,7 @@ router.get('/communities', (req, res, next) => {
 
   let options = {
     page: page,
-    limit: 8,
+    limit: 10,
     lean: true,
     populate: ['commerseArea', 'district']
   };
@@ -323,7 +432,7 @@ router.get('/dailies', (req, res, next) => {
 
   let options = {
     page: page,
-    limit: 8,
+    limit: 10,
     lean: true,
     populate: ['comunity', 'commerseArea', 'district']
   };

@@ -67,6 +67,7 @@ $(document).ready(function(){
                 <th>订单编号</th>
                 <th>订单创建时间</th>
                 <th>预定内容</th>
+                <th>房间编号</th>
                 
                 <th>时间</th>
                 <th>预订人姓名</th>
@@ -82,7 +83,8 @@ $(document).ready(function(){
                 <tr>
                     <td><%= val._id %></td>
                     <td><%= val.createdAt_formatted %></td>
-                    <td><%= val.apartment.apartmentType.name %> | <%= val.apartment.contactNo %></td>
+                    <td><%= val.apartment.apartmentType.name %></td>
+                    <td><%= val.apartment.contactNo %></td>
                     <td><%= val.date_formatted %></td>
                     <td><%= val.name %></td>
                     <td><%= val.mobile %></td>

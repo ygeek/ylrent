@@ -63,15 +63,12 @@ $(document).ready(function(){
             <thead>
             <tr>
 
-                <th>小区</th>
-                <th>房号</th>
                 <th>房型</th>
-                
-                <th>面积</th>
+                <th>小区</th>
+
+                <th>宜居人数</th>
                 <th>租金</th>
-                <th>是否推荐</th>
-              
-               
+
                 <th>已租</th>
                 <th>操作</th>
             </tr>
@@ -79,16 +76,13 @@ $(document).ready(function(){
             <tbody>
             <% dailies.docs.forEach(function(val){  %>
                 <tr>
-
+                    <td><%= val.name %></td>
                     <td><%= val.comunity.name %></td>
-                    <td><%= val.houseNo %></td>
-                    <td><%= val.houseNo %></td>
-                    <td><%= val.area %>平米</td>
+                    <td><%= val.capacityMin %>-<%= val.capacityMax %>人</td>
                     <td><%= val.price %>元</td>
-                    <td><% if(val.isHot){ %>是<% }else{ %>否<% } %></td>
-                 
-                    <td><% if(!val.leased){ %>未租<% }else{ %>已租<% } %></td>
-                    <td><a href="#" class="tablelink">确认</a>  |   <a href="#" class="tablelink"> 取消</a></td>
+
+                    <td><% if(!val.leased){ %>可出租<% }else{ %>已下架<% } %></td>
+                    <td><a href="#" class="tablelink">出租</a>  | <a href="#" class="tablelink">下架</a></td>
                 </tr> 
              <% }) ; %>   
 

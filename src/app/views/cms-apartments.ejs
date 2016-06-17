@@ -66,12 +66,12 @@ $(document).ready(function(){
                 <th>小区</th>
                 <th>房号</th>
                 <th>房型</th>
-                
+                <th>编号</th>
+
                 <th>面积</th>
                 <th>租金</th>
                 <th>是否推荐</th>
               
-               
                 <th>已租</th>
                 <th>操作</th>
             </tr>
@@ -82,7 +82,8 @@ $(document).ready(function(){
 
                     <td><%= val.comunity.name %></td>
                     <td><%= val.houseNo %></td>
-                    <td><%= val.houseNo %></td>
+                    <td><%= val.apartmentType.roomType.shi %>室<%= val.apartmentType.roomType.ting %>厅<%= val.apartmentType.roomType.wei %>卫</td>
+                    <td><%= val.contactNo %></td>
                     <td><%= val.area %>平米</td>
                     <td><%= val.price %>元</td>
                     <td><% if(val.isHot){ %>是<% }else{ %>否<% } %></td>
