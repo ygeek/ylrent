@@ -53,9 +53,9 @@ $(document).ready(function(){
           
             </ul>
             <ul class="seachform">
-                <form name="sousuo" action="/cms/orders/apartment" method="get" />
+                <form name="sousuo" action="/cms/daily/list" method="get" />
                 <li><input name="search" placeholder="小区" type="text" class="scinput" /></li>
-                <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
+                <li><label>&nbsp;</label><input name="submit" type="submit" class="scbtn" value="查询"/></li>
                 </form>
             </ul>
         </div>
@@ -82,7 +82,7 @@ $(document).ready(function(){
                     <td><%= val.price %>元</td>
 
                     <td><% if(!val.leased){ %>可出租<% }else{ %>已下架<% } %></td>
-                    <td><a href="#" class="tablelink">出租</a>  | <a href="#" class="tablelink">下架</a></td>
+                    <td><a href="/cms/daily/<%= val._id %>" class="tablelink">修改</a></td>
                 </tr> 
              <% }) ; %>   
 
