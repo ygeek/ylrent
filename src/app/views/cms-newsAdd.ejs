@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/files/cms/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
+</head>
+
+<body>
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">表单</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+    <form action="/cms/news" class="subform"  method="post">
+
+    <ul class="forminfo">
+        <li><label>小区</label><input name="name" datatype="*"  type="text" class="dfinput" /><i>标题不能超过30个字符</i></li>
+        <li><label>商圈</label><input name="commerseArea"  datatype="*"   type="text" class="dfinput" /></li>
+        <li><label>行政区</label><input name="district"  datatype="*"   type="text" class="dfinput" value="" /></li>
+        <li><label>是否推荐</label><cite><input name="isHot"  datatype="*"  type="radio" value="true"  /> 是&nbsp;&nbsp;&nbsp;&nbsp;<input name="isHot" type="radio" value="false"  /> 否</cite></li>
+        <li><label>关键字</label><input name="keywords"  datatype="*"   type="text" class="dfinput" /><i>多个关键字用,隔开</i></li>
+        <li><label>上传图片</label><input name="" type="text" class="dfinput" /><i>多个关键字用,隔开</i></li>
+        <li><label>描述</label><textarea name="desc"  datatype="*"   cols="" rows="" class="textinput"></textarea></li>
+        <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+    </ul>
+    </form>
+    
+    </div>
+
+
+</body>
+<script>
+$.Tipmsg.r=null;
+		
+var showmsg=function(msg){
+        alert(msg);
+}
+
+$(".subform").Validform({
+        tiptype:function(msg,o,cssctl){
+                if(!o.obj.is("form")){
+                        showmsg(msg);
+                }
+
+        },
+        tipSweep:true,
+        ajaxPost:true,
+        beforeSubmit: function(form) {
+               
+                return true;
+        },
+        callback:function(data){
+                console.log(data.msg);
+                if(data.code!=0)  //验证失败
+                {
+                        alert(data.msg) ;
+
+                }
+                else
+                {
+                       location.href='/cms/communities';
+                }
+              
+        }
+});
+</script>
+</html>
+
+
+
+
