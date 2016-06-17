@@ -29,9 +29,13 @@ router.get('/apartment', (req, res, next) => {
     if (keyword) {
       query['$or'] = [
         {'name': keyword},
-        {'mobile': keyword},
-        {'_id': Number(keyword)}
+        {'mobile': keyword}
       ];
+      
+      let id = Number(keyword);
+      if (id && !isNaN(id)) {
+        query['$or'].push(id);
+      }
     }
 
     let options = {
@@ -78,9 +82,13 @@ router.get('/daily', (req, res, next) => {
     if (keyword) {
       query['$or'] = [
         {name: keyword},
-        {mobile: keyword},
-        {_id: Number(keyword)}
+        {mobile: keyword}
       ];
+
+      let id = Number(keyword);
+      if (id && !isNaN(id)) {
+        query['$or'].push(id);
+      }
     }
 
     let options = {

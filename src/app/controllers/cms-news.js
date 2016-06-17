@@ -78,4 +78,24 @@ router.post('/', (req, res, next) => {
   });
 });
 
+router.post('/delete/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  const newsId = req.params.id;
+
+  News.findByIdAndRemove(newsId, function(err, news) {
+    if (err) {
+      res.json({
+        error: err.message
+      });
+    } else {
+      res.json({
+        news: news
+      });
+    }
+  });
+});
+
 module.exports = router;
