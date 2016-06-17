@@ -2,6 +2,8 @@
  * Created by meng on 16/6/17.
  */
 
+"use strict";
+
 import express from 'express';
 import mongoose from 'mongoose';
 
@@ -40,6 +42,10 @@ router.get('/', (req, res, next) => {
         stack: err.stack
       });
     });
+});
+
+router.get('/add', (req, res, next) => {
+  res.render('cms-newsAdd', {});
 });
 
 router.post('/', (req, res, next) => {
