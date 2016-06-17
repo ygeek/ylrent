@@ -1,3 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/files/cms/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
+
+</head>
+
+<body>
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+  
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+    <form action="" class="subform"  method="post">
+
+    <ul class="forminfo">
+        <li><label>名称</label><input name="villageName" value="<%= apartment.villageName %>" datatype="*" sucmsg=" "  type="text" class="dfinput" /><i class="Validform_checktip">标题不能超过30个字符</i></li>
+        <li><label>房号</label><input name="houseno"  value="<%= apartment.houseno %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>编号</label><input name="contractno"  value="<%= apartment.contractno %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+       
+        <li><label>面积</label><input name="structurearea"  value="<%= apartment.structurearea %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>租金</label><input name="rentPerMonth"  value="<%= apartment.rentPerMonth %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+      
+        <li><label>地址</label><input name="address"  value="<%= apartment.address %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>关键词</label><input name="keywords"  value="<%= apartment.keywords %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
+        <input name="id" value="<%= apartment._id %>" type="hidden" />
+        <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+    </ul>
+    </form>
+    
+    </div>
+
+
+</body>
+<script>
+$.Tipmsg.r=null;
+		
+
+$(function(){
+    $(".subform").Validform({
+        tiptype:function(msg,o,cssctl){
+                if(!o.obj.is("form")){//验证表单元素时o.obj为该表单元素，全部验证通过提交表单时o.obj为该表单对象;
+                        var objtip=o.obj.siblings(".Validform_checktip");
+                        cssctl(objtip,o.type);
+                        objtip.text(msg);
+                }
+        },
+        ajaxPost:true,
+        beforeSubmit: function(form) {
+               
+                return true;
+        },
+        callback:function(data){
+                console.log(data);
+                
+                location.href='/cms/apartment/list';
+              
+        }
+    });
+});
+
+
+
+</script>
+</html>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -49,7 +49,7 @@ $(document).ready(function(){
         <div class="tools">
 
             <ul class="toolbar">
-                <li class="click"><span><img src="/files/cms/images/t01.png" /></span>添加房源</li>
+                <li class="click"><a href="/cms/daily/add"><span><img src="/files/cms/images/t01.png" /></span>添加房源</a></li>
           
             </ul>
             <ul class="seachform">
@@ -82,7 +82,7 @@ $(document).ready(function(){
                     <td><%= val.price %>元</td>
 
                     <td><% if(!val.leased){ %>可出租<% }else{ %>已下架<% } %></td>
-                    <td><a href="/cms/daily/<%= val._id %>" class="tablelink">修改</a></td>
+                    <td><a href="/cms/daily/update/<%= val._id %>" class="tablelink">修改</a></td>
                 </tr> 
              <% }) ; %>   
 

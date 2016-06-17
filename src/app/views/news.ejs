@@ -47,7 +47,7 @@
       </div>
   </div>
       
-     <div class="n_news_main_r">
+        <div class="n_news_main_r">
             <!-- 代码 开始 -->
             <div id="fsD1" class="focus" style="width:368px; height:288px;">  
                 <div id="D1pic1" class="fPic">
@@ -60,18 +60,19 @@
                     <% } %>
                 </div>
                 <div class="fbg">  
-                <div class="D1fBt" id="D1fBt">
-                    <% for (var i = 0; i < 3 && i < latestNews.length; i++) { %>
-                        <a href="javascript:void(0)" hidefocus="true" target="_self" class="<% if (i == 0) { %>current"<% } %>>
-                            <i><%= i + 1 %></i>
-                        </a>
-                    <% } %>
-                </div>
+                    <div class="D1fBt" id="D1fBt">
+                        <% for (var i = 0; i < 3 && i < latestNews.length; i++) { %>
+                            <a href="javascript:void(0)" hidefocus="true" target="_self" class="<% if (i == 0) { %>current"<% } %>>
+                                <i><%= i + 1 %></i>
+                            </a>
+                        <% } %>
+                    </div>
                 </div>  
                 <span class="prev"></span>   
                 <span class="next"></span>    
-            </div>  
-    <script type="text/javascript">
+            </div> 
+        </div>
+     <script type="text/javascript">
             Qfast.add('widgets', { path: "/files/js/terminator2.2.min.js", type: "js", requires: ['fx'] });  
             Qfast(false, 'widgets', function () {
                     K.tabs({
@@ -89,29 +90,26 @@
                     }) 
             })  
     </script>
+</div>
 <!-- 代码 结束 -->
 <div class="clear"></div>
       <div class="remenfangy">
             <h1>热门房源</h1>
-          <% apartmentTypes.forEach(function(val) { %>
-              <a href="/apartment/type/<%= val._id %>">
-                  <img class="imghover"
-                          <% if (val.imagekeys[0]) { %>
+            <% apartmentTypes.forEach(function(val) { %>
+                <a href="/apartment/type/<%= val._id %>">
+                     <img <% if (val.imagekeys[0]) { %>
                        src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
                           <% }else{ %>
                        src="/img/default.jpg"
-                          <% } %>
-                  />
-                  <h2><span><%= val.name %><br><%= val.comunity.address %></span></h2>
-              </a>
-              <p>
-                  <span><%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫 | <%= val.maxArea %>平米</span>
-                  <em>￥<%= val.minPrice %> / 月</em>
-              </p>
-              <div class="clear"></div>
-          <% }) %>
-      </div>
-      </div>
+                          <% } %> width="328" height="156" />
+                     <h2><span><%= val.name %></span></h2>
+                </a>
+                 <p><span><%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫 | <%= val.maxArea %>平米</span>
+                  <em>￥<%= val.minPrice %> / 月</em></p>
+                 <div class="clear"></div> 
+             <% }) %>
+        </div>
+    </div>
      <div class="clear"></div>
 </div>
 <% include footer.ejs %>
