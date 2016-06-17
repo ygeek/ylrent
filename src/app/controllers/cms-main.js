@@ -6,6 +6,7 @@
 
 import express from 'express';
 import log4js from 'log4js';
+import { uptoken } from '../utils/qiniu';
 
 const logger = log4js.getLogger('normal');
 logger.trace('debug');
@@ -44,6 +45,16 @@ router.get('/index', (req, res, next) => {
   }
   
   res.render('cms-index', {});
+});
+
+router.get('/uptoken', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+  
+  res.json({
+    token: uptoken()
+  });
 });
 
 module.exports = router;
