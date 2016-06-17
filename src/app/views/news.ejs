@@ -23,14 +23,18 @@
       <div class="n_news_main_m" >
         <div class="title01">
             <h1><%= news.title %></h1>
-            <p>来源：<%= news.source %>  作者：<%= news.author %>  <%= news.date %></p>
+            <p>来源：<%= news.source %>  作者：<%= news.author %>  <%= news.date_formatted %></p>
         </div>
         <div class="n_news_main_m01">
             <%= news.content %>
         </div>
         <div class="next">
-            <p>上一篇：<a href="/news/<%= prevNews._id %>">上一篇</a></p>
-            <p>下一篇：<a href="/news/<%= nextNews._id %>">下一篇</a></p>
+            <% if (prevNews.length > 0) { %>
+                <p>上一篇：<a href="/news/<%= prevNews[0]._id %>"><%= prevNews[0].title %></a></p>
+            <% } %>
+            <% if (nextNews.length > 0) { %>
+                <p>下一篇：<a href="/news/<%= nextNews[0]._id %>"><%= nextNews[0].title %></a></p>
+            <% } %>
         </div>
         <div class="xianguan">
              <h1>相关资讯</h1>

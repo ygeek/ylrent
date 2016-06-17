@@ -5,6 +5,7 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import moment from 'moment';
 
 const News = mongoose.model('News');
 const ApartmentType = mongoose.model('ApartmentType');
@@ -73,22 +74,35 @@ router.get('/:id', (req, res, next) => {
       .limit(1)
       .sort('date')
       .exec();
+
+    let apartmentPromise =
+      ApartmentType
+        .find({'$where': 'this.imagekeys.length > 1'})
+        .limit(6)
+        .sort('-isHot')
+        .populate('comunity commerseArea district')
+        .exec();
     
     let [
       latestNews,
       prevNews,
-      nextNews
+      nextNews,
+      apartmentTypes
     ] = await Promise.all([
       latestNewsPromise,
       prevNewsPromise,
-      nextNewsPromise
+      nextNewsPromise,
+      apartmentPromise
     ]);
+    
+    news.date_formatted = moment(news.date).format('YYYY-MM-DD HH:mm:ss');
     
     res.render('news', {
       news: news,
       prevNews: prevNews,
       nextNews: nextNews,
-      latestNews: latestNews
+      latestNews: latestNews,
+      apartmentTypes: apartmentTypes
     });
   })().catch(function(err) {
     res.render('error', {
