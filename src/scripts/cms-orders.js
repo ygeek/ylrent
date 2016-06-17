@@ -9,7 +9,7 @@ $(function() {
     let orderId = $(this).attr('data-id');
     $.post('/cms/orders/daily/confirm/' + orderId, {}, function(result) {
       if (result.error) {
-        $.flash(result.error);
+        $.flash(result.error.message);
       } else {
         $('#status-' + orderId).text(result.order.status);
       }
@@ -20,7 +20,7 @@ $(function() {
     let orderId = $(this).attr('data-id');
     $.post('/cms/orders/daily/cancel/' + orderId, {}, function(result) {
       if (result.error) {
-        $.flash(result.error);
+        $.flash(result.error.message);
       } else {
         $('#status-' + orderId).text(result.order.status);
       }
@@ -31,7 +31,7 @@ $(function() {
     let orderId = $(this).attr('data-id');
     $.post('/cms/orders/apartment/confirm/' + orderId, {}, function(result) {
       if (result.error) {
-        $.flash(result.error);
+        $.flash(result.error.message);
       } else {
         $('#status-' + orderId).text(result.order.status);
       }
@@ -42,7 +42,7 @@ $(function() {
     let orderId = $(this).attr('data-id');
     $.post('/cms/orders/apartment/cancel/' + orderId, {}, function(result) {
       if (result.error) {
-        $.flash(result.error);
+        $.flash(result.error.message);
       } else {
         $('#status-' + orderId).text(result.order.status);
       }
