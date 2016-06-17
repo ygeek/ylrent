@@ -8,6 +8,7 @@
 <script type="text/javascript" src="/files/cms/js/jquery.js"></script>
 <script type="text/javascript" src="/files/cms/js/select-ui.min.js"></script>
 <script type="text/javascript" src="/files/lib/laypage/laypage.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
   $(".click").click(function(){
@@ -71,6 +72,7 @@ $(document).ready(function(){
                 <th>离店时间</th>
                 <th>预订人姓名</th>
                 <th>预订人电话</th>
+                <th>备注</th>
                
                 <th>状态</th>
                 <th>操作</th>
@@ -79,29 +81,28 @@ $(document).ready(function(){
             <tbody>
             <% orders.docs.forEach(function(val){  %>
                 <tr>
-
-                    <td>20130908</td>
+                    <td><%= val._id %></td>
                     <td><%= val.createdAt_formatted %></td>
-                    <td><%= val.comment %></td>
-                    <td><%= val.date_formatted %></td>
-                    <td><%= val.date_formatted %></td>
+                    <td><%= val.daily.name %></td>
+                    <td><%= val.startDate_formatted %></td>
+                    <td><%= val.endDate_formatted %></td>
                     <td><%= val.name %></td>
                     <td><%= val.mobile %></td>
-                    <td><%= val.status %></td>
-                    <td><a href="#" class="tablelink">确认</a>  |   <a href="#" class="tablelink"> 取消</a></td>
+                    <td><%= val.comment %></td>
+                    <td id="status-<%= val._id %>"><%= val.status %></td>
+                    <td>
+                        <a href="javascript:void(0)" data-id="<%= val._id %>" class="tablelink cms-daily-order-confirm">确认</a>
+                        |
+                        <a href="javascript:void(0)" data-id="<%= val._id %>" class="tablelink cms-daily-order-cancel">取消</a></td>
                 </tr> 
              <% }) ; %>   
-
             </tbody>
         </table>
-
 
         <div class="pagin" id="page11">
            
         </div>
 
-
-        
     </div>
     
 <script type="text/javascript">
@@ -121,6 +122,13 @@ $(document).ready(function(){
     });
 
 </script>
+
+<link type="text/css" rel="stylesheet" href="/files/lib/jqueryflash/jquery.flash.css" />
+<script type="text/javascript" src="/files/lib/jqueryflash/jquery.flash.js"></script>
+<script type="text/javascript" src="/files/lib/jquery.loading.min.js"></script>
+<link type="text/css" rel="stylesheet" href="/files/lib/jquery.loading.min.css" />
+
+<script type="text/javascript" src="/js/cms-orders.js"></script>
 
 </body>
 

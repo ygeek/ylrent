@@ -50,7 +50,7 @@ router.get('/orders', (req, res, next) => {
     
     for (let order of apartmentOrders) {
       order.createdAt_formatted = moment(order.createdAt).format('YYYY-MM-DD HH:mm:ss');
-      order.date_formatted = moment(order.date).format('YYYY-MM-DD');
+      order.date_formatted = moment(order.date).format('YYYY-MM-DD HH:mm:ss');
     }
 
     for (let order of dailyOrders) {

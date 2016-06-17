@@ -11,8 +11,8 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 export const OrderStatus = {
   INITIAL: '待确认',
-  PROCESSING: '处理中',
-  CLOSED: '已完成' 
+  CONFIRMED: '已确认',
+  CANCELLED: '已取消'
 };
 
 const ApartmentOrderSchema = new mongoose.Schema({
