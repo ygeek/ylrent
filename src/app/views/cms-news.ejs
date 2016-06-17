@@ -40,7 +40,7 @@ $(document).ready(function(){
     <ul class="placeul">
     <li><a href="#">首页</a></li>
     <li><a href="#">数据表</a></li>
-    <li><a href="#">基本内容</a></li>
+  
     </ul>
     </div>
     
@@ -77,7 +77,7 @@ $(document).ready(function(){
             <td><%= val.author %></td>
             <td><%= val.date %></td>
             <td>
-                <a href="#" class="tablelink">查看</a>
+                <a href="/news/<%= val._id %>" target="_parent" class="tablelink">查看</a>
                 |
                 <a href="#" class="tablelink">删除</a>
             </td>
@@ -87,14 +87,27 @@ $(document).ready(function(){
         </tbody>
     </table>
 
-    <div class="pagin">
-
+    <div class="pagin" id="page11">
+           
     </div>
 
     </div>
     
     <script type="text/javascript">
 	$('.tablelist tbody tr:odd').addClass('odd');
+        laypage({
+            cont: 'page11',
+            pages: '<%= newsList.pages %>',
+            curr: function(){ //通过url获取当前页，也可以同上（pages）方式获取
+                var page = location.search.match(/page=(\d+)/);
+                return page ? page[1] : 1;
+            }(), 
+            jump: function(e, first){ //触发分页后的回调
+                if(!first){ //一定要加此判断，否则初始时会无限刷新
+                    location.href = '?page='+e.curr;
+                }
+            }
+        });
 </script>
 
 </body>

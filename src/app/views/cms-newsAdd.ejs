@@ -6,6 +6,7 @@
 <link href="/files/cms/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
+
 </head>
 
 <body>
@@ -24,13 +25,12 @@
     <form action="/cms/news" class="subform"  method="post">
 
     <ul class="forminfo">
-        <li><label>小区</label><input name="name" datatype="*"  type="text" class="dfinput" /><i>标题不能超过30个字符</i></li>
-        <li><label>商圈</label><input name="commerseArea"  datatype="*"   type="text" class="dfinput" /></li>
-        <li><label>行政区</label><input name="district"  datatype="*"   type="text" class="dfinput" value="" /></li>
-        <li><label>是否推荐</label><cite><input name="isHot"  datatype="*"  type="radio" value="true"  /> 是&nbsp;&nbsp;&nbsp;&nbsp;<input name="isHot" type="radio" value="false"  /> 否</cite></li>
-        <li><label>关键字</label><input name="keywords"  datatype="*"   type="text" class="dfinput" /><i>多个关键字用,隔开</i></li>
-        <li><label>上传图片</label><input name="" type="text" class="dfinput" /><i>多个关键字用,隔开</i></li>
-        <li><label>描述</label><textarea name="desc"  datatype="*"   cols="" rows="" class="textinput"></textarea></li>
+        <li><label>新闻标题</label><input name="title" datatype="*" sucmsg=" "  type="text" class="dfinput" /><i class="Validform_checktip">标题不能超过30个字符</i></li>
+        <li><label>来源</label><input name="source"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>作者</label><input name="author"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+       
+        <li><label>内容</label><textarea name="desc"  datatype="*"  sucmsg=" "  cols="" rows="" class="textinput"></textarea><i  class="Validform_checktip"></i></li>
+        <li><label>作者</label><input name="images"   type="text"  class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
         <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
     </ul>
     </form>
@@ -42,37 +42,40 @@
 <script>
 $.Tipmsg.r=null;
 		
-var showmsg=function(msg){
-        alert(msg);
-}
 
-$(".subform").Validform({
+$(function(){
+    $(".subform").Validform({
         tiptype:function(msg,o,cssctl){
-                if(!o.obj.is("form")){
-                        showmsg(msg);
+                if(!o.obj.is("form")){//验证表单元素时o.obj为该表单元素，全部验证通过提交表单时o.obj为该表单对象;
+                        var objtip=o.obj.siblings(".Validform_checktip");
+                        cssctl(objtip,o.type);
+                        objtip.text(msg);
                 }
-
         },
-        tipSweep:true,
         ajaxPost:true,
         beforeSubmit: function(form) {
                
                 return true;
         },
         callback:function(data){
-                console.log(data.msg);
-                if(data.code!=0)  //验证失败
+                console.log(data);
+                /*if(data.code!=0)  //验证失败
                 {
                         alert(data.msg) ;
 
                 }
                 else
                 {
-                       location.href='/cms/communities';
-                }
+                       location.href='/cms/news';
+                }*/
+                location.href='/cms/news';
               
         }
+    });
 });
+
+
+
 </script>
 </html>
 
