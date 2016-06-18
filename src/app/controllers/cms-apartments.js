@@ -6,12 +6,15 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import log4js from 'log4js';
 import { importApartment, updateApartment, importApartmentType } from '../utils/importer';
 
 const Apartment = mongoose.model('Apartment');
 const District = mongoose.model('District');
 const CommerseArea = mongoose.model('CommerseArea');
 const Comunity = mongoose.model('Comunity');
+
+let logger = log4js.getLogger('normal');
 
 const router = express.Router();
 
@@ -116,6 +119,7 @@ router.post('/add', (req, res, next) => {
   }
   
   let apartmentObj = req.body;
+  apartmentObj.imagekeys = apartmentObj.imagekeys.split(/\s+/);
   
   Promise.all([
     importApartmentType(apartmentObj),
@@ -126,6 +130,7 @@ router.post('/add', (req, res, next) => {
       apartment: apartment
     });
   }).catch(err => {
+    logger.error('add apartment error: ', err);
     res.json({error: err.message});
   });
 });

@@ -150,6 +150,7 @@ router.post('/add', (req, res, next) => {
   }
 
   let dailyObj = req.body;
+  dailyObj.imagekeys = dailyObj.imagekeys.split(/\s+/);
 
   importDailyRent(dailyObj).then(daily => {
     res.json({ daily: daily });

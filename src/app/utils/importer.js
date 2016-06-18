@@ -157,6 +157,8 @@ export async function updateComunity(comunityId, comunityObj) {
 }
 
 export async function importApartmentType(apartmentObj) {
+  logger.info('import apartment type with apartment obj: ', apartmentObj);
+
   const Comunity = mongoose.model('Comunity');
   const ApartmentType = mongoose.model('ApartmentType');
   let comunity = await Comunity
@@ -220,6 +222,8 @@ export async function importApartmentType(apartmentObj) {
 }
 
 export async function importApartment(apartmentObj) {
+  logger.info('import apartment obj: ', apartmentObj);
+  
   const ApartmentType = mongoose.model('ApartmentType');
   const Apartment = mongoose.model('Apartment');
   
