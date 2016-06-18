@@ -53,8 +53,8 @@ $(document).ready(function(){
           
             </ul>
             <ul class="seachform">
-                <form name="sousuo" action="/cms/daily/list" method="get" />
-                <li><input name="search" placeholder="小区"  value="<%= keyword %>"  type="text" class="scinput" /></li>
+                <form name="sousuo" action="" method="get" />
+                <li><input name="keyword" placeholder="小区"  value="<%= keyword %>"  type="text" class="scinput" /></li>
                 <li><label>&nbsp;</label><input name="submit" type="submit" class="scbtn" value="查询"/></li>
                 </form>
             </ul>
@@ -82,7 +82,7 @@ $(document).ready(function(){
                     <td><%= val.price %>元</td>
 
                     <td><% if(!val.leased){ %>可出租<% }else{ %>已下架<% } %></td>
-                    <td><a href="/cms/daily/update/<%= val._id %>" class="tablelink">修改</a></td>
+                    <td><a href="/cms/daily/update/<%= val._id %>" class="tablelink">修改</a> | <a href="javascript:delNews('<%= val._id %>')" class="tablelink">删除</a></td>
                 </tr> 
              <% }) ; %>   
 
@@ -113,7 +113,12 @@ $(document).ready(function(){
             }
         }
     });
-
+function delNews(id)
+{
+    $.post("/cms/daily/delete/"+id, function(data){
+              location.href=location.href;
+          });
+}
 </script>
 
 </body>

@@ -25,13 +25,13 @@
     
     <div class="formtitle"><span>基本信息</span></div>
     <form action="/cms/community/add" class="subform"  method="post">
-
+<%= JSON.stringify(comunity) %>
     <ul class="forminfo">
-        <li><label>小区</label><input name="villageName"  sucmsg=" "  datatype="*" value="" type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>小区</label><input name="villageName"  sucmsg=" "  datatype="*" value="<%= comunity.name %>" type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
         <li style="z-index:9999999;"><label>行政区</label>
             <select name="DistrictName" class="xingzhengqu" >
              <% districts.forEach(function(val){  %>
-            <option value="<%= val.name %>"  ><%= val.name %></option>
+            <option value="<%= val.name %>" <% if(comunity.district==val.name){ %>selected<% } %> ><%= val.name %></option>
             <% }) %>
            
           </select>
@@ -42,13 +42,13 @@
           </script>
         </li>
         
-        <li><label>地址</label><input name="address" datatype="*"  value="" type="text" class="dfinput"  /><i  class="Validform_checktip"></i></li>
-        <li><label>经度</label><input name="lat" datatype="*"  value="" type="text" class="dfinput"  /><i  class="Validform_checktip"></i></li>
-        <li><label>纬度</label><input name="lon" datatype="*"  value="" type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>地址</label><input name="address" datatype="*"  value="<%= comunity.address %>"  type="text" class="dfinput"  /><i  class="Validform_checktip"></i></li>
+        <li><label>经度</label><input name="lat" datatype="*"  value="<%= comunity.latitude %>" type="text" class="dfinput"  /><i  class="Validform_checktip"></i></li>
+        <li><label>纬度</label><input name="lon" datatype="*"  value="<%= comunity.longitude %>" type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
         <li><label>商圈</label>
             <select name="CBDName" class="shangquan" >
              <% commerseAreas.forEach(function(val){  %>
-            <option value="<%= val.name %>"  ><%= val.name %></option>
+            <option value="<%= val.name %>" <% if(comunity.commerseArea==val.name){ %>selected<% } %>  ><%= val.name %></option>
             <% }) %>
            
           </select>
@@ -58,10 +58,10 @@
                   });
           </script>
         </li>
-        <li><label>描述</label><textarea name="desc" sucmsg=" "  datatype="*"   cols="" rows="" class="textinput"></textarea><i  class="Validform_checktip"></i></li>
+        <li><label>描述</label><textarea name="desc" sucmsg=" " value="<%= comunity.desc %>"  datatype="*"   cols="" rows="" class="textinput"></textarea><i  class="Validform_checktip"></i></li>
         <li><label>是否推荐</label><cite><input name="isHot"  sucmsg=" "   datatype="*"  type="radio" value="true"  />是&nbsp;&nbsp;&nbsp;&nbsp;<input name="isHot" type="radio" value="false"  />否</cite><i  class="Validform_checktip"></i></li>
-        <li><label>关键字</label><input name="keywords"  sucmsg=" "   datatype="*"  value="" type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>图片</label><input name="imagekeys" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
+        <li><label>关键字</label><input name="keywords" value="<%= comunity.keywords %>"  sucmsg=" "   datatype="*"  value="" type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>图片</label><input name="imagekeys" value="<%= comunity.imagekeys %>" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
         <li id="container"></li>
         <li><label>&nbsp;</label><span class="imgs"></span></li>
         <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>

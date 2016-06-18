@@ -135,7 +135,7 @@ router.get('/update/:id', (req, res, next) => {
       .exec();
     res.render('cms-communityUpdate', {
       comunity: comunity,
-      district: districts,
+      districts: districts,
       commerseAreas: commerseAreas
     });
   })().catch(err => {

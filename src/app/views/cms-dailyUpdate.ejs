@@ -6,7 +6,9 @@
 <link href="/files/cms/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="/files/lib/select/jquery.searchableSelect.js"></script>
 
+<link href="/files/lib/select/jquery.searchableSelect.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -25,16 +27,30 @@
     <form action="" class="subform"  method="post">
 
     <ul class="forminfo">
-        <li><label>小区名称</label><input name="comunityName" value="<%= daily.comunityName %>" datatype="*" sucmsg=" "  type="text" class="dfinput" /><i class="Validform_checktip">标题不能超过30个字符</i></li>
-        <li><label>名称</label><input name="name"  value="<%= daily.name %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>最小</label><input name="capacityMin"  value="<%= daily.capacityMin %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+        <li><label>小区名称</label>
+            <select name="comunityName" >
+             <% communities.forEach(function(val){  %>
+            <option value="<%= val.name %>" <% if(daily.comunity.name==val.name){ %>selected<% } %>><%= val.name %></option>
+            <% }) %>
+           
+          </select>
+          <script>
+                  $(function(){
+                          $('select').searchableSelect();
+                  });
+          </script>
+        </li>
+        <li><label>房型</label><input name="name"  value="<%= daily.name %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>宜居人数</label><input name="capacityMin" style="width:100px;"  value="<%= daily.capacityMin %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /> - <input name="capacityMax"  value="<%= daily.capacityMax %>" style="width:100px;"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
        
-        <li><label>最大</label><input name="capacityMax"  value="<%= daily.capacityMax %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
         <li><label>租金</label><input name="price"  value="<%= daily.price %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
       
         <li><label>关键词</label><input name="keywords"  value="<%= daily.keywords %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
         <input name="commerseArea" value="<%= daily.commerseArea %>" type="hidden" />
         <input name="_id" value="<%= daily._id %>" type="hidden" />
+         <li><label>图片</label><input name="imagekeys" value="<%= daily.imagekeys %>" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
+        <li id="container"></li>
+        <li><label>&nbsp;</label><span class="imgs"></span></li>
         <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
     </ul>
     </form>
@@ -80,7 +96,11 @@ $(function(){
 
 </script>
 </html>
-
+<script type="text/javascript" src="/files/lib/plupload/moxie.js"></script>
+<script type="text/javascript" src="/files/lib/plupload/plupload.dev.js"></script>
+<script type="text/javascript" src="/files/lib/qiniu/qiniu.js"></script>
+<script type="text/javascript" src="/files/lib/laydate/layer.js"></script>
+<script type="text/javascript" src="/files/cms/js/upload.js"></script>
 
 <%= JSON.stringify(daily) %>
 
