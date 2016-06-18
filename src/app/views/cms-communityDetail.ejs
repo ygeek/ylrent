@@ -22,7 +22,6 @@
     
     <div class="formtitle"><span>基本信息</span></div>
     <form action="/cms/comunity/update/<%= community._id %>" class="subform"  method="post">
-
     <ul class="forminfo">
         <li><label>小区</label><input name="villageName" datatype="*" value="<%= community.name %>" type="text" class="dfinput" /><i>标题不能超过30个字符</i></li>
         <li><label>商圈</label><input name="CBDName"  datatype="*"  value="<%= community.commerseArea.name %>" type="text" class="dfinput" /></li>
