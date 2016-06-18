@@ -7,8 +7,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import moment from 'moment';
+import log4js from 'log4js';
 
 const News = mongoose.model('News');
+
+const logger = log4js.getLogger('normal');
 
 const router = express.Router();
 
@@ -72,6 +75,8 @@ router.post('/', (req, res, next) => {
   news.date = date;
   news.content = content;
   news.imagekey = imagekey;
+  
+  logger.trace('add news: ', news);
 
   news.save(function(err) {
     if (err) {

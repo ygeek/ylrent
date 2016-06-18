@@ -69,22 +69,25 @@ router.get('/detail/:id', (req, res, next) => {
 
   let apartmentId = req.params.id;
 
-  Apartment
-    .findById(apartmentId)
-    .populate('district commerseArea comunity apartmentType')
-    .exec()
-    .then(apartment => {
-      res.render('cms-apartmentDetail', {
-        apartment: apartment
-      });
-    })
-    .catch(err => {
-      res.render('error', {
-        error: err,
-        message: err.message,
-        stack: err.stack
-      });
+  (async function() {
+    let apartment = await Apartment
+      .findById(apartmentId)
+      .populate('district commerseArea comunity apartmentType')
+      .exec();
+    
+    let communities = await Comunity.find({}).exec();
+
+    res.render('cms-apartmentDetail', {
+      apartment: apartment,
+      communities: communities
     });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
 });
 
 router.get('/add', (req, res, next) => {
@@ -122,17 +125,21 @@ router.get('/update/:id', (req, res, next) => {
 
   const apartmentId = req.params.id;
   
-  Apartment
-    .findById(apartmentId)
-    .exec()
-    .then(apartment => {
-      res.render('cms-apartmentsUpdate', {
-        apartment: apartment
-      });
-    })
-    .catch(err => {
-      res.status(404);
+  (async function() {
+    let apartment = await Apartment
+      .findById(apartmentId)
+      .exec();
+
+    let communities = await Comunity.find({}).exec();
+    
+    res.render('cms-apartmentsUpdate', {
+      apartment: apartment,
+      communities: communities
     });
+    
+  })().catch(err => {
+    res.status(404);
+  });
 });
 
 router.post('/update/:id', (req, res, next) => {

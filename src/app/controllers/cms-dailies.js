@@ -72,23 +72,26 @@ router.get('/detail/:id', (req, res, next) => {
   }
 
   let dailyId = req.params.id;
+  
+  (async function() {
+    let daily = await DailyRent
+      .findById(dailyId)
+      .populate('district commerseArea comunity')
+      .exec();
 
-  DailyRent
-    .findById(dailyId)
-    .populate('district commerseArea comunity')
-    .exec()
-    .then(daily => {
-      res.render('cms-dailyDetail', {
-        daily: daily
-      });
-    })
-    .catch(err => {
-      res.render('error', {
-        error: err,
-        message: err.message,
-        stack: err.stack
-      });
+    let communities = await Comunity.find({}).exec();
+
+    res.render('cms-dailyDetail', {
+      daily: daily,
+      communities: communities
     });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
 });
 
 router.post('/rent/:id', (req, res, next) => {
@@ -125,8 +128,20 @@ router.get('/add', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
     return res.redirect('/user/login');
   }
+  
+  (async function() {
+    let communities = await Comunity.find({}).exec();
 
-  res.render('cms-dailyAdd', {});
+    res.render('cms-dailyAdd', {
+      communities: communities
+    });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
 });
 
 router.post('/add', (req, res, next) => {
@@ -149,18 +164,18 @@ router.get('/update/:id', (req, res, next) => {
   }
 
   const dailyId = req.params.id;
-
-  DailyRent
-    .findById(dailyId)
-    .exec()
-    .then(daily => {
-      res.render('cms-dailyUpdate', {
-        daily: daily
-      });
-    })
-    .catch(err => {
-      res.status(404);
+  
+  (async function() {
+    let daily = await DailyRent.findById(dailyId).exec();
+    let communities = await Comunity.find({}).exec();
+    
+    res.render('cms-dailyUpdate', {
+      daily: daily,
+      communities: communities
     });
+  })().catch(err => {
+    res.status(404);
+  });
 });
 
 router.post('/update/:id', (req, res, next) => {
