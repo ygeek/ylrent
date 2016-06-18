@@ -15,6 +15,7 @@ import expressFlash from 'express-flash';
 import autoIncrement from 'mongoose-auto-increment';
 import { setupAppLogger } from './app/utils/logger';
 import config from './config';
+import { localData } from './app/controllers/localData';
 
 // EXPRESS SET-UP
 // create app
@@ -48,6 +49,8 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
+
+app.use(localData);
 
 // setup logger
 setupAppLogger(app);

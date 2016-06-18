@@ -6,6 +6,7 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import _ from 'lodash';
 
 import { importComunity, updateComunity } from '../utils/importer';
 
@@ -109,8 +110,12 @@ router.post('/add', (req, res, next) => {
   }
 
   let communityObj = req.body;
-  communityObj.keywords = communityObj.keywords.split(/\s+/);
-  communityObj.imagekeys = communityObj.imagekeys.split(/\s+/);
+  communityObj.keywords = _.filter(communityObj.keywords.split(/\s+/), function(key) {
+    return key && key.length > 0;
+  });
+  communityObj.imagekeys = _.filter(communityObj.imagekeys.split(/\s+/), function(key) {
+    return key && key.length > 0;
+  });
 
   importComunity(communityObj).then(community => {
     res.json({ community: community });
