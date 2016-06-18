@@ -9,6 +9,8 @@ import mongoose from 'mongoose';
 
 import { importComunity, updateComunity } from '../utils/importer';
 
+const District = mongoose.model('District');
+const CommerseArea = mongoose.model('CommerseArea');
 const Comunity = mongoose.model('Comunity');
 
 const router = express.Router();
@@ -85,7 +87,20 @@ router.get('/add', (req, res, next) => {
     return res.redirect('/user/login');
   }
 
-  res.render('cms-communityAdd', {}); 
+  (async function() {
+    let districts = await District.find({}).exec();
+    let commerseAreas = await CommerseArea.find({}).populate('district').exec();
+    res.render('cms-communityAdd', {
+      districts: districts,
+      commerseAreas: commerseAreas
+    }); 
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
 });
 
 router.post('/add', (req, res, next) => {
@@ -110,19 +125,22 @@ router.get('/update/:id', (req, res, next) => {
   }
 
   const communityId = req.params.id;
-
-  Comunity
-    .findById(communityId)
-    .populate('district commerseArea')
-    .exec()
-    .then(community => {
-      res.render('cms-communityUpdate', {
-        comunity: community
-      });
-    })
-    .catch(err => {
-      res.status(404);
+  
+  (async function() {
+    let districts = await District.find({}).exec();
+    let commerseAreas = await CommerseArea.find({}).populate('district').exec();
+    let comunity = Comunity
+      .findById(communityId)
+      .populate('district commerseArea')
+      .exec();
+    res.render('cms-communityUpdate', {
+      comunity: comunity,
+      district: districts,
+      commerseAreas: commerseAreas
     });
+  })().catch(err => {
+    res.status(404);
+  });
 });
 
 router.post('/update/:id', (req, res, next) => {
