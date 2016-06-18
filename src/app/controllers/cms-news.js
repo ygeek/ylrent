@@ -8,6 +8,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import moment from 'moment';
 import log4js from 'log4js';
+import _ from 'lodash';
 
 const News = mongoose.model('News');
 
@@ -66,7 +67,10 @@ router.post('/', (req, res, next) => {
   let author = req.body.author;
   let date = Date.now();
   let content = req.body.content;
-  let imagekey = req.body.imagekey;
+  let imagekey = _.filter(req.body.imagekey.split(/\s+/), function(key) {
+    return key && key.length > 0;
+  });
+  imagekey = imagekey.length > 0 ? imagekey[0] : null;
 
   let news = new News();
   news.title = title;
