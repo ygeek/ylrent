@@ -134,7 +134,7 @@ router.get('/update/:id', (req, res, next) => {
   (async function() {
     let districts = await District.find({}).exec();
     let commerseAreas = await CommerseArea.find({}).populate('district').exec();
-    let comunity = Comunity
+    let comunity = await Comunity
       .findById(communityId)
       .populate('district commerseArea')
       .exec();
