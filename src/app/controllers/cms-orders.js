@@ -34,7 +34,7 @@ router.get('/apartment', (req, res, next) => {
       
       let id = Number(keyword);
       if (id && !isNaN(id)) {
-        query['$or'].push(id);
+        query['$or'].push({_id: id});
       }
     }
 
@@ -87,7 +87,7 @@ router.get('/daily', (req, res, next) => {
 
       let id = Number(keyword);
       if (id && !isNaN(id)) {
-        query['$or'].push(id);
+        query['$or'].push({_id: id});
       }
     }
 
