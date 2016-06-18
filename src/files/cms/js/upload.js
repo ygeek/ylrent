@@ -51,7 +51,7 @@ var uploader = Qiniu.uploader({
                var sourceLink = domain +res.key; 
                $("#images").val($("#images").val()+' '+res.key);
                //$(".imgs").empty();
-               $(".imgs").append('<img src="'+sourceLink+'" width="150" height="120" tid="'+res.key+'" >&nbsp;&nbsp;');
+               $(".imgs").append('<img src="'+sourceLink+'?imageView2/0/w/150/h/120" width="150" height="120" tid="'+res.key+'" >&nbsp;&nbsp;');
         },
         'Error': function(up, err, errTip) {
                //上传出错时,处理相关的事情
