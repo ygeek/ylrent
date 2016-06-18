@@ -121,15 +121,14 @@ router.post('/add', (req, res, next) => {
   let apartmentObj = req.body;
   apartmentObj.imagekeys = apartmentObj.imagekeys.split(/\s+/);
   
-  Promise.all([
-    importApartmentType(apartmentObj),
-    importApartment(apartmentObj)
-  ]).then(([apartmentType, apartment]) => {
+  (async function() {
+    let apartmentType = await importApartmentType(apartmentObj);
+    let apartment = await importApartment(apartmentObj);
     res.json({
       apartmentType: apartmentType,
       apartment: apartment
     });
-  }).catch(err => {
+  })().catch(err => {
     logger.error('add apartment error: ', err);
     res.json({error: err.message});
   });
