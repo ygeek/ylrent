@@ -24,8 +24,20 @@
     <form action="/cms/community/update/<%= community._id %>" class="subform"  method="post">
     <ul class="forminfo">
         <li><label>小区</label><input name="villageName" datatype="*" value="<%= community.name %>" type="text" class="dfinput" /><i>标题不能超过30个字符</i></li>
-        <li><label>商圈</label><input name="CBDName"  datatype="*"  value="<%= community.commerseArea.name %>" type="text" class="dfinput" /></li>
-        <li><label>行政区</label><input name="DistrictName"  datatype="*"  value="<%= community.district.name %>" type="text" class="dfinput" value="http://www.uimaker.com/uimakerhtml/uidesign/" /></li>
+        <li style="z-index:9999999;"><label>行政区</label>
+            <select name="DistrictName" class="xingzhengqu" >
+             <% districts.forEach(function(val){  %>
+            <option value="<%= val.name %>"  ><%= val.name %></option>
+            <% }) %>
+           
+          </select>
+          <script>
+                  $(function(){
+                          $('.xingzhengqu').searchableSelect();
+                  });
+          </script>
+        </li>
+        
         <li><label>地址</label><input name="address" datatype="*"  value="<%= community.address %>" type="text" class="dfinput" value="http://www.uimaker.com/uimakerhtml/uidesign/" /></li>
         <li><label>经度</label><input name="lat" datatype="*"  value="<%= community.longitude %>" type="text" class="dfinput" value="http://www.uimaker.com/uimakerhtml/uidesign/" /></li>
         <li><label>纬度</label><input name="lon" datatype="*"  value="<%= community.latitude %>" type="text" class="dfinput" value="http://www.uimaker.com/uimakerhtml/uidesign/" /></li>
