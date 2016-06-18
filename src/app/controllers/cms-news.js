@@ -76,7 +76,7 @@ router.post('/', (req, res, next) => {
   news.content = content;
   news.imagekey = imagekey;
   
-  logger.trace('add news: ', news);
+  logger.trace('add news: ', req.body, news);
 
   news.save(function(err) {
     if (err) {

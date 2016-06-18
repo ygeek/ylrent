@@ -95,7 +95,19 @@ router.get('/add', (req, res, next) => {
     return res.redirect('/user/login');
   } 
   
-  res.render('cms-apartmentsAdd', {});
+  (async function() {
+    let communities = await Comunity.find({}).exec();
+
+    res.render('cms-apartmentsAdd', {
+      communities: communities
+    });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
 });
 
 router.post('/add', (req, res, next) => {
