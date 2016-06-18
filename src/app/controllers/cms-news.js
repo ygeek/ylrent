@@ -6,6 +6,7 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import moment from 'moment';
 
 const News = mongoose.model('News');
 
@@ -31,6 +32,10 @@ router.get('/', (req, res, next) => {
   News
     .paginate({}, options)
     .then(newsList => {
+      for (let news of newsList.docs) {
+        news.date_formatted = moment(news.date).format('YYYY-MM-DD HH:mm:ss');
+      }
+      
       res.render('cms-news', {
         newsList: newsList
       });
@@ -56,7 +61,7 @@ router.post('/', (req, res, next) => {
   let title = req.body.title;
   let source = req.body.source;
   let author = req.body.author;
-  let date = new Date(req.body.date);
+  let date = Date.now();
   let content = req.body.content;
   let imagekey = req.body.imagekey;
 

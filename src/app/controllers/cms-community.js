@@ -71,6 +71,14 @@ router.get('/detail/:id', (req, res, next) => {
     });
 });
 
+router.get('/add', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+
+  res.render('cms-communityAdd', {}); 
+});
+
 router.post('/add', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
     return res.json({error: '请以管理员身份重新登录'});
@@ -83,6 +91,26 @@ router.post('/add', (req, res, next) => {
   }).catch(err => {
     res.json({ error: err.message });
   });
+});
+
+router.get('/update/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+
+  const communityId = req.params.id;
+
+  Comunity
+    .findById(communityId)
+    .exec()
+    .then(community => {
+      res.render('cms-communityUpdate', {
+        comunity: community
+      });
+    })
+    .catch(err => {
+      res.status(404);
+    });
 });
 
 router.post('/update/:id', (req, res, next) => {

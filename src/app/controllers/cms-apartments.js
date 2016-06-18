@@ -71,6 +71,14 @@ router.get('/detail/:id', (req, res, next) => {
     });
 });
 
+router.get('/add', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  } 
+  
+  res.render('cms-apartmentsAdd', {});
+});
+
 router.post('/add', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
     return res.json({error: '请以管理员身份重新登录'});
@@ -89,6 +97,26 @@ router.post('/add', (req, res, next) => {
   }).catch(err => {
     res.json({error: err.message});
   });
+});
+
+router.get('/update/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+
+  const apartmentId = req.params.id;
+  
+  Apartment
+    .findById(apartmentId)
+    .exec()
+    .then(apartment => {
+      res.render('cms-apartmentsUpdate', {
+        apartment: apartment
+      });
+    })
+    .catch(err => {
+      res.status(404);
+    });
 });
 
 router.post('/update/:id', (req, res, next) => {

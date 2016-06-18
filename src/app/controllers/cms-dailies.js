@@ -46,7 +46,6 @@ router.get('/list', (req, res, next) => {
     });
 });
 
-
 router.get('/detail/:id', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
     return res.redirect('/user/login');
@@ -102,6 +101,14 @@ router.post('/available/:id', (req, res, next) => {
   });
 });
 
+router.get('/add', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+
+  res.render('cms-dailyAdd', {});
+});
+
 router.post('/add', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
     return res.json({error: '请以管理员身份重新登录'});
@@ -114,6 +121,26 @@ router.post('/add', (req, res, next) => {
   }).catch(err => {
     res.json({error: err.message});
   });
+});
+
+router.get('/update/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+
+  const dailyId = req.params.id;
+
+  DailyRent
+    .findById(dailyId)
+    .exec()
+    .then(daily => {
+      res.render('cms-dailyUpdate', {
+        daily: daily
+      });
+    })
+    .catch(err => {
+      res.status(404);
+    });
 });
 
 router.post('/update/:id', (req, res, next) => {
