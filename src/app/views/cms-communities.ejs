@@ -89,7 +89,11 @@ $(document).ready(function(){
                     
                  
                   
-                    <td><a href="/cms/community/detail/<%= val._id %>" class="tablelink"> 修改</a></td>
+                    <td>
+                        <a href="/cms/community/detail/<%= val._id %>" class="tablelink">修改</a>
+                        |
+                        <a href="javascript:delCommunity('<%= val._id %>')" class="tablelink">删除</a>
+                    </td>
                 </tr> 
              <% }) ; %>   
 
@@ -120,6 +124,12 @@ $(document).ready(function(){
             }
         }
     });
+
+    function delCommunity(id) {
+        $.post('/cms/community/delete/' + id, function(data) {
+            location.href = location.href;
+        });
+    }
 
 </script>
 

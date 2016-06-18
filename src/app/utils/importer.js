@@ -124,6 +124,8 @@ export async function importComunity(comunityObj) {
 }
 
 export async function updateComunity(comunityId, comunityObj) {
+  logger.info('begin update community: ', comunityObj);
+  
   const CommerseArea = mongoose.model('CommerseArea');
   const Comunity = mongoose.model('Comunity');
 
@@ -149,7 +151,7 @@ export async function updateComunity(comunityId, comunityObj) {
     .populate('district commerseArea')
     .exec();
   
-  logger.info('import community: ', comunity);
+  logger.info('end update community: ', comunity);
   
   return comunity;
 }
