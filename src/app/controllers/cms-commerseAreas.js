@@ -76,7 +76,7 @@ router.get('/update/:id', (req, res, next) => {
   
   (async function() {
     let districts = await District.find({}).exec();
-    let commerseArea = CommerseArea.findById(commerseAreaId).exec();
+    let commerseArea = await CommerseArea.findById(commerseAreaId).exec();
     res.render('cms-commerseAreaUpdate', {
       districts: districts,
       commerseArea: commerseArea
