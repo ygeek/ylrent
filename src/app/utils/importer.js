@@ -282,7 +282,7 @@ export async function updateApartment(apartmentId, apartmentObj) {
     .exec();
 
   let update = {
-    contractNo: apartmentObj.contractno
+    contractNo: apartmentObj.contractno,
     houseNo: apartmentObj.houseno,
     apartmentType: apartmentType,
     comunity: apartmentType.comunity,
