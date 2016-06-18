@@ -53,7 +53,7 @@ router.get('/uptoken', (req, res, next) => {
   }
   
   res.json({
-    token: uptoken()
+    uptoken: uptoken()
   });
 });
 
