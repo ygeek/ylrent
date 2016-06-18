@@ -51,7 +51,7 @@
                  <p>
                     <em><%= val._id %></em>
                     <em><%= val.createdAt_formatted %></em>
-                    <em><%= val.apartment.apartmentType.name %></em>
+                    <em><%= val.apartment && val.apartment.apartmentType && val.apartment.apartmentType.name %></em>
                     <em><%= val.date_formatted %></em>
                     <em style="border:0;"><%= val.status %></em>
                  </p>

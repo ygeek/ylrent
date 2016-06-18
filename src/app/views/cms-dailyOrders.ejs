@@ -80,7 +80,7 @@ $(document).ready(function(){
                 <tr>
                     <td><%= val._id %></td>
                     <td><%= val.createdAt_formatted %></td>
-                    <td><%= val.daily.name %></td>
+                    <td><%= val.daily && val.daily.name %></td>
                     <td><%= val.startDate_formatted %></td>
                     <td><%= val.endDate_formatted %></td>
                     <td><%= val.name %></td>

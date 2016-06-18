@@ -80,8 +80,8 @@ $(document).ready(function(){
                 <tr>
                     <td><%= val._id %></td>
                     <td><%= val.createdAt_formatted %></td>
-                    <td><%= val.apartment.apartmentType.name %></td>
-                    <td><%= val.apartment.contactNo %></td>
+                    <td><%= val.apartment && val.apartment.apartmentType && val.apartment.apartmentType.name %></td>
+                    <td><%= val.apartment && val.apartment.contactNo %></td>
                     <td><%= val.date_formatted %></td>
                     <td><%= val.name %></td>
                     <td><%= val.mobile %></td>

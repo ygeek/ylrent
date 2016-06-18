@@ -7,6 +7,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
+import _ from 'lodash';
+
 import { 
   importApartment, 
   updateApartment, 
@@ -125,7 +127,9 @@ router.post('/add', (req, res, next) => {
   }
   
   let apartmentObj = req.body;
-  apartmentObj.imagekeys = apartmentObj.imagekeys.split(/\s+/);
+  apartmentObj.imagekeys = _.filter(apartmentObj.imagekeys.split(/\s+/), function(key) {
+    return key && key.length > 0;
+  });
   
   (async function() {
     let apartmentType = await importApartmentType(apartmentObj);
@@ -176,6 +180,9 @@ router.post('/update/:id', (req, res, next) => {
   const apartmentId = req.params.id;
   
   let apartmentObj = req.body;
+  apartmentObj.imagekeys = _.filter(apartmentObj.imagekeys.split(/\s+/), function(key) {
+    return key && key.length > 0;
+  });
 
   Promise.all([
     importApartmentType(apartmentObj),

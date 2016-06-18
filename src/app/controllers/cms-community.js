@@ -155,6 +155,12 @@ router.post('/update/:id', (req, res, next) => {
 
   let communityId = req.params.id;
   let communityObj = req.body;
+  communityObj.keywords = _.filter(communityObj.keywords.split(/\s+/), function(key) {
+    return key && key.length > 0;
+  });
+  communityObj.imagekeys = _.filter(communityObj.imagekeys.split(/\s+/), function(key) {
+    return key && key.length > 0;
+  });
 
   updateComunity(communityId, communityObj).then(community => {
     res.json({ community: community });

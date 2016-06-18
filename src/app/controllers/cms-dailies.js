@@ -6,6 +6,7 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import _ from 'lodash';
 
 import { importDailyRent, updateDailyRent } from '../utils/importer';
 
@@ -150,7 +151,9 @@ router.post('/add', (req, res, next) => {
   }
 
   let dailyObj = req.body;
-  dailyObj.imagekeys = dailyObj.imagekeys.split(/\s+/);
+  dailyObj.imagekeys =  _.filter(dailyObj.imagekeys.split(/\s+/), function(key) {
+    return key && key.length > 0;
+  });
 
   importDailyRent(dailyObj).then(daily => {
     res.json({ daily: daily });
@@ -192,6 +195,9 @@ router.post('/update/:id', (req, res, next) => {
 
   let dailyId = req.params.id;
   let dailyObj = req.body;
+  dailyObj.imagekeys =  _.filter(dailyObj.imagekeys.split(/\s+/), function(key) {
+    return key && key.length > 0;
+  });
   
   updateDailyRent(dailyId, dailyObj).then(daily => {
     res.json({ daily: daily });

@@ -13,6 +13,42 @@ const router = express.Router();
 
 const isDebug = true;
 
+router.post('/makestaff/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  } 
+  
+  let userId = req.params.id;
+  
+  User
+    .findByIdAndUpdate(userId, {isStaff: true})
+    .exec()
+    .then(user => {
+      res.json({user: user});
+    })
+    .catch(err => {
+      res.json({error: err.message});
+    });
+});
+
+router.post('/cancelstaff/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  let userId = req.params.id;
+  
+  User
+    .findByIdAndUpdate(userId, {isStaff: false})
+    .exec()
+    .then(user => {
+      res.json({user: user});
+    })
+    .catch(err => {
+      res.json({error: err.message});
+    });
+});
+
 router.get('/list', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
     return res.redirect('/user/login');
@@ -40,7 +76,8 @@ router.get('/list', (req, res, next) => {
     let options = {
       page: page,
       limit: 10,
-      lean: true
+      lean: true,
+      sort: {isStaff: -1}
     };
     
     let users = await User.paginate(query, options);
