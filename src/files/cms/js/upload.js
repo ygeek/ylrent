@@ -48,10 +48,10 @@ var uploader = Qiniu.uploader({
 
                var domain = up.getOption('domain');
                var res = $.parseJSON(info);
-               var sourceLink = domain + '/'+res.key; 
+               var sourceLink = domain +res.key; 
                $("#images").val($("#images").val()+' '+res.key);
                //$(".imgs").empty();
-               $(".imgs").append('<img src="'+sourceLink+'" width="150" height="120" >&nbsp;&nbsp;');
+               $(".imgs").append('<img src="'+sourceLink+'" width="150" height="120" tid="'+res.key+'" >&nbsp;&nbsp;');
         },
         'Error': function(up, err, errTip) {
                //上传出错时,处理相关的事情
@@ -70,4 +70,28 @@ var uploader = Qiniu.uploader({
             //return key
         }
     }
+});
+$(function(){
+    $(document).on('click','.forminfo li img',function(e){
+        var tid = $(this).attr('tid');
+        $(this).addClass('remove');
+        layer.confirm('确定要删除它吗?', {icon: 3, title:'提示'}, function(index){
+  
+            if($("input[name='imagekeys']").val())
+            {
+                var newval = $("input[name='imagekeys']").val().replace(tid, "");
+                $("input[name='imagekeys']").val(newval);
+                $(".forminfo li img").remove(".remove");
+            }
+            if($("input[name='imagekey']").val())
+            {
+                var newval = $("input[name='imagekey']").val().replace(tid, "");
+                $("input[name='imagekey']").val(newval);
+                $(".forminfo li img").remove(".remove");
+            }
+            layer.close(index);
+        });
+        
+      
+    });
 });
