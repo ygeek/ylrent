@@ -58,6 +58,7 @@
             <th>公司电话</th>
             <th>公司地址</th>
             <th>是否管理员</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
@@ -72,13 +73,15 @@
             <td><%= val.tel %></td>
             <td><%= val.Address %></td>
             <td><%= val.isStaff %></td>
-            <!--
+           
             <td>
-                <a href="/news/<%= val._id %>" target="_parent" class="tablelink">查看</a>
-                |
-                <a href="javascript:delNews('<%= val._id %>')" class="tablelink">删除</a>
+                <% if(val.isStaff){ %>
+                <a href="javascript:cancelstaff('<%= val._id %>')"  class="tablelink">取消管理员</a>
+                <% }else{ %>
+                <a href="javascript:makestaff('<%= val._id %>')" class="tablelink">设为管理员</a>
+                <% } %>
             </td>
-            -->
+            
         </tr>
         <% }) %>
 
@@ -106,14 +109,19 @@
             }
         }
     });
-    /*
-    function delNews(id)
+   
+    function cancelstaff(id)
     {
-        $.post("/cms/news/delete/"+id, function(data){
+        $.post("/cms/user/cancelstaff/"+id, function(data){
             location.href=location.href;
         });
     }
-    */
+    function makestaff(id)
+    {
+        $.post("/cms/user/makestaff/"+id, function(data){
+            location.href=location.href;
+        });
+    }
 </script>
 
 </body>

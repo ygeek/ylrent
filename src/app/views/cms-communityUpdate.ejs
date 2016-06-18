@@ -25,7 +25,7 @@
     
     <div class="formtitle"><span>基本信息</span></div>
     <form action="/cms/community/add" class="subform"  method="post">
-<%= JSON.stringify(comunity) %>
+
     <ul class="forminfo">
         <li><label>小区</label><input name="villageName"  sucmsg=" "  datatype="*" value="<%= comunity.name %>" type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
         <li style="z-index:9999999;"><label>行政区</label>
@@ -58,10 +58,10 @@
                   });
           </script>
         </li>
-        <li><label>描述</label><textarea name="desc" sucmsg=" " value="<%= comunity.desc %>"  datatype="*"   cols="" rows="" class="textinput"></textarea><i  class="Validform_checktip"></i></li>
-        <li><label>是否推荐</label><cite><input name="isHot"  sucmsg=" "   datatype="*"  type="radio" value="true"  />是&nbsp;&nbsp;&nbsp;&nbsp;<input name="isHot" type="radio" value="false"  />否</cite><i  class="Validform_checktip"></i></li>
-        <li><label>关键字</label><input name="keywords" value="<%= comunity.keywords %>"  sucmsg=" "   datatype="*"  value="" type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>图片</label><input name="imagekeys" value="<%= comunity.imagekeys %>" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
+        <li><label>描述</label><textarea name="desc" sucmsg=" "   datatype="*"   cols="" rows="" class="textinput"><%= comunity.desc %></textarea><i  class="Validform_checktip"></i></li>
+        <li><label>是否推荐</label><cite><input name="isHot"  sucmsg=" "   datatype="*"  type="radio" value="true" <% if(comunity.isHot){ %> checked="checked" <% } %>  />是&nbsp;&nbsp;&nbsp;&nbsp;<input name="isHot" type="radio" <% if(!comunity.isHot){ %> checked="checked" <% } %> value="false"  />否</cite><i  class="Validform_checktip"></i></li>
+        <li><label>关键字</label><input name="keywords" value="<%= comunity.keywords %>"  sucmsg=" "   datatype="*"   value="" type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>图片</label><input name="imagekeys" value="<%= comunity.imagekeys %>" id="images" readonly="readonly"   type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
         <li id="container"></li>
         <li><label>&nbsp;</label><span class="imgs"></span></li>
         <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
@@ -94,14 +94,14 @@ $(".subform").Validform({
         },
         callback:function(data){
                 console.log(data.msg);
-                if(data.code!=0)  //验证失败
+                if(data.error)  //验证失败
                 {
-                        console.log(data) ;
+                        console.log(data.error) ;
 
                 }
                 else
                 {
-                       location.href='/cms/communities';
+                       location.href='/cms/community/list';
                 }
               
         }

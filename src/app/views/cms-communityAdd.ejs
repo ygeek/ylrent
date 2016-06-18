@@ -94,14 +94,14 @@ $(".subform").Validform({
         },
         callback:function(data){
                 console.log(data.msg);
-                if(data.code!=0)  //验证失败
+                 if(data.error)  //验证失败
                 {
-                        console.log(data) ;
+                        console.log(data.error) ;
 
                 }
                 else
                 {
-                       location.href='/cms/communities';
+                      location.href='/cms/community/list';
                 }
               
         }
