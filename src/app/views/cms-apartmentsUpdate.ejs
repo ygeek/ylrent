@@ -5,8 +5,10 @@
 <title>无标题文档</title>
 <link href="/files/cms/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
 
+<script type="text/javascript" src="/files/lib/select/jquery.searchableSelect.js"></script>
+
+<link href="/files/lib/select/jquery.searchableSelect.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -25,15 +27,34 @@
     <form action="" class="subform"  method="post">
 
     <ul class="forminfo">
-        <li><label>名称</label><input name="villageName" value="<%= apartment.villageName %>" datatype="*" sucmsg=" "  type="text" class="dfinput" /><i class="Validform_checktip">标题不能超过30个字符</i></li>
-        <li><label>房号</label><input name="houseNo"  value="<%= apartment.houseNo %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>编号</label><input name="contactNo"  value="<%= apartment.contactNo %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+        <ul class="forminfo">
+        <li><label>小区名称</label>
+            <select name="comunityName" >
+             <% communities.forEach(function(val){  %>
+            <option value="<%= val.name %>"><%= val.name %></option>
+            <% }) %>
+           
+          </select>
+          <script>
+                  $(function(){
+                          $('select').searchableSelect();
+                  });
+          </script>
+        </li>
+        <li><label>名称</label><input name="name" value="<%= apartment.name %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        
+        <li><label>房号</label><input name="houseno" value="<%= apartment.houseNo %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>编号</label><input name="contractno" value="<%= apartment.contractNo %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
        
-        <li><label>面积</label><input name="area"  value="<%= apartment.area %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>租金</label><input name="price"  value="<%= apartment.price %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+        <li><label>面积</label><input name="structurearea"  value="<%= apartment.contractNo %>"    datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>租金</label><input name="rentPerMonth"  value="<%= apartment.contractNo %>"    datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+        <li><label>房型</label><input name="shi"  value="<%= apartment.shi %>"    datatype="n"  sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 室 <input name="ting"  value="<%= apartment.ting %>"    datatype="n"  sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 厅 <input name="wei"  datatype="n"  value="<%= apartment.wei %>"   sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 卫 <i  class="Validform_checktip"></i></li>
       
-        <li><label>地址</label><input name="address"  value="<%= apartment.address %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>关键词</label><input name="keywords"  value="<%= apartment.keywords %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
+        <li><label>地址</label><input name="address" value="<%= apartment.address %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>关键词</label><input name="keywords" value="<%= apartment.keywords %>" datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
+         <li><label>图片</label><input name="imagekey" value="<%= apartment.imagekey %>" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
+        <li id="container"></li>
+        <li><label>&nbsp;</label><span class="imgs"></span></li>
         <input name="id" value="<%= apartment._id %>" type="hidden" />
         <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
     </ul>
@@ -43,6 +64,7 @@
 
 
 </body>
+<script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
 <script>
 $.Tipmsg.r=null;
 		

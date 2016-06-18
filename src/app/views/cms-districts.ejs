@@ -45,12 +45,20 @@
 </div>
 
 <div class="rightinfo">
+    <div class="tools">
 
+            <ul class="toolbar">
+                <li class="click"><a href="/cms/district/add"><span><img src="/files/cms/images/t01.png" /></span>添加行政区</a></li>
+          
+            </ul>
+          
+        </div>
     <table class="tablelist">
         <thead>
         <tr>
             <th>编号</th>
             <th>行政区</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
@@ -58,13 +66,12 @@
         <tr>
             <td><%= val._id %></td>
             <td><%= val.name %></td>
-            <!--
+           
             <td>
-                <a href="/news/<%= val._id %>" target="_parent" class="tablelink">查看</a>
-                |
-                <a href="javascript:delNews('<%= val._id %>')" class="tablelink">删除</a>
+                <a href="/cms/district/update/<%= val._id %>"  class="tablelink">修改</a>
+                | <a href="javascript:delNews('<%= val._id %>')"  class="tablelink">删除</a>
             </td>
-            -->
+         
         </tr>
         <% }) %>
 
@@ -92,14 +99,14 @@
             }
         }
     });
-    /*
+    
      function delNews(id)
      {
-     $.post("/cms/news/delete/"+id, function(data){
-     location.href=location.href;
-     });
+        $.post("/cms/district/delete/"+id, function(data){
+         location.href=location.href;
+        });
      }
-     */
+     
 </script>
 
 </body>
