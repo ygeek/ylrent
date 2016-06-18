@@ -167,8 +167,14 @@ router.get('/update/:id', (req, res, next) => {
   const dailyId = req.params.id;
   
   (async function() {
-    let daily = await DailyRent.findById(dailyId).exec();
-    let communities = await Comunity.find({}).exec();
+    let daily = await DailyRent
+      .findById(dailyId)
+      .populate('district commerseArea comunity')
+      .exec();
+    let communities = await Comunity
+      .find({})
+      .populate('district commerseArea')
+      .exec();
     
     res.render('cms-dailyUpdate', {
       daily: daily,

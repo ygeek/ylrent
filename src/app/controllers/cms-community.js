@@ -113,6 +113,7 @@ router.get('/update/:id', (req, res, next) => {
 
   Comunity
     .findById(communityId)
+    .populate('district commerseArea')
     .exec()
     .then(community => {
       res.render('cms-communityUpdate', {

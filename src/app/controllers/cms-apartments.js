@@ -150,9 +150,13 @@ router.get('/update/:id', (req, res, next) => {
   (async function() {
     let apartment = await Apartment
       .findById(apartmentId)
+      .populate('district commerseArea comunity')
       .exec();
 
-    let communities = await Comunity.find({}).exec();
+    let communities = await Comunity
+      .find({})
+      .populate('district commerseArea')
+      .exec();
     
     res.render('cms-apartmentsUpdate', {
       apartment: apartment,
