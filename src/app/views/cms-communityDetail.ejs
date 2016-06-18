@@ -21,23 +21,24 @@
     <div class="formbody">
     
     <div class="formtitle"><span>基本信息</span></div>
-    <form action="" class="subform"  method="post">
+    <form action="/cms/comunity/update/<%= community._id %>" class="subform"  method="post">
 
     <ul class="forminfo">
-        <li><label>小区</label><input name="name" datatype="*" value="<%= community.name %>" type="text" class="dfinput" /><i>标题不能超过30个字符</i></li>
-        <li><label>商圈</label><input name="commerseArea"  datatype="*"  value="<%= community.commerseArea.name %>" type="text" class="dfinput" /></li>
-        <li><label>行政区</label><input name="district"  datatype="*"  value="<%= community.district.name %>" type="text" class="dfinput" value="http://www.uimaker.com/uimakerhtml/uidesign/" /></li>
-        <li><label>是否推荐</label><cite><input name="isHot"  datatype="*"  type="radio" value="true" <% if(community.isHot){ %> checked="checked" <% } %> />是&nbsp;&nbsp;&nbsp;&nbsp;<input name="isHot" type="radio" value="false" <% if(!community.isHot){ %> checked="checked" <% } %> />否</cite></li>
-        <li><label>关键字</label><input name="keywords"  datatype="*"  value="<%= community.keywords %>" type="text" class="dfinput" /><i>多个关键字用,隔开</i></li>
+        <li><label>小区</label><input name="villageName" datatype="*" value="<%= community.name %>" type="text" class="dfinput" /><i>标题不能超过30个字符</i></li>
+        <li><label>商圈</label><input name="CBDName"  datatype="*"  value="<%= community.commerseArea.name %>" type="text" class="dfinput" /></li>
+        <li><label>行政区</label><input name="DistrictName"  datatype="*"  value="<%= community.district.name %>" type="text" class="dfinput" value="http://www.uimaker.com/uimakerhtml/uidesign/" /></li>
+        <li><label>地址</label><input name="address" datatype="*"  value="<%= community.district.name %>" type="text" class="dfinput" value="http://www.uimaker.com/uimakerhtml/uidesign/" /></li>
+        <li><label>经度</label><input name="lat" datatype="*"  value="<%= community.district.name %>" type="text" class="dfinput" value="http://www.uimaker.com/uimakerhtml/uidesign/" /></li>
+        <li><label>纬度</label><input name="lon" datatype="*"  value="<%= community.district.name %>" type="text" class="dfinput" value="http://www.uimaker.com/uimakerhtml/uidesign/" /></li>
+        <li><label>描述</label><textarea name="desc" datatype="*"   cols="" rows="" class="textinput"><%= community.desc %></textarea></li>
+        <li><label>是否推荐</label><cite><input name="isHot" datatype="*" type="radio" value="true" <% if(community.isHot){ %> checked="checked" <% } %> />是&nbsp;&nbsp;&nbsp;&nbsp;<input name="isHot" type="radio" value="false" <% if(!community.isHot){ %> checked="checked" <% } %> />否</cite></li>
+        <li><label>关键字</label><input name="keywords" datatype="*" value="<%= community.keywords %>" type="text" class="dfinput" /><i>多个关键字用,隔开</i></li>
         <li><label>上传图片</label><input name="" type="text" class="dfinput" /><i>多个关键字用,隔开</i></li>
-        <li><label>描述</label><textarea name="desc"  datatype="*"   cols="" rows="" class="textinput"><%= community.desc %></textarea></li>
-        <input type="hidden" name="_id" value="<%= community._id %>" />
         <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
     </ul>
     </form>
     
     </div>
-
 
 </body>
 <script>

@@ -140,7 +140,7 @@ export async function updateComunity(comunityId, comunityObj) {
     address: comunityObj.address,
     latitude: comunityObj.lat,
     longitude: comunityObj.lon,
-    isHot: false,
+    isHot: comunityObj.isHot,
     keywords: [comunityObj.CBDName]
   };
   
