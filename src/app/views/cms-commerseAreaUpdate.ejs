@@ -30,7 +30,7 @@
         <li><label>行政区</label>
             <select name="districtName" >
              <% districts.forEach(function(val){  %>
-            <option value="<%= val.name %>"><%= val.name %></option>
+            <option value="<%= val.name %>"  <% if(commerseArea.district.name==val.name){ %> selected <% } %> ><%= val.name %></option>
             <% }) %>
            
           </select>

@@ -94,7 +94,8 @@ function getUrlParam(name) {
                     <td><% if(val.isHot){ %>是<% }else{ %>否<% } %></td>
                  
                     <td><% if(!val.leased){ %>未租<% }else{ %>已租<% } %></td>
-                    <td><a href="/cms/apartment/update/<%= val._id %>" class="tablelink"> 修改</a></td>
+                    <td><a href="/cms/apartment/update/<%= val._id %>" class="tablelink"> 修改</a> |
+                        <a href="javascript:del('<%= val._id %>')" class="tablelink">删除</a></td>
                 </tr> 
              <% }) ; %>   
 
@@ -125,7 +126,11 @@ function getUrlParam(name) {
             }
         }
     });
-
+ function del(id) {
+        $.post('/cms/apartment/delete/' + id, function(data) {
+            location.href = location.href;
+        });
+    }
 </script>
 
 </body>

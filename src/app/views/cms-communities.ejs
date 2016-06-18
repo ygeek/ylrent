@@ -78,6 +78,7 @@ $(document).ready(function(){
             </thead>
             <tbody>
             <% communities.docs.forEach(function(val){  %>
+          
                 <tr>
 
                     <td><%= val.name %></td>
@@ -90,7 +91,7 @@ $(document).ready(function(){
                  
                   
                     <td>
-                        <a href="/cms/community/detail/<%= val._id %>" class="tablelink">修改</a>
+                        <a href="/cms/community/update/<%= val._id %>" class="tablelink">修改</a>
                         |
                         <a href="javascript:delCommunity('<%= val._id %>')" class="tablelink">删除</a>
                     </td>

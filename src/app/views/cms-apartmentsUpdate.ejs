@@ -29,9 +29,9 @@
     <ul class="forminfo">
         <ul class="forminfo">
         <li><label>小区名称</label>
-            <select name="comunityName" >
+            <select name="villageName" >
              <% communities.forEach(function(val){  %>
-            <option value="<%= val.name %>"><%= val.name %></option>
+            <option value="<%= val.name %>" <% if(apartment.comunity.name==val.name){ %>selected<% } %>><%= val.name %></option>
             <% }) %>
            
           </select>
@@ -41,18 +41,17 @@
                   });
           </script>
         </li>
-        <li><label>名称</label><input name="name" value="<%= apartment.name %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        
+      
         <li><label>房号</label><input name="houseno" value="<%= apartment.houseNo %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>编号</label><input name="contractno" value="<%= apartment.contractNo %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+        <li><label>编号</label><input name="contractno" value="<%= apartment.contactNo %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
        
-        <li><label>面积</label><input name="structurearea"  value="<%= apartment.contractNo %>"    datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>租金</label><input name="rentPerMonth"  value="<%= apartment.contractNo %>"    datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+        <li><label>面积</label><input name="structurearea"  value="<%= apartment.area %>"    datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>租金</label><input name="rentPerMonth"  value="<%= apartment.price %>"    datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
         <li><label>房型</label><input name="shi"  value="<%= apartment.shi %>"    datatype="n"  sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 室 <input name="ting"  value="<%= apartment.ting %>"    datatype="n"  sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 厅 <input name="wei"  datatype="n"  value="<%= apartment.wei %>"   sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 卫 <i  class="Validform_checktip"></i></li>
       
         <li><label>地址</label><input name="address" value="<%= apartment.address %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
         <li><label>关键词</label><input name="keywords" value="<%= apartment.keywords %>" datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
-         <li><label>图片</label><input name="imagekey" value="<%= apartment.imagekey %>" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
+         <li><label>图片</label><input name="imagekey" value="<%= apartment.imagekeys %>" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
         <li id="container"></li>
         <li><label>&nbsp;</label><span class="imgs"></span></li>
         <input name="id" value="<%= apartment._id %>" type="hidden" />
@@ -85,8 +84,14 @@ $(function(){
         },
         callback:function(data){
                 console.log(data);
-                
-                location.href='/cms/apartment/list';
+                if(data.error)
+                {
+                    alert(data.error);
+                }
+                else
+                {
+                    location.href='/cms/apartment/list';
+                }
               
         }
     });
@@ -96,7 +101,11 @@ $(function(){
 
 </script>
 </html>
-
+<script type="text/javascript" src="/files/lib/plupload/moxie.js"></script>
+<script type="text/javascript" src="/files/lib/plupload/plupload.dev.js"></script>
+<script type="text/javascript" src="/files/lib/qiniu/qiniu.js"></script>
+<script type="text/javascript" src="/files/lib/laydate/layer.js"></script>
+<script type="text/javascript" src="/files/cms/js/upload.js"></script>
 <%= JSON.stringify(apartment) %>
 
 
