@@ -55,14 +55,21 @@
         <li><label>关键词</label><input name="keywords" value="<%= apartment.keywords %>" datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
          <li><label>图片</label><input name="imagekey" value="<%= apartment.imagekeys %>" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
         <li id="container"></li>
-        <li><label>&nbsp;</label><span class="imgs"></span></li>
+        <li><label>&nbsp;</label>
+            <span class="imgs">
+                <% apartment.imagekeys.forEach(function(key) { %>
+                    <img src="http://o7k9opgtr.bkt.clouddn.com/<%= key %>"
+                         width="150"
+                         height="120"
+                         tid="<%= key %>" >
+                <% }) %>
+            </span></li>
         <input name="id" value="<%= apartment._id %>" type="hidden" />
         <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
     </ul>
     </form>
     
     </div>
-
 
 </body>
 <script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
