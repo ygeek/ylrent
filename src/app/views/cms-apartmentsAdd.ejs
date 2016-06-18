@@ -5,8 +5,11 @@
 <title>无标题文档</title>
 <link href="/files/cms/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
 
+
+<script type="text/javascript" src="/files/lib/select/jquery.searchableSelect.js"></script>
+
+<link href="/files/lib/select/jquery.searchableSelect.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -24,17 +27,35 @@
     <div class="formtitle"><span>基本信息</span></div>
     <form action="" class="subform"  method="post">
 
+
     <ul class="forminfo">
-        <li><label>名称</label><input name="villageName" datatype="*" sucmsg=" "  type="text" class="dfinput" /><i class="Validform_checktip">标题不能超过30个字符</i></li>
+        <li><label>小区名称</label>
+            <select name="comunityName" >
+             <% communities.forEach(function(val){  %>
+            <option value="<%= val.name %>"><%= val.name %></option>
+            <% }) %>
+           
+          </select>
+          <script>
+                  $(function(){
+                          $('select').searchableSelect();
+                  });
+          </script>
+        </li>
+        <li><label>名称</label><input name="name"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        
         <li><label>房号</label><input name="houseno"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
         <li><label>编号</label><input name="contractno"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
        
         <li><label>面积</label><input name="structurearea"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
         <li><label>租金</label><input name="rentPerMonth"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+        <li><label>房型</label><input name="shi"  datatype="n"  sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 室 <input name="ting"  datatype="n"  sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 厅 <input name="wei"  datatype="n"  sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 卫 <i  class="Validform_checktip"></i></li>
       
         <li><label>地址</label><input name="address"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
         <li><label>关键词</label><input name="keywords"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
-       
+         <li><label>图片</label><input name="imagekey" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
+        <li id="container"></li>
+        <li><label>&nbsp;</label><span class="imgs"></span></li>
         <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
     </ul>
     </form>
@@ -43,8 +64,9 @@
 
 
 </body>
+<script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
 <script>
-$.Tipmsg.r=null;
+
 		
 
 $(function(){
@@ -63,8 +85,15 @@ $(function(){
         },
         callback:function(data){
                 console.log(data);
-                
-                location.href='/cms/apartment/list';
+                if(data.error)
+                {
+                    alert(data.error);
+                }
+                else
+                {
+                    location.href='/cms/apartment/list';
+                }
+             
               
         }
     });
@@ -73,6 +102,12 @@ $(function(){
 
 
 </script>
+
+<script type="text/javascript" src="/files/lib/plupload/moxie.js"></script>
+<script type="text/javascript" src="/files/lib/plupload/plupload.dev.js"></script>
+<script type="text/javascript" src="/files/lib/qiniu/qiniu.js"></script>
+<script type="text/javascript" src="/files/lib/laydate/layer.js"></script>
+<script type="text/javascript" src="/files/cms/js/upload.js"></script>
 </html>
 
 
