@@ -150,7 +150,7 @@ router.get('/update/:id', (req, res, next) => {
   (async function() {
     let apartment = await Apartment
       .findById(apartmentId)
-      .populate('district commerseArea comunity')
+      .populate('district commerseArea comunity apartmentType')
       .exec();
 
     let communities = await Comunity
