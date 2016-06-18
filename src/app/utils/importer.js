@@ -459,3 +459,62 @@ export async function updateDailyRent(dailyRentId, dailyRentObj) {
   
   return dailyRent;
 }
+
+export async function removeCommunity(communityId) {
+  const Comunity = mongoose.model('Comunity');
+  const Apartment = mongoose.model('Apartment');
+  const ApartmentType = mongoose.model('ApartmentType');
+  const DailyRent = mongoose.model('DailyRent');
+  
+  let community = await Comunity.findByIdAndRemove(communityId).exec();
+  if (community) {
+    await [
+      Apartment.remove({comunity: community}).exec(),
+      ApartmentType.remove({comunity: community}).exec(),
+      DailyRent.remove({comunity: community}).exec()
+    ];
+  }
+  
+  return community;
+}
+
+export async function removeCommerseArea(commerseAreaId) {
+  const CommerseArea = mongoose.model('CommerseArea');
+  const Comunity = mongoose.model('Comunity');
+  const Apartment = mongoose.model('Apartment');
+  const ApartmentType = mongoose.model('ApartmentType');
+  const DailyRent = mongoose.model('DailyRent');
+
+  let commerseArea = await CommerseArea.findByIdAndRemove(commerseAreaId).exec();
+  if (commerseArea) {
+    await [
+      Comunity.remove({commerseArea: commerseArea}).exec(),
+      Apartment.remove({commerseArea: commerseArea}).exec(),
+      ApartmentType.remove({commerseArea: commerseArea}).exec(),
+      DailyRent.remove({commerseArea: commerseArea}).exec()
+    ];
+  }
+  
+  return commerseArea;
+}
+
+export async function removeDistrict(districtId) {
+  const District = mongoose.model('District');
+  const CommerseArea = mongoose.model('CommerseArea');
+  const Comunity = mongoose.model('Comunity');
+
+  let district = await District.findByIdAndRemove(districtId).exec();
+
+  if (district) {
+    let commerseAreas = await CommerseArea.find({district: district}).exec();
+    let comunities = await Comunity.find({district: district}).exec();
+    for (let commerseArea of commerseAreas) {
+      await removeCommerseArea(commerseArea._id);
+    }
+    for (let comunity of comunities) {
+      await removeCommunity(comunity._id);
+    }
+  }
+  
+  return district;
+}

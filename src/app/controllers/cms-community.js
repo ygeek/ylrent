@@ -8,7 +8,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import _ from 'lodash';
 
-import { importComunity, updateComunity } from '../utils/importer';
+import { importComunity, updateComunity, removeCommunity } from '../utils/importer';
 
 const District = mongoose.model('District');
 const CommerseArea = mongoose.model('CommerseArea');
@@ -169,14 +169,14 @@ router.post('/delete/:id', (req, res, next) => {
   }
 
   const communityId = req.params.id;
-
-  Comunity.findByIdAndRemove(communityId, function(err, community) {
-    if (err) {
-      res.json({ error: err.message });
-    } else {
+  
+  removeCommunity(communityId)
+    .then(community => {
       res.json({ community: community });
-    }
-  });
+    })
+    .catch(err => {
+      res.json({ error: err.message });
+    });
 });
 
 module.exports = router;

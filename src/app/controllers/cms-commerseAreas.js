@@ -7,7 +7,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
-import { importCommerseArea, updateCommerseArea } from '../utils/importer';
+import { importCommerseArea, updateCommerseArea, removeCommerseArea } from '../utils/importer';
 
 const District = mongoose.model('District');
 const CommerseArea = mongoose.model('CommerseArea');
@@ -127,14 +127,14 @@ router.post('/delete/:id', (req, res, next) => {
   }
 
   const commerseAreaId = req.params.id;
-
-  CommerseArea.findByIdAndRemove(commerseAreaId, function(err, commerseArea) {
-    if (err) {
-      res.json({ error: err.message });
-    } else {
+  
+  removeCommerseArea(commerseAreaId)
+    .then(commerseArea => {
       res.json({ commerseArea: commerseArea });
-    }
-  });
+    })
+    .catch(err => {
+      res.json({ error: err.message });
+    });
 });
 
 module.exports = router;

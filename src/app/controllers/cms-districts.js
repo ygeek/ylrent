@@ -7,7 +7,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
-import { importDistrict, updateDistrict } from '../utils/importer';
+import { importDistrict, updateDistrict, removeDistrict } from '../utils/importer';
 
 const District = mongoose.model('District');
 
@@ -109,13 +109,13 @@ router.post('/delete/:id', (req, res, next) => {
   }
 
   const districtId = req.params.id;
-
-  District.findByIdAndRemove(districtId, function(err, district) {
-    if (err) {
-      res.json({ error: err.message });
-    } else {
-      res.json({ district: district });
-    }
+  
+  (async function() {
+    let district = await removeDistrict(districtId);
+    
+    res.json({ district: district });
+  })().catch(err => {
+    res.json({error: err.message});
   });
 });
 
