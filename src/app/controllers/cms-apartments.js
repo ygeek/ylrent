@@ -9,6 +9,9 @@ import mongoose from 'mongoose';
 import { importApartment, updateApartment, importApartmentType } from '../utils/importer';
 
 const Apartment = mongoose.model('Apartment');
+const District = mongoose.model('District');
+const CommerseArea = mongoose.model('CommerseArea');
+const Comunity = mongoose.model('Comunity');
 
 const router = express.Router();
 
@@ -21,28 +24,40 @@ router.get('/list', (req, res, next) => {
 
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
+  
+  (async function() {
+    let query = {};
 
-  let options = {
-    page: page,
-    limit: 10,
-    lean: true,
-    populate: ['comunity', 'commerseArea', 'district', 'apartmentType']
-  };
+    let keyword = req.query.keyword;
+    if (keyword) {
+      let searchDistricts = await District.find({name: new RegExp(keyword)}).exec();
+      let searchCommerseAreas = await CommerseArea.find({name: new RegExp(keyword)}).exec();
+      let searchComunities = await Comunity.find({name: new RegExp(keyword)}).exec();
+      query['$or'] = [
+        {'district': {'$in': searchDistricts}},
+        {'commerseArea': {'$in': searchCommerseAreas}},
+        {'comunity': {'$in': searchComunities}}
+      ];
+    }
+    
+    let options = {
+      page: page,
+      limit: 10,
+      lean: true,
+      populate: ['comunity', 'commerseArea', 'district', 'apartmentType']
+    };
 
-  Apartment
-    .paginate({}, options)
-    .then(apartments => {
-      res.render('cms-apartments', {
-        apartments: apartments
-      });
-    })
-    .catch(err => {
-      res.render('error', {
-        error: err,
-        message: err.message,
-        stack: err.stack
-      });
+    let apartments = await Apartment.paginate(query, options);
+    res.render('cms-apartments', {
+      apartments: apartments
     });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
 });
 
 

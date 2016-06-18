@@ -22,6 +22,14 @@ router.get('/list', (req, res, next) => {
 
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
+  
+  let keyword = req.query.keyword;
+  
+  let query = {};
+  
+  if (keyword) {
+    query['name'] = new RegExp(keyword) ;
+  }
 
   let options = {
     page: page,
@@ -31,7 +39,7 @@ router.get('/list', (req, res, next) => {
   };
 
   Comunity
-    .paginate({}, options)
+    .paginate(query, options)
     .then(communities => {
       res.render('cms-communities', {
         communities: communities

@@ -10,6 +10,9 @@ import mongoose from 'mongoose';
 import { importDailyRent, updateDailyRent } from '../utils/importer';
 
 const DailyRent = mongoose.model('DailyRent');
+const District = mongoose.model('District');
+const CommerseArea = mongoose.model('CommerseArea');
+const Comunity = mongoose.model('Comunity');
 
 const router = express.Router();
 
@@ -22,28 +25,44 @@ router.get('/list', (req, res, next) => {
 
   let page = parseInt(req.query.page);
   page = isNaN(page) ? 1 : page;
+  
+  (async function() {
+    let query = {};
 
-  let options = {
-    page: page,
-    limit: 10,
-    lean: true,
-    populate: ['comunity', 'commerseArea', 'district']
-  };
+    let keyword = req.query.keyword;
+    if (keyword) {
+      let searchDistricts = await District.find({name: new RegExp(keyword)}).exec();
+      let searchCommerseAreas = await CommerseArea.find({name: new RegExp(keyword)}).exec();
+      let searchComunities = await Comunity.find({name: new RegExp(keyword)}).exec();
 
-  DailyRent
-    .paginate({}, options)
-    .then(dailies => {
-      res.render('cms-dailies', {
-        dailies: dailies
+      query['$or'] = [
+        {'district': {'$in': searchDistricts}},
+        {'commerseArea': {'$in': searchCommerseAreas}},
+        {'comunity': {'$in': searchComunities}}
+      ];
+    }
+
+    let options = {
+      page: page,
+      limit: 10,
+      lean: true,
+      populate: ['comunity', 'commerseArea', 'district']
+    };
+
+    DailyRent
+      .paginate(query, options)
+      .then(dailies => {
+        res.render('cms-dailies', {
+          dailies: dailies
+        });
       });
-    })
-    .catch(err => {
-      res.render('error', {
-        error: err,
-        message: err.message,
-        stack: err.stack
-      });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
     });
+  });
 });
 
 router.get('/detail/:id', (req, res, next) => {
