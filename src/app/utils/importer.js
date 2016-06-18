@@ -8,9 +8,9 @@ import log4js from 'log4js';
 import mongoose from 'mongoose';
 import _ from 'lodash';
 
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 let logger = log4js.getLogger('normal');
-
 
 export async function importDistrict(districtObj) {
   const District = mongoose.model('District');
@@ -106,8 +106,9 @@ export async function importComunity(comunityObj) {
     address: comunityObj.address,
     latitude: comunityObj.lat,
     longitude: comunityObj.lon,
-    isHot: false,
-    keywords: [comunityObj.CBDName]
+    isHot: comunityObj.isHot,
+    keywords: comunityObj.keywords,
+    imagekeys: comunityObj.imagekeys
   };
   let options = {
     new: true,
@@ -201,7 +202,7 @@ export async function importApartmentType(apartmentObj) {
   };
   apartmentType.address = apartmentObj.address;
   apartmentType.isHot = false;
-  apartmentType.keywords = apartmentObj.keywords.split(/\s+/);
+  apartmentType.keywords = _.uniq(apartmentType.keywords.concat(apartmentObj.keywords.split(/\s+/)));
 
   apartmentType.minArea = minArea;
   apartmentType.maxArea = maxArea;
@@ -219,6 +220,42 @@ export async function importApartmentType(apartmentObj) {
   await ApartmentType.update({ name: apartmentType.name }, upsertData, {upsert: true}).exec();
   logger.info('import apartmentType: ', apartmentType);
   return apartmentType;
+}
+
+export async function updateApartmentType(apartmentTypeId) {
+  const ApartmentType = mongoose.model('ApartmentType');
+  const Apartment = mongoose.model('Apartment');
+  
+  let apartments = await Apartment
+    .find({apartmentType: ObjectId(apartmentTypeId)})
+    .populate('comunity commerseArea district')
+    .exec();
+  
+  if (apartments.length === 0) {
+    await ApartmentType.findByIdAndRemove(apartmentTypeId).exec();
+  } else {
+    let update = {
+      imagekeys: [],
+      keywords: [],
+      minArea: Number.MAX_VALUE,
+      maxArea: 0,
+      minPrice: Number.MAX_VALUE,
+      maxPrice: 0,
+      isHot: false
+    };
+    let apartmentType = await ApartmentType.findByIdAndUpdate(apartmentTypeId, update).exec();
+
+    for (let apartment in apartments) {
+      apartmentType.minArea = Math.min(apartmentType.minArea, apartment.area);
+      apartmentType.maxArea = Math.max(apartmentType.maxArea, apartment.area);
+      apartmentType.minPrice = Math.min(apartmentType.minPrice, apartment.price);
+      apartmentType.maxPrice = Math.max(apartmentType.maxPrice, apartment.price);
+      apartmentType.keywords = _.uniq(apartmentType.keywords.concat(apartment.keywords));
+      apartmentType.imagekeys = _.uniq(apartmentType.imagekeys.concat(apartment.imagekeys));
+      apartmentType.isHot = apartmentType.isHot || apartment.isHot;
+    }
+    return await apartmentType.save();
+  }
 }
 
 export async function importApartment(apartmentObj) {
@@ -274,6 +311,38 @@ export async function importApartment(apartmentObj) {
   await apartment.comunity.save();
   logger.info('import apartment: ', apartment);
   return apartment;
+}
+
+export async function updateCommunity(communityId) {
+  const Comunity = mongoose.model('Comunity');
+  const Apartment = mongoose.model('Apartment');
+  let apartments = await Apartment
+    .find({ comunity: ObjectId(communityId) })
+    .populate('comunity commerseArea district')
+    .exec();
+  
+  if (apartments.length === 0) {
+    let update = {
+      minArea: null,
+      maxArea: null,
+      minPrice: null,
+      maxPrice: null
+    };
+    return await Comunity.findByIdAndUpdate(communityId, update).exec();
+  } else {
+    let comunity = await Comunity.findById(communityId).exec();
+    comunity.minArea = Number.MAX_VALUE;
+    comunity.maxArea = 0;
+    comunity.minPrice = Number.MAX_VALUE;
+    comunity.maxPrice = 0;
+    for (let apartment of apartments) {
+      comunity.minArea = Math.min(comunity.minArea, apartment.area);
+      comunity.maxArea = Math.max(comunity.maxArea, apartment.area);
+      comunity.minPrice = Math.min(comunity.minPrice, apartment.price);
+      comunity.maxPrice = Math.max(comunity.maxPrice, apartment.price);
+    }
+    return await comunity.save();
+  }
 }
 
 export async function updateApartment(apartmentId, apartmentObj) {

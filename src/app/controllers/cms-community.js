@@ -94,6 +94,8 @@ router.post('/add', (req, res, next) => {
   }
 
   let communityObj = req.body;
+  communityObj.keywords = communityObj.keywords.split(/\s+/);
+  communityObj.imagekeys = communityObj.imagekeys.split(/\s+/);
 
   importComunity(communityObj).then(community => {
     res.json({ community: community });

@@ -7,7 +7,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
-import { importApartment, updateApartment, importApartmentType } from '../utils/importer';
+import { 
+  importApartment, 
+  updateApartment, 
+  importApartmentType,
+  updateApartmentType,
+  updateComunity
+} from '../utils/importer';
 
 const Apartment = mongoose.model('Apartment');
 const District = mongoose.model('District');
@@ -185,18 +191,21 @@ router.post('/delete/:id', (req, res, next) => {
     return res.json({error: '请以管理员身份重新登录'});
   }
   const apartmentId = req.params.id;
-  Apartment.findByIdAndRemove(apartmentId, function(err, apartment) {
-    if (err) {
-      res.json({
-        error: err.message
-      });
-    } else {
-      res.json({
-        apartment: apartment
-      });
-    }
+
+  (async function() {
+    let apartment = await Apartment.findByIdAndRemove(apartmentId).exec();
+
+    await updateApartmentType(apartment.apartmentType);
+    await updateComunity(apartment.comunity);
+
+    res.json({
+      apartment: apartment
+    });
+  })().catch(err => {
+    res.json({
+      error: err.message
+    });
   });
-  // TODO: update related apartmentTypes
 });
 
 router.post('/rent/:id', (req, res, next) => {
