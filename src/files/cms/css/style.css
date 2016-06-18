@@ -149,7 +149,7 @@ h2{font-weight:normal;}
 .sort{padding-left:3px;}
 
 /*page*/
-.pagin{position:relative;margin-top:10px;padding:0 12px;}
+.pagin{position:relative;margin-top:10px;padding:0 12px; text-align: right;}
 .pagin .blue{color:#056dae;font-style:normal;}
 .pagin .paginList{position:absolute;right:12px;top:0;}
 .pagin .paginList .paginItem{float:left;}

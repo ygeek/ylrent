@@ -49,7 +49,7 @@ $(document).ready(function(){
         <div class="tools">
 
             <ul class="toolbar">
-                <li class="click"><span><img src="/files/cms/images/t01.png" /></span>添加房源</li>
+                <li class="click"><a href="/cms/apartment/add"><span><img src="/files/cms/images/t01.png" /></span>添加房源</a></li>
           
             </ul>
             <ul class="seachform">
@@ -89,7 +89,7 @@ $(document).ready(function(){
                     <td><% if(val.isHot){ %>是<% }else{ %>否<% } %></td>
                  
                     <td><% if(!val.leased){ %>未租<% }else{ %>已租<% } %></td>
-                    <td><a href="/cms/apartment/<%= val._id %>" class="tablelink"> 修改</a></td>
+                    <td><a href="/cms/apartment/update/<%= val._id %>" class="tablelink"> 修改</a></td>
                 </tr> 
              <% }) ; %>   
 

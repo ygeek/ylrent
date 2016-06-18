@@ -79,7 +79,7 @@ $(document).ready(function(){
             <td>
                 <a href="/news/<%= val._id %>" target="_parent" class="tablelink">查看</a>
                 |
-                <a href="#" class="tablelink">删除</a>
+                <a href="javascript:delNews('<%= val._id %>')" class="tablelink">删除</a>
             </td>
         </tr>
         <% }) %>
@@ -92,7 +92,7 @@ $(document).ready(function(){
     </div>
 
     </div>
-    
+
     <script type="text/javascript">
 	$('.tablelist tbody tr:odd').addClass('odd');
         laypage({
@@ -108,6 +108,12 @@ $(document).ready(function(){
                 }
             }
         });
+function delNews(id)
+{
+    $.post("/cms/news/delete/"+id, function(data){
+              location.href=location.href;
+          });
+}
 </script>
 
 </body>

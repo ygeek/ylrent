@@ -49,7 +49,7 @@ $(document).ready(function(){
         <div class="tools">
 
             <ul class="toolbar">
-                <li class="click"><span><img src="/files/cms/images/t01.png" /></span>添加小区</li>
+                <li class="click"><a href="/cms/community/add"><span><img src="/files/cms/images/t01.png" /></span>添加小区</a></li>
           
             </ul>
             <ul class="seachform">
@@ -89,7 +89,7 @@ $(document).ready(function(){
                     
                  
                   
-                    <td><a href="/cms/community/<%= val._id %>" class="tablelink"> 修改</a></td>
+                    <td><a href="/cms/community/detail/<%= val._id %>" class="tablelink"> 修改</a></td>
                 </tr> 
              <% }) ; %>   
 

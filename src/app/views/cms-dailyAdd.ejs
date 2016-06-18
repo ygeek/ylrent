@@ -25,16 +25,15 @@
     <form action="" class="subform"  method="post">
 
     <ul class="forminfo">
-        <li><label>名称</label><input name="villageName" value="<%= daily.villageName %>" datatype="*" sucmsg=" "  type="text" class="dfinput" /><i class="Validform_checktip">标题不能超过30个字符</i></li>
-        <li><label>房号</label><input name="houseno"  value="<%= daily.houseno %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>编号</label><input name="contractno"  value="<%= daily.contractno %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+        <li><label>小区名称</label><input name="comunityName" value="" datatype="*" sucmsg=" "  type="text" class="dfinput" /><i class="Validform_checktip">标题不能超过30个字符</i></li>
+        <li><label>名称</label><input name="name"  value=""  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>最小</label><input name="capacityMin"  value=""  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
        
-        <li><label>面积</label><input name="structurearea"  value="<%= daily.structurearea %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>租金</label><input name="rentPerMonth"  value="<%= daily.rentPerMonth %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
+        <li><label>最大</label><input name="capacityMax"  value=""  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>租金</label><input name="price"  value=""  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
       
-        <li><label>地址</label><input name="address"  value="<%= daily.address %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>关键词</label><input name="keywords"  value="<%= daily.keywords %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
-        <input name="id" value="<%= daily._id %>" type="hidden" />
+        <li><label>名称2</label><input name="folderName"  value=""  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>关键词</label><input name="keywords"  value=""  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
         <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
     </ul>
     </form>
@@ -80,15 +79,3 @@ $(function(){
 
 
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<%= JSON.stringify(daily) %>
-</body>
-</html>
