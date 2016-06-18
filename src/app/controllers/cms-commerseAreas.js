@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 
 import { importCommerseArea, updateCommerseArea } from '../utils/importer';
 
+const District = mongoose.model('District');
 const CommerseArea = mongoose.model('CommerseArea');
 
 const router = express.Router();
@@ -44,6 +45,49 @@ router.get('/list', (req, res, next) => {
         stack: err.stack
       });
     });
+});
+
+router.get('/add', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+
+  (async function() {
+    let districts = await District.find({}).exec();
+
+    res.render('cms-commerseAreaAdd', {
+      districts: districts
+    });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
+});
+
+router.get('/update/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+  
+  let commerseAreaId = req.params.id;
+  
+  (async function() {
+    let districts = await District.find({}).exec();
+    let commerseArea = CommerseArea.findById(commerseAreaId).exec();
+    res.render('cms-commerseAreaUpdate', {
+      districts: districts,
+      commerseArea: commerseArea
+    });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
 });
 
 router.post('/add', (req, res, next) => {

@@ -45,6 +45,35 @@ router.get('/list', (req, res, next) => {
     });
 });
 
+router.get('/add', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  } 
+  
+  res.render('cms-districtAdd', {});
+});
+
+router.get('/update/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+  
+  let districtId = req.params.id;
+
+  (async function() {
+    let district = await District.findById(districtId).exec();
+    res.render('cms-districtUpdate', {
+      district: district
+    });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
+});
+
 router.post('/add', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
     return res.json({error: '请以管理员身份重新登录'});
