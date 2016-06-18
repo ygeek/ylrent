@@ -42,7 +42,8 @@ router.get('/list', (req, res, next) => {
     .paginate(query, options)
     .then(communities => {
       res.render('cms-communities', {
-        communities: communities
+        communities: communities,
+        keyword: keyword
       });
     })
     .catch(err => {

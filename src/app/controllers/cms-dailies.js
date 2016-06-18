@@ -53,7 +53,8 @@ router.get('/list', (req, res, next) => {
       .paginate(query, options)
       .then(dailies => {
         res.render('cms-dailies', {
-          dailies: dailies
+          dailies: dailies,
+          keyword: keyword
         });
       });
   })().catch(err => {

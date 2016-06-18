@@ -49,7 +49,8 @@ router.get('/list', (req, res, next) => {
 
     let apartments = await Apartment.paginate(query, options);
     res.render('cms-apartments', {
-      apartments: apartments
+      apartments: apartments,
+      keyword: keyword
     });
   })().catch(err => {
     res.render('error', {
