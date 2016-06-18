@@ -6,6 +6,7 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import { importApartment, updateApartment, importApartmentType } from '../utils/importer';
 
 const Apartment = mongoose.model('Apartment');
 
@@ -68,6 +69,67 @@ router.get('/detail/:id', (req, res, next) => {
         stack: err.stack
       });
     });
+});
+
+router.post('/add', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+  
+  let apartmentObj = req.body;
+  
+  Promise.all([
+    importApartmentType(apartmentObj),
+    importApartment(apartmentObj)
+  ]).then(([apartmentType, apartment]) => {
+    res.json({
+      apartmentType: apartmentType,
+      apartment: apartment
+    });
+  }).catch(err => {
+    res.json({error: err.message});
+  });
+});
+
+router.post('/update/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  const apartmentId = req.params.id;
+  
+  let apartmentObj = req.body;
+
+  Promise.all([
+    importApartmentType(apartmentObj),
+    updateApartment(apartmentId, apartmentObj)
+  ]).then(([apartmentType, apartment]) => {
+    res.json({
+      apartmentType: apartmentType,
+      apartment: apartment
+    });
+  }).catch(err => {
+    res.json({error: err.message});
+  });
+});
+
+router.post('/delete/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+  const apartmentId = req.params.id;
+  Apartment.findByIdAndRemove(apartmentId, function(err, apartment) {
+    if (err) {
+      res.json({
+        error: err.message
+      });
+    } else {
+      res.json({
+        apartment: apartment
+      });
+    }
+  });
+  // TODO: update related apartmentTypes
 });
 
 router.post('/rent/:id', (req, res, next) => {

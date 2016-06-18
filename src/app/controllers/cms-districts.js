@@ -1,15 +1,15 @@
 /**
- * Created by meng on 16/6/17.
+ * Created by meng on 16/6/18.
  */
 
-"use strict";
+'use strict';
 
 import express from 'express';
 import mongoose from 'mongoose';
 
-import { importComunity, updateComunity } from '../utils/importer';
+import { importDistrict, updateDistrict } from '../utils/importer';
 
-const Comunity = mongoose.model('Comunity');
+const District = mongoose.model('District');
 
 const router = express.Router();
 
@@ -26,40 +26,14 @@ router.get('/list', (req, res, next) => {
   let options = {
     page: page,
     limit: 10,
-    lean: true,
-    populate: ['commerseArea', 'district']
+    lean: true
   };
 
-  Comunity
+  District
     .paginate({}, options)
-    .then(communities => {
-      res.render('cms-communities', {
-        communities: communities
-      });
-    })
-    .catch(err => {
-      res.render('error', {
-        error: err,
-        message: err.message,
-        stack: err.stack
-      });
-    });
-});
-
-router.get('/detail/:id', (req, res, next) => {
-  if ((!req.user || !req.user.isStaff) && !isDebug) {
-    return res.redirect('/user/login');
-  }
-  
-  let communityId = req.params.id;
-  
-  Comunity
-    .findById(communityId)
-    .populate('district commerseArea')
-    .exec()
-    .then(community => {
-      res.render('cms-communityDetail', {
-        community: community
+    .then(districts => {
+      res.render('cms-districts', {
+        districts: districts
       });
     })
     .catch(err => {
@@ -76,10 +50,10 @@ router.post('/add', (req, res, next) => {
     return res.json({error: '请以管理员身份重新登录'});
   }
 
-  let communityObj = req.body;
+  let districtObj = req.body;
 
-  importComunity(communityObj).then(community => {
-    res.json({ community: community });
+  importDistrict(districtObj).then(district => {
+    res.json({ district: district });
   }).catch(err => {
     res.json({ error: err.message });
   });
@@ -90,11 +64,11 @@ router.post('/update/:id', (req, res, next) => {
     return res.json({error: '请以管理员身份重新登录'});
   }
 
-  let communityId = req.params.id;
-  let communityObj = req.body;
-
-  updateComunity(communityId, communityObj).then(community => {
-    res.json({ community: community });
+  let districtId = req.params.id;
+  let districtObj = req.body;
+  
+  updateDistrict(districtId, districtObj).then(district => {
+    res.json({ district: district });
   }).catch(err => {
     res.json({ error: err.message });
   });
@@ -105,13 +79,13 @@ router.post('/delete/:id', (req, res, next) => {
     return res.json({error: '请以管理员身份重新登录'});
   }
 
-  const communityId = req.params.id;
+  const districtId = req.params.id;
 
-  Comunity.findByIdAndRemove(communityId, function(err, community) {
+  District.findByIdAndRemove(districtId, function(err, district) {
     if (err) {
       res.json({ error: err.message });
     } else {
-      res.json({ community: community });
+      res.json({ district: district });
     }
   });
 });

@@ -7,6 +7,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
+import { importDailyRent, updateDailyRent } from '../utils/importer';
+
 const DailyRent = mongoose.model('DailyRent');
 
 const router = express.Router();
@@ -96,6 +98,51 @@ router.post('/available/:id', (req, res, next) => {
       res.json({error: err.message});
     } else {
       res.json({daily: daily});
+    }
+  });
+});
+
+router.post('/add', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  let dailyObj = req.body;
+
+  importDailyRent(dailyObj).then(daily => {
+    res.json({ daily: daily });
+  }).catch(err => {
+    res.json({error: err.message});
+  });
+});
+
+router.post('/update/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  let dailyId = req.params.id;
+  let dailyObj = req.body;
+  
+  updateDailyRent(dailyId, dailyObj).then(daily => {
+    res.json({ daily: daily });
+  }).catch(err => {
+    res.json({error: err.message});
+  });
+});
+
+router.post('/delete/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  let dailyId = req.params.id;
+  
+  DailyRent.findByIdAndRemove(dailyId, function(err, daily) {
+    if (err) {
+      res.json({ error: err.message });
+    } else {
+      res.json({ daily: daily });
     }
   });
 });
