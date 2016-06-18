@@ -26,7 +26,8 @@ router.get('/list', (req, res, next) => {
   let options = {
     page: page,
     limit: 10,
-    lean: true
+    lean: true,
+    populate: "district"
   };
 
   CommerseArea

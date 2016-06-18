@@ -18,8 +18,10 @@
     <div class="mainindex">
 
     <div class="welinfo">
-    <b><% if (user) { user.username } %>早上好，欢迎使用信息管理系统</b>
-    <a href="#">帐号设置</a>
+    <b><%= user && user.name %> 您好，欢迎使用信息管理系统</b>
+        <!--
+    <a href="/cms/user/list/">帐号设置</a>
+    -->
     </div>
 </body>
 

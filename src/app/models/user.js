@@ -5,6 +5,7 @@
 import mongoose from 'mongoose';
 import passport from 'passport';
 import passportLocalMongoose from 'passport-local-mongoose';
+import mongoosePaginate from 'mongoose-paginate';
 
 const UserSchema = new mongoose.Schema({
   name: String,
@@ -18,6 +19,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(mongoosePaginate);
 
 const User = mongoose.model('User', UserSchema);
 passport.use(User.createStrategy());

@@ -13,11 +13,11 @@ import { expires } from '../models/sms';
 const logger = log4js.getLogger('normal');
 
 const leancloudConfig = {
-  'X-LC-Id': 'nra0oIK78C1abdSfPNXP6jK5-gzGzoHsz',
-  'X-LC-Key': 'naPjzrIDx6Kdj77lE9TJGucM'
+  'X-LC-Id': 'QTohRgKnY7UdXzg3TRJRCJso-gzGzoHsz',
+  'X-LC-Key': 'bGJxnqgPJGUKnBGwA5nbTVLr'
 };
 
-const SMSTemplateName = '源涞官网验证码';
+const SMSTemplateName = '短信验证码';
 
 const SMSCode = mongoose.model('SMSCode');
 
@@ -41,8 +41,8 @@ export async function requestSMSCode(mobilePhone) {
     json: {
       mobilePhoneNumber: mobilePhone,
       template: SMSTemplateName,
-      code: smsCode.code,
-      ttl: Math.floor(expires / 60)
+      smscode: smsCode.code,
+      expired: Math.floor(expires / 60)
     }
   };
   
@@ -77,26 +77,5 @@ export async function verifySMSCode(mobilePhone, code) {
   return ok;
   */
 
-  /*
-  let url = 'https://api.leancloud.cn/1.1/verifySmsCode/' + code;
-  logger.info('verify sms code url: ', url);
-  let options = {
-    method: 'POST',
-    url: url,
-    headers: leancloudConfig,
-    qs: { mobilePhoneNumber: mobilePhone },
-    json: true
-  };
-  let body = await rp(options);
-  
-  logger.info('verify sms code body: ', body);
-  
-  if (body && body.code && body.code !== 0) {
-    return false;
-  } else {
-    return true;
-  }
-  */
-  
   return true;
 }

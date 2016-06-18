@@ -18,8 +18,9 @@ router.use('/cms/orders', require('./cms-orders'));
 router.use('/cms/apartment', require('./cms-apartments'));
 router.use('/cms/daily', require('./cms-dailies'));
 router.use('/cms/community', require('./cms-community'));
-router.use('/cms/commerseAreas', require('./cms-commerseAreas'));
-router.use('/cms/districts', require('./cms-districts'));
+router.use('/cms/commerseArea', require('./cms-commerseAreas'));
+router.use('/cms/district', require('./cms-districts'));
+router.use('/cms/user', require('./cms-users'));
 router.use('/cms', require('./cms-main'));
 router.use('/', require('./home'));
 
