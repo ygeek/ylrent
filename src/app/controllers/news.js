@@ -41,6 +41,10 @@ router.get('/', (req, res, next) => {
   Promise
     .all([latestNewsPromise, newsPromise, hotApartments])
     .then(([latestNews, newsList, apartmentTypes]) => {
+      for (let news of latestNews) {
+        news.date_formatted = moment(news.date).format('YYYY-MM-DD HH:mm:ss');
+      }
+      
       res.render('newsList', {
         latestNews: latestNews,
         newsList: newsList,

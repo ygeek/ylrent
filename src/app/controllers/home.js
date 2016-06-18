@@ -13,6 +13,7 @@ const CommerseArea = mongoose.model('CommerseArea');
 const Comunity = mongoose.model('Comunity');
 const ApartmentType = mongoose.model('ApartmentType');
 const DailyRent = mongoose.model('DailyRent');
+const News = mongoose.model('News');
 
 const logger = log4js.getLogger('normal');
 
@@ -61,17 +62,36 @@ router.get('/', (req, res, next) => {
       .sort('-isHot')
       .populate('comunity commerseArea district')
       .exec();
+  
+  let latestNewsPromise = News
+    .find({})
+    .limit(8)
+    .sort('-date')
+    .exec();
 
   Promise
-    .all([apartmentPromise, comunityPromise, dailyPromise, districtPromise])
-    .then(([apartmentTypes, comunities, dailyRents, districts]) => {
+    .all([
+      apartmentPromise, 
+      comunityPromise, 
+      dailyPromise, 
+      districtPromise,
+      latestNewsPromise
+    ])
+    .then(([
+      apartmentTypes, 
+      comunities, 
+      dailyRents, 
+      districts,
+      latestNews
+    ]) => {
       res.render('index', {
         title: '源涞国际',
         user: req.user,
         apartmentTypes: apartmentTypes,
         comunities: comunities,
         dailyRents: dailyRents,
-        districts: districts
+        districts: districts,
+        latestNews: latestNews
       });
     }).catch((err) => {
       res.render('error', {
