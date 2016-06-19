@@ -172,7 +172,7 @@ router.post('/register', (req, res, next) => {
     email: email
   };
   if (isCorp) {
-    userData.isCrop = isCorp;
+    userData.isCorp = isCorp;
     userData.corpName = corpName;
     userData.title = title;
     userData.address = address;
