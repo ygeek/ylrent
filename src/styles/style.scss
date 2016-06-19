@@ -255,10 +255,20 @@ background:url(../img/house.png) no-repeat   right center; }
 			.focus .btn a:hover,.focus .btn a.current{  cursor:pointer;background:#fc114a;}  
 			.focus .fPic{ position:absolute; left:0px; top:0px; }  
 			.focus .D1fBt{ overflow:hidden; zoom:1;  height:16px; z-index:10;  }  
-			.focus .shadow{ width:100%; position:absolute; top:50%; left:60px; width: 570px; margin-top: -50px; text-align: center; z-index:10; height:100px; line-height: 100px; background:rgba(0,0,0,0.6);    
-			filter:progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = '#80000000',endColorstr = '#80000000')\9;  display:block;  }  
-			.focus .shadow a{ text-decoration:none; font-weight: bolder;  color:#fff; font-size:26px; overflow:hidden; margin-left:10px; font-family: "\5FAE\8F6F\96C5\9ED1";}  
-			.focus .fcon{ position:relative; width:100%; float:left;  display:none; background:#000  }  
+			.focus .shadow{ width:100%; position:absolute; top:50%; left:60px; width: 570px; margin-top: -50px; text-align: center; z-index:10; height:100px; line-height: 100px; background:rgba(0,0,0,0.6);
+              filter:progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = '#80000000',endColorstr = '#80000000')\9;  display:block;  }
+            .focus .shadow_s{ width:100%; position:absolute; bottom:0; left:0px; width: 100%; text-align: center; z-index:10; height:60px; line-height: 50px; background:rgba(0,0,0,0.6);
+              filter:progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = '#80000000',endColorstr = '#80000000')\9;  display:block; color: #fff;  }
+.focus .shadow_s a {
+	color: #ffffff; font-size: 18px;}
+
+
+.focus .fbgs{bottom:5px; right:40px; position:absolute; height:21px; text-align:center; z-index: 200; }
+
+
+
+.focus .shadow a{ text-decoration:none; font-weight: bolder;  color:#fff; font-size:26px; overflow:hidden; margin-left:10px; font-family: "\5FAE\8F6F\96C5\9ED1";}
+			.focus .fcon{ position:relative; width:100%; float:left;  display:none; background:#000  }
 			.focus .fcon img{ display:block; }  
 			.focus .fbg{bottom:25px; right:40px; position:absolute; height:21px; text-align:center; z-index: 200; }  
 			.focus .fbg div{margin:4px auto 0;overflow:hidden;zoom:1;height:14px}    
@@ -299,7 +309,7 @@ background:url(../img/house.png) no-repeat   right center; }
 			  .n_news_main_l ul li p a{color:#f58220;}
 			.n_news_main_l ul li span{color:#999; font-size:12px;}
     .n_news_main_r{width:368px; float:right;}
-	    .remenfangy{background:#fff; padding:20px 20px 40px 20px;}
+	    .remenfangy{background:#fff; padding:20px 20px 40px 20px; float: right;}
 		   .remenfangy h1{font-size:18px;}
 		   .remenfangy h2{background:url(../img/so_bg.png); height:78px; margin:-78px 0 0 0; position:relative; z-index:9; padding:0 20px; font-size:18px;}
 		      .remenfangy h2 span{padding:12px 0 0 0; display:block;}
@@ -612,7 +622,7 @@ background:url(../img/house.png) no-repeat   right center; }
 
 .n_main_x{width:1120px; margin:0 auto; }
    .n_main_x_m{padding:60px; line-height:24px; background:#fff;}
-      .n_menu_x{height:30px; line-height:30px; background:url(../images/line_x.jpg) center repeat-x; margin:0 0 40px 0;}
+      .n_menu_x{height:30px; line-height:30px; background:url(/img/line_x.jpg) center repeat-x; margin:0 0 40px 0;}
         .n_menu_x_m{background:#fff; float:left; margin:0 0 0 30%;}
 			.n_menu_x_m ul{display:table;margin:0 auto; font-size:15px;}
 				.n_menu_x_m ul li{display:block; float:left; height:30px; line-height:30px; width:105px; text-align:center;}
@@ -620,23 +630,23 @@ background:url(../img/house.png) no-repeat   right center; }
 				 .n_menu_x_m ul li a:hover{display:block;  background:#aa8f58;color:#fff;}
 				   .n_menu_x_m li + li {width:105px;}
 				   #menu_hover_x{display:block;  background:#aa8f58; color:#fff;}
-				   
+
 		.about_x01{float:left; width:355px;}
 		.about_x02{float:right; width:608px;}
-		   .about_x02_name h1{font-size:22px; background:url(../images/img_con02.jpg) left no-repeat; padding:0 0 0 20px;}
+		   .about_x02_name h1{font-size:22px; background:url(/img/img_con02.jpg) left no-repeat; padding:0 0 0 20px;}
 		      .about_x02_name h1 span{font-size:14px; padding:0 0 0 10px;}
 			  .about_x02_m{line-height:24px; padding:20px 0 0 0;}
-	     .about_x03{background:url(../images/img_x01.jpg) center no-repeat; height:403px; margin:60px auto 0 auto;}
+	     .about_x03{background:url(/img/img_x01.jpg) center no-repeat; height:403px; margin:60px auto 0 auto;}
 		    .about_x03_m{padding:90px 0 0 50px;}
-			
+
 		 .about_x04{margin:50px 0 0 0;}
 		    .about_x04_m{padding:30px 0;}
-			
+
 			.about_x05{margin:50px 0;}
 		.about_x05 img{float:left; margin:20px 0;}
-		   .about_x05_m{background:url(../images/img_x04.png); position:relative; top:80px; left:280px; width:720px; height:150px; padding:50px 0; text-align:left; }
+		   .about_x05_m{background:url(/img/img_x04.png); position:relative; top:80px; left:280px; width:720px; height:150px; padding:50px 0; text-align:left; }
 		      .about_x5_m01{margin:0 0 0 -300px; float:left;}
-			     .about_x5_m01 h1{background:url(../images/img_icon01.png) left no-repeat; padding:0 0 0 30px; font-size:16px;}
+			     .about_x5_m01 h1{background:url(/img/img_icon01.png) left no-repeat; padding:0 0 0 30px; font-size:16px;}
 				 .about_x5_m01 p{padding:10px 0 0 30px;}
 				 
 				 

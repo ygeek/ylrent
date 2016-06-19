@@ -207,8 +207,8 @@ $(function() {
     
     //发送短信
     $(document).on("click", ".sendButton", function(e) {
-       
-        var mobile = $("#usernameField").val();
+        var mobile = $("input[name='username']").val();
+
         if(mobile=='/  手机号'||mobile=='')
         {
             alert('请填写手机号!');
@@ -244,8 +244,68 @@ $(function() {
             }
        });
     });
+
+
     
 })
+function checkLogin()
+{
+    var username = $("input[name='username']").val();
+    var password = $("input[name='password']").val();
+    var err = "0";
+
+    if(username==''||!isphone(username))
+    {
+
+        alert('电话号码不存在或格式不正确');
+        return false;
+    }
+
+    if(password=='')
+    {
+        alert('密码不能为空');
+        return false;
+    }
+
+
+
+}
+
+//注册前检查数据
+function checkRegister()
+{
+    var err = "0";
+    var usernameField = $("input[name='username']").val();
+    var smscode = $("input[name='smscode']").val();
+
+    var password = $("input[name='password']").val();
+
+    if(!isphone(usernameField))
+    {
+       alert('手机号不能为空或格式不正确!');
+        return false;
+    }
+
+    if(smscode.length!=4||smscode=="/  验证码")
+    {
+       alert('请填写验证码或格式不正确！');
+
+        return false;
+    }
+
+    if(password==''||password=='/  输入密码')
+    {
+        alert('请填写密码！');
+      return false;
+    }
+
+    
+    if(!$("input[name='agreed']").is(':checked'))
+    {
+        alert('请同意服务协议！');
+        return false;
+    }
+}
 
 function ajaxget(type)
 {
