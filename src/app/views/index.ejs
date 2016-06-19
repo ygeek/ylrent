@@ -183,8 +183,8 @@
                <!-- 代码 开始 -->
 <div id="fsD1" class="focus">  
     <div id="D1pic1" class="fPic">  
-        <% for (var i=0;i<3&& i < latestNews.length;i++){  %>
-            <% if (latestNews[i].imagekey) { %>
+        <% for (var i = 0, count = 0; count < 3 && i < latestNews.length; i++){  %>
+            <% if (latestNews[i].imagekey) { count++; %>
             <div class="fcon" style="display: none;">
                 <a href="/news/<%= latestNews[i]._id %>">
                     <img src="http://o7k9opgtr.bkt.clouddn.com/<%= latestNews[i].imagekey %>" style="opacity: 1; ">
