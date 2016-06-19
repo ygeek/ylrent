@@ -26,6 +26,9 @@
             <p>来源：<%= news.source %>  作者：<%= news.author %>  <%= news.date_formatted %></p>
         </div>
         <div class="n_news_main_m01">
+            <% if(news.imagekey){ %>
+            <div style="margin:0 auto; width:300px; height:auto; margin-bottom:20px;" ><img width="300" src="<%= news.imagekey %>" ></div>
+            <% } %>
             <%= news.content %>
         </div>
         <div class="next">
