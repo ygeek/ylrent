@@ -168,21 +168,12 @@
 
 <div class="bj_white">
       <div class="gxm_icon">
+            <% for (var i=0;i<3&& i < latestNews.length;i++){  %>
             <span>
-                 <h1>居家体验</h1>
-                 <h2>洗衣下厨便捷/配备净水软水系统</h2>
+                
                  <img src="img/icon04.jpg" />
             </span>
-            <span>
-                 <h1>居家体验</h1>
-                 <h2>洗衣下厨便捷/配备净水软水系统</h2>
-                 <img src="img/icon04.jpg" />
-            </span>
-            <span style="float:right; margin:0;">
-                 <h1>居家体验</h1>
-                 <h2>洗衣下厨便捷/配备净水软水系统</h2>
-                 <img src="img/icon04.jpg" />
-            </span>
+            <% } %>
       </div>
        <div class="clear"></div>
       <div class="h_ad01" style="background:url(img/ad.jpg) center no-repeat;"></div>
@@ -192,25 +183,23 @@
                <!-- 代码 开始 -->
 <div id="fsD1" class="focus">  
     <div id="D1pic1" class="fPic">  
+        <% for (var i=0;i<3&& i < latestNews.length;i++){  %>
+        
         <div class="fcon" style="display: none;">
-            <a href="#"><img src="img/default.jpg" style="opacity: 1; "></a>
-            <span class="shadow"><a target="_blank" href="http://ln.qq.com/a/20140625/015503.htm">红三代叶明子太庙办盛典 白色羽毛装高贵动人</a></span>
+            <a href="/news/<%= latestNews[i]._id %>"><img src="<% if(!latestNews[i].imagekey){ %>img/default.jpg<% }else{ %><%= latestNews[i].imagekey %><% } %>" style="opacity: 1; "></a>
+            <span class="shadow"><a target="_blank" href=""><%= latestNews[i].title %></a></span>
         </div>
-        <div class="fcon" style="display: none;">
-            <a href="#"><img src="img/default.jpg" style="opacity: 1; "></a>
-            <span class="shadow"><a target="_blank" href="http://ln.qq.com/a/20140625/015503.htm">红三代叶明子太庙办盛典 白色羽毛装高贵动人</a></span>
-        </div>
-        <div class="fcon" style="display: none;">
-            <a href="#"><img src="img/default.jpg" style="opacity: 1; "></a>
-            <span class="shadow"><a target="_blank" href="http://ln.qq.com/a/20140625/015503.htm">红三代叶明子太庙办盛典 白色羽毛装高贵动人</a></span>
-        </div>
+        <% } %>
+      
+        
    
     </div>
     <div class="fbg">  
     <div class="D1fBt" id="D1fBt">  
-        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""></a>  
-        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""></a>  
-        <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"></a> 
+         <% for (var i=0;i<3&& i < latestNews.length;i++){  %>
+        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""></a>
+        <% } %>  
+       
     </div>  
     </div>  
     <span class="prev"></span>   
