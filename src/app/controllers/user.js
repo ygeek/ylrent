@@ -182,14 +182,25 @@ router.post('/register', (req, res, next) => {
     let smsOK = await verifySMSCode(username, smscode);
     if (!smsOK) {
       logger.trace('verify sms failed');
-      return res.render('register', {
-        usernameError: null,
-        smsError: '短信验证失败',
-        nameError: null,
-        passwordError: null,
-        password2Error: null,
-        corpNameError: null
-      }); 
+      if (req.device.type === 'phone') {
+        res.render('phone/register.ejs', {
+          usernameError: null,
+          smsError: '短信验证失败',
+          nameError: null,
+          passwordError: null,
+          password2Error: null,
+          corpNameError: null
+        });
+      } else {
+        res.render('register', {
+          usernameError: null,
+          smsError: '短信验证失败',
+          nameError: null,
+          passwordError: null,
+          password2Error: null,
+          corpNameError: null
+        });
+      }
     } else {
       logger.trace('verify sms success');
 
@@ -202,14 +213,25 @@ router.post('/register', (req, res, next) => {
       res.redirect('/');
     }
   })().catch(err => {
-    res.render('register', {
-      usernameError: err.message,
-      smsError: null,
-      nameError: null,
-      passwordError: null,
-      password2Error: null,
-      corpNameError: null
-    });
+    if (req.device.type === 'phone') {
+      res.render('phone/register.ejs', {
+        usernameError: err.message,
+        smsError: null,
+        nameError: null,
+        passwordError: null,
+        password2Error: null,
+        corpNameError: null
+      });
+    } else {
+      res.render('register', {
+        usernameError: err.message,
+        smsError: null,
+        nameError: null,
+        passwordError: null,
+        password2Error: null,
+        corpNameError: null
+      });
+    }
   });
 });
 
@@ -227,10 +249,17 @@ router.post('/login', function(req, res, next) {
     await login(user);
     res.redirect('/');
   })().catch(err => {
-    res.render('login', {
-      usernameError: null,
-      passwordError: err.message || '登录失败请重试'
-    });
+    if (req.device.type === 'phone') {
+      res.render('phone/login.ejs', {
+        usernameError: null,
+        passwordError: err.message || '登录失败请重试'
+      });
+    } else {
+      res.render('login', {
+        usernameError: null,
+        passwordError: err.message || '登录失败请重试'
+      });
+    }
   });
 });
 
