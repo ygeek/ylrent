@@ -193,11 +193,13 @@ router.post('/daily', (req, res, next) => {
 });
 
 router.post('/delegate', (req, res, next) => {
+  logger.trace('post delegation order body: ', req.body);
+  
   const name = req.body.name;
   const mobile = req.body.mobile;
   const startDate = new Date(req.body.startDate);
   const communityName = req.body.communityName;
-  const structure = req.body.structure;
+  const structure = req.body.structure || req.body.shi || req.body.shigte;
   const price = req.body.price;
   
   const smscode = req.body.smscode;
