@@ -29,7 +29,11 @@
            <li><a href="/apartment/">热门房源</a></li>
            <li><a href="/daily/">日租房源</a></li>
            <li><a href="#">委托房源</a></li>
-           <li><a href="#">登出</a></li>
+           <% if (user) { %>
+           <li><a href="/user/logout/">登出</a></li>
+           <% } else { %>
+           <li><a href="/user/login/">登录</a></li>
+           <% } %>
        </ul>
        <div id="sidebar-btn">
           <div style="padding:3px 0 0 0">
