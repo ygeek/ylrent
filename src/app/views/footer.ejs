@@ -26,7 +26,10 @@
                   <div class="clear"></div>
          </div>
          <div class="footer_m_center">
-               热门楼盘小区：<a href="#">东方曼哈顿公寓</a><a href="#">东方曼哈顿公寓</a><a href="#">东方曼哈顿公寓</a><a href="#">东方曼哈顿公寓</a><a href="#">东方曼哈顿公寓</a><a href="#">东方曼哈顿公寓</a><a href="#">东方曼哈顿公寓</a><a href="#">东方曼哈顿公寓</a><a href="#">测试测试测试</a><a href="#">测试测试测试</a><a href="#">测试测试测试</a><a href="#">测试测试测试</a><a href="#">测试测试测试</a>
+               热门楼盘小区：
+             <% hotCommunities.forEach(function(val) { %>
+                 <a href="/apartment/?communityId=<%= val._id %>"><%= val.name %></a>
+             <% }) %>
          </div>
          <div class="footer_m_bottom">
              © Copyright 2013 -2016 www.ylrent.com All Rights Reserved. 源涞国际
