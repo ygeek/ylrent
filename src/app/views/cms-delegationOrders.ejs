@@ -51,7 +51,7 @@
 
 
         <ul class="seachform">
-            <form name="sousuo" action="/cms/orders/daily" method="get" />
+            <form name="sousuo" action="/cms/orders/delegate" method="get" />
             <li><input name="keyword" placeholder="姓名/电话/订单号" type="text" class="scinput" /></li>
             <li><label>&nbsp;</label><input name="submit" type="submit" class="scbtn" value="查询"/></li>
             </form>
@@ -61,6 +61,7 @@
         <thead>
         <tr>
             <th>订单编号</th>
+            <th>姓名</th>
             <th>手机号</th>
             <th>起租时间</th>
             <th>小区名</th>
@@ -75,6 +76,7 @@
         <% orders.docs.forEach(function(val){  %>
         <tr>
             <td><%= val._id %></td>
+            <td><%= val.name %></td>
             <td><%= val.mobile %></td>
             <td><%= val.startDate_formatted %></td>
             <td><%= val.communityName %></td>
