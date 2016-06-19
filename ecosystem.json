@@ -17,11 +17,14 @@
   "deploy" : {
     "production" : {
       "user" : "ylrent",
-      "host" : "ylwebtest.chinacloudapp.cn",
+      "host" : "139.196.191.79",
       "ref"  : "origin/master",
       "repo" : "git@github.com:ygeek/ylrent.git",
       "path" : "/var/www/production",
-      "post-deploy" : "npm install && bower install && gulp clean && gulp build && pm2 startOrRestart ecosystem.json --env production"
+      "post-deploy" : "npm install && bower install && gulp clean && gulp build && pm2 startOrRestart ecosystem.json --env production",
+      "env"  : {
+        "NODE_ENV": "dev"
+      }
     },
     "dev" : {
       "user" : "ylrent",
