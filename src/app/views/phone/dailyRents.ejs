@@ -20,19 +20,33 @@
 <div class="header">
     <a href="javascript:void(0)" onclick="history.go(-1)"><div class="header_l"><img src="/img/mobile/fanhui.png" width="20" /></div></a>
     <div class="header_font">超过 <%= result.total %> 套房源</div>
-    <div id="dl-menu" class="dl-menuwrapper">
-        <button id="dl-menu-button">Open Menu</button>
-        <ul class="dl-menu">
-            <li><a href="/apartment/">热门房源</a></li>
-            <li><a href="/daily/">日租房源</a></li>
-            <li><a href="/user/login/">用户登录</a></li>
-        </ul>
+    <div id="sidebar"> 
+       <ul>
+           <li><a href="/">首页</a></li>
+           <li><a href="/apartment/">热门房源</a></li>
+           <li><a href="/daily/">日租房源</a></li>
+           <li><a href="#">委托房源</a></li>
+           <% if (user) { %>
+           <li><a href="/user/logout/">登出</a></li>
+           <% } else { %>
+           <li><a href="/user/login/">登录</a></li>
+           <% } %>
+       </ul>
+       <div id="sidebar-btn">
+          <div style="padding:3px 0 0 0">
+           <span></span>
+           <span></span>
+           <span></span> 
+          </div>
+       </div>
     </div>
 
-    <script type="text/javascript">
-        $(function(){
-            $( '#dl-menu' ).dlmenu();
+    <script>
+    jQuery(document).ready(function($) {
+        $('#sidebar-btn').click(function() {
+            $('#sidebar').toggleClass('visible');
         });
+    });
     </script>
 </div>
 <div class="main01">

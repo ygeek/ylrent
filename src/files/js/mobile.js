@@ -227,7 +227,7 @@ $(function() {
             url: '/user/requestsms/',
             data: 'mobile=' + mobile,
             dataType: 'json',
-            beforeSend:function(e){
+            before:function(e){
                 
                
                 $(".yzm").removeClass('sendButton');
@@ -320,6 +320,11 @@ function ajaxget(type)
         url: "/apartment/api/",
         dataType: "JSON",
         data: datastr,
+        before:function(e){
+            $(".moreHourse a").html('正在加载...');
+            $(".moreHourse").addClass('moreHourse_s');
+            $(".moreHourse").removeClass('moreHourse');
+        },
         success: function(data){
             var htmlstr = '<div class="houselist">';
             $.each(data.result.docs,function(i,result){  
@@ -398,7 +403,9 @@ function ajaxget(type)
               function() { $( this ).fadeTo( 'fast', '0.7'); },
               function() { $( this ).fadeTo( 'fast', '1'); }
             );
-
+            $(".moreHourse_s").addClass('moreHourse');
+            $(".moreHourse").removeClass('moreHourse_s');
+            $(".moreHourse a").html('更多房源');
            // $("html, body").animate({ scrollTop: 0 }, "slow");
         }
     });
