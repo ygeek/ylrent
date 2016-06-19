@@ -59,7 +59,6 @@ function checkRegister()
 	var password2 = $("input[name='password2']").val();
 	if(!isphone(usernameField))
 	{
-		
 		$(".usernameError").html('手机号码格式不正确！');
 		$(".usernameError").show();
 		err = "1";
@@ -68,7 +67,7 @@ function checkRegister()
 	{
 		$(".usernameError").hide();
 	}
-	if(smscode.length!=6||smscode=="/  验证码")
+	if(smscode.length!=4||smscode=="/  验证码")
 	{
 		$(".smsError").html('请填写验证码或格式不正确！');
 		$(".smsError").show();

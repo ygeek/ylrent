@@ -60,7 +60,6 @@ export async function requestSMSCode(mobilePhone) {
 }
 
 export async function verifySMSCode(mobilePhone, code) {
-  /*
   logger.trace('verify sms code', mobilePhone, code);
   
   let smsCode = await SMSCode.findOne({ mobile: mobilePhone, code: code }).exec();
@@ -75,7 +74,4 @@ export async function verifySMSCode(mobilePhone, code) {
   await SMSCode.remove({ mobile: mobilePhone, code: code }).exec();
   
   return ok;
-  */
-
-  return true;
 }
