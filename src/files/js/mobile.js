@@ -108,6 +108,21 @@ $(function() {
         
         ajaxget();
     });
+    $(document).on("click", ".moreHourse", function(e) {
+        var page = $("input[name='page']").val();
+        var pages = $("input[name='pages']").val();
+        if(parseInt(page)+1<=parseInt(pages))
+        {
+            $("input[name='page']").val(parseInt(page)+1);
+        }
+        else
+        {
+            alert('已经是最后一页了！');
+            return;
+        }
+        
+        ajaxget('more');
+    });
     //上一页
     $(document).on("click", ".prepage", function(e) {
         var page = $("input[name='page']").val();
@@ -232,7 +247,7 @@ $(function() {
     
 })
 
-function ajaxget()
+function ajaxget(type)
 {
     var weizhi = $(".weizhied").attr("vid");
     var weizhistr = "";
@@ -360,7 +375,23 @@ function ajaxget()
                  pagestr +=  ' <a href="javascript:void(0);" class="nextpage">下一页</a> ';
             }
             pagestr += '</div>';
-             $(".tuijianfangyuan_m").html(htmlstr+pagestr);
+            
+            if(type=='more')
+            {
+                $(".moreHourse").before(htmlstr);
+            }
+            else
+            {
+                $(".tuijianfangyuan_m").html(htmlstr+pagestr);
+                if (data.result.pages > 1) {
+                    $(".tuijianfangyuan_m").append('<div class="more01 moreHourse"><a href="javascript:void(0);">更多房源</a></div>');
+                }
+            }
+            
+            
+            
+            
+             //$(".tuijianfangyuan_m").html(htmlstr+pagestr);
              $("input[name='pages']").val(data.result.pages);
 
             $('.imghover').hover(
@@ -368,7 +399,7 @@ function ajaxget()
               function() { $( this ).fadeTo( 'fast', '1'); }
             );
 
-            $("html, body").animate({ scrollTop: 0 }, "slow");
+           // $("html, body").animate({ scrollTop: 0 }, "slow");
         }
     });
 }

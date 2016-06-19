@@ -148,6 +148,23 @@ $(function() {
         
         ajaxget();
     });
+    //加载更多
+    $(document).on("click", ".moreHourse", function(e) {
+        var page = $("input[name='page']").val();
+        var pages = $("input[name='pages']").val();
+        if(parseInt(page)+1<=parseInt(pages))
+        {
+            $("input[name='page']").val(parseInt(page)+1);
+        }
+        else
+        {
+            alert('没有更多了！');
+            return;
+        }
+        
+        
+        ajaxget('more');
+    });
     $(document).on("click", ".weizhipara", function(e) {
         $(this).attr("id","select_hover");
         $(".weizhipar").attr("id","");
@@ -227,7 +244,7 @@ $(function() {
     });
 });
 
-function ajaxget()
+function ajaxget(type)
 {
     var weizhi = $(".weizhied").attr("vid");
     var weizhistr = "";
@@ -319,7 +336,7 @@ function ajaxget()
             });
 
             if (data.result.docs.length == 0) {
-                htmlstr += '<h1 style="text-align: center; font-size: 150%;">- 没有匹配的房源信息 -<br>请直接致电 400-669-1609</h1>'
+                htmlstr += '<h1 style="text-align: center; font-size: 150%;padding-top:30px;">- 没有匹配的房源信息 -<br>请直接致电 400-669-1609</h1>'
             }
            
             var pagestr = '<div class="clear"></div><div class="page01">';
@@ -362,7 +379,19 @@ function ajaxget()
                  pagestr +=  ' <a href="javascript:void(0);" class="nextpage">下一页</a> ';
             }
             pagestr += '</div>';
-             $(".tuijianfangyuan_m").html(htmlstr+pagestr);
+            if(type=='more')
+            {
+                $(".moreHourse").before(htmlstr);
+            }
+            else
+            {
+                $(".tuijianfangyuan_m").html(htmlstr+pagestr);
+                    if (data.result.pages > 1) {
+                    $(".tuijianfangyuan_m").append('<div class="more01 moreHourse"><a href="javascript:void(0);">更多房源</a></div>');
+                }
+            }
+             //
+             
              $("input[name='pages']").val(data.result.pages);
 
             $('.imghover').hover(
@@ -370,7 +399,7 @@ function ajaxget()
               function() { $( this ).fadeTo( 'fast', '1'); }
             );
 
-            $("html, body").animate({ scrollTop: 0 }, "slow");
+            //$("html, body").animate({ scrollTop: 0 }, "slow");
         }
     });
 }
