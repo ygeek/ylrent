@@ -48,7 +48,10 @@ router.get('/list', (req, res, next) => {
       query['$or'] = [
         {'district': {'$in': searchDistricts}},
         {'commerseArea': {'$in': searchCommerseAreas}},
-        {'comunity': {'$in': searchComunities}}
+        {'comunity': {'$in': searchComunities}},
+        {'houseNo': new RegExp(keyword)},
+        {'contactNo': new RegExp(keyword)},
+        {'address': new RegExp(keyword)}
       ];
     }
     
