@@ -55,6 +55,10 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/add', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+  
   res.render('cms-newsAdd', {});
 });
 
@@ -93,13 +97,60 @@ router.post('/', (req, res, next) => {
   });
 });
 
+router.get('/update/:id', (req, res,next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
+  
+  let newsId = req.params.id;
+
+  (async function() {
+    let news = await News.findById(newsId).exec();
+
+    res.render('cms-newsUpdate', {
+      news: news
+    });
+  })().catch(err => {
+    res.render('error', {
+      error: err,
+      message: err.message,
+      stack: err.stack
+    });
+  });
+});
+
+router.post('/update/:id', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+  
+  let newsId = req.params.id;
+  
+  let newsObj = req.body;
+  newsObj.imagekey = _.filter(req.body.imagekey.split(/\s+/), function(key) {
+    return key && key.length > 0;
+  });
+  newsObj.imagekey = newsObj.imagekey.length > 0 ? newsObj.imagekey[0] : null;
+  
+  (async function() {
+    let news = await News.findByIdAndUpdate(newsId, newsObj).exec();
+    res.json({
+      news: news
+    });
+  })().catch(err => {
+    res.json({
+      error: err.message
+    });
+  });
+});
+
 router.post('/delete/:id', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
     return res.json({error: '请以管理员身份重新登录'});
   }
 
   const newsId = req.params.id;
-
+  
   News.findByIdAndRemove(newsId, function(err, news) {
     if (err) {
       res.json({
