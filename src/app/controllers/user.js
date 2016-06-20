@@ -155,6 +155,7 @@ router.post('/verifysms', (req, res, next) => {
 });
 
 router.post('/register', (req, res, next) => {
+  logger.trace('register post body: ', req.body);
   const username = req.body.username;
   const password = req.body.password;
   const smscode = req.body.smscode;
@@ -240,10 +241,17 @@ router.post('/login', function(req, res, next) {
     const authenticate = promisify(User.authenticate(), { multiArgs: true });
     let [user, options] = await authenticate(req.body.username, req.body.password);
     if (!user) {
-      return res.render('login', {
-        usernameError: null,
-        passwordError: options.message
-      });
+      if (req.device.type === 'phone') {
+        return res.render('phone/login.ejs', {
+          usernameError: null,
+          passwordError: options.message
+        });
+      } else {
+        return res.render('login', {
+          usernameError: null,
+          passwordError: options.message
+        });
+      }
     }
     const login = promisify(req.login, req);
     await login(user);
