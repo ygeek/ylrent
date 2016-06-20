@@ -7,13 +7,14 @@
 import express from 'express';
 import log4js from 'log4js';
 import { uptoken } from '../utils/qiniu';
+import config from '../../config';
 
 const logger = log4js.getLogger('normal');
 logger.trace('debug');
 
 const router = express.Router();
 
-const isDebug = true;
+const isDebug = config.isDebug;
 
 router.get('/', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {

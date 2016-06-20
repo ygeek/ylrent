@@ -7,6 +7,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import _ from 'lodash';
+import config from '../../config';
 
 import { importDailyRent, updateDailyRent } from '../utils/importer';
 
@@ -17,7 +18,7 @@ const Comunity = mongoose.model('Comunity');
 
 const router = express.Router();
 
-const isDebug = true;
+const isDebug = config.isDebug;
 
 router.get('/list', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {

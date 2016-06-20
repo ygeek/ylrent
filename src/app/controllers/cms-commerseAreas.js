@@ -6,6 +6,7 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import config from '../../config';
 
 import { importCommerseArea, updateCommerseArea, removeCommerseArea } from '../utils/importer';
 
@@ -14,7 +15,7 @@ const CommerseArea = mongoose.model('CommerseArea');
 
 const router = express.Router();
 
-const isDebug = true;
+const isDebug = config.isDebug;
 
 router.get('/list', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {

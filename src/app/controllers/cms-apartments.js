@@ -8,6 +8,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
 import _ from 'lodash';
+import config from '../../config';
 
 import { 
   importApartment, 
@@ -26,7 +27,7 @@ let logger = log4js.getLogger('normal');
 
 const router = express.Router();
 
-const isDebug = true;
+const isDebug = config.isDebug;
 
 router.get('/list', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {

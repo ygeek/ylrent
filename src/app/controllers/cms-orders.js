@@ -8,6 +8,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import moment from 'moment';
 import { OrderStatus } from '../models/appointment';
+import config from '../../config';
 
 const ApartmentOrder = mongoose.model('ApartmentOrder');
 const DailyOrder = mongoose.model('DailyOrder');
@@ -15,7 +16,7 @@ const DelegationOrder = mongoose.model('DelegationOrder');
 
 const router = express.Router();
 
-const isDebug = true;
+const isDebug = config.isDebug;
 
 router.get('/apartment', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {

@@ -6,6 +6,7 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import config from '../../config';
 
 import { importDistrict, updateDistrict, removeDistrict } from '../utils/importer';
 
@@ -13,7 +14,7 @@ const District = mongoose.model('District');
 
 const router = express.Router();
 
-const isDebug = true;
+const isDebug = config.isDebug;
 
 router.get('/list', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {

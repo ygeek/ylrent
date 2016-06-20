@@ -18,7 +18,9 @@ const config = {
   // path to root directory of this app
   root: path.normalize(__dirname),
   // log level
-  logLevel: process.env.NODE_ENV === 'production' ? log4js.levels.INFO : log4js.levels.ALL
+  logLevel: process.env.NODE_ENV === 'production' ? log4js.levels.INFO : log4js.levels.ALL,
+  // if debug
+  isDebug: process.env.NODE_ENV === 'dev'
 };
 
 export default config;

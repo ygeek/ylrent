@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 import moment from 'moment';
 import log4js from 'log4js';
 import _ from 'lodash';
+import config from '../../config';
 
 const News = mongoose.model('News');
 
@@ -16,7 +17,7 @@ const logger = log4js.getLogger('normal');
 
 const router = express.Router();
 
-const isDebug = true;
+const isDebug = config.isDebug;
 
 router.get('/', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {

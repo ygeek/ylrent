@@ -10,7 +10,7 @@ import mongoosePaginate from 'mongoose-paginate';
 const UserSchema = new mongoose.Schema({
   name: String,
   email: String,
-  isCrop: Boolean,
+  isCorp: Boolean,
   corpName: String,
   title: String,
   tel: String,

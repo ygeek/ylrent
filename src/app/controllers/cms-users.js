@@ -6,12 +6,13 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import config from '../../config';
 
 const User = mongoose.model('User');
 
 const router = express.Router();
 
-const isDebug = true;
+const isDebug = config.isDebug;
 
 router.post('/makestaff/:id', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
