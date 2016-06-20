@@ -51,12 +51,14 @@
          <li><label>图片</label><input name="imagekeys" value="<%= daily.imagekeys && daily.imagekeys.join(' ') %>" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
         <li id="container"></li>
         <li><label>&nbsp;</label><span class="imgs">
-                <% daily.imagekeys.forEach(function(key) { %>
-                <img src="http://o7k9opgtr.bkt.clouddn.com/<%= key %>?imageView2/0/w/150/h/120"
-                     width="150"
-                     height="120"
-                     tid="<%= key %>" >
-                <% }) %>
+                <% if (daily.imagekeys) { %>
+                    <% daily.imagekeys.forEach(function(key) { %>
+                    <img src="http://o7k9opgtr.bkt.clouddn.com/<%= key %>?imageView2/0/w/150/h/120"
+                         width="150"
+                         height="120"
+                         tid="<%= key %>" >
+                    <% }) %>
+                <% } %>
             </span></li>
         <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
     </ul>
