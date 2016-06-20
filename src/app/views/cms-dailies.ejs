@@ -83,7 +83,7 @@ $(document).ready(function(){
                     <td><%= val.price %>元</td>
 
                     <td><% if(!val.leased){ %>可出租<% }else{ %>已下架<% } %></td>
-                    <td><%= val.imagekeys %></td>
+                    <td><%= val.imagekeys && val.imagekeys.length %></td>
                     <td><a href="/cms/daily/update/<%= val._id %>" class="tablelink">修改</a> | <a href="javascript:delNews('<%= val._id %>')" class="tablelink">删除</a></td>
                 </tr> 
              <% }) ; %>   
