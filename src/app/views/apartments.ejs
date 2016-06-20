@@ -70,7 +70,11 @@
                 </a>
 
                 <li>
-                    <h1><a href="/apartment/detail/<%= val.id %>"><%= val.comunity.name %><%= val.apartmentType.roomType.shi %>房<%= val.apartmentType.roomType.ting %>厅<%= val.apartmentType.roomType.wei %>卫</a></h1>
+                    <h1>
+                        <a href="/apartment/detail/<%= val.id %>">
+                            <%= val.comunity.name %><%= val.apartmentType.roomType.shi %>房<%= val.apartmentType.roomType.ting %>厅<%= val.apartmentType.roomType.wei %>卫<%= val.leased ? "（已租）" : "" %>
+                        </a>
+                    </h1>
                     <p><%= val.comunity.name %><br />
                         酒店式公寓  |  <%= val.apartmentType.roomType.shi %>室<%= val.apartmentType.roomType.ting %>厅<%= val.apartmentType.roomType.wei %>卫  |  <%= val.area %>平米</p>
                     <p class="address" ><%= val.address %></p>

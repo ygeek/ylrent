@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><%= apartment.comunity.name %><%= apartment.apartmentType.roomType.shi %>房<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫</title>
+<title><%= apartment.comunity.name %><%= apartment.apartmentType.roomType.shi %>房<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫<%= apartment.leased ? "（已租）" : "" %></title>
 <link href="/files/lib/jqueryhdp/css/album.css" rel="stylesheet" type="text/css" media="all" />
 <link type="text/css" rel="stylesheet" href="/css/style.css" />
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
@@ -62,7 +62,7 @@
     <div class="remen_top_show">
         <div class="remen01">
                 <div class="remen01_l">
-                    <h1><%= apartment.comunity.name %><%= apartment.apartmentType.roomType.shi %>房<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫</h1>
+                    <h1><%= apartment.comunity.name %><%= apartment.apartmentType.roomType.shi %>房<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫<%= apartment.leased ? "（已租）" : "" %></h1>
                     <p>
                     <%= apartment.address %>  <%= apartment.district.name %><br />
                     <%= apartment.apartmentType.roomType.shi %>室<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫  |  <%= apartment.area %>平米  |  06层  |  精装修 | 现代简约

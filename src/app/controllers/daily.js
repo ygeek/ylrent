@@ -43,7 +43,7 @@ router.get('/', (req, res, next) => {
   
   let sortCondition = genDailySortCondition(req.query.price, req.query.area);
 
-  let query = {};
+  let query = {isRenting: true};
 
   let options = {
     page: page,
