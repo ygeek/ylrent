@@ -71,7 +71,8 @@ $(document).ready(function(){
                 <th>是否推荐</th>
                 <th>地址</th>
                 <th>坐标</th>
-               
+
+                <th>图片数量</th>
               
                 <th>操作</th>
             </tr>
@@ -88,7 +89,7 @@ $(document).ready(function(){
                     <td><%= val.address %></td>
                     <td><%= val.longitude %>,<%= val.latitude %></td>
                     
-                 
+                    <td><%= val.imagekeys && val.imagekeys.length %></td>
                   
                     <td>
                         <a href="/cms/community/update/<%= val._id %>" class="tablelink">修改</a>

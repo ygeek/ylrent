@@ -78,6 +78,7 @@ function getUrlParam(name) {
                 <th>是否推荐</th>
               
                 <th>已租</th>
+                <th>图片数量</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -94,6 +95,7 @@ function getUrlParam(name) {
                     <td><% if(val.isHot){ %>是<% }else{ %>否<% } %></td>
                  
                     <td><% if(!val.leased){ %>未租<% }else{ %>已租<% } %></td>
+                    <td><%= val.imagekeys.length %></td>
                     <td><a href="/cms/apartment/update/<%= val._id %>" class="tablelink"> 修改</a> |
                         <a href="javascript:del('<%= val._id %>')" class="tablelink">删除</a></td>
                 </tr> 
