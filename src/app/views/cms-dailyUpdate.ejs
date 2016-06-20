@@ -45,10 +45,10 @@
        
         <li><label>租金</label><input name="price"  value="<%= daily.price %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
       
-        <li><label>关键词</label><input name="keywords"  value="<%= daily.keywords.join(' ') %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
+        <li><label>关键词</label><input name="keywords"  value="<%= daily.keywords && daily.keywords.join(' ') %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
         <input name="commerseArea" value="<%= daily.commerseArea %>" type="hidden" />
         <input name="_id" value="<%= daily._id %>" type="hidden" />
-         <li><label>图片</label><input name="imagekeys" value="<%= daily.imagekeys.join(' ') %>" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
+         <li><label>图片</label><input name="imagekeys" value="<%= daily.imagekeys && daily.imagekeys.join(' ') %>" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
         <li id="container"></li>
         <li><label>&nbsp;</label><span class="imgs">
                 <% daily.imagekeys.forEach(function(key) { %>

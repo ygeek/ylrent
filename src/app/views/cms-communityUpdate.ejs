@@ -60,8 +60,8 @@
         </li>
         <li><label>描述</label><textarea name="desc" sucmsg=" "   datatype="*"   cols="" rows="" class="textinput"><%= comunity.desc %></textarea><i  class="Validform_checktip"></i></li>
         <li><label>是否推荐</label><cite><input name="isHot"  sucmsg=" "   datatype="*"  type="radio" value="true" <% if(comunity.isHot){ %> checked="checked" <% } %>  />是&nbsp;&nbsp;&nbsp;&nbsp;<input name="isHot" type="radio" <% if(!comunity.isHot){ %> checked="checked" <% } %> value="false"  />否</cite><i  class="Validform_checktip"></i></li>
-        <li><label>关键字</label><input name="keywords" value="<%= comunity.keywords.join(' ') %>"  sucmsg=" "   datatype="*"   value="" type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
-        <li><label>图片</label><input name="imagekeys" value="<%= comunity.imagekeys.join(' ') %>" id="images" readonly="readonly"   type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
+        <li><label>关键字</label><input name="keywords" value="<%= comunity.keywords && comunity.keywords.join(' ') %>"  sucmsg=" "   datatype="*"   value="" type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
+        <li><label>图片</label><input name="imagekeys" value="<%= comunity.imagekeys && comunity.imagekeys.join(' ') %>" id="images" readonly="readonly"   type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
         <li id="container"></li>
         <li><label>&nbsp;</label><span class="imgs">
                 <% comunity.imagekeys.forEach(function(key) { %>
