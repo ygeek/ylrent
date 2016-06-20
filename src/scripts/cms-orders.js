@@ -9,7 +9,7 @@ $(function() {
     let orderId = $(this).attr('data-id');
     $.post('/cms/orders/delegation/confirm/' + orderId, {}, function(result) {
       if (result.error) {
-        $.flash(result.error.message);
+        $.flash(result.error);
       } else {
         $('#status-' + orderId).text(result.order.status);
       }

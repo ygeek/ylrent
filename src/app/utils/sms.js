@@ -7,6 +7,7 @@
 import mongoose from 'mongoose';
 import rp from 'request-promise';
 import log4js from 'log4js';
+import config from '../../config';
 
 import { expires } from '../models/sms';
 
@@ -73,5 +74,5 @@ export async function verifySMSCode(mobilePhone, code) {
   
   await SMSCode.remove({ mobile: mobilePhone, code: code }).exec();
   
-  return ok;
+  return config.isDebug || ok;
 }

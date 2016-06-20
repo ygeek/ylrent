@@ -82,9 +82,23 @@ $(document).ready(function(){
                     <td><%= val.capacityMin %>-<%= val.capacityMax %>人</td>
                     <td><%= val.price %>元</td>
 
-                    <td><% if(!val.leased){ %>可出租<% }else{ %>已下架<% } %></td>
+                    <td id="status-renting-<%= val._id %>">
+                        <% if(val.isRenting){ %>
+                        可出租
+                        <% }else{ %>
+                        已下架
+                        <% } %>
+                    </td>
                     <td><%= val.imagekeys && val.imagekeys.length %></td>
-                    <td><a href="/cms/daily/update/<%= val._id %>" class="tablelink">修改</a> | <a href="javascript:delNews('<%= val._id %>')" class="tablelink">删除</a></td>
+                    <td>
+                        <a href="/cms/daily/update/<%= val._id %>" class="tablelink">修改</a>
+                        |
+                        <a href="javascript:delNews('<%= val._id %>')" class="tablelink">删除</a>
+                        |
+                        <a href="javascript:void(0)" data-id="<%= val._id %>" class="tablelink cms-daily-renting">标记可租</a>
+                        |
+                        <a href="javascript:void(0)" data-id="<%= val._id %>" class="tablelink cms-daily-disable">标记下架</a>
+                    </td>
                 </tr> 
              <% }) ; %>   
 
@@ -122,6 +136,8 @@ function delNews(id)
           });
 }
 </script>
+
+<script type="text/javascript" src="/js/cms-renting.js"></script>
 
 </body>
 

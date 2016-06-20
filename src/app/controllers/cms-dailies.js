@@ -7,6 +7,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import _ from 'lodash';
+import log4js from 'log4js';
 import config from '../../config';
 
 import { importDailyRent, updateDailyRent } from '../utils/importer';
@@ -15,6 +16,8 @@ const DailyRent = mongoose.model('DailyRent');
 const District = mongoose.model('District');
 const CommerseArea = mongoose.model('CommerseArea');
 const Comunity = mongoose.model('Comunity');
+
+const logger = log4js.getLogger('normal');
 
 const router = express.Router();
 
@@ -103,6 +106,7 @@ router.post('/rent/:id', (req, res, next) => {
 
   const dailyId = req.params.id;
   DailyRent.findByIdAndUpdate(dailyId, {isRenting: false}, function(err, daily) {
+    logger.trace('rent daily: ', err, daily);
     if (err) {
       res.json({error: err.message});
     } else {
@@ -118,6 +122,7 @@ router.post('/available/:id', (req, res, next) => {
 
   const dailyId = req.params.id;
   DailyRent.findByIdAndUpdate(dailyId, {isRenting: true}, function(err, daily) {
+    logger.trace('available daily: ', err, daily);
     if (err) {
       res.json({error: err.message});
     } else {
