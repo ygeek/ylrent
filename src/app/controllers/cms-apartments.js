@@ -152,6 +152,10 @@ router.get('/update/:id', (req, res, next) => {
   if ((!req.user || !req.user.isStaff) && !isDebug) {
     return res.redirect('/user/login');
   }
+  
+  const page = req.query.page;
+  
+  logger.trace('cms update apartment from page:', page);
 
   const apartmentId = req.params.id;
   
@@ -168,7 +172,8 @@ router.get('/update/:id', (req, res, next) => {
     
     res.render('cms-apartmentsUpdate', {
       apartment: apartment,
-      communities: communities
+      communities: communities,
+      page: page
     });
     
   })().catch(err => {

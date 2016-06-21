@@ -101,7 +101,7 @@ $(function(){
                 }
                 else
                 {
-                    location.href='/cms/apartment/list';
+                    location.href='/cms/apartment/list<%= page ? "?page=" + page : "" %>';
                 }
               
         }

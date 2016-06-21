@@ -108,7 +108,7 @@ function getUrlParam(name) {
                     </td>
                     <td><%= val.imagekeys.length %></td>
                     <td>
-                        <a href="/cms/apartment/update/<%= val._id %>" class="tablelink">修改</a>
+                        <a href="/cms/apartment/update/<%= val._id %>?page=<%= apartments.page %>" class="tablelink">修改</a>
                         |
                         <a href="javascript:del('<%= val._id %>')" class="tablelink">删除</a>
                         |
