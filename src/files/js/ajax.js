@@ -341,7 +341,7 @@ function ajaxget(type)
             });
 
             if (data.result.docs.length == 0) {
-                htmlstr += '<h1 style="text-align: center; font-size: 150%;padding-top:30px;">- 没有匹配的房源信息 -<br>请直接致电 400-669-1609</h1>'
+                htmlstr += '<h1 style="text-align: center; font-size: 150%;padding-top:30px;">- 没有匹配的房源信息 -<br>请直接致电 400-668-1609</h1>'
             }
            
             var pagestr = '<div class="clear"></div><div class="page01">';
