@@ -41,8 +41,8 @@
                         <% if (apartment.imagekeys && apartment.imagekeys.length > 0) { %>
                             <% for (var i=0;i<apartment.imagekeys.length;i++){  %>
                                 <li class="album-carousel-thumb <% if(i == 0) { %>  album-carousel-thumb-selected <% } %> ">
-                                    <a href="http://o7k9opgtr.bkt.clouddn.com/<%= apartment.imagekeys[i] %>">
-                                        <img src="http://o7k9opgtr.bkt.clouddn.com/<%= apartment.imagekeys[i] %>" />
+                                    <a href="http://<%= qiniuDomain %>/<%= apartment.imagekeys[i] %>">
+                                        <img src="http://<%= qiniuDomain %>/<%= apartment.imagekeys[i] %>" />
                                     </a>
                                 </li>
                             <% } %>

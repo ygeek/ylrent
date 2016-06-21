@@ -1,10 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <link href="/files/cms/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
+
 </head>
+
 <body>
+
 <%= JSON.stringify(news) %>
+
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">表单</a></li>
+    </ul>
+</div>
+
+<div class="formbody">
+
+    <div class="formtitle"><span>基本信息</span></div>
+    <form action="/cms/news/update/<%= news._id %>" class="subform"  method="post">
+
+        <ul class="forminfo">
+            <li>
+                <label>新闻标题</label>
+                <input name="title" datatype="*" sucmsg=" " value="<%= news.title %>" type="text" class="dfinput" />
+                <i class="Validform_checktip">标题不能超过30个字符</i>
+            </li>
+            <li>
+                <label>来源</label>
+                <input name="source"  datatype="*"  sucmsg=" " value="<%= news.source %>" type="text" class="dfinput" />
+                <i  class="Validform_checktip"></i>
+            </li>
+            <li>
+                <label>作者</label>
+                <input name="author"  datatype="*"  sucmsg=" " value="<%= news.author %>" type="text" class="dfinput" />
+                <i  class="Validform_checktip"></i>
+            </li>
+
+            <li>
+                <label>内容</label>
+                <textarea name="content" datatype="*"  sucmsg=" "  cols="" rows="" class="textinput"><%= news.content %></textarea>
+                <i  class="Validform_checktip"></i>
+            </li>
+            <li>
+                <label>图片</label>
+                <input name="imagekey" id="images" readonly="readonly"  type="text"  class="dfinput" value="<%= news.imagekey %>" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/>
+                <i  class="Validform_checktip"></i>
+            </li>
+            <li id="container"></li>
+            <li><label>&nbsp;</label><span class="imgs"></span></li>
+            <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+        </ul>
+    </form>
+
+</div>
+
+
 </body>
+<script>
+    $.Tipmsg.r=null;
+
+
+    $(function(){
+        $(".subform").Validform({
+            tiptype:function(msg,o,cssctl){
+                if(!o.obj.is("form")){//验证表单元素时o.obj为该表单元素，全部验证通过提交表单时o.obj为该表单对象;
+                    var objtip=o.obj.siblings(".Validform_checktip");
+                    cssctl(objtip,o.type);
+                    objtip.text(msg);
+                }
+            },
+            ajaxPost:true,
+            beforeSubmit: function(form) {
+
+                return true;
+            },
+            callback:function(data){
+                console.log(data);
+                /*if(data.code!=0)  //验证失败
+                 {
+                 alert(data.msg) ;
+
+                 }
+                 else
+                 {
+                 location.href='/cms/news';
+                 }*/
+                location.href='/cms/news';
+
+            }
+        });
+    });
+
+
+
+</script>
+
+
+<script type="text/javascript" src="/files/lib/plupload/moxie.js"></script>
+<script type="text/javascript" src="/files/lib/plupload/plupload.dev.js"></script>
+<script type="text/javascript" src="/files/lib/qiniu/qiniu.js"></script>
+<script type="text/javascript" src="/files/lib/laydate/layer.js"></script>
+<script type="text/javascript" src="/files/cms/js/upload.js"></script>
+
 </html>
+
+
+
+

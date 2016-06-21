@@ -101,7 +101,7 @@
                 <a href="/apartment/type/<%= val._id %>">
                     <img
                         <% if (val.imagekeys[0]) { %>
-                            src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>"
+                            src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>"
                         <% }else{ %>
                             src="/img/mobile/img02.jpg"
                         <% } %>

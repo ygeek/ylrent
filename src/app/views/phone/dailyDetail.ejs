@@ -65,7 +65,7 @@
         <% daily.imagekeys.forEach(function(val) { %>
         <div class="swiper-slide">
             <!-- Required swiper-lazy class and image source specified in data-src attribute -->
-            <img data-src="http://o7k9opgtr.bkt.clouddn.com/<%= val %>" class="swiper-lazy">
+            <img data-src="http://<%= qiniuDomain %>/<%= val %>" class="swiper-lazy">
             <!-- Preloader image -->
             <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
         </div>

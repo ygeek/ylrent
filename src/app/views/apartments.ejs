@@ -61,7 +61,7 @@
                 <a href="/apartment/detail/<%= val.id %>">
                     <img class="imghover"
                         <% if (val.imagekeys[0]) { %>
-                            src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                            src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
                         <% }else{ %>
                             src="/img/default.jpg"
                         <% } %>

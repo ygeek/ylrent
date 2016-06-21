@@ -42,8 +42,8 @@
                     <% if (daily.imagekeys && daily.imagekeys.length > 0) { %>
                        <% for (var i=0;i<daily.imagekeys.length;i++){  %>
                            <li class="album-carousel-thumb <% if(i == 0) { %>  album-carousel-thumb-selected <% } %> ">
-                               <a href="http://o7k9opgtr.bkt.clouddn.com/<%= daily.imagekeys[i] %>">
-                                   <img src="http://o7k9opgtr.bkt.clouddn.com/<%= daily.imagekeys[i] %>" />
+                               <a href="http://<%= qiniuDomain %>/<%= daily.imagekeys[i] %>">
+                                   <img src="http://<%= qiniuDomain %>/<%= daily.imagekeys[i] %>" />
                                </a>
                            </li>
                        <% } %>

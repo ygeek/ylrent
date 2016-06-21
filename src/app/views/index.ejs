@@ -94,7 +94,7 @@
                   <a href="/apartment/type/<%= val._id %>">
                     <img class="imghover"
                             <% if (val.imagekeys[0]) { %>
-                         src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                         src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
                             <% }else{ %>
                          src="img/default.jpg"
                             <% } %>
@@ -119,7 +119,7 @@
                   <a href="/apartment/?communityId=<%= val._id %>">
                     <img class="imghover"
                       <% if (val.imagekeys && val.imagekeys[0]) { %>
-                        src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                        src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
                       <% }else{ %>
                         src="img/default.jpg"
                       <% } %>
@@ -143,7 +143,7 @@
                   <a  href="/daily/<%= val._id %>">
                     <img class="imghover"
                       <% if (val.imagekeys[0]) { %>
-                        src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                        src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
                       <% } else { %>
                         src="img/default.jpg"
                       <% } %>
@@ -196,7 +196,7 @@
             <% if (latestNews[i].imagekey) { count++; %>
             <div class="fcon" style="display: none;">
                 <a href="/news/<%= latestNews[i]._id %>">
-                    <img src="http://o7k9opgtr.bkt.clouddn.com/<%= latestNews[i].imagekey %>" style="opacity: 1; ">
+                    <img src="http://<%= qiniuDomain %>/<%= latestNews[i].imagekey %>" style="opacity: 1; ">
                 </a>
                 <span class="shadow">
                     <a  href="/news/<%= latestNews[i]._id %>"><%= latestNews[i].title %></a>

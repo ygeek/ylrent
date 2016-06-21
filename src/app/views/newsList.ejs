@@ -23,7 +23,7 @@
       <div class="n_news_main_l">
           <% newsList.docs.forEach(function(val) { %>
           <ul>
-              <img src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekey %>?imageView2/0/w/180/h/128" width="180" height="128" />
+              <img src="http://<%= qiniuDomain %>/<%= val.imagekey %>?imageView2/0/w/180/h/128" width="180" height="128" />
               <li>
                   <h1><a href="/news/<%= val._id %>"><%= val.title %></a></h1>
                   <p><%= val.content && val.content.substr(0, 80) %>...
@@ -41,7 +41,7 @@
                 <% for (var i = 0; i < 3 && i < latestNews.length; i++) { %>
                 <div class="fcon" style="display: none;">
                     <a href="/news/<%= latestNews[i]._id %>">
-                        <img src="http://o7k9opgtr.bkt.clouddn.com/<%= latestNews[i].imagekey %>?imageView2/0/w/320/h/240"
+                        <img src="http://<%= qiniuDomain %>/<%= latestNews[i].imagekey %>?imageView2/0/w/320/h/240"
                              style="width:368px; height:288px; opacity: 1;">
                     </a>
                     <span class="shadow_s">
@@ -69,7 +69,7 @@
             <a href="/apartment/type/<%= val._id %>">
                 <img
                         <% if (val.imagekeys[0]) { %>
-                        src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/328/h/219"
+                        src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/328/h/219"
                         <% }else{ %>
                         src="/img/default.jpg"
                         <% } %>

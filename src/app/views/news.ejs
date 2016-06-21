@@ -29,7 +29,7 @@
             <div class="n_news_main_m01">
                 <% if(news.imagekey){ %>
                 <div style="margin:0 auto; width:600px; height:auto; margin-bottom:20px;"><img width="600"
-                                                                                               src="http://o7k9opgtr.bkt.clouddn.com/<%= news.imagekey %>">
+                                                                                               src="http://<%= qiniuDomain %>/<%= news.imagekey %>">
                 </div>
                 <% } %>
                 <%- news.content %>
@@ -60,7 +60,7 @@
                 <% for (var i = 0; i < 3 && i < latestNews.length; i++) { %>
                 <div class="fcon" style="display: none;">
                     <a href="/news/<%= latestNews[i]._id %>">
-                        <img src="http://o7k9opgtr.bkt.clouddn.com/<%= latestNews[i].imagekey %>?imageView2/0/w/368/h/288"
+                        <img src="http://<%= qiniuDomain %>/<%= latestNews[i].imagekey %>?imageView2/0/w/368/h/288"
                              style="width:368px; height:288px; opacity: 1;">
                     </a>
                     <span class="shadow_s">
@@ -88,7 +88,7 @@
             <a href="/apartment/type/<%= val._id %>">
                 <img
                         <% if (val.imagekeys[0]) { %>
-                        src="http://o7k9opgtr.bkt.clouddn.com/<%= val.imagekeys[0] %>?imageView2/0/w/328/h/219"
+                        src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/328/h/219"
                         <% }else{ %>
                         src="/img/default.jpg"
                         <% } %>

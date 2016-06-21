@@ -50,6 +50,11 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(function(req, res, next) {
+  res.locals.qiniuDomain = 'img.ylrent.com';
+  next();
+});
+
 app.use(localData);
 
 // setup logger

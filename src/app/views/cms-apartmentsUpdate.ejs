@@ -59,7 +59,7 @@
             <span class="imgs">
                 <% if (apartment.imagekeys) { %>
                     <% apartment.imagekeys.forEach(function(key) { %>
-                        <img src="http://o7k9opgtr.bkt.clouddn.com/<%= key %>?imageView2/0/w/150/h/120"
+                        <img src="http://<%= qiniuDomain %>/<%= key %>?imageView2/0/w/150/h/120"
                              width="150"
                              height="120"
                              tid="<%= key %>" >
