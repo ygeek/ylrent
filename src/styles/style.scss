@@ -254,7 +254,7 @@ background:url(../img/house.png) no-repeat   right center; }
 			.focus .btn a{position:relative; display:inline; width:13px; height:13px; border-radius:7px; margin:0 5px;color:#B0B0B0;font:12px/15px "\5B8B\4F53"; text-decoration:none; text-align:center; outline:0; float:left; background:#D9D9D9; }  
 			.focus .btn a:hover,.focus .btn a.current{  cursor:pointer;background:#fc114a;}  
 			.focus .fPic{ position:absolute; left:0px; top:0px; }  
-			.focus .D1fBt{ overflow:hidden; zoom:1;  height:16px; z-index:10;  }  
+			.focus .D1fBt{ overflow:hidden; zoom:1;  height:16px; z-index:10; display: none;  }  
 			.focus .shadow{ width:100%; position:absolute; top:50%; left:60px; width: 570px; margin-top: -50px; text-align: center; z-index:10; height:100px; line-height: 100px; background:rgba(0,0,0,0.6);
               filter:progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = '#80000000',endColorstr = '#80000000')\9;  display:block;  }
             .focus .shadow_s{ width:100%; position:absolute; bottom:0; left:0px; width: 100%; text-align: center; z-index:10; height:60px; line-height: 50px; background:rgba(0,0,0,0.6);
