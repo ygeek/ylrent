@@ -126,6 +126,8 @@ router.post('/update/:id', (req, res, next) => {
   
   let newsId = req.params.id;
   
+  logger.trace('update news ' + newsId, req.body);
+  
   let newsObj = req.body;
   newsObj.imagekey = _.filter(req.body.imagekey.split(/\s+/), function(key) {
     return key && key.length > 0;

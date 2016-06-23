@@ -6,7 +6,7 @@
 <link href="/files/cms/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/files/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
-
+<script src="/files/lib/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
@@ -29,7 +29,21 @@
         <li><label>来源</label><input name="source"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
         <li><label>作者</label><input name="author"  datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
        
-        <li><label>内容</label><textarea name="content"  datatype="*"  sucmsg=" "  cols="" rows="" class="textinput"></textarea><i  class="Validform_checktip"></i></li>
+        <li><label>内容</label><textarea name="content" id="content"  datatype="*"  sucmsg=" "  cols="" rows="" class="textinput"></textarea><i  class="Validform_checktip"></i></li>
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace( 'content' );
+
+            CKEDITOR.on('instanceReady', function(){
+                $.each( CKEDITOR.instances, function(instance) {
+                    CKEDITOR.instances[instance].on("change", function(e) {
+                        for ( instance in CKEDITOR.instances )
+                            CKEDITOR.instances[instance].updateElement();
+                    });
+                });
+            });
+        </script>
         <li><label>图片</label><input name="imagekey" id="images" readonly="readonly"  type="text"  class="dfinput" value="" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="pickfiles" id="pickfiles"  type="button" class="btn pickfiles" value="上传图片"/><i  class="Validform_checktip"></i></li>
         <li id="container"></li>
         <li><label>&nbsp;</label><span class="imgs"></span></li>
