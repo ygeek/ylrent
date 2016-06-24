@@ -25,6 +25,7 @@
     <a href="/apartment/">热门房源</a> >
     <a href="/apartment/detail/<%= apartment._id %>">房源详情</a>
 </div>
+ <% if (apartment.imagekeys && apartment.imagekeys.length > 0) { %>
 <div class="album" id="album">
 	 <div class="album-image-md" id="album-image-md">
 		  <p class="album-image-bd"><img src="/img/default.jpg" class="album-image" id="album-image"  width="674" height="750" /></p>	  
@@ -34,11 +35,12 @@
 		  </ul>
 		  <p class="album-image-loading-overlay hide" id="album-image-loading-overlay"><img src="/files/lib/jqueryhdp/img/loading.gif" alt="loading..." width="100" height="100" /></p>
 	 </div>
+        
         <div class="album-carousel" id="album-carousel">
             <a href="#prev-group" class="album-carousel-btn-prev" id="album-carousel-btn-prev">‹</a>
                 <div class="album-carousel-zone" id="album-carousel-zone">
                     <ul class="album-carousel-list" id="album-carousel-list">
-                        <% if (apartment.imagekeys && apartment.imagekeys.length > 0) { %>
+                       
                             <% for (var i=0;i<apartment.imagekeys.length;i++){  %>
                                 <li class="album-carousel-thumb <% if(i == 0) { %>  album-carousel-thumb-selected <% } %> ">
                                     <a href="http://<%= qiniuDomain %>/<%= apartment.imagekeys[i] %>">
@@ -46,18 +48,18 @@
                                     </a>
                                 </li>
                             <% } %>
-                        <% } else { %>
-                           <li class="album-carousel-thumb  album-carousel-thumb-selected">
-                               <a href="/img/default.jpg">
-                                   <img src="/img/default.jpg" width="230" height="144" />
-                               </a>
-                           </li>
-                        <% } %>
-                 </ul>
+                        
+                    </ul>
                  </div>
                  <a href="#next-group" class="album-carousel-btn-next" id="album-carousel-btn-next">›</a>
         </div>
+        
 </div>
+<% } else { %>
+<div style="width:1120px; margin:0 auto; margin-bottom:-10px;">         
+<img src="/img/default.jpg" width="1120" height="600" />
+</div>
+<% } %>
 <div class="n_main">
     <div class="remen_top_show">
         <div class="remen01">
