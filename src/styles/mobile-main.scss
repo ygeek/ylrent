@@ -1430,3 +1430,39 @@ footer{text-align:center; margin:60px 0 0 0;}
 			   .resgister_yzm02{height:40px; line-height:40px; width:40%; display:block; float:right; background:#999; color:#fff; cursor:pointer; border:0;border-radius:30px; -webkit-border-radius:30px; -moz-border-radius:30px; font-size:0.7em; text-shadow:0 0 1px #a7a6a6; margin:10px 0px 0 0; }
 			   
 		   .yuedu{width:80%; margin:0 auto 20px auto; height:50px; line-height:50px; color:#fff; }
+
+                   
+                   
+/***********房源委托***************/
+#weituo {  position:relative;}
+
+
+#weituo  .logo { width:100%; padding-top:10%; padding-bottom:7%; text-align:center;}
+#weituo  .logo img { width:32%;}
+#weituo .form { width:100%; position:relative; height:auto; min-height:300px;}
+.alert { position:absolute; left:10%; top:0px; right:10%; width:auto; min-height:50%; background:#fff; border-radius:5px; overflow:hidden; }
+.alert .xhao { width:auto; padding-left:15px; padding-right:15px; padding-top:10px; }
+.alert .xhao img { width:7%;}
+.weui_cell:before { border-top: none;     }
+
+
+
+
+.weui_cell:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: auto;
+    height: 1px;
+    border-bottom: 1px solid #D9D9D9;
+    color: #D9D9D9;
+	left:15px;
+	right:15px;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+.tijiao { padding:20px 0; padding-bottom:30px;}
+.weui_cell .submit { width:40%; background-color:#c3b077; border-radius:20px; padding-top:5px; padding-bottom:5px; margin-left:auto; margin-right:auto; border:none; color:#fff; font-size:1em;}

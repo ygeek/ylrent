@@ -107,6 +107,9 @@ router.get('/about', (req, res, next) => {
 });
 
 router.get('/delegate', (req, res, next) => {
+    if (req.device.type === 'phone') {
+    return res.render('phone/delegate.ejs', {});
+  }
   res.render('delegate');
 });
 
