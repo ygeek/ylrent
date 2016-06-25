@@ -98,6 +98,7 @@
         <div class="houselist">
         <% result.docs.forEach(function(val) { %>
             <div class="fangyuan_pic">
+                <div class="listimg">
                 <a href="/apartment/type/<%= val._id %>">
                     <img
                         <% if (val.imagekeys[0]) { %>
@@ -107,7 +108,7 @@
                         <% } %>
                     />
                 </a>
-
+                </div>
                 <div class="fangyuan_pic01">
                     <h1><a href="/apartment/type/<%= val._id %>"><%= val.name %></a></h1>
                     <h2>

@@ -393,7 +393,7 @@ function ajaxget(type)
                 {
                     imgstr = "http://o7k9opgtr.bkt.clouddn.com/"+result.imagekeys[0]+"?imageView2/0/w/320/h/240";
                 }
-                 htmlstr += '<div class="fangyuan_pic"><a href="' + '/apartment/type/' + result._id + '"><img class="imghover" src="'+imgstr+'"  /></a><div class="fangyuan_pic01"><h1><a href="/apartment/type/'+result._id+'">【'+result.comunity.name+'】'+result.name+'</a></h1><h2><p>'+result.roomType.shi+'室'+result.roomType.ting+'厅'+result.roomType.wei+'卫  | ' + result.minArea + ' - ' + result.maxArea+'平 </p><span>￥<em>'+result.minPrice+'</em> / 月</span></h2><div class="clear"></div></div><div class="clear"></div></div>';
+                 htmlstr += '<div class="fangyuan_pic"><div class="listimg"><a href="' + '/apartment/type/' + result._id + '"><img class="imghover" src="'+imgstr+'"  /></a></div><div class="fangyuan_pic01"><h1><a href="/apartment/type/'+result._id+'">【'+result.comunity.name+'】'+result.name+'</a></h1><h2><p>'+result.roomType.shi+'室'+result.roomType.ting+'厅'+result.roomType.wei+'卫  | ' + result.minArea + ' - ' + result.maxArea+'平 </p><span>￥<em>'+result.minPrice+'</em> / 月</span></h2><div class="clear"></div></div><div class="clear"></div></div>';
             });
 
             if (data.result.docs.length == 0) {

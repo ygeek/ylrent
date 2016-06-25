@@ -118,14 +118,35 @@
     <div class="order01_icon">
         <h1>配套设施</h1>
         <div class="clear"></div>
-        <span><em><img src="/img/mobile/icon04.png"></em>无线WI-FI</span>
-        <span><em><img src="/img/mobile/icon05.png"></em>无线WI-FI</span>
-        <span><em><img src="/img/mobile/icon06.png"></em>无线WI-FI</span>
-        <span><em><img src="/img/mobile/icon07.png"></em>无线WI-FI</span>
-        <span><em><img src="/img/mobile/icon08.png"></em>无线WI-FI</span>
+        <span><em class="icon" style="background-position: 0px 0px;"></em>无线WI-FI</span>
+        <span><em class="icon" style="background-position: -100px 0px;"></em>全天热水</span>
+        <span><em class="icon" style="background-position: -200px 0px; width:38px; "></em>电视</span>
+        <span><em class="icon" style="background-position: -300px 0px;  width:62px;"></em>空调</span>
+        <span><em class="icon" style="background-position: -400px 0px;width:35px;"></em>洗衣机</span>
+        <span><em class="icon" style="background-position: 0px -70px;width:38px;"></em>暖气</span>
+        <span><em class="icon" style="background-position: -100px -70px;"></em>电水壶</span>
+        <span><em class="icon" style="background-position: -200px -70px;  "></em>毛巾</span>
+        <span><em class="icon" style="background-position: -300px -70px;width:40px;  "></em>浴巾</span>
+        <span><em class="icon" style="background-position: -400px -70px;"></em>牙具</span>
+        <div class="all" style=" display:none;">
+         <span><em class="icon" style="background-position: 0px -168px;width:20px;"></em>洗发水</span>
+        <span><em class="icon" style="background-position: -100px -168px;"></em>电吹风</span>
+        <span><em class="icon" style="background-position: -200px -168px;  "></em>拖鞋</span>
+        <span><em class="icon" style="background-position: -300px -168px;width:40px;  "></em>电梯</span>
+        <span><em class="icon" style="background-position: -400px -168px;"></em>燃气灶</span>
 
+        <span><em class="icon" style="background-position: 0px -253px;"></em>电饭锅</span>
+        <span><em class="icon" style="background-position: -100px -253px;"></em>烹饪锅</span>
+        <span><em class="icon" style="background-position: -200px -253px;  "></em>餐具</span>
+        <span><em class="icon" style="background-position: -300px -253px;  "></em>刀具菜板</span>
+        <span><em class="icon" style="background-position: -400px -253px;"></em>洗涤用具</span>
+        
+        <span><em class="icon" style="background-position: 0px -350px;width:40px;"></em>宽带</span>
+        <span><em class="icon" style="background-position: -100px -350px;width:40px;"></em>洗衣液</span>
+        <span><em class="icon" style="background-position: -200px -350px; width:35px; "></em>香皂</span>
+        </div>
         <div class="clear"></div>
-        <div class="order01_more"><a href="#">全部</a></div>
+        <div class="order01_more"><a href="javascript:zhankai();">全部</a></div>
     </div>
 
     <div class="clear"></div>
@@ -156,7 +177,7 @@ map.centerAndZoom(point, 15);
 //设置缩放控件
 //map.enableScrollWheelZoom();
 //map.enableInertialDragging();
-
+ map.disableDragging(); 
 //map.enableContinuousZoom();
 
 
@@ -223,6 +244,11 @@ function yuding()
     {
         location.href='/appointment/daily/'+dailyId+'?startDate='+startDate+'&endDate='+endDate;
     }
+}
+function zhankai()
+{
+    $(".all").show('200');
+    $(".order01_more").hide();
 }
 </script>
 
