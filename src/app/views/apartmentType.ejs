@@ -29,7 +29,7 @@
                 <ul>
                     <% districts.forEach(function(district) { %>
                    
-                    <li class="weizhipar" id="" ><a class=" " href="javascript:void(0);" vid="<%= district._id._id %>" ><%= district._id.name %></a>
+                    <li class="weizhipar" id="" ><a class="weizhi" href="javascript:void(0);" vid="<%= district._id._id %>" ><%= district._id.name %></a>
                         <ul>
                             <% district.commerseAreas.forEach(function(val) { %>
                             <li><a href="javascript:void(0);" vid="<%= val._id %>" class="weizhichild" ><%= val.name %></a></li>
