@@ -1,12 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>源涞国际 - 不动产资管商</title>
-<link type="text/css" rel="stylesheet" href="css/style.css" />
-<script type="text/javascript" src="files/js/jquery.js"></script>
-<script type="text/javascript" src="files/js/superslide.2.1.js"></script>
-<script type="text/javascript" src="files/js/koala.min.1.5.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>源涞国际 - 不动产资管商</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="files/js/jquery.js"></script>
+    <script type="text/javascript" src="files/js/superslide.2.1.js"></script>
+    <script type="text/javascript" src="files/js/koala.min.1.5.js"></script>
 
 </head>
 <body>
@@ -16,18 +17,18 @@
 <!-----头部----->
 
 <div class="fullSlide">
-  <div class="bd">
-    <ul>
-      <li style=" background:url(img/indexbanner1.jpg) center 0 no-repeat;"></li>
-      <li style=" background:url(img/indexbanner2.jpg) center 0 no-repeat;"></li>
-      <li style=" background:url(img/indexbanner3.jpg) center 0 no-repeat;"></li>
-    </ul>
-  </div>
-  <div class="hd">
-    <ul>
-    </ul>
-  </div>
-  <span class="prev"></span> <span class="next"></span> </div>
+    <div class="bd">
+        <ul>
+            <li style=" background:url(img/indexbanner1.jpg) center 0 no-repeat;"></li>
+            <li style=" background:url(img/indexbanner2.jpg) center 0 no-repeat;"></li>
+            <li style=" background:url(img/indexbanner3.jpg) center 0 no-repeat;"></li>
+        </ul>
+    </div>
+    <div class="hd">
+        <ul>
+        </ul>
+    </div>
+    <span class="prev"></span> <span class="next"></span></div>
 
 <div class="clear"></div>
 <div class="sosuo">
@@ -37,37 +38,37 @@
                    type="text" class="sosuo_text"
                    onfocus="if (value =='小区  /   地标  /  商区'){value =''}"
                    onblur="if (value ==''){value='小区  /   地标  /  商区'}"
-                   value="小区  /   地标  /  商区" class="region" />
-		   <div class="sosuo_xz">
-			<div id="divselect" >
-			      <cite>房型</cite>
-			      <ul>
-				 <li><a href="javascript:;" selectid="1">一房</a></li>
-				 <li><a href="javascript:;" selectid="2">两房</a></li>
-				 <li><a href="javascript:;" selectid="3">三房</a></li>
-				 <li><a href="javascript:;" selectid="4">三房以上</a></li>
-				
-			      </ul>
-			  </div>
-		  </div>
-		  <input name="shi" type="hidden" value="" id="inputselect"/>
-          
+                   value="小区  /   地标  /  商区" class="region"/>
+            <div class="sosuo_xz">
+                <div id="divselect">
+                    <cite>房型</cite>
+                    <ul>
+                        <li><a href="javascript:;" selectid="1">一房</a></li>
+                        <li><a href="javascript:;" selectid="2">两房</a></li>
+                        <li><a href="javascript:;" selectid="3">三房</a></li>
+                        <li><a href="javascript:;" selectid="4">三房以上</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <input name="shi" type="hidden" value="" id="inputselect"/>
+
             <input type="submit" class="sosuo_submit" value="搜索"/>
-                    <div class="regionsel">
-                        <div class="qus">
-							<% districts.forEach(function(val) { %>
-                            <div class="qu" id="<%= val._id._id %>"><%= val._id.name %></div>
-							<% }) %>
-                        </div>
-						<% districts.forEach(function(val) { %>
-                        <div class="lists" id="<%= val._id._id %>list" >
-						<% val.commerseAreas.forEach(function(v) { %>
-                            <div class="shangqu"><%= v %></div>
-						<% }) %>
-                        </div>
-						<% }) %>
-                       
-                    </div>
+            <div class="regionsel">
+                <div class="qus">
+                    <% districts.forEach(function(val) { %>
+                    <div class="qu" id="<%= val._id._id %>"><%= val._id.name %></div>
+                    <% }) %>
+                </div>
+                <% districts.forEach(function(val) { %>
+                <div class="lists" id="<%= val._id._id %>list">
+                    <% val.commerseAreas.forEach(function(v) { %>
+                    <div class="shangqu"><%= v %></div>
+                    <% }) %>
+                </div>
+                <% }) %>
+
+            </div>
         </form>
     </div>
 </div>
@@ -79,8 +80,8 @@
 
         <ul class="tabbtn">
             <li class="current"><a>精品房源</a></li>
-            <li><a>品质小区</a></li>	
-            <li style="border:0;"><a>日租公寓</a></li>	
+            <li><a>品质小区</a></li>
+            <li style="border:0;"><a>日租公寓</a></li>
         </ul><!--tabbtn end-->
 
         <div class="clear"></div>
@@ -91,73 +92,78 @@
                 <% apartmentTypes.forEach(function(val) { %>
 
                 <li>
-                  <a href="/apartment/type/<%= val._id %>">
-                    <img class="imghover"
-                            <% if (val.imagekeys[0]) { %>
-                         src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
-                            <% }else{ %>
-                         src="img/default.jpg"
-                            <% } %>
-                    />
-                  </a>
-                  <h1><a href="/apartment/type/<%= val._id %>"><%= val.comunity.name %></a></h1>
-                  <div class="clear"></div>
-                  <h2><a href="/apartment/type/<%= val._id %>"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span></h2>
-                  <p><%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫 | <%= val.maxArea %>平米</p>
-                  <p class="address"><%= val.district.name %>-<%= val.commerseArea.name %></p>
+                    <a href="/apartment/type/<%= val._id %>">
+                        <img class="imghover"
+                                <% if (val.imagekeys[0]) { %>
+                             src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                                <% }else{ %>
+                             src="img/default.jpg"
+                                <% } %>
+                        />
+                    </a>
+                    <h1><a href="/apartment/type/<%= val._id %>"><%= val.comunity.name %></a></h1>
+                    <div class="clear"></div>
+                    <h2><a href="/apartment/type/<%= val._id %>"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span>
+                    </h2>
+                    <p><%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫 | <%= val.maxArea %>
+                        平米</p>
+                    <p class="address"><%= val.district.name %>-<%= val.commerseArea.name %></p>
                 </li>
                 <% }) %>
 
-            </ul>     
+            </ul>
         </div><!--tabcon end-->
 
         <div class="tabcon">
             <ul>
-              <% comunities.forEach(function(val) { %>
+                <% comunities.forEach(function(val) { %>
 
                 <li>
-                  <a href="/apartment/?communityId=<%= val._id %>">
-                    <img class="imghover"
-                      <% if (val.imagekeys && val.imagekeys[0]) { %>
-                        src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
-                      <% }else{ %>
-                        src="img/default.jpg"
-                      <% } %>
-                    />
-                  </a>
-                  <h1><a href="/apartment/?communityId=<%= val._id %>"><%= val.name %></a></h1>
-                  <div class="clear"></div>
-                  <h2><a href="/apartment/?communityId=<%= val._id %>"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span></h2>
-                  <p><%= val.district.name %>-<%= val.commerseArea.name %></p>
+                    <a href="/apartment/?communityId=<%= val._id %>">
+                        <img class="imghover"
+                                <% if (val.imagekeys && val.imagekeys[0]) { %>
+                             src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                                <% }else{ %>
+                             src="img/default.jpg"
+                                <% } %>
+                        />
+                    </a>
+                    <h1><a href="/apartment/?communityId=<%= val._id %>"><%= val.name %></a></h1>
+                    <div class="clear"></div>
+                    <h2>
+                        <a href="/apartment/?communityId=<%= val._id %>"><%= val.name %></a><span>￥ <em><%= val.minPrice %></em>/月 起</span>
+                    </h2>
+                    <p><%= val.district.name %>-<%= val.commerseArea.name %></p>
                 </li>
-              <% }) %>
+                <% }) %>
 
-            </ul>     
+            </ul>
         </div><!--tabcon end-->
 
         <div class="tabcon">
             <ul>
-                <% dailyRents.forEach(function(val) { %>  
+                <% dailyRents.forEach(function(val) { %>
 
                 <li>
-                  <a  href="/daily/<%= val._id %>">
-                    <img class="imghover"
-                      <% if (val.imagekeys[0]) { %>
-                        src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
-                      <% } else { %>
-                        src="img/default.jpg"
-                      <% } %>
-                    />
-                  </a>
-                  <h1><a href="/daily/<%= val._id %>"><%= val.comunity.name %></a></h1>
-                  <div class="clear"></div>
-                  <h2><a href="/daily/<%= val.id %>"><%= val.name %></a><span>￥ <em><%= val.price %></em>/天</span></h2>
-                  <p>1室1厅1卫 | 96平米</p>
-                  <p class="address"><%= val.district.name %>-<%= val.commerseArea.name %></p>
+                    <a href="/daily/<%= val._id %>">
+                        <img class="imghover"
+                                <% if (val.imagekeys[0]) { %>
+                             src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/320/h/240"
+                                <% } else { %>
+                             src="img/default.jpg"
+                                <% } %>
+                        />
+                    </a>
+                    <h1><a href="/daily/<%= val._id %>"><%= val.comunity.name %></a></h1>
+                    <div class="clear"></div>
+                    <h2><a href="/daily/<%= val.id %>"><%= val.name %></a><span>￥ <em><%= val.price %></em>/天</span>
+                    </h2>
+                    <p>1室1厅1卫 | 96平米</p>
+                    <p class="address"><%= val.district.name %>-<%= val.commerseArea.name %></p>
                 </li>
                 <% }) %>
 
-            </ul>     
+            </ul>
         </div><!--tabcon end-->
 
     </div>
@@ -167,95 +173,85 @@
 </div>
 
 <div class="bj_white">
-      <div class="gxm_icon">
+    <div class="gxm_icon">
             <span>
                  <h1>居家体验</h1>
                  <h2>洗衣下厨便捷/配备净水软水系统</h2>
-                 <img src="img/icon04.jpg" />
+                 <img src="/img/icon04.jpg"/>
             </span>
             <span>
                  <h1>品质保障</h1>
                  <h2>专人专车接送/100兆高速光纤上网</h2>
-                 <img src="img/icon05.jpg" />
+                 <img src="/img/icon05.jpg"/>
             </span>
             <span style="float:right; margin:0;">
                  <h1>安全承诺</h1>
                  <h2>智能电子门锁/全厦财产人身保险</h2>
-                 <img src="img/icon06.jpg" />
+                 <img src="/img/icon06.jpg"/>
             </span>
-      </div>
-       <div class="clear"></div>
-      <div class="h_ad01" style="background:url(img/ad.jpg) center no-repeat;"></div>
-      <div class="h_news">
-   
-
-               <!-- 代码 开始 -->
-<div id="fsD1" class="focus">  
-    <div id="D1pic1" class="fPic">  
-        <% for (var i = 0, count = 0; count < 3 && i < latestNews.length; i++){  %>
-            <% if (latestNews[i].imagekey) { count++; %>
-            <div class="fcon" style="display: none;">
-                <a href="/news/<%= latestNews[i]._id %>">
-                    <img src="http://<%= qiniuDomain %>/<%= latestNews[i].imagekey %>" style="opacity: 1; ">
-                </a>
-                <span class="shadow">
-                    <a  href="/news/<%= latestNews[i]._id %>"><%= latestNews[i].title %></a>
-                </span>
-            </div>
-            <% } %>
-        <% } %>
     </div>
-    <div class="fbg">  
-    <div class="D1fBt" id="D1fBt">  
-         <% for (var i=0;i<3&& i < latestNews.length;i++){  %>
-        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""></a>
-        <% } %>  
-       
-    </div>  
-    </div>  
-    <span class="prev"></span>   
-    <span class="next"></span>    
-</div>  
-<script type="text/javascript">
-	
-</script>
-<!-- 代码 结束 -->
-       <div class="h_news_r">
-              <h1><span>源涞实业 今日头条</span><a href="/news/"> 查看更多>> </a></h1>
-              <div class="clear"></div>
-              <div class="h_news_r_m">
-                  <% latestNews.forEach(function(val) { %>
-                      <p><a href="/news/<%= val._id %>"><%= val.title %></a></p>
-                  <% }) %>
-              </div>
-       </div>
-      </div>
+    <div class="clear"></div>
+    <div class="h_ad01" style="background:url(img/ad.jpg) center no-repeat;"></div>
+    <div class="h_news">
+
+
+        <!-- 代码 开始 -->
+        <div id="fsD1" class="focus">
+            <div id="D1pic1" class="fPic">
+                <% for (var i = 0, count = 0; count < 3 && i < latestNews.length; i++){ %>
+                <% if (latestNews[i].imagekey) { count++; %>
+                <div class="fcon" style="display: none;">
+                    <a href="/news/<%= latestNews[i]._id %>">
+                        <img src="http://<%= qiniuDomain %>/<%= latestNews[i].imagekey %>" style="opacity: 1; ">
+                    </a>
+                <span class="shadow">
+                    <a href="/news/<%= latestNews[i]._id %>"><%= latestNews[i].title %></a>
+                </span>
+                </div>
+                <% } %>
+                <% } %>
+            </div>
+            <div class="fbg">
+                <div class="D1fBt" id="D1fBt">
+                    <% for (var i = 0;i < 3 && i < latestNews.length;i++){ %>
+                    <a href="javascript:void(0)" hidefocus="true" target="_self" class=""></a>
+                    <% } %>
+
+                </div>
+            </div>
+            <span class="prev"></span>
+            <span class="next"></span>
+        </div>
+        <script type="text/javascript">
+
+        </script>
+        <!-- 代码 结束 -->
+        <div class="h_news_r">
+            <h1><span>源涞实业 今日头条</span><a href="/news/"> 查看更多>> </a></h1>
+            <div class="clear"></div>
+            <div class="h_news_r_m">
+                <% latestNews.forEach(function(val) { %>
+                <p><a href="/news/<%= val._id %>"><%= val.title %></a></p>
+                <% }) %>
+            </div>
+        </div>
+    </div>
     <div class="clear"></div>
 </div>
 
 <div class="clear"></div>
 <% include footer.ejs %>
-<script type="text/javascript" src="files/js/index.js"></script>
-<script type="text/javascript" src="files/js/imghover.js"></script>
+<script type="text/javascript" src="/files/js/index.js"></script>
+<script type="text/javascript" src="/files/js/imghover.js"></script>
 <script src="files/js/ajaxtab.js"></script>
 
-<script type="text/javascript" src="files/js/divselect.js"></script>
+<script type="text/javascript" src="/files/js/divselect.js"></script>
 <script>
-$(function(){
-    $.divselect("#divselect","#inputselect");
-	
-   
-});
-</script>
+    $(function () {
+        $.divselect("#divselect", "#inputselect");
 
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?8ef3a32b7380c0fe668d0e3080c0fff4";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+
+    });
 </script>
 
 </body>
