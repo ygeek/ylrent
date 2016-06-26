@@ -47,9 +47,9 @@
        
         <li><label>面积</label><input name="structurearea"  value="<%= apartment.area %>"    datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
         <li><label>租金</label><input name="rentPerMonth"  value="<%= apartment.price %>"    datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip"></i></li>
-        <li><label>房型</label><input name="shi"  value="<%= apartment.apartmentType.roomType.shi %>"    datatype="n"  sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 室
-            <input name="ting"  value="<%= apartment.apartmentType.roomType.ting %>"    datatype="n"  sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 厅
-            <input name="wei"  datatype="n"  value="<%= apartment.apartmentType.roomType.wei %>"   sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 卫 <i  class="Validform_checktip"></i></li>
+        <li><label>房型</label><input name="shi"  value="<%= apartment.apartmentType && apartment.apartmentType.roomType.shi %>"    datatype="n"  sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 室
+            <input name="ting"  value="<%= apartment.apartmentType && apartment.apartmentType.roomType.ting %>"    datatype="n"  sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 厅
+            <input name="wei"  datatype="n"  value="<%= apartment.apartmentType && apartment.apartmentType.roomType.wei %>"   sucmsg=" " style="width:50px;" type="text" class="dfinput" value="" /> 卫 <i  class="Validform_checktip"></i></li>
       
         <li><label>地址</label><input name="address" value="<%= apartment.address %>"  datatype="*"  sucmsg=" "  type="text" class="dfinput" /><i  class="Validform_checktip"></i></li>
         <li><label>关键词</label><input name="keywords" value="<%= apartment.keywords && apartment.keywords.join(' ') %>" datatype="*"  sucmsg=" "  type="text" class="dfinput" value="" /><i  class="Validform_checktip">多个关键词用英文空格分开</i></li>
