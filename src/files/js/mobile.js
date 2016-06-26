@@ -464,8 +464,9 @@ function ajaxget(type)
               function() { $( this ).fadeTo( 'fast', '1'); }
             );
             adjustListImageHeight();
+            
             $(".moreHourse_s").addClass('moreHourse');
-            $(".moreHourse").removeClass('moreHourse_s');
+            $(".moreHourse_s").removeClass('moreHourse_s');
             $(".moreHourse a").html('更多房源');
            // $("html, body").animate({ scrollTop: 0 }, "slow");
         }
