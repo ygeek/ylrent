@@ -18,6 +18,8 @@ $(function() {
             ajaxget();
             return;
         }
+        //去掉行政区的条件
+        $(".weizhied").remove();
         var weizhichilded = $(".weizhichilded").html();
         if(!weizhichilded)
         {
@@ -43,6 +45,8 @@ $(function() {
             ajaxget();
             return;
         }
+        //去掉商圈的条件
+        $(".weizhichilded").remove();
         var weizhied = $(".weizhied").html();
         if(!weizhied)
         {
