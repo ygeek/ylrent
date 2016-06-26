@@ -53,13 +53,17 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/add', (req, res, next) => {
-  
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
   
   res.render('cms-newsAdd', {});
 });
 
 router.post('/', (req, res, next) => {
-  
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.redirect('/user/login');
+  }
 
   let title = req.body.title;
   let source = req.body.source;
