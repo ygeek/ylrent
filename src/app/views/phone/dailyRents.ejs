@@ -53,7 +53,7 @@
 
     <% result.docs.forEach(function(val) { %>
         <div class="fangyuan_pic">
-            <div class="listimg">
+           
             <a href="/daily/<%= val.id %>">
                 <img
                     <% if (val.imagekeys[0]) { %>
@@ -63,7 +63,7 @@
                     <% } %>
                 />
             </a>
-            </div>
+           
             <div class="fangyuan_pic01">
                 <h1><a href="/daily/<%= val.id %>"><%= val.comunity.name %></a></h1>
                 <h2><p>2室1厅1卫 | 96平米 </p><span>￥<em> <%= val.price %></em> / 天</span></h2>
