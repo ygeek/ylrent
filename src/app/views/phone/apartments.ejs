@@ -71,15 +71,17 @@
     <div class="houselist">
     <% result.docs.forEach(function(val) { %>
         <div class="fangyuan_pic">
-            <a href="/apartment/detail/<%= val.id %>">
-                <img
-                    <% if (val.imagekeys[0]) { %>
-                        src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>"
-                    <% }else{ %>
-                        src="/img/mobile/img02.jpg"
-                    <% } %>
-                />
-            </a>
+            <div class="listimg">
+                <a href="/apartment/detail/<%= val.id %>">
+                    <img
+                            <% if (val.imagekeys[0]) { %>
+                            src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>"
+                            <% }else{ %>
+                            src="/img/mobile/img02.jpg"
+                            <% } %>
+                    />
+                </a>
+            </div>
             <div class="fangyuan_pic01">
                 <h1><a href="/apartment/detail/<%= val.id %>"><%= val.apartmentType.name %></a></h1>
                 <h2><p><%= val.apartmentType.roomType.shi %>室<%= val.apartmentType.roomType.ting %>厅<%= val.apartmentType.roomType.wei %>卫 | <%= val.area %>平 </p><span>￥<em> <%= val.price %></em> / 月</span></h2>
@@ -101,13 +103,13 @@
         </div>
     </div>
 </div>
-	
     <div class="clear"></div>
     <input name="page" value="<%= result.page %>" class="page" type="hidden" />
     <input name="pages" value="<%= result.pages %>" class="pages" type="hidden" />
 </div>
 
 <div class="clear"></div>
+<script type="text/javascript" src="/js/mobile-listimg.js"></script>
 <script type="text/javascript" src="/files/js/mobile.js"></script>
 </body>
 </html>

@@ -2,52 +2,53 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache"/>
     <meta name="viewport" content="width=device-width"/>
     <meta name="MobileOptimized" content="320"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" name="viewport" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" name="viewport"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta content="telephone=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection"/>
     <title>源涞国际</title>
-    <link type="text/css" href="/css/mobile-main.css" rel="stylesheet" />
+    <link type="text/css" href="/css/mobile-main.css" rel="stylesheet"/>
     <script type="text/javascript" src="/files/js/mobile/jquery.js"></script>
     <script type="text/javascript" src="/files/js/mobile/modernizr.custom.js"></script>
     <script type="text/javascript" src="/files/js/mobile/jquery.dlmenu.js"></script>
 </head>
 <body>
 <div class="header">
-   
-    <div class="header_c"><img src="/img/mobile/logo.png" /></div>
 
-    <div id="sidebar"> 
-       <ul>
-           <li><a href="/">首页</a></li>
-           <li><a href="/apartment/">热门房源</a></li>
-           <li><a href="/daily/">日租房源</a></li>
-           <li><a href="/delegate">委托房源</a></li>
-           <% if (user) { %>
-           <li><a href="/user/logout/">登出</a></li>
-           <% } else { %>
-           <li><a href="/user/login/">登录</a></li>
-           <% } %>
-       </ul>
-       <div id="sidebar-btn">
-          <div style="padding:3px 0 0 0">
-           <span></span>
-           <span></span>
-           <span></span> 
-          </div>
-       </div>
+    <div class="header_c"><img src="/img/mobile/logo.png"/></div>
+
+    <div id="sidebar">
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/apartment/">热门房源</a></li>
+            <li><a href="/daily/">日租房源</a></li>
+            <li><a href="/delegate">委托房源</a></li>
+            <% if (user) { %>
+            <li><a href="/user/logout/">登出</a></li>
+            <% } else { %>
+            <li><a href="/user/login/">登录</a></li>
+            <% } %>
+        </ul>
+        <div id="sidebar-btn">
+            <div style="padding:3px 0 0 0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </div>
 
     <script>
-    jQuery(document).ready(function($) {
-        $('#sidebar-btn').click(function() {
-            $('#sidebar').toggleClass('visible');
+        jQuery(document).ready(function ($) {
+            $('#sidebar-btn').click(function () {
+                $('#sidebar').toggleClass('visible');
+            });
         });
-    });
     </script>
 
 </div>
@@ -56,10 +57,18 @@
         <!--<a href="<%= url %>" <% if(sortBy === 'isHot') { %> id="sort01_m" <% } %> >
             推荐<img src="/img/mobile/icon01.png">
         </a>-->
-        <a href="javascript:void(0)" class="priceSort" <% if(sortBy === 'price') { %>  id="sort01_m" <% } %> >
+        <a href="javascript:void(0)" class="priceSort"
+                <% if(sortBy === 'price') { %>
+           id="sort01_m"
+                <% } %>
+        >
             价格<img src="/img/mobile/icon01.png">
         </a>
-        <a href="javascript:void(0)"  class="areaSort"  <% if(sortBy === 'area') { %>  id="sort01_m" <% } %> >
+        <a href="javascript:void(0)" class="areaSort"
+                <% if(sortBy === 'area') { %>
+           id="sort01_m"
+                <% } %>
+        >
             面积<img src="/img/mobile/icon01.png">
         </a>
         <a href="javascript:void(0)" id="sort02_m">筛选<img src="/img/mobile/icon02.png"></a>
@@ -69,7 +78,7 @@
             <h1>行政区域</h1>
             <a href="javascript:void(0);" class="weizhi seled" id="weizhi" vid="0">不限</a>
             <% districts.forEach(function(district) { %>
-                <a href="javascript:void(0);" vid="<%= district._id._id %>" class="weizhi" ><%= district._id.name %></a>
+            <a href="javascript:void(0);" vid="<%= district._id._id %>" class="weizhi"><%= district._id.name %></a>
             <% }) %>
             <div class="clear"></div>
         </div>
@@ -78,41 +87,42 @@
             <h1>房型</h1>
             <a href="javascript:void(0);" class="fangxing seled" id="fangxing" vid="0">不限</a>
             <a href="javascript:void(0);" class="fangxing" sid="shi" vid="1">一室</a>
-            <a href="javascript:void(0);" class="fangxing"  sid="shi" vid="2">二室</a>
-            <a href="javascript:void(0);" class="fangxing"  sid="shigte" vid="3">三室以上</a>
+            <a href="javascript:void(0);" class="fangxing" sid="shi" vid="2">二室</a>
+            <a href="javascript:void(0);" class="fangxing" sid="shigte" vid="3">三室以上</a>
             <div class="clear"></div>
         </div>
 
         <div class="sosuo01">
             <h1>价格</h1>
             <a href="javascript:void(0);" id="yuezu" class="yuezu seled" min="0" max="0">不限</a>
-            <a href="javascript:void(0);" class="yuezu "  min="0" max="10000">¥10000以下</a>
+            <a href="javascript:void(0);" class="yuezu " min="0" max="10000">¥10000以下</a>
             <a href="javascript:void(0);" class="yuezu " min="10000" max="20000">¥10000 - ¥20000</a>
             <a href="javascript:void(0);" class="yuezu " min="20000" max="30000">¥20000 - ¥30000</a>
-            <a href="javascript:void(0);" class="yuezu " min="30000"  max="0">¥30000以上</a>
+            <a href="javascript:void(0);" class="yuezu " min="30000" max="0">¥30000以上</a>
             <div class="clear"></div>
         </div>
-	<li class="tiaojian"><span >条件：</span></li>
+        <li class="tiaojian"><span>条件：</span></li>
     </div>
     <div class="tuijianfangyuan_m">
         <div class="houselist">
-        <% result.docs.forEach(function(val) { %>
+            <% result.docs.forEach(function(val) { %>
             <div class="fangyuan_pic">
                 <div class="listimg">
-                <a href="/apartment/type/<%= val._id %>">
-                    <img
-                        <% if (val.imagekeys[0]) { %>
-                            src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>"
-                        <% }else{ %>
-                            src="/img/mobile/img02.jpg"
-                        <% } %>
-                    />
-                </a>
+                    <a href="/apartment/type/<%= val._id %>">
+                        <img
+                                <% if (val.imagekeys[0]) { %>
+                                src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>"
+                                <% }else{ %>
+                                src="/img/mobile/img02.jpg"
+                                <% } %>
+                        />
+                    </a>
                 </div>
                 <div class="fangyuan_pic01">
                     <h1><a href="/apartment/type/<%= val._id %>"><%= val.name %></a></h1>
                     <h2>
-                        <p><%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫 | <%= val.maxArea %>平 </p>
+                        <p><%= val.roomType.shi %>室<%= val.roomType.ting %>厅<%= val.roomType.wei %>卫
+                            | <%= val.maxArea %>平 </p>
                         <span>￥<em> <%= val.minPrice %></em> / 月</span>
                     </h2>
                     <div class="clear"></div>
@@ -120,26 +130,29 @@
 
                 <div class="clear"></div>
             </div>
-        <% }) %>
+            <% }) %>
         </div>
         <div class="page01">
             <% if (result.page > 3) { %>
-                <a href="javascript:void(0);"  class="prepage">上一页</a>
+            <a href="javascript:void(0);" class="prepage">上一页</a>
             <% } %>
             <% for (var i = startIndex; i <= endIndex; i++) { %>
-                <a  href="javascript:void(0);" vid="<%= i %>" class="pagenum" <% if (result.page == i) { %>id="page_hover"<% } %> ><%= i %></a>
+            <a href="javascript:void(0);" vid="<%= i %>" class="pagenum" <% if (result.page == i) { %>id="page_hover"
+                    <% } %>
+            ><%= i %></a>
             <% } %>
             <% if (result.page + 3 <= result.pages) { %>
-                <a href="javascript:void(0);" class="nextpage">下一页</a>
+            <a href="javascript:void(0);" class="nextpage">下一页</a>
             <% } %>
         </div>
         <div class="more01 moreHourse"><a href="javascript:void('0');">更多房源</a></div>
     </div>
     <div class="clear"></div>
-    <input name="page" value="<%= result.page %>" class="page" type="hidden" />
-    <input name="pages" value="<%= result.pages %>" class="pages" type="hidden" />
+    <input name="page" value="<%= result.page %>" class="page" type="hidden"/>
+    <input name="pages" value="<%= result.pages %>" class="pages" type="hidden"/>
 </div>
 <div class="clear"></div>
 </body>
+<script type="text/javascript" src="/js/mobile-listimg.js"></script>
 <script type="text/javascript" src="/files/js/mobile.js"></script>
 </html>
