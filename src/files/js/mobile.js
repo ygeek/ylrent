@@ -463,7 +463,7 @@ function ajaxget(type)
               function() { $( this ).fadeTo( 'fast', '0.7'); },
               function() { $( this ).fadeTo( 'fast', '1'); }
             );
-            adjustListImageHeight();
+            //adjustListImageHeight();
             
             $(".moreHourse_s").addClass('moreHourse');
             $(".moreHourse_s").removeClass('moreHourse_s');
