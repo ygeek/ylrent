@@ -2,134 +2,147 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache"/>
     <meta name="viewport" content="width=device-width"/>
     <meta name="MobileOptimized" content="320"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" name="viewport" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" name="viewport"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta content="telephone=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection"/>
     <title>房源委托</title>
     <script type="text/javascript" src="/files/js/mobile/jquery.js"></script>
     <script type="text/javascript" src="/files/lib/Validform_v5.3.2_min.js"></script>
     <link type="text/css" href="http://weui.github.io/weui/weui.css" rel="stylesheet">
 
-    <link type="text/css" href="/css/mobile-main.css" rel="stylesheet" />
+    <link type="text/css" href="/css/mobile-main.css" rel="stylesheet"/>
 </head>
 <body id="weituo" style="background:url(/img/mobile/weituobj.jpg) center no-repeat;  background-attachment:fixed;">
 <div class="header">
-    <a href="javascript:void(0)" onclick="history.go(-1)"><div class="header_l"><img src="/img/mobile/fanhui.png" width="20" /></div></a>
+    <a href="javascript:void(0)" onclick="history.go(-1)">
+        <div class="header_l"><img src="/img/mobile/fanhui.png" width="20"/></div>
+    </a>
     <div class="header_font">房源委托</div>
-    <div id="sidebar"> 
-       <ul>
-           <li><a href="/">首页</a></li>
-           <li><a href="/apartment/">热门房源</a></li>
-           <li><a href="/daily/">日租房源</a></li>
-           <li><a href="/delegate">委托房源</a></li>
-           <% if (user) { %>
-           <li><a href="/user/logout/">登出</a></li>
-           <% } else { %>
-           <li><a href="/user/login/">登录</a></li>
-           <% } %>
-       </ul>
-       <div id="sidebar-btn">
-          <div style="padding:3px 0 0 0">
-           <span></span>
-           <span></span>
-           <span></span> 
-          </div>
-       </div>
+    <div id="sidebar">
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/apartment/">热门房源</a></li>
+            <li><a href="/daily/">日租房源</a></li>
+            <li><a href="/delegate">委托房源</a></li>
+            <% if (user) { %>
+            <li><a href="/user/logout/">登出</a></li>
+            <% } else { %>
+            <li><a href="/user/login/">登录</a></li>
+            <% } %>
+        </ul>
+        <div id="sidebar-btn">
+            <div style="padding:3px 0 0 0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </div>
 
     <script>
-    jQuery(document).ready(function($) {
-        $('#sidebar-btn').click(function() {
-            $('#sidebar').toggleClass('visible');
+        jQuery(document).ready(function ($) {
+            $('#sidebar-btn').click(function () {
+                $('#sidebar').toggleClass('visible');
+            });
         });
-    });
     </script>
 </div>
-<div class="logo"><img src="/img/mobile/logo2.png"  ></div>
+<div class="logo"><img src="/img/mobile/logo2.png"></div>
 <div class="form">
     <form action="/appointment/delegate" class="registerform" method="post">
-    <div class="alert">
-        <div class="xhao"  onclick="history.go(-1)"><img src="/img/mobile/xhao.png" /></div>
-        <div class="weui_cell" >
+        <div class="alert">
+            <div class="xhao" onclick="history.go(-1)"><img src="/img/mobile/xhao.png"/></div>
+            <div class="weui_cell">
 
-                        <div class="weui_cell_bd weui_cell_primary">
-                                <input datatype="*" class="weui_input" type="text" placeholder="请输入您的姓名">
-                        </div>
-        </div>
-        <div class="weui_cell" >
-
-                        <div class="weui_cell_bd weui_cell_primary">
-                                <input datatype="m" class="weui_input" type="number" pattern="[0-9]*" placeholder="11位手机号">
-                        </div>
-        </div>
-
-        <div class="weui_cell weui_cell_select weui_select_after" >
-
-            <div  class="weui_cell_bd weui_cell_primary">
-                <select datatype="*" class="weui_select" name="select1">
-                    <option selected="" value="1">小区</option>
-                    <option value="2">世贸滨江</option>
-                    <option value="3">陆家嘴中央公寓</option>
-                </select>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input name="name" datatype="*" class="weui_input" type="text" placeholder="请输入您的姓名">
+                </div>
             </div>
-        </div>
-        <div class="weui_cell" >
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input name="mobile" datatype="m" class="weui_input" type="number" pattern="[0-9]*"
+                           placeholder="11位手机号">
+                </div>
+            </div>
+
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input name="communityName" class="weui_input" type="text" placeholder="请输入小区名称">
+                </div>
+            </div>
+
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input name="address" class="weui_input" type="text" placeholder="请输入路名或街道门牌号">
+                </div>
+            </div>
 
             <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="text" placeholder="请输入路名或街道门牌号">
+                <select name="structure" datatype="*" class="weui_select">
+                    <option selected="" value="">房型</option>
+                    <option value="1">一室</option>
+                    <option value="2">两室</option>
+                    <option value="3">三室</option>
+                    <option value="4">三室以上</option>
+                </select>
+            </div>
+
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input name="price" datatype="m" class="weui_input" type="number" placeholder="价格">
+                </div>
+            </div>
+
+            <div class="weui_cell tijiao">
+                <input type="submit" class="submit" value="提交" name="submit"/>
             </div>
         </div>
-        <div class="weui_cell tijiao" >
-
-            <input type="submit" class="submit" value="提交"  name="submit" />
-        </div>
-    </div>
     </form>
 </div>
 <script>
 
 
-$(function(){
-	
-	$.Tipmsg.r=null;
-		
-	var showmsg=function(msg){
-		alert(msg);
-	}
-	
-	$(".registerform").Validform({
-		tiptype:function(msg,o,cssctl){
-			if(!o.obj.is("form")){
-				showmsg(msg);
-			}
-		},
-		tipSweep:true,
-		ajaxPost:true,
-                beforeSubmit: function(form) {
-                   
-                    return true;
-                },
-		callback:function(data){
-			console.log(data.msg);
-			if(data.code!=0)  //验证失败
-			{
-				alert(data.msg) ;
-			
-			}
-			else
-			{
-				alert(data.msg) ;
-				history.go(-1);
-			}
-            
-		}
-	});
-})
+    $(function () {
+
+        $.Tipmsg.r = null;
+
+        var showmsg = function (msg) {
+            alert(msg);
+        }
+
+        $(".registerform").Validform({
+            tiptype: function (msg, o, cssctl) {
+                if (!o.obj.is("form")) {
+                    showmsg(msg);
+                }
+            },
+            tipSweep: true,
+            ajaxPost: true,
+            beforeSubmit: function (form) {
+
+                return true;
+            },
+            callback: function (data) {
+                console.log(data.msg);
+                if (data.code != 0)  //验证失败
+                {
+                    alert(data.msg);
+
+                }
+                else {
+                    alert(data.msg);
+                    history.go(-1);
+                }
+
+            }
+        });
+    })
 </script>
 
 </body>

@@ -43,6 +43,7 @@ const DelegationOrderSchema = new mongoose.Schema({
   communityName: String,
   structure: String,
   price: String,
+  address: String,
   status: { type: String, required: true, default: OrderStatus.INITIAL },
   createdAt: { type: Date, required: true, default: Date.now } 
 });

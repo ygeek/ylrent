@@ -201,6 +201,7 @@ router.post('/delegate', (req, res, next) => {
   const communityName = req.body.communityName;
   const structure = req.body.structure || req.body.shi || req.body.shigte;
   const price = req.body.price;
+  const address = req.body.address;
   
   const smscode = req.body.smscode;
   
@@ -220,6 +221,7 @@ router.post('/delegate', (req, res, next) => {
     order.communityName = communityName;
     order.structure = structure;
     order.price = price;
+    order.address = address;
     await order.save();
     
     if (req.xhr || req.headers.accept.indexOf('json') > -1) {
