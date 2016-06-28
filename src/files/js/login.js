@@ -228,7 +228,7 @@ function checkForget()
 	{
 		$(".usernameError").hide();
 	}
-	if(smscode.length!=6||smscode=="/  验证码")
+	if(smscode.length!=4||smscode=="/  验证码")
 	{
 		$(".smsError").html('请填写验证码或格式不正确！');
 		$(".smsError").show();
