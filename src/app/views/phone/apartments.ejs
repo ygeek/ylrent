@@ -75,7 +75,7 @@
                 <a href="/apartment/detail/<%= val.id %>">
                     <img
                             <% if (val.imagekeys[0]) { %>
-                            src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>"
+                            src="http://<%= qiniuDomain %>/<%= val.imagekeys[0] %>?imageView2/0/w/800/h/600"
                             <% }else{ %>
                             src="/img/mobile/img02.jpg"
                             <% } %>
