@@ -8,6 +8,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import log4js from 'log4js';
 import _ from 'lodash';
+import rp from 'request-promise';
 import config from '../../config';
 
 import { 
@@ -285,6 +286,41 @@ router.post('/unrecommend/:id', (req, res, next) => {
     } else {
       res.json({daily: daily});
     }
+  });
+});
+
+router.post('/status/update/', (req, res, next) => {
+  if ((!req.user || !req.user.isStaff) && !isDebug) {
+    return res.json({error: '请以管理员身份重新登录'});
+  }
+
+  (async function() {
+    let options = {
+      uri : 'http://cent.chinacloudapp.cn:3000/api/v2/zfb/room',
+      json: true
+    };
+
+    logger.info('begin request renting status');
+    
+    let apartments = await rp(options);
+    
+    logger.info('request renting status: ', apartments);
+
+    let updatePromises = [];
+    for (let apartment of apartments) {
+      updatePromises.push(
+        Apartment
+          .findOneAndUpdate({contactNo: apartment.sourcePropertyNo}, {leased: apartment.leased})
+          .exec()
+      );
+    }
+    await Promise.all(updatePromises);
+    
+    logger.info('update finished');
+    
+    res.json({ok: true});
+  })().catch(err => {
+    res.json({error: err.message});
   });
 });
 

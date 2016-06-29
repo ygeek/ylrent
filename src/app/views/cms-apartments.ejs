@@ -55,7 +55,7 @@ function getUrlParam(name) {
 
             <ul class="toolbar">
                 <li class="click"><a href="/cms/apartment/add"><span><img src="/files/cms/images/t01.png" /></span>添加房源</a></li>
-          
+                <li class="click"><a href="javascript:void(0)" id="cms-update-renting-status">更新房源租赁状态</a></li>
             </ul>
             <ul class="seachform">
                 <form name="sousuo" action="/cms/apartment/list" method="get" />
@@ -159,7 +159,13 @@ function getUrlParam(name) {
     }
 </script>
 
+<script type="text/javascript" src="/files/lib/plupload/moxie.js"></script>
+<script type="text/javascript" src="/files/lib/plupload/plupload.dev.js"></script>
+<script type="text/javascript" src="/files/lib/laydate/layer.js"></script>
+<link type="text/css" rel="stylesheet" href="/files/lib/jqueryflash/jquery.flash.css" />
+<script type="text/javascript" src="/files/lib/jqueryflash/jquery.flash.js"></script>
 <script type="text/javascript" src="/js/cms-renting.js"></script>
+<script type="text/javascript" src="/files/cms/js/update-renting.js"></script>
 
 </body>
 
