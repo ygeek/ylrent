@@ -207,7 +207,7 @@ $(function() {
     
     //发送短信
     $(document).on("click", ".sendButton", function(e) {
-        var mobile = $("input[name='username']").val();
+        var mobile = $(".phonemobile").val();
 
         if(mobile=='/  手机号'||mobile=='')
         {
@@ -217,7 +217,7 @@ $(function() {
         if(!isphone(mobile))
         {
             
-           alert('手机号码格式不正确!');
+            alert('手机号码格式不正确!');
            
             return;
         }
