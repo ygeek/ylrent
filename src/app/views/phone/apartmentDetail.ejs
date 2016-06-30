@@ -28,7 +28,7 @@
     <a href="javascript:void(0)" onclick="history.go(-1)">
         <div class="header_l"><img src="/img/mobile/fanhui.png" width="20"/></div>
     </a>
-    <div class="header_font"><%= apartment.comunity.name %></div>
+    <div class="header_font"><%= apartment.comunity.name %><%= apartment.leased ? "（已租）" : "" %></div>
     <div id="sidebar">
         <ul>
             <li><a href="/">首页</a></li>
@@ -96,7 +96,7 @@
         <div class="order01_top">
             <h1>
                 <a href="#"><%= apartment.comunity.name %><%= apartment.apartmentType.roomType.shi %>
-                    室<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫</a>
+                    室<%= apartment.apartmentType.roomType.ting %>厅<%= apartment.apartmentType.roomType.wei %>卫<%= apartment.leased ? "（已租）" : "" %></a>
                 <br>
                 <span><%= apartment.apartmentType.roomType.shi %>室<%= apartment.apartmentType.roomType.ting %>
                     厅<%= apartment.apartmentType.roomType.wei %>卫 | <%= apartment.area %>平米 </span></h1>
