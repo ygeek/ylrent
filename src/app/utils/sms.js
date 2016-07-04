@@ -29,7 +29,7 @@ function getRandomInt(min, max) {
 export async function requestSMSCode(mobilePhone, req) {
   let count = await SMSCode.count({ip: req.ip}).exec();
   
-  if (count >= 3) {
+  if (count >= 15) {
     throw new Error('请求次数过多');
   }
   
