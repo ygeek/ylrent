@@ -26,14 +26,20 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-export async function requestSMSCode(mobilePhone) {
+export async function requestSMSCode(mobilePhone, req) {
+  let count = await SMSCode.count({ip: req.ip}).exec();
+  
+  if (count >= 3) {
+    throw new Error('请求次数过多');
+  }
+  
   let smsCode = new SMSCode();
   smsCode.mobile = mobilePhone;
   smsCode.code = getRandomInt(1000, 9999);
-  
+  smsCode.ip = req.ip;
   await smsCode.save();
   
-  logger.trace('request sms code', smsCode);
+  logger.trace(req.ip, 'request sms code', smsCode);
   
   let options = {
     method: 'POST',

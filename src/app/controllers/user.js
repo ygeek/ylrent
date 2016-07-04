@@ -112,7 +112,7 @@ router.get('/forget', function(req, res) {
 
 router.post('/requestsms', (req, res, next) => {
   const mobile = req.body.mobile;
-  requestSMSCode(mobile)
+  requestSMSCode(mobile, req)
     .then(body => {
       logger.trace('request sms code success');
       res.json({

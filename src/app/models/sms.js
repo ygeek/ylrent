@@ -14,6 +14,7 @@ const expires = 600;
 const SMSCodeSchema = new mongoose.Schema({
   mobile: String,
   code: String,
+  ip: String,
   createdAt: { type: Date, default: Date.now, expires: expires }
 });
 

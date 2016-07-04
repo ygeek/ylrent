@@ -20,6 +20,7 @@ import { localData } from './app/controllers/localData';
 // EXPRESS SET-UP
 // create app
 const app = express();
+app.set('trust proxy', 'loopback');
 // use ejs and set views and static directories
 app.set('view engine', 'ejs');
 app.set('view options', { layout: false });
