@@ -21,7 +21,7 @@
       "ref"  : "origin/master",
       "repo" : "git@github.com:ygeek/ylrent.git",
       "path" : "/var/www/production",
-      "post-deploy" : "npm install && bower install && gulp clean && gulp build && pm2 startOrRestart ecosystem.json --env production"
+      "post-deploy" : "cnpm install && bower install && gulp clean && gulp build && pm2 startOrRestart ecosystem.json --env production"
     },
     "dev" : {
       "user" : "ylrent",
@@ -29,7 +29,7 @@
       "ref"  : "origin/master",
       "repo" : "git@github.com:ygeek/ylrent.git",
       "path" : "/var/www/development",
-      "post-deploy" : "npm install && bower install && gulp clean && gulp build && pm2 startOrRestart ecosystem.json --env dev",
+      "post-deploy" : "cnpm install && bower install && gulp clean && gulp build && pm2 startOrRestart ecosystem.json --env dev",
       "env"  : {
         "NODE_ENV": "dev"
       }
