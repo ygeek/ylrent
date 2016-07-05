@@ -10,7 +10,6 @@ $(function() {
 		$(document).on("click", ".sendButton", function(e) {
 			var validate = captchaObj.getValidate();
 			if (!validate) {
-				alert('请先完成验证！');
 				return;
 			}
 			
