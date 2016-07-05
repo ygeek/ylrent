@@ -14,8 +14,8 @@ import { expires } from '../models/sms';
 const logger = log4js.getLogger('normal');
 
 const leancloudConfig = {
-  'X-LC-Id': 'QTohRgKnY7UdXzg3TRJRCJso-gzGzoHsz',
-  'X-LC-Key': 'bGJxnqgPJGUKnBGwA5nbTVLr'
+  'X-LC-Id': '6fPIjzunuEOvwDajBGNyTwtP-gzGzoHsz',
+  'X-LC-Key': '4nQAKLMGX9g1aVQzu6cTv1G8'
 };
 
 const SMSTemplateName = '短信验证码';
