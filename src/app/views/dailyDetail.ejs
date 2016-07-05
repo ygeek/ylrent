@@ -12,6 +12,9 @@
 <script type="text/javascript" src="/files/lib/jqueryflash/jquery.flash.js"></script>
 <script type="text/javascript" src="/files/lib/jquery.loading.min.js"></script>
 <link type="text/css" rel="stylesheet" href="/files/lib/jquery.loading.min.css" />
+<!-- 引入封装了failback的接口--initGeetest -->
+<script src="http://static.geetest.com/static/tools/gt.js"></script>
+<script type="text/javascript" src="/files/js/login.js"></script>
 </head>
 <body>
 
@@ -83,11 +86,12 @@
                             <li>姓名：<input type="text" name="name" datatype="*" class="text07"/></li>
                             <li>手机：<input type="text" datatype="m" name="mobile" id="usernameField" class="text07"/></li>
 							<li>验证码：<input type="text" datatype="n" name="smscode" class="text07"/></li>
-							<li><input type="button" class="text04  sendButtons yanzhengma" value="获取验证码" /></li>
+							<li><input type="button" class="text04  sendButton yanzhengma"  id="popup-button" value="获取验证码" /></li>
                             <li><input type="submit" class="text10" value="立即预定" /></li>
                         </ul>
                    
                 </div>
+                <div id="popup-captcha"></div>
 				 </form>
             </div>
         </div>

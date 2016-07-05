@@ -10,7 +10,14 @@ import log4js from 'log4js';
 import passport from 'passport';
 import promisify from 'es6-promisify';
 import moment from 'moment';
+
+import Geetest from '../utils/gt-sdk';
 import { requestSMSCode, verifySMSCode } from '../utils/sms';
+
+const privateKey = "e526a56acb884eed38762b16a86f3de7";
+const publicKey = "7b7682d8128ed6429bf350ad5743db7c";
+
+const geetest = new Geetest(privateKey, publicKey);
 
 const User = mongoose.model('User');
 
@@ -110,23 +117,55 @@ router.get('/forget', function(req, res) {
   });
 });
 
+router.get('/testregister', (req, res, next) => {
+  // 向极验申请一次验证所需的challenge
+  geetest.register(function (err, data) {
+    if (err) {
+      res.json({
+        gt: publicKey,
+        success: 0
+      });
+    } else {
+      res.json({
+        gt: publicKey,
+        challenge: data,
+        success: 1
+      });
+    }
+  });
+});
+
 router.post('/requestsms', (req, res, next) => {
-  const mobile = req.body.mobile;
-  requestSMSCode(mobile, req)
-    .then(body => {
-      logger.trace('request sms code success');
+  // 对ajax提交的验证结果值进行验证
+  geetest.validate({
+    challenge: req.body.geetest_challenge,
+    validate: req.body.geetest_validate,
+    seccode: req.body.geetest_seccode
+  }, function (err, result) {
+    if (err || !result) {
       res.json({
-        code: 0,
-        msg: '发送验证码成功'
+        code: (err && err.code) || -1,
+        msg: (err.error && err.error.message) || err.message || '验证失败'
       });
-    })
-    .catch(err => {
-      logger.trace('request sms code failed', err);
-      res.json({
-        code: err.code || -1,
-        msg: (err.error && err.error.message) || err.message || '发送验证码失败'
-      });
-    });
+    } else {
+      const mobile = req.body.mobile;
+      requestSMSCode(mobile, req)
+        .then(body => {
+          logger.trace('request sms code success');
+          res.json({
+            code: 0,
+            msg: '发送验证码成功'
+          });
+        })
+        .catch(err => {
+          logger.trace('request sms code failed', err);
+          res.json({
+            code: (err && err.code) || -1,
+            msg: (err.error && err.error.message) || err.message || '发送验证码失败'
+          });
+        });
+    }
+  });
 });
 
 router.post('/verifysms', (req, res, next) => {
