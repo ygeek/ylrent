@@ -51,10 +51,11 @@
                         <input name="structure" type="hidden" datatype="*" tip="请选择房型" value="" id="inputselect"/>
                         <li><img src="/img/rent.png"  style="margin-left:22px; margin-top:10px;" /><em style="margin-left:20px;"></em><input class="weituo01" datatype="n" errormsg="请填写意向租金" tip="意向租金" name="price" value="意向租金" type="text" /></li>
                         <li style="width:190px;"><img src="/img/code.png" style="margin-left:22px; margin-top:10px;" /><em style="margin-left:18px;"></em><input datatype="n" tip="验证码"  name="smscode" class="weituo01" style="width:110px;"  value="" type="text" /></li>
-                        <li style="border:0;width:120px; float:right;"><input type="button" style="width:120px; margin:0px;" class="weituo02 sendButtons yanzhengma"  value="获取验证码" /></li>
+                        <li style="border:0;width:120px; float:right;"><input type="button" style="width:120px; margin:0px;" class="weituo02 sendButtons yanzhengma" id="popup-button" value="获取验证码" /></li>
                         <li style="border:0"><input type="submit" class="weituo02" style="margin-top:0px;" value="提交委托" /></li>
                     </ul>
                     </form>
+                    <div id="popup-captcha"></div>
                          <div class="clear"></div>
                     </div>
              </div>
