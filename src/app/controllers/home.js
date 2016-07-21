@@ -106,6 +106,10 @@ router.get('/page.aspx', (req, res, next) => {
   res.redirect('/');
 });
 
+router.get('/baidu_verify_yMalUPF2NN.html', (req, res, next) => {
+  res.render('baidu_verify_yMalUPF2NN');
+});
+
 router.get('/about', (req, res, next) => {
   res.render('about');
 });
