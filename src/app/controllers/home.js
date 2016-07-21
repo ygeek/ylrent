@@ -102,6 +102,10 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/page.aspx', (req, res, next) => {
+  return res.redirect('/');
+});
+
 router.get('/about', (req, res, next) => {
   res.render('about');
 });
