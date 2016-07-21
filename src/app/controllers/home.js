@@ -103,7 +103,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/page.aspx', (req, res, next) => {
-  return res.redirect('/');
+  res.redirect('/');
 });
 
 router.get('/about', (req, res, next) => {
