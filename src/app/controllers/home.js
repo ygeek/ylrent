@@ -125,4 +125,8 @@ router.get('/team', (req, res, next) => {
   res.render('team');
 });
 
+router.get('/special', (req, res, next) => {
+  res.render('special');
+});
+
 module.exports = router;
