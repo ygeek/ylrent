@@ -289,7 +289,17 @@ background:url(../img/house.png) no-repeat   right center; }
 		      .h_news_r_m p{height:40px; line-height:40px; font-size:18px; padding:0 0 0 20px; background:url(../img/icon07.jpg) left no-repeat;}
 			  
 /******************************首页结束********************************/
-
+.gongyu { width: 1120px; margin: 40px auto 0px; padding-bottom: 40px; border-bottom:#d4d4d4 3px solid;  background-color: none;}
+.gongyu .gyheader {  width: 100%; height: 30px; }
+.gongyu  .gyheader .bigfont { font-size: 22px; color: #666; line-height: 30px; float: left; width: 140px;}
+.gongyu  .gyheader .smallfont { font-size: 16px; line-height: 36px; float: left; width: 60px;}
+.gongyu  .xian { width: 920px;;height: 3px; background-color: #d4d4d4; margin-top: 22px; float: right;}
+.gongyu .bot { width: 100%; margin-top: 30px ; height: 375px;}
+.gongyu .bot .img { cursor:pointer; float: left; width: 740px; height: 375px; overflow: hidden; position: relative;  }
+.gongyu .bot .img .click { position: absolute; top: 0; left: 0; display: none;}
+.gongyu .bot .img:hover .click { display: block; opacity: 0.9;}
+.gongyu .bot .desc { float: right; width:360px; background-color: #f0f4f7;  height: 375px;  }
+.h_products {border-bottom:#d4d4d4 3px solid; }
 
 
 
